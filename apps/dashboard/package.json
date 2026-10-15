@@ -1,0 +1,20 @@
+{
+  "name": "muniment-insights",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Separately served response-time dashboard built only on Muniment's public data contract and the muniment-query package.",
+  "scripts": {
+    "dev": "vite --port 5174",
+    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview --port 4320"
+  },
+  "dependencies": {
+    "@arkiv-network/sdk": "0.8.1",
+    "muniment-query": "0.1.0",
+    "viem": "2.57.7"
+  },
+  "devDependencies": {
+    "vite": "8.3.4"
+  }
+}
