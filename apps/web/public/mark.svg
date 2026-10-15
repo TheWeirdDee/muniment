@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <title>Muniment mark</title>
+  <path d="M5 2.5h15.5L27 9v20.5H5z" fill="#111114"/>
+  <path d="M20.5 2.5V9H27z" fill="#576238"/>
+  <rect x="9" y="13" width="11" height="2.4" fill="#f0eadc"/>
+  <rect x="9" y="18" width="7.5" height="2.4" fill="#f0eadc"/>
+  <path d="M20.5 16.5h5.5v14l-2.75-2.3-2.75 2.3z" fill="#ffd95d" stroke="#f0eadc" stroke-width="1.2"/>
+</svg>
