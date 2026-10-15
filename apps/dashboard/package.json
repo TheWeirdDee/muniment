@@ -6,7 +6,7 @@
   "description": "Separately served response-time dashboard built only on Muniment's public data contract and the muniment-query package.",
   "scripts": {
     "dev": "vite --port 5174",
-    "build": "tsc -p tsconfig.json --noEmit && vite build",
+    "build": "tsc -p tsconfig.json --noEmit && vite build && node ../../scripts/write-version.mjs dist",
     "preview": "vite preview --port 4320"
   },
   "dependencies": {
