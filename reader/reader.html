@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="noindex">
+<title>Muniment standalone reader</title>
+<meta name="description" content="A single self-contained HTML file that reads Muniment records directly from Arkiv over JSON-RPC. No Muniment server, CDN or account.">
+<!--
+  Muniment standalone reader · MIT licence · https://github.com/TheWeirdDee/muniment
+  Self-contained: no external scripts, styles, fonts or images. It sends JSON-RPC only to the
+  endpoint shown in the Endpoint field. Record content is rendered as plain text, never as HTML.
+-->
+<style>
+:root{--bg:#111114;--bg2:#1b1b1e;--ink:#f0eadc;--ink2:#c9c2b0;--ink3:#a39c8a;--rule:rgba(240,234,220,.16);--v:#ffd95d;--tag:#ffd95d;--tagink:#111114;--bad:#ffb4a8;--ok:#c9d6a0;color-scheme:dark}
+@media (prefers-color-scheme:light){:root{--bg:#f0eadc;--bg2:#f8f5ee;--ink:#141416;--ink2:#3f3b33;--ink3:#5e584c;--rule:rgba(20,20,22,.16);--v:#3d4527;--tag:#576238;--tagink:#f0eadc;--bad:#9a2a1c;--ok:#3d4527;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:1100px;margin:0 auto;padding:0 16px}
+header{padding-top:20px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+h1{font-size:1.6rem;margin:0 0 4px;letter-spacing:-.02em}
+h2{font-size:1.15rem;margin:24px 0 8px}
+.tag{display:inline-block;background:var(--tag);color:var(--tagink);font-weight:600;font-size:.8rem;padding:2px 8px;margin:6px 0}
+.muted{color:var(--ink2)}.faint{color:var(--ink3);font-size:.88rem}
+.mono,code,pre{font-family:ui-monospace,"Cascadia Mono",Menlo,monospace;font-size:.85rem}
+fieldset{border:1px solid var(--rule);padding:12px;margin:12px 0}
+legend{padding:0 6px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+label{display:grid;gap:3px;font-size:.82rem;color:var(--ink2)}
+input,select,button{font:inherit;color:var(--ink);background:var(--bg2);border:1px solid var(--rule);padding:8px 10px;min-height:42px;border-radius:0;width:100%}
+button{cursor:pointer;width:auto;font-weight:600}
+button.primary{background:var(--tag);color:var(--tagink);border-color:var(--tag)}
+button:disabled{opacity:.55;cursor:not-allowed}
+:focus-visible{outline:2px solid var(--v);outline-offset:2px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+#status{padding:8px 10px;border-left:4px solid var(--rule);background:var(--bg2);margin:10px 0}
+#status.ok{border-color:var(--ok)}#status.bad{border-color:var(--bad)}
+.item{border-bottom:1px solid var(--rule);padding:10px 0}
+.item button.link{background:none;border:0;padding:0;min-height:0;color:var(--v);text-decoration:underline;font-weight:600;text-align:left}
+.pill{display:inline-block;border:1px solid var(--rule);padding:0 6px;font-size:.75rem;margin-right:6px}
+pre{white-space:pre-wrap;word-break:break-word;background:var(--bg2);border:1px solid var(--rule);padding:10px;overflow:auto;max-height:420px}
+.doc{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--rule);padding:12px}
+dl{display:grid;grid-template-columns:minmax(120px,30%) 1fr;gap:4px 12px;margin:8px 0}dt{color:var(--ink3);font-size:.85rem}dd{margin:0;overflow-wrap:anywhere}
+footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding-bottom:32px}
+@media (max-width:520px){dl{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Muniment standalone reader</h1>
+  <div class="tag">Synthetic test records · Arkiv Tiramisu testnet</div>
+  <p class="muted">This file reads Muniment records straight from an Arkiv RPC endpoint. It does not contact the Muniment website. It still needs network access to the endpoint below, so it is not an offline copy.</p>
+</header>
+<main>
+  <fieldset>
+    <legend>Endpoint</legend>
+    <div class="grid">
+      <label>Arkiv HTTP JSON-RPC endpoint<input id="ep" class="mono" spellcheck="false" autocomplete="off"></label>
+      <label>Trusted publisher wallets (comma separated; empty = any wallet)<input id="creators" class="mono" spellcheck="false" autocomplete="off"></label>
+    </div>
+    <div class="row" style="margin-top:10px"><button id="check" type="button">Check network</button><span id="net" class="faint">Not checked yet.</span></div>
+  </fieldset>
+
+  <form id="search">
+    <fieldset>
+      <legend>Search replies</legend>
+      <div class="grid">
+        <label>Authority slug<input id="authority" placeholder="e.g. ravipur-mc" pattern="[a-z0-9-]{0,64}"></label>
+        <label>Outcome<select id="outcome"><option value="">Any</option><option value="granted">Information supplied</option><option value="partial">Partly supplied</option><option value="denied">Refused</option><option value="transferred">Transferred</option><option value="no-reply">No reply recorded</option></select></label>
+        <label>Exemption section (primary)<input id="exemption" placeholder="e.g. 8(1)(j)"></label>
+        <label>Filed from (UTC)<input id="from" type="date"></label>
+        <label>Filed to (UTC)<input id="to" type="date"></label>
+        <label>Response days, min<input id="rmin" inputmode="numeric"></label>
+        <label>Response days, max<input id="rmax" inputmode="numeric"></label>
+        <label>Page size<select id="limit"><option>10</option><option selected>25</option><option>50</option><option>100</option><option>200</option></select></label>
+      </div>
+      <div class="row" style="margin-top:10px"><button class="primary" type="submit">Search Arkiv</button><button id="more" type="button" disabled>Next page</button><button id="export" type="button" disabled>Export results as JSON</button></div>
+    </fieldset>
+  </form>
+
+  <fieldset>
+    <legend>Open one record</legend>
+    <div class="row"><label style="flex:1 1 320px">Entity key<input id="key" class="mono" placeholder="0x… (64 hex characters)" spellcheck="false"></label><button id="open" type="button" style="align-self:end">Read record</button></div>
+  </fieldset>
+
+  <div id="status" role="status" aria-live="polite">Ready.</div>
+  <h2 id="qh" hidden>Query sent</h2>
+  <pre id="query" hidden></pre>
+  <section id="results" aria-label="Results"></section>
+  <section id="detail" aria-label="Record detail"></section>
+</main>
+<footer class="faint">
+  <p>How it works: every request is a JSON-RPC call (<code>eth_chainId</code>, <code>arkiv_query</code>) sent from this page to the endpoint above. Muniment's data contract is documented at github.com/TheWeirdDee/muniment/blob/main/arkiv/schema.md. Trust comes from the on-chain creator wallet, not from the namespace, which anyone can copy.</p>
+  <p>If your browser blocks requests from a file opened from disk, serve this folder with any static server, for example <code>python -m http.server</code>, and open http://localhost:8000/reader.html.</p>
+</footer>
+<script>
+(function () {
+  "use strict";
+  var CHAIN_ID = 7738577;
+  var APP = "muniment-archive";
+  var DEFAULT_EP = "https://rpc.tiramisu.db-chain.testnet.arkiv.network";
+  var DEFAULT_CREATORS = "0x817574740F413816636FAE23064607084e2C0604";
+  var SELECT = { key: true, owner: true, creator: true, createdAt: true, expiresAt: true, creationFlags: true, contentType: true, payload: true, attributes: true };
+  var $ = function (id) { return document.getElementById(id); };
+  var state = { cursor: null, query: null, results: [], lastBlock: null };
+
+  function load(k, d) { try { return localStorage.getItem(k) || d; } catch (e) { return d; } }
+  function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  $("ep").value = load("muniment.reader.ep", DEFAULT_EP);
+  $("creators").value = load("muniment.reader.creators", DEFAULT_CREATORS);
+
+  function status(msg, kind) { var s = $("status"); s.textContent = msg; s.className = kind || ""; }
+  function el(tag, text, cls) { var e = document.createElement(tag); if (text !== undefined && text !== null) e.textContent = String(text); if (cls) e.className = cls; return e; }
+
+  function endpoint() {
+    var v = $("ep").value.trim();
+    var u;
+    try { u = new URL(v); } catch (e) { throw new Error("The endpoint is not a valid URL."); }
+    if (u.protocol !== "https:" && u.hostname !== "localhost" && u.hostname !== "127.0.0.1") throw new Error("Use an https:// endpoint.");
+    save("muniment.reader.ep", v);
+    return v;
+  }
+
+  var rpcId = 0;
+  function rpc(method, params) {
+    var url = endpoint();
+    var ctl = new AbortController();
+    var t = setTimeout(function () { ctl.abort(); }, 20000);
+    return fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method: method, params: params }), signal: ctl.signal })
+      .catch(function (e) { throw new Error(e.name === "AbortError" ? "The endpoint did not answer within 20 seconds." : "Network error reaching the endpoint (offline, blocked, or CORS refused for this page's origin)."); })
+      .then(function (res) {
+        clearTimeout(t);
+        if (res.status === 429) throw new Error("The endpoint is rate limiting requests (HTTP 429). Wait and retry, or use another endpoint.");
+        if (!res.ok) throw new Error("The endpoint answered HTTP " + res.status + ".");
+        return res.json();
+      })
+      .then(function (body) {
+        if (body.error) throw new Error("Arkiv error " + body.error.code + ": " + body.error.message);
+        return body.result;
+      });
+  }
+
+  function checkNetwork() {
+    $("net").textContent = "Checking…";
+    return Promise.all([rpc("eth_chainId", []), rpc("eth_blockNumber", [])]).then(function (r) {
+      var id = parseInt(r[0], 16);
+      var ok = id === CHAIN_ID;
+      $("net").textContent = ok ? "Connected: Arkiv Tiramisu (chain " + id + "), head block " + parseInt(r[1], 16).toLocaleString("en-GB") + "." : "Warning: this endpoint is chain " + id + ", not Tiramisu (" + CHAIN_ID + ").";
+      return ok;
+    }).catch(function (e) { $("net").textContent = e.message; return false; });
+  }
+
+  function lit(s) {
+    if (/[\u0000-\u001f\u007f]/.test(s)) throw new Error("Control characters are not allowed in filters.");
+    if (s.length > 128) throw new Error("Filter value too long.");
+    return "str('" + s.replace(/'/g, "''") + "')";
+  }
+  function creatorsClause() {
+    var raw = $("creators").value.trim();
+    save("muniment.reader.creators", raw);
+    if (!raw) return null;
+    var list = raw.split(",").map(function (x) { return x.trim(); }).filter(Boolean);
+    list.forEach(function (a) { if (!/^0x[0-9a-fA-F]{40}$/.test(a)) throw new Error("Not a wallet address: " + a); });
+    var parts = list.map(function (a) { return "$creator = addr(" + a + ")"; });
+    return parts.length === 1 ? parts[0] : "(" + parts.join(" OR ") + ")";
+  }
+  function dateMs(v) { return Date.parse(v + "T00:00:00Z"); }
+
+  function buildQuery() {
+    var c = ["app = " + lit(APP), "schema = i32(1)", "kind = str('reply')", "synthetic = true"];
+    var a = $("authority").value.trim(); if (a) { if (!/^[a-z0-9-]{1,64}$/.test(a)) throw new Error("Authority slugs use lowercase letters, digits and dashes."); c.push("authority = " + lit(a)); }
+    var o = $("outcome").value; if (o) c.push("outcome = " + lit(o));
+    var x = $("exemption").value.trim(); if (x) { if (!/^[0-9]{1,2}(\([0-9a-z]{1,4}\)){0,3}$/.test(x)) throw new Error("Section format: e.g. 8(1)(j)."); c.push("exemption = " + lit(x)); }
+    var f = $("from").value; if (f) c.push("filed_ms >= u64(" + dateMs(f) + ")");
+    var t = $("to").value; if (t) c.push("filed_ms <= u64(" + dateMs(t) + ")");
+    var mn = $("rmin").value.trim(); if (mn) { if (!/^\d{1,4}$/.test(mn)) throw new Error("Minimum days must be a whole number."); c.push("response_days >= i32(" + mn + ")"); }
+    var mx = $("rmax").value.trim(); if (mx) { if (!/^\d{1,4}$/.test(mx)) throw new Error("Maximum days must be a whole number."); c.push("response_days <= i32(" + mx + ")"); }
+    var cc = creatorsClause(); if (cc) c.push(cc);
+    return c.join(" AND ");
+  }
+
+  function hexToBytes(h) {
+    var s = (h || "0x").slice(2); var out = new Uint8Array(s.length / 2);
+    for (var i = 0; i < out.length; i++) out[i] = parseInt(s.substr(i * 2, 2), 16);
+    return out;
+  }
+  function payloadJson(e) {
+    if (!e.payload || e.payload === "0x") return null;
+    if (e.payload.length > 2 + 2 * 65536) return { _error: "payload larger than 64 KiB, not decoded" };
+    try { return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(hexToBytes(e.payload))); } catch (err) { return { _error: "payload is not UTF-8 JSON" }; }
+  }
+  function attrs(e) { var m = {}; (e.attributes || []).forEach(function (a) { m[a.name] = a.value; }); return m; }
+  function num(v) { return typeof v === "string" && v.indexOf("0x") === 0 ? parseInt(v, 16) : v; }
+  function utcDate(ms) { if (ms === undefined || ms === null) return "not recorded"; var d = new Date(Number(ms)); return isNaN(d) ? "invalid" : d.toISOString().slice(0, 10) + " UTC"; }
+
+  function renderList(append) {
+    var box = $("results");
+    if (!append) box.textContent = "";
+    if (!append) box.appendChild(el("h2", "Results"));
+    state.pageItems.forEach(function (e) {
+      var a = attrs(e), p = payloadJson(e) || {};
+      var item = el("div", null, "item");
+      var b = el("button", p.title || e.key, "link"); b.type = "button";
+      b.addEventListener("click", function () { $("key").value = e.key; openRecord(e.key); });
+      item.appendChild(b);
+      var meta = el("div", null, "faint");
+      meta.appendChild(el("span", a.outcome || "?", "pill"));
+      meta.appendChild(document.createTextNode((p.authorityName || a.authority || "") + " · filed " + utcDate(num(a.filed_ms)) + (a.response_days !== undefined ? " · " + a.response_days + " days" : " · no response time") + " · expires at block " + num(e.expiresAt).toLocaleString("en-GB")));
+      item.appendChild(meta);
+      box.appendChild(item);
+    });
+    if (!state.results.length) box.appendChild(el("p", "No live records match. Records past their expiry block no longer appear.", "muted"));
+  }
+
+  function search(more) {
+    var q;
+    try { q = more ? state.query : buildQuery(); } catch (e) { status(e.message, "bad"); return; }
+    if (!more) { state.cursor = null; state.results = []; $("detail").textContent = ""; }
+    state.query = q;
+    $("qh").hidden = false; $("query").hidden = false; $("query").textContent = q;
+    var opts = { select: SELECT, limit: "0x" + Number($("limit").value).toString(16) };
+    if (more && state.cursor) opts.cursor = state.cursor;
+    status("Querying Arkiv…");
+    $("more").disabled = true;
+    rpc("arkiv_query", [q, opts]).then(function (r) {
+      var seen = {}; state.results.forEach(function (x) { seen[x.key] = 1; });
+      state.pageItems = (r.data || []).filter(function (x) { if (seen[x.key]) return false; seen[x.key] = 1; return true; });
+      state.results = state.results.concat(state.pageItems);
+      state.cursor = r.cursor || null;
+      state.lastBlock = parseInt(r.blockNumber, 16);
+      renderList(more);
+      $("more").disabled = !state.cursor;
+      $("export").disabled = state.results.length === 0;
+      status(state.results.length + " record(s) loaded, read at block " + state.lastBlock.toLocaleString("en-GB") + (state.cursor ? ". More pages available." : ". No more pages."), "ok");
+    }).catch(function (e) { status(e.message, "bad"); $("more").disabled = !state.cursor; });
+  }
+
+  function openRecord(key) {
+    key = (key || "").trim().toLowerCase();
+    if (!/^0x[0-9a-f]{64}$/.test(key)) { status("An entity key is 0x followed by 64 hexadecimal characters.", "bad"); return; }
+    try { history.replaceState(null, "", "#key=" + key); } catch (e) {}
+    status("Reading record " + key.slice(0, 10) + "…");
+    var linkedQ = function (kind) { return "app = " + lit(APP) + " AND schema = i32(1) AND kind = " + lit(kind) + " AND reply = key(" + key + ")"; };
+    Promise.all([
+      rpc("arkiv_query", ["$key = key(" + key + ")", { select: SELECT, limit: "0x1" }]),
+      rpc("arkiv_query", [linkedQ("appeal"), { select: SELECT, limit: "0x32" }]),
+      rpc("arkiv_query", [linkedQ("review"), { select: SELECT, limit: "0x32" }]),
+      rpc("arkiv_query", [linkedQ("receipt"), { select: SELECT, limit: "0x32" }]),
+      rpc("arkiv_query", [linkedQ("exemption"), { select: SELECT, limit: "0x32" }])
+    ]).then(function (r) {
+      var box = $("detail"); box.textContent = "";
+      var e = (r[0].data || [])[0];
+      box.appendChild(el("h2", "Record"));
+      if (!e) { box.appendChild(el("p", "No live entity with this key at block " + parseInt(r[0].blockNumber, 16).toLocaleString("en-GB") + ". It may have expired, been deleted, or never existed; absence alone does not show which.", "muted")); status("Not found.", "bad"); return; }
+      var a = attrs(e), p = payloadJson(e) || {};
+      if (a.app !== APP) box.appendChild(el("p", "Warning: this entity is not in Muniment's namespace.", "muted"));
+      box.appendChild(el("div", "Synthetic test record", "tag"));
+      box.appendChild(el("h3", p.title || "(untitled)"));
+      var dl = el("dl");
+      function row(k, v, mono) { dl.appendChild(el("dt", k)); dl.appendChild(el("dd", v, mono ? "mono" : "")); }
+      row("Claimed issuing authority", (p.authorityName || a.authority || "?") + " (stated by the record, not verified)");
+      row("On-chain creator (publisher)", e.creator, true);
+      row("Current owner", e.owner + (String(e.owner).toLowerCase() === "0x000000000000000000000000000000000000dead" ? " (sealed to a burn address assumed to have no usable key)" : ""), true);
+      row("Entity key", e.key, true);
+      row("Created at block", num(e.createdAt).toLocaleString("en-GB"));
+      row("Expires at block", num(e.expiresAt).toLocaleString("en-GB"));
+      row("Flags", "read-only: " + !!(e.creationFlags && e.creationFlags.readonly) + ", permissionless extension: " + !!(e.creationFlags && e.creationFlags.permissionlessExtension));
+      row("Outcome", a.outcome);
+      row("Filed", utcDate(num(a.filed_ms)));
+      row("Replied", utcDate(a.replied_ms === undefined ? null : num(a.replied_ms)));
+      row("Response days", a.response_days === undefined ? "none (unanswered or not recorded)" : a.response_days);
+      row("Reference", a.ref || "");
+      box.appendChild(dl);
+      box.appendChild(el("h3", "Question"));
+      box.appendChild(el("div", p.question || "", "doc"));
+      box.appendChild(el("h3", "Reply"));
+      box.appendChild(el("div", p.answer === null || p.answer === undefined ? "No reply recorded." : p.answer, "doc"));
+      if (p.disclosure) box.appendChild(el("p", p.disclosure, "faint"));
+      var linked = [["Appeals", r[1]], ["Reviews (statements by wallets)", r[2]], ["Renewal receipts (claims; this reader does not verify them)", r[3]], ["Exemption relations", r[4]]];
+      linked.forEach(function (pair) {
+        box.appendChild(el("h3", pair[0] + ": " + (pair[1].data || []).length));
+        (pair[1].data || []).forEach(function (x) {
+          var xa = attrs(x), xp = payloadJson(x) || {};
+          box.appendChild(el("p", [xa.stage || xa.status || xa.section || ("target block " + num(xa.target_expiry)), "by " + x.creator, xp.grounds || xp.method || ""].filter(Boolean).join(" · "), "faint"));
+        });
+      });
+      var btn = el("button", "Export this record as JSON"); btn.type = "button";
+      btn.addEventListener("click", function () { download("muniment-record-" + key.slice(2, 10) + ".json", { exportedAt: new Date().toISOString(), endpoint: $("ep").value, chainId: CHAIN_ID, readAtBlock: parseInt(r[0].blockNumber, 16), entity: e, payload: p, linked: { appeals: r[1].data, reviews: r[2].data, receipts: r[3].data, exemptions: r[4].data } }); });
+      box.appendChild(btn);
+      box.appendChild(el("h3", "Raw entity"));
+      box.appendChild(el("pre", JSON.stringify({ entity: e, decodedPayload: p }, null, 2)));
+      status("Record read at block " + parseInt(r[0].blockNumber, 16).toLocaleString("en-GB") + ".", "ok");
+      box.scrollIntoView();
+    }).catch(function (err) { status(err.message, "bad"); });
+  }
+
+  function download(name, data) {
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+
+  $("check").addEventListener("click", checkNetwork);
+  $("search").addEventListener("submit", function (ev) { ev.preventDefault(); search(false); });
+  $("more").addEventListener("click", function () { search(true); });
+  $("open").addEventListener("click", function () { openRecord($("key").value); });
+  $("export").addEventListener("click", function () {
+    download("muniment-results.json", { exportedAt: new Date().toISOString(), endpoint: $("ep").value, chainId: CHAIN_ID, query: state.query, readAtBlock: state.lastBlock, complete: !state.cursor, entities: state.results.map(function (e) { return { entity: e, payload: payloadJson(e) }; }) });
+  });
+  var m = /#key=(0x[0-9a-fA-F]{64})/.exec(location.hash);
+  checkNetwork().then(function () { if (m) { $("key").value = m[1]; openRecord(m[1]); } });
+})();
+</script>
+</body>
+</html>
