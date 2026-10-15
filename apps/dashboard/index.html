@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Response times · Muniment Insights</title>
+    <meta name="description" content="A separately hosted dashboard that reads Muniment's synthetic records from Arkiv through the public data contract: response times, refusals and unanswered requests by authority." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#111114" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="Muniment Insights — response times from the public contract" />
+    <meta property="og:description" content="Synthetic records read live from Arkiv through the documented data contract and muniment-query." />
+    <script src="/theme.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap top-row">
+        <div>
+          <p class="kicker">Muniment Insights · a second, separately hosted app</p>
+          <h1>How long do authorities take to answer?</h1>
+        </div>
+        <button id="theme" class="btn" type="button" aria-label="Toggle theme">Theme</button>
+      </div>
+    </header>
+    <main id="main" class="wrap" tabindex="-1">
+      <div class="banner" role="note">
+        <strong>Synthetic data.</strong> Every authority here is fictional and every figure invented for a hackathon demo on the Arkiv Tiramisu testnet.
+        These charts show how the archive can be reused, not how any real office performs.
+      </div>
+
+      <form id="controls" class="controls" aria-label="Data source">
+        <label>Trusted publisher wallets <span class="hint">comma separated · empty = any wallet</span>
+          <input id="creators" spellcheck="false" autocomplete="off" />
+        </label>
+        <label>Arkiv endpoint
+          <input id="endpoint" spellcheck="false" autocomplete="off" />
+        </label>
+        <button class="btn primary" type="submit">Load from Arkiv</button>
+      </form>
+
+      <p id="coverage" class="coverage" aria-live="polite">Loading records from Arkiv…</p>
+
+      <section class="tiles" id="tiles" aria-label="Headline figures"></section>
+
+      <section class="card" aria-labelledby="h-median">
+        <div class="card-head">
+          <h2 id="h-median">Median days to a completed reply, by authority</h2>
+          <p class="sub">Completed replies only (any outcome except "no reply"). n = completed replies with a recorded response time. Unanswered requests are counted separately below, never as zero or as late replies.</p>
+        </div>
+        <div id="chart-median" class="chart"></div>
+      </section>
+
+      <section class="card" aria-labelledby="h-outcomes">
+        <div class="card-head">
+          <h2 id="h-outcomes">Outcomes by authority</h2>
+          <p class="sub">Denominator: all live replies for that authority. Counts are printed in every cell, so the table never relies on colour.</p>
+          <ul id="legend" class="legend" aria-label="Legend" hidden></ul>
+        </div>
+        <div id="chart-outcomes" class="chart"></div>
+      </section>
+
+      <section class="card" aria-labelledby="h-dist">
+        <div class="card-head">
+          <h2 id="h-dist">Distribution of completed response times</h2>
+          <p class="sub">Days from filing to reply, in 10-day bins. The 30-day marker is descriptive: statutory deadlines have exceptions and vary, so crossing it is not a finding of unlawfulness.</p>
+        </div>
+        <div id="chart-dist" class="chart"></div>
+      </section>
+
+      <section class="card" aria-labelledby="h-table">
+        <div class="card-head">
+          <h2 id="h-table">All figures</h2>
+          <p class="sub">The table behind every chart, including missing values.</p>
+        </div>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="All figures table">
+          <table id="table"></table>
+        </div>
+      </section>
+
+      <section class="card method" aria-labelledby="h-method">
+        <h2 id="h-method">Method</h2>
+        <ul>
+          <li>Source: every live entity matching the query below, read with <code>muniment-query</code> over <code>@arkiv-network/sdk</code> from the endpoint above. No Muniment server, API or private data is involved.</li>
+          <li>Trust: only entities whose on-chain <code>$creator</code> is in the publisher list are counted. The namespace attribute alone proves nothing.</li>
+          <li>Coverage: the scan reads up to 10 pages of 200. If it stops early the page says "partial" and every figure is a sample.</li>
+          <li>Expired records drop out of queries, so figures describe what is live at the stated block, not everything ever published.</li>
+          <li>Median: middle value of completed <code>response_days</code>; for an even count, the mean of the two middle values.</li>
+          <li>Waiting time for unanswered requests is days from filing to the block time of the read, shown separately.</li>
+        </ul>
+        <pre id="query" class="code"></pre>
+        <p class="sub">Source code: <a href="https://github.com/TheWeirdDee/muniment/tree/main/apps/dashboard" rel="noopener noreferrer" target="_blank">apps/dashboard</a> · data contract: <a href="https://github.com/TheWeirdDee/muniment/blob/main/arkiv/schema.md" rel="noopener noreferrer" target="_blank">arkiv/schema.md</a> · main archive: <a href="https://muniment-archive.vercel.app" rel="noopener noreferrer" target="_blank">muniment-archive.vercel.app</a></p>
+      </section>
+    </main>
+    <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
