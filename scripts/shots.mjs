@@ -13,6 +13,8 @@ const b = await chromium.launch()
 const report = []
 for (const w of widths) {
   const ctx = await b.newContext({ viewport: { width: w, height: w < 600 ? 844 : w < 1100 ? 1024 : 900 }, colorScheme: theme, reducedMotion: reduced ? "reduce" : "no-preference" })
+  // An explicit saved choice, as a visitor who picked the theme in Settings would have.
+  await ctx.addInitScript((t) => { try { localStorage.setItem("muniment.theme", t); localStorage.setItem("muniment.insights.theme", t) } catch {} }, theme)
   for (const r of routes) {
     const p = await ctx.newPage()
     const errors = []
