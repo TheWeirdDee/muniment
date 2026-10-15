@@ -1,0 +1,8 @@
+{
+  "name": "muniment-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "muniment-query": "0.1.0"
+  }
+}
