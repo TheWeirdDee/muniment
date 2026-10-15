@@ -48,7 +48,7 @@ for (const [path, title, description] of routes) {
 // Record pages: one shared shell. Synthetic record pages are kept out of search indexes.
 mkdirSync(join(dist, "records"), { recursive: true })
 writeFileSync(
-  join(dist, "records", "_record.html"),
+  join(dist, "records", "record-shell.html"),
   page("/records", "Synthetic record · Muniment", "A synthetic Muniment record read live from Arkiv: claimed issuer, on-chain publisher, review status and expiry.", { noindex: true }),
 )
 writeFileSync(join(dist, "404.html"), page("/404", "Page not found · Muniment", "This address does not match a Muniment page.", { noindex: true }))
