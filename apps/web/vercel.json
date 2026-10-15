@@ -6,7 +6,7 @@
   "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [{ "source": "/records/:key", "destination": "/records/_record.html" }],
+  "rewrites": [{ "source": "/records/:key", "destination": "/records/record-shell" }],
   "headers": [
     {
       "source": "/(.*)",
