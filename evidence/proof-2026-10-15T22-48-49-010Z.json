@@ -1,0 +1,204 @@
+{
+  "name": "proof",
+  "savedAt": "2026-10-15T22:53:39.817Z",
+  "environment": {
+    "node": "v24.13.1",
+    "platform": "win32",
+    "sdk": "@arkiv-network/sdk@0.8.1",
+    "viem": "2.57.7",
+    "rpc": "https://rpc.tiramisu.db-chain.testnet.arkiv.network",
+    "chainId": 7738577
+  },
+  "run": "run-1792104529024",
+  "startBlock": "627382",
+  "partial": false,
+  "summary": {
+    "pass": 14,
+    "fail": 0,
+    "unsupported": 0,
+    "blocked": 0
+  },
+  "items": [
+    {
+      "id": "P1",
+      "title": "Create controls with readonly / permissionlessExtension flags, one sealed to the 0x…dEaD burn address in the same batch",
+      "expected": "A flags {readonly, permissionless}; B {readonly}; S owner = 0x…dEaD, creator = publisher; predicted keys match",
+      "observed": "A {\"readonly\":true,\"permissionlessExtension\":true,\"raw\":3}; B {\"readonly\":true,\"permissionlessExtension\":false,\"raw\":1}; S owner 0x000000000000000000000000000000000000dEaD creator 0x817574740F413816636FAE23064607084e2C0604; predicted match true",
+      "outcome": "pass",
+      "txHashes": [
+        "0x02eb91c72b8f53d4655e94cd898ae02ed19c071976e0e5405013a9c5e4c163ac"
+      ],
+      "entityKeys": [
+        "0x2b5ce9b5a6a734e59db8e227097e529a501cdbd894afe5dbaa5efc62864e56c4",
+        "0xc8dbf6ea8290494444132fe73a3b58a31ef6f860fa24764c2c93afc657034646",
+        "0xb83a98936a93513f792602f4e53d65895c2bc6ffaa563f6f628a0c239f07172a"
+      ],
+      "at": "2026-10-15T22:50:54.075Z"
+    },
+    {
+      "id": "P2a",
+      "title": "A different wallet extends a permissionless-extension entity",
+      "expected": "transaction succeeds; direct read shows a later $expiresAt; owner unchanged",
+      "observed": "before 638185, reported 649047, read back 649047",
+      "outcome": "pass",
+      "txHashes": [
+        "0x54e50a19d75b8ac0d634f62a113d3e73c69d5d78b6593450ac1750b3c5c3ee09"
+      ],
+      "entityKeys": [
+        "0x2b5ce9b5a6a734e59db8e227097e529a501cdbd894afe5dbaa5efc62864e56c4"
+      ],
+      "at": "2026-10-15T22:51:00.874Z"
+    },
+    {
+      "id": "P2b",
+      "title": "The same wallet cannot extend an otherwise comparable entity without the flag",
+      "expected": "rejected (NotOwner); expiry unchanged",
+      "observed": "Transaction failed: entity 0xc8dbf6ea…034646 is owned by 0x817574740F413816636FAE23064607084e2C0604, not 0xe0e47735c1add1390E03766D7Bd06eC913485DE7; expiry 638185 -> 638185",
+      "outcome": "pass",
+      "txHashes": [],
+      "entityKeys": [
+        "0xc8dbf6ea8290494444132fe73a3b58a31ef6f860fa24764c2c93afc657034646"
+      ],
+      "at": "2026-10-15T22:51:04.071Z"
+    },
+    {
+      "id": "P3a",
+      "title": "Stranger patch on a readonly entity",
+      "expected": "rejected",
+      "observed": "Transaction failed: entity 0x2b5ce9b5…4e56c4 is owned by 0x817574740F413816636FAE23064607084e2C0604, not 0x5F2b31286708083Aa5D097bD89d5b3F48DD6cBC9",
+      "outcome": "pass",
+      "entityKeys": [
+        "0x2b5ce9b5a6a734e59db8e227097e529a501cdbd894afe5dbaa5efc62864e56c4"
+      ],
+      "at": "2026-10-15T22:51:06.813Z"
+    },
+    {
+      "id": "P3b",
+      "title": "Owner patch on a readonly entity",
+      "expected": "rejected (ReadOnlyEntity)",
+      "observed": "Transaction failed: entity 0x2b5ce9b5…4e56c4 was created readonly, so its contents can never change. Its expiry can still be extended, and it can be transferred or deleted",
+      "outcome": "pass",
+      "entityKeys": [
+        "0x2b5ce9b5a6a734e59db8e227097e529a501cdbd894afe5dbaa5efc62864e56c4"
+      ],
+      "at": "2026-10-15T22:51:09.397Z"
+    },
+    {
+      "id": "P3c",
+      "title": "Stranger delete",
+      "expected": "rejected (NotOwner)",
+      "observed": "Transaction failed: entity 0x2b5ce9b5…4e56c4 is owned by 0x817574740F413816636FAE23064607084e2C0604, not 0x5F2b31286708083Aa5D097bD89d5b3F48DD6cBC9",
+      "outcome": "pass",
+      "entityKeys": [
+        "0x2b5ce9b5a6a734e59db8e227097e529a501cdbd894afe5dbaa5efc62864e56c4"
+      ],
+      "at": "2026-10-15T22:51:12.232Z"
+    },
+    {
+      "id": "P3d",
+      "title": "Original publisher cannot delete a sealed entity",
+      "expected": "rejected (NotOwner); entity still readable",
+      "observed": "Transaction failed: entity 0xb83a9893…07172a is owned by 0x000000000000000000000000000000000000dEaD, not 0x817574740F413816636FAE23064607084e2C0604; still readable: true",
+      "outcome": "pass",
+      "entityKeys": [
+        "0xb83a98936a93513f792602f4e53d65895c2bc6ffaa563f6f628a0c239f07172a"
+      ],
+      "at": "2026-10-15T22:51:15.380Z"
+    },
+    {
+      "id": "P3e",
+      "title": "A stranger can still extend a sealed permissionless entity",
+      "expected": "succeeds",
+      "observed": "expiresAt 649057",
+      "outcome": "pass",
+      "txHashes": [
+        "0xde2483de19f5e1984dd91da0a307087bd7ea09e29428866e6155e17f3ce2e169"
+      ],
+      "entityKeys": [
+        "0xb83a98936a93513f792602f4e53d65895c2bc6ffaa563f6f628a0c239f07172a"
+      ],
+      "at": "2026-10-15T22:51:22.241Z"
+    },
+    {
+      "id": "P3f",
+      "title": "Escape path on an UNSEALED readonly entity: owner transfers, new owner deletes",
+      "expected": "both succeed — readonly does not prevent deletion; this is why archive records are sealed",
+      "observed": "transfer 0x12847052dec780ab76c0dfaed81f4537f33c4cb47181de70f17232ee2cb9734b; delete succeeded; gone true",
+      "outcome": "pass",
+      "txHashes": [
+        "0x12847052dec780ab76c0dfaed81f4537f33c4cb47181de70f17232ee2cb9734b",
+        "0x1263430e235802d8c449d0124e05642eaa2c5aeb2fdec77a30d8752a28db02f3"
+      ],
+      "entityKeys": [
+        "0xc8dbf6ea8290494444132fe73a3b58a31ef6f860fa24764c2c93afc657034646"
+      ],
+      "at": "2026-10-15T22:51:34.594Z"
+    },
+    {
+      "id": "P4a",
+      "title": "Deliberate atomic failure: valid extension + receipt create + invalid extension in one batch",
+      "expected": "transaction reverts on chain; A's expiry unchanged; no receipt entity exists",
+      "observed": "Transaction 0x9771cb778ea1cf128feac786a68bf39615d5b4d89965b11ffed4a8e9e81517d6 reverted. Reason: no entity 0xc8dbf6ea…034646 — it may have been deleted, or have expired; A expiry 649047 -> 649047; receipts found 0",
+      "outcome": "pass",
+      "txHashes": [
+        "0x9771cb778ea1cf128feac786a68bf39615d5b4d89965b11ffed4a8e9e81517d6"
+      ],
+      "entityKeys": [
+        "0x2b5ce9b5a6a734e59db8e227097e529a501cdbd894afe5dbaa5efc62864e56c4"
+      ],
+      "at": "2026-10-15T22:51:43.911Z"
+    },
+    {
+      "id": "P5",
+      "title": "Genuine renewal receipt verifies; standalone forged receipt is excluded",
+      "expected": "genuine = verified (renewer = RENEWER); forged = unverified",
+      "observed": "{\"0x4334fc83b23b7d8769ca8b57519f1eb4fa4e17f118d8149ce23d26034f8964e2\":\"unverified: the same transaction did not extend the named reply\",\"0xbbbdc106be4cb52b2c4110f883edb8cec76c697cc50936695e47d20eeac5b078\":\"verified renewer 0xe0e47735c1add1390e03766d7bd06ec913485de7\"}",
+      "outcome": "pass",
+      "txHashes": [
+        "0x298f2be62f5f87940cbe0d8fe9cc7a1470a7cec3d2aef765b27f79a0f329fd36",
+        "0x4d0c44e04857e9f51390eaa13f75c82d13242b8d187a70331d7cb21b37124e1b"
+      ],
+      "entityKeys": [
+        "0xbbbdc106be4cb52b2c4110f883edb8cec76c697cc50936695e47d20eeac5b078",
+        "0x4334fc83b23b7d8769ca8b57519f1eb4fa4e17f118d8149ce23d26034f8964e2"
+      ],
+      "at": "2026-10-15T22:51:54.429Z"
+    },
+    {
+      "id": "P6",
+      "title": "Extension to an earlier block",
+      "expected": "rejected (ExpiryNotExtended) before or on chain",
+      "observed": "Transaction failed: entity 0x2b5ce9b5…4e56c4 already expires at block 664065, so extending it to 663965 would shorten its life",
+      "outcome": "pass",
+      "entityKeys": [
+        "0x2b5ce9b5a6a734e59db8e227097e529a501cdbd894afe5dbaa5efc62864e56c4"
+      ],
+      "at": "2026-10-15T22:51:57.580Z"
+    },
+    {
+      "id": "P7",
+      "title": "Plain GLM value transfer between EOAs",
+      "expected": "documented: only Arkiv operation address accepted",
+      "observed": "status success",
+      "outcome": "pass",
+      "txHashes": [
+        "0x96ddbc46ba23e1d64ef086dc2d5b921fd5e415f819722303b9d8b22a651db268"
+      ],
+      "at": "2026-10-15T22:52:03.652Z"
+    },
+    {
+      "id": "P8",
+      "title": "Short-lived synthetic control observed live, then observed gone after its expiry block",
+      "expected": "prior observation recorded; after head >= expiresAt, getEntity throws and query returns nothing",
+      "observed": "observed live at block 627483 (expires 627526); gone at head 627527: No live entity with key 0xb88491fe0ecff79ee2923b10050355d46138f4adf180a767b7ba3030ab868a3e. It was never created, or it has been deleted or has expired.; query results 0",
+      "outcome": "pass",
+      "txHashes": [
+        "0xbd279c2890360968883bb0de8c5f1f2e52814b8c4f07b0be066a0ac4d2c52b48"
+      ],
+      "entityKeys": [
+        "0xb88491fe0ecff79ee2923b10050355d46138f4adf180a767b7ba3030ab868a3e"
+      ],
+      "at": "2026-10-15T22:53:39.794Z"
+    }
+  ]
+}
