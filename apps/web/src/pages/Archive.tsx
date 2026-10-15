@@ -73,6 +73,14 @@ export default function Archive() {
   const [block, setBlock] = useState<bigint | null>(null)
   const [sectionNote, setSectionNote] = useState<string | null>(null)
   const ctl = useRef<AbortController | null>(null)
+  const [filtersOpen, setFiltersOpen] = useState(() => typeof window === "undefined" || window.matchMedia("(min-width: 961px)").matches)
+  useEffect(() => {
+    // On wide screens the filters are a sidebar with no toggle, so they must always be open.
+    const mq = window.matchMedia("(min-width: 961px)")
+    const onChange = () => mq.matches && setFiltersOpen(true)
+    mq.addEventListener("change", onChange)
+    return () => mq.removeEventListener("change", onChange)
+  }, [])
   const key = JSON.stringify(filters, (_k, v) => (typeof v === "bigint" ? v.toString() : v)) + (parsed.section ?? "")
 
   const load = useCallback(
@@ -169,6 +177,14 @@ export default function Archive() {
       </section>
       <div className="wrap archive-layout">
         <aside className="filters" aria-label="Filters">
+          <details
+            className="filters-disclosure"
+            open={filtersOpen}
+            onToggle={(e) => setFiltersOpen((e.currentTarget as HTMLDetailsElement).open)}
+          >
+            <summary className="filters-summary">
+              Filters{activeCount ? ` (${activeCount} active)` : ""}
+            </summary>
           <form
             className="stack"
             onSubmit={(e) => {
@@ -254,6 +270,7 @@ export default function Archive() {
               Clear all filters
             </button>
           </form>
+          </details>
         </aside>
 
         <section className="results" aria-labelledby="results-h">
