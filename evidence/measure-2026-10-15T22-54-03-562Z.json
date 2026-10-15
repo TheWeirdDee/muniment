@@ -1,0 +1,84 @@
+{
+  "name": "measure",
+  "savedAt": "2026-10-15T22:55:12.780Z",
+  "environment": {
+    "node": "v24.13.1",
+    "platform": "win32",
+    "sdk": "@arkiv-network/sdk@0.8.1",
+    "viem": "2.57.7",
+    "rpc": "https://rpc.tiramisu.db-chain.testnet.arkiv.network",
+    "chainId": 7738577
+  },
+  "partial": false,
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "unsupported": 0,
+    "blocked": 0
+  },
+  "items": [
+    {
+      "id": "M1",
+      "title": "Latency over 5 correlated renewal runs",
+      "expected": "every run measured; failures and timeouts reported as such",
+      "observed": "{\"submitToReceipt\":{\"n\":5,\"min\":4734,\"median\":4783,\"max\":7140},\"receiptToQuery\":{\"n\":5,\"min\":211,\"median\":222,\"max\":272},\"receiptToWsEvent\":{\"n\":5,\"min\":-3883,\"median\":-3337,\"max\":-2487},\"failedRuns\":0}",
+      "outcome": "pass",
+      "txHashes": [
+        "0x4c808b71d3e75593dd9b54df1d5913aa80a87d430e97635a8669bb3d647fdc06",
+        "0x3cb06e4af3cb635188216ae0d0014ae4431fd4d96db33caf7446f9d6396d67e1",
+        "0x5ad4f153016b2aef64f0401719f7cf2491faa332e74af5bbcc944c7dd990ab9d",
+        "0xd198aeb0b34878ed231cb31490659221a06ffe68ec6a0722bc140109293d9f1b",
+        "0x2f660cae553fc15412fea45148bc7c91abe35619bf69a6aeb1c44016c00e6874",
+        "0xc78431ac4a4820931ce61cd0e69da738f6632307c95030bf33c0a6c9e086c439"
+      ],
+      "entityKeys": [
+        "0xec62754b0d2feda4a447affb9ab0054197f7342690a06fd5b05ea94d929d7c10"
+      ],
+      "data": {
+        "runs": [
+          {
+            "run": 1,
+            "txHash": "0x3cb06e4af3cb635188216ae0d0014ae4431fd4d96db33caf7446f9d6396d67e1",
+            "targetBlock": "671344",
+            "submitToReceiptMs": 4797,
+            "receiptToQueryMs": 218,
+            "receiptToWsEventMs": -3883
+          },
+          {
+            "run": 2,
+            "txHash": "0x5ad4f153016b2aef64f0401719f7cf2491faa332e74af5bbcc944c7dd990ab9d",
+            "targetBlock": "671950",
+            "submitToReceiptMs": 4783,
+            "receiptToQueryMs": 236,
+            "receiptToWsEventMs": -2815
+          },
+          {
+            "run": 3,
+            "txHash": "0xd198aeb0b34878ed231cb31490659221a06ffe68ec6a0722bc140109293d9f1b",
+            "targetBlock": "672555",
+            "submitToReceiptMs": 7140,
+            "receiptToQueryMs": 272,
+            "receiptToWsEventMs": -3337
+          },
+          {
+            "run": 4,
+            "txHash": "0x2f660cae553fc15412fea45148bc7c91abe35619bf69a6aeb1c44016c00e6874",
+            "targetBlock": "673163",
+            "submitToReceiptMs": 4759,
+            "receiptToQueryMs": 222,
+            "receiptToWsEventMs": -3587
+          },
+          {
+            "run": 5,
+            "txHash": "0xc78431ac4a4820931ce61cd0e69da738f6632307c95030bf33c0a6c9e086c439",
+            "targetBlock": "673769",
+            "submitToReceiptMs": 4734,
+            "receiptToQueryMs": 211,
+            "receiptToWsEventMs": -2487
+          }
+        ]
+      },
+      "at": "2026-10-15T22:55:12.777Z"
+    }
+  ]
+}
