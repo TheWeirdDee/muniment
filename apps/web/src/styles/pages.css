@@ -318,9 +318,14 @@
   flex-wrap: wrap;
   max-width: 34rem;
 }
+.quick > * {
+  min-width: 0;
+}
 .quick-form .select {
-  flex: 1 1 15rem;
+  flex: 1 1 13rem;
   width: auto;
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* Flat data panels: real content, no tilt. */
