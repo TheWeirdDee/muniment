@@ -526,6 +526,34 @@
   overflow-y: auto;
   padding-right: 0.3rem;
 }
+.filters-summary {
+  display: none;
+}
+@media (max-width: 960px) {
+  .filters-summary {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    min-height: 2.75rem;
+    align-items: center;
+  }
+  .filters-summary::-webkit-details-marker {
+    display: none;
+  }
+  .filters-summary::after {
+    content: "+";
+    font-family: var(--font-mono);
+    color: var(--accent-text);
+  }
+  .filters-disclosure[open] .filters-summary {
+    margin-bottom: var(--space-4);
+  }
+  .filters-disclosure[open] .filters-summary::after {
+    content: "−";
+  }
+}
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
