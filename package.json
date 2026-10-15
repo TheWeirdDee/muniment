@@ -1,0 +1,35 @@
+{
+  "name": "muniment-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "npm@11.8.0",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "scripts"
+  ],
+  "scripts": {
+    "build:query": "npm run build -w muniment-query",
+    "test": "npm test -w muniment-query",
+    "typecheck": "tsc -p packages/muniment-query/tsconfig.json && tsc -p scripts/tsconfig.json",
+    "proof": "node --env-file=.env --import tsx scripts/proof.ts",
+    "seed": "node --env-file=.env --import tsx scripts/seed.ts",
+    "measure": "node --env-file=.env --import tsx scripts/measure.ts"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.10.1",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  },
+  "overrides": {
+    "esbuild": "0.28.2"
+  }
+}
