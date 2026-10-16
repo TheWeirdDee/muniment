@@ -1,0 +1,1152 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\DELL\\Desktop\\muniment\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/site.spec.ts",
+      "--project=desktop"
+    ],
+    "configFile": "C:\\Users\\DELL\\Desktop\\muniment\\playwright.config.ts",
+    "rootDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://localhost:4319",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidence/e2e-results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "playwright-report"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "site.spec.ts",
+      "file": "site.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "prerendered metadata reaches crawlers without JavaScript",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 94,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"<title>Developers · Muniment</title>\"\u001b[39m\nReceived string:    \u001b[31m\"<!doctype html>\u001b[39m\n\u001b[31m<html lang=\\\"en-GB\\\">\u001b[39m\n\u001b[31m  <head>\u001b[39m\n\u001b[31m    <meta charset=\\\"UTF-8\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1, viewport-fit=cover\\\" />\u001b[39m\n\u001b[31m    <title>Muniment — keep public answers available</title>\u001b[39m\n\u001b[31m    <meta name=\\\"description\\\" content=\\\"Search, cite and help preserve government replies on Arkiv. Anyone can renew a record without being able to change it, and independent tools can read it. Synthetic testnet edition.\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"canonical\\\" href=\\\"https://muniment-archive.vercel.app/\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"theme-color\\\" content=\\\"#111114\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"application-name\\\" content=\\\"Muniment\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"color-scheme\\\" content=\\\"dark light\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"icon\\\" href=\\\"/favicon.svg\\\" type=\\\"image/svg+xml\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"icon\\\" href=\\\"/favicon-32.png\\\" sizes=\\\"32x32\\\" type=\\\"image/png\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"apple-touch-icon\\\" href=\\\"/apple-touch-icon.png\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"manifest\\\" href=\\\"/site.webmanifest\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:type\\\" content=\\\"website\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:site_name\\\" content=\\\"Muniment\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:title\\\" content=\\\"Muniment — keep public answers available\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:description\\\" content=\\\"Search, cite and help preserve government replies on Arkiv. Anyone can renew a record without being able to change it, and independent tools can read it. Synthetic testnet edition.\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:url\\\" content=\\\"https://muniment-archive.vercel.app/\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image\\\" content=\\\"https://muniment-archive.vercel.app/og.png\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:width\\\" content=\\\"1200\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:height\\\" content=\\\"630\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:alt\\\" content=\\\"Muniment: Public answers shouldn't vanish.\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"twitter:card\\\" content=\\\"summary_large_image\\\" />\u001b[39m\n\u001b[31m    <script src=\\\"/theme-init.js\\\"></script>\u001b[39m\n\u001b[31m    <script type=\\\"module\\\" crossorigin src=\\\"/assets/index-BP35_4su.js\\\"></script>\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/meta-BIS-LRNQ.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/preload-helper-BLdHbfdN.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/utils-Bpv4vmSW.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/localBatchGatewayRequest-yNd-wun_.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/secp256k1-BFRxMnQT.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/arkiv-TrIgCpTA.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"stylesheet\\\" crossorigin href=\\\"/assets/index-DYMtvumg.css\\\">\u001b[39m\n\u001b[31m  </head>\u001b[39m\n\u001b[31m  <body>\u001b[39m\n\u001b[31m    <div id=\\\"root\\\"></div>\u001b[39m\n\u001b[31m    <noscript>\u001b[39m\n\u001b[31m      <p style=\\\"padding:1rem;font-family:sans-serif\\\">Muniment needs JavaScript to query Arkiv. The standalone reader at /reader.html also needs JavaScript but no Muniment server.</p>\u001b[39m\n\u001b[31m    </noscript>\u001b[39m\n\u001b[31m  </body>\u001b[39m\n\u001b[31m</html>\u001b[39m\n\u001b[31m\"\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"<title>Developers · Muniment</title>\"\u001b[39m\nReceived string:    \u001b[31m\"<!doctype html>\u001b[39m\n\u001b[31m<html lang=\\\"en-GB\\\">\u001b[39m\n\u001b[31m  <head>\u001b[39m\n\u001b[31m    <meta charset=\\\"UTF-8\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1, viewport-fit=cover\\\" />\u001b[39m\n\u001b[31m    <title>Muniment — keep public answers available</title>\u001b[39m\n\u001b[31m    <meta name=\\\"description\\\" content=\\\"Search, cite and help preserve government replies on Arkiv. Anyone can renew a record without being able to change it, and independent tools can read it. Synthetic testnet edition.\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"canonical\\\" href=\\\"https://muniment-archive.vercel.app/\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"theme-color\\\" content=\\\"#111114\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"application-name\\\" content=\\\"Muniment\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"color-scheme\\\" content=\\\"dark light\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"icon\\\" href=\\\"/favicon.svg\\\" type=\\\"image/svg+xml\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"icon\\\" href=\\\"/favicon-32.png\\\" sizes=\\\"32x32\\\" type=\\\"image/png\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"apple-touch-icon\\\" href=\\\"/apple-touch-icon.png\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"manifest\\\" href=\\\"/site.webmanifest\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:type\\\" content=\\\"website\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:site_name\\\" content=\\\"Muniment\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:title\\\" content=\\\"Muniment — keep public answers available\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:description\\\" content=\\\"Search, cite and help preserve government replies on Arkiv. Anyone can renew a record without being able to change it, and independent tools can read it. Synthetic testnet edition.\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:url\\\" content=\\\"https://muniment-archive.vercel.app/\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image\\\" content=\\\"https://muniment-archive.vercel.app/og.png\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:width\\\" content=\\\"1200\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:height\\\" content=\\\"630\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:alt\\\" content=\\\"Muniment: Public answers shouldn't vanish.\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"twitter:card\\\" content=\\\"summary_large_image\\\" />\u001b[39m\n\u001b[31m    <script src=\\\"/theme-init.js\\\"></script>\u001b[39m\n\u001b[31m    <script type=\\\"module\\\" crossorigin src=\\\"/assets/index-BP35_4su.js\\\"></script>\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/meta-BIS-LRNQ.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/preload-helper-BLdHbfdN.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/utils-Bpv4vmSW.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/localBatchGatewayRequest-yNd-wun_.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/secp256k1-BFRxMnQT.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/arkiv-TrIgCpTA.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"stylesheet\\\" crossorigin href=\\\"/assets/index-DYMtvumg.css\\\">\u001b[39m\n\u001b[31m  </head>\u001b[39m\n\u001b[31m  <body>\u001b[39m\n\u001b[31m    <div id=\\\"root\\\"></div>\u001b[39m\n\u001b[31m    <noscript>\u001b[39m\n\u001b[31m      <p style=\\\"padding:1rem;font-family:sans-serif\\\">Muniment needs JavaScript to query Arkiv. The standalone reader at /reader.html also needs JavaScript but no Muniment server.</p>\u001b[39m\n\u001b[31m    </noscript>\u001b[39m\n\u001b[31m  </body>\u001b[39m\n\u001b[31m</html>\u001b[39m\n\u001b[31m\"\u001b[39m\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts:38:16",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts",
+                      "column": 16,
+                      "line": 38
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 36 |\u001b[39m test(\u001b[32m\"prerendered metadata reaches crawlers without JavaScript\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 37 |\u001b[39m   \u001b[36mconst\u001b[39m html \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m (\u001b[36mawait\u001b[39m request\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[32m\"/developers\"\u001b[39m))\u001b[33m.\u001b[39mtext()\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 38 |\u001b[39m   expect(html)\u001b[33m.\u001b[39mtoContain(\u001b[32m\"<title>Developers · Muniment</title>\"\u001b[39m)\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 39 |\u001b[39m   expect(html)\u001b[33m.\u001b[39mtoMatch(\u001b[35m/<link rel=\"canonical\" href=\"https:\\/\\/[^\"]+\\/developers\"/\u001b[39m)\n \u001b[90m 40 |\u001b[39m   expect(html)\u001b[33m.\u001b[39mtoContain(\u001b[32m'property=\"og:image\"'\u001b[39m)\n \u001b[90m 41 |\u001b[39m   \u001b[36mconst\u001b[39m rec \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m (\u001b[36mawait\u001b[39m request\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[32m`/records/0x${\"a\".repeat(64)}`\u001b[39m))\u001b[33m.\u001b[39mtext()\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts",
+                        "column": 16,
+                        "line": 38
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"<title>Developers · Muniment</title>\"\u001b[39m\nReceived string:    \u001b[31m\"<!doctype html>\u001b[39m\n\u001b[31m<html lang=\\\"en-GB\\\">\u001b[39m\n\u001b[31m  <head>\u001b[39m\n\u001b[31m    <meta charset=\\\"UTF-8\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1, viewport-fit=cover\\\" />\u001b[39m\n\u001b[31m    <title>Muniment — keep public answers available</title>\u001b[39m\n\u001b[31m    <meta name=\\\"description\\\" content=\\\"Search, cite and help preserve government replies on Arkiv. Anyone can renew a record without being able to change it, and independent tools can read it. Synthetic testnet edition.\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"canonical\\\" href=\\\"https://muniment-archive.vercel.app/\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"theme-color\\\" content=\\\"#111114\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"application-name\\\" content=\\\"Muniment\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"color-scheme\\\" content=\\\"dark light\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"icon\\\" href=\\\"/favicon.svg\\\" type=\\\"image/svg+xml\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"icon\\\" href=\\\"/favicon-32.png\\\" sizes=\\\"32x32\\\" type=\\\"image/png\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"apple-touch-icon\\\" href=\\\"/apple-touch-icon.png\\\" />\u001b[39m\n\u001b[31m    <link rel=\\\"manifest\\\" href=\\\"/site.webmanifest\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:type\\\" content=\\\"website\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:site_name\\\" content=\\\"Muniment\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:title\\\" content=\\\"Muniment — keep public answers available\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:description\\\" content=\\\"Search, cite and help preserve government replies on Arkiv. Anyone can renew a record without being able to change it, and independent tools can read it. Synthetic testnet edition.\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:url\\\" content=\\\"https://muniment-archive.vercel.app/\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image\\\" content=\\\"https://muniment-archive.vercel.app/og.png\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:width\\\" content=\\\"1200\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:height\\\" content=\\\"630\\\" />\u001b[39m\n\u001b[31m    <meta property=\\\"og:image:alt\\\" content=\\\"Muniment: Public answers shouldn't vanish.\\\" />\u001b[39m\n\u001b[31m    <meta name=\\\"twitter:card\\\" content=\\\"summary_large_image\\\" />\u001b[39m\n\u001b[31m    <script src=\\\"/theme-init.js\\\"></script>\u001b[39m\n\u001b[31m    <script type=\\\"module\\\" crossorigin src=\\\"/assets/index-BP35_4su.js\\\"></script>\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/meta-BIS-LRNQ.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/preload-helper-BLdHbfdN.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/utils-Bpv4vmSW.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/localBatchGatewayRequest-yNd-wun_.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/secp256k1-BFRxMnQT.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"modulepreload\\\" crossorigin href=\\\"/assets/arkiv-TrIgCpTA.js\\\">\u001b[39m\n\u001b[31m    <link rel=\\\"stylesheet\\\" crossorigin href=\\\"/assets/index-DYMtvumg.css\\\">\u001b[39m\n\u001b[31m  </head>\u001b[39m\n\u001b[31m  <body>\u001b[39m\n\u001b[31m    <div id=\\\"root\\\"></div>\u001b[39m\n\u001b[31m    <noscript>\u001b[39m\n\u001b[31m      <p style=\\\"padding:1rem;font-family:sans-serif\\\">Muniment needs JavaScript to query Arkiv. The standalone reader at /reader.html also needs JavaScript but no Muniment server.</p>\u001b[39m\n\u001b[31m    </noscript>\u001b[39m\n\u001b[31m  </body>\u001b[39m\n\u001b[31m</html>\u001b[39m\n\u001b[31m\"\u001b[39m\n\n  36 | test(\"prerendered metadata reaches crawlers without JavaScript\", async ({ request }) => {\n  37 |   const html = await (await request.get(\"/developers\")).text()\n> 38 |   expect(html).toContain(\"<title>Developers · Muniment</title>\")\n     |                ^\n  39 |   expect(html).toMatch(/<link rel=\"canonical\" href=\"https:\\/\\/[^\"]+\\/developers\"/)\n  40 |   expect(html).toContain('property=\"og:image\"')\n  41 |   const rec = await (await request.get(`/records/0x${\"a\".repeat(64)}`)).text()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts:38:16"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:02:34.395Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\site-prerendered-metadata--f69a9-crawlers-without-JavaScript-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\site-prerendered-metadata--f69a9-crawlers-without-JavaScript-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts",
+                    "column": 16,
+                    "line": 38
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-8a8376b36aeff06b0978",
+          "file": "site.spec.ts",
+          "line": 36,
+          "column": 1
+        },
+        {
+          "title": "unknown URLs return a real 404 with a way back",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3154,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m404\u001b[39m\nReceived: \u001b[31m200\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m404\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts:50:25",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts",
+                      "column": 25,
+                      "line": 50
+                    },
+                    "snippet": "\u001b[0m \u001b[90m 48 |\u001b[39m test(\u001b[32m\"unknown URLs return a real 404 with a way back\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 49 |\u001b[39m   \u001b[36mconst\u001b[39m res \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m\"/no-such-page\"\u001b[39m)\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 50 |\u001b[39m   expect(res\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mstatus())\u001b[33m.\u001b[39mtoBe(\u001b[35m404\u001b[39m)\n \u001b[90m    |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 51 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"heading\"\u001b[39m\u001b[33m,\u001b[39m { level\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m }))\u001b[33m.\u001b[39mtoContainText(\u001b[32m\"Not here\"\u001b[39m)\n \u001b[90m 52 |\u001b[39m   \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m\"link\"\u001b[39m\u001b[33m,\u001b[39m { name\u001b[33m:\u001b[39m \u001b[35m/Search the archive/\u001b[39m })\u001b[33m.\u001b[39mclick()\n \u001b[90m 53 |\u001b[39m   \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/\\/archive$/\u001b[39m)\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts",
+                        "column": 25,
+                        "line": 50
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m404\u001b[39m\nReceived: \u001b[31m200\u001b[39m\n\n  48 | test(\"unknown URLs return a real 404 with a way back\", async ({ page }) => {\n  49 |   const res = await page.goto(\"/no-such-page\")\n> 50 |   expect(res?.status()).toBe(404)\n     |                         ^\n  51 |   await expect(page.getByRole(\"heading\", { level: 1 })).toContainText(\"Not here\")\n  52 |   await page.getByRole(\"link\", { name: /Search the archive/ }).click()\n  53 |   await expect(page).toHaveURL(/\\/archive$/)\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts:50:25"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:02:36.271Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\site-unknown-URLs-return-a-real-404-with-a-way-back-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\site-unknown-URLs-return-a-real-404-with-a-way-back-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\site-unknown-URLs-return-a-real-404-with-a-way-back-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\site.spec.ts",
+                    "column": 25,
+                    "line": 50
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-f97cec1ec22153ccc0cb",
+          "file": "site.spec.ts",
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "an invalid record key is explained, not crashed",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2564,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:02:45.204Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-ffe4788b68628305dc7e",
+          "file": "site.spec.ts",
+          "line": 56,
+          "column": 1
+        },
+        {
+          "title": "a well-formed key with no entity is reported as not found, not expired",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3275,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:02:48.123Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-21f1b518017a2de4bfa0",
+          "file": "site.spec.ts",
+          "line": 61,
+          "column": 1
+        },
+        {
+          "title": "navigation, back/forward and the mobile menu",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3688,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:02:51.465Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-2aecdc3a92bf8798bc96",
+          "file": "site.spec.ts",
+          "line": 67,
+          "column": 1
+        },
+        {
+          "title": "theme toggle persists across reloads and both themes render",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3007,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:02:55.195Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-fa0e729bfa6ecae4fbd3",
+          "file": "site.spec.ts",
+          "line": 89,
+          "column": 1
+        },
+        {
+          "title": "archive filters live in the URL and unknown ones are reported",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1752,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:02:58.241Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-4450e5d03c83948abef2",
+          "file": "site.spec.ts",
+          "line": 103,
+          "column": 1
+        },
+        {
+          "title": "reading never asks for a wallet; wallet dialog is accessible",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1385,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:03:00.027Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-2d6a238a250948e21dd2",
+          "file": "site.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "publish refuses identifier-shaped text and requires acknowledgement",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1183,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:03:01.439Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-6f835cd6376baabd58a1",
+          "file": "site.spec.ts",
+          "line": 125,
+          "column": 1
+        },
+        {
+          "title": "collections: create, import malformed and valid files, export excludes notes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3504,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T13:03:02.649Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5c02723ad68c2a0d50c5-63187d2dfa54e61010d3",
+          "file": "site.spec.ts",
+          "line": 131,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "every route loads directly, without errors or overflow",
+          "file": "site.spec.ts",
+          "line": 17,
+          "column": 6,
+          "specs": [
+            {
+              "title": "direct load /",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1335,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:20.142Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-3748cdfde1d025359504",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /archive",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3301,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:21.754Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-fbbeec94255f9bf7859c",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /preserve",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 961,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:25.076Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-3f61353c011f4b3df92c",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /collections",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 838,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:26.056Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-e0db3fd9dcf84c0fe9e9",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /publish",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 858,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:26.912Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-2c36e87f7e5a7777489e",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /insights",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1127,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:27.793Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-8d7ac9b1cc4904270e2a",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /developers",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1419,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:28.947Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-98adeae94037e05e231d",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /how-it-works",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1672,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:30.404Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-1d2d1747f442974f34fa",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /privacy",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1047,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:32.141Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-b28fba71a0d09b188393",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            },
+            {
+              "title": "direct load /terms",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1139,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:02:33.232Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-929bbd353e42a7130d9c",
+              "file": "site.spec.ts",
+              "line": 19,
+              "column": 5
+            }
+          ]
+        },
+        {
+          "title": "accessibility (axe, WCAG 2.1 AA rules)",
+          "file": "site.spec.ts",
+          "line": 152,
+          "column": 6,
+          "specs": [
+            {
+              "title": "axe /",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 123,
+                      "error": {
+                        "message": "Error: browserContext.newPage: Target crashed ",
+                        "stack": "Error: browserContext.newPage: Target crashed "
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: browserContext.newPage: Target crashed "
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:03:06.176Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\site-accessibility-axe-WCAG-2-1-AA-rules-axe--desktop\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\site-accessibility-axe-WCAG-2-1-AA-rules-axe--desktop\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-a41c9dca8a9f1c7c702b",
+              "file": "site.spec.ts",
+              "line": 154,
+              "column": 5
+            },
+            {
+              "title": "axe /archive",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "failed",
+                      "duration": 0,
+                      "error": {
+                        "message": "Error: worker process exited unexpectedly (code=3221225794, signal=null)"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: worker process exited unexpectedly (code=3221225794, signal=null)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:03:06.762Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-742cd5eedb9dcdacf22d",
+              "file": "site.spec.ts",
+              "line": 154,
+              "column": 5
+            },
+            {
+              "title": "axe /collections",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:03:06.762Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-7f65ddce8769203dd244",
+              "file": "site.spec.ts",
+              "line": 154,
+              "column": 5
+            },
+            {
+              "title": "axe /publish",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:03:06.762Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-a4eb3397bd4bfadf74e2",
+              "file": "site.spec.ts",
+              "line": 154,
+              "column": 5
+            },
+            {
+              "title": "axe /developers",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:03:06.762Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-4cc4d922289db908ccb8",
+              "file": "site.spec.ts",
+              "line": 154,
+              "column": 5
+            },
+            {
+              "title": "axe /how-it-works",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop",
+                  "projectName": "desktop",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-15T13:03:06.762Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "5c02723ad68c2a0d50c5-6967be7fe0131d66441b",
+              "file": "site.spec.ts",
+              "line": 154,
+              "column": 5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-15T13:02:18.338Z",
+    "duration": 48427.781,
+    "expected": 18,
+    "skipped": 4,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}
