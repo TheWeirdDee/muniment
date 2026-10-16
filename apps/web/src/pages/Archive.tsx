@@ -91,7 +91,7 @@ export default function Archive() {
       setState(more ? "more" : "loading")
       setError(null)
       try {
-        const r = reader()
+        const r = reader(c.signal)
         if (parsed.section) {
           const { keys, complete } = await r.replyKeysForSection(parsed.section, creators, c.signal)
           const got = await r.getReplies(keys, c.signal)
@@ -104,7 +104,7 @@ export default function Archive() {
           )
           setBlock(null)
         } else {
-          const page = await r.searchReplies(filters, { limit: PAGE, cursor: more ? cursor : undefined, signal: c.signal })
+          const page = await r.searchReplies(filters, { limit: PAGE, cursor: more ? cursor : undefined, atBlock: more ? block ?? undefined : undefined, signal: c.signal })
           setSectionNote(null)
           setRecords((prev) => {
             const merged = more ? [...prev] : []
@@ -124,7 +124,7 @@ export default function Archive() {
       }
     },
     // biome-ignore lint/correctness/useExhaustiveDependencies: key captures filter identity
-    [key, cursor],
+    [key, cursor, block],
   )
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: reload when the filter key changes
