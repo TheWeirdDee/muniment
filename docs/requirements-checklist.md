@@ -29,7 +29,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | An independent reader queries live records without Muniment's origin | met | e2e "standalone reader works from disk with the main site blocked" |
 | A separate dashboard consumes the public contract | met | https://muniment-insights.vercel.app, separate Vercel project and origin |
 | Claims match demonstrated behaviour | met | [`docs/copy-audit.md`](copy-audit.md); sealing wording states its assumption |
-| Evidence, deployment and instructions complete before submission | prepared with disclosed limits | this file; phone live reads encountered the public RPC budget; submission account actions and independent feedback remain with the team |
+| Evidence, deployment and instructions complete before submission | prepared with disclosed limits | this file; phone live reads passed after waiting out the public RPC budget; submission account actions and independent feedback remain with the team |
 
 ## Proof campaign (§14)
 
