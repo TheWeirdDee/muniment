@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-16T19:36:08.835Z",
+  "scope": "Public link availability only; not authenticated Devfolio, video audio quality or corrected deployment verification",
+  "checks": [
+    {
+      "url": "https://muniment-archive.vercel.app",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://muniment-insights.vercel.app",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://muniment-archive.vercel.app/reader",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/TheWeirdDee/muniment",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/TheWeirdDee/muniment/blob/main/arkiv/schema.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/TheWeirdDee/muniment/blob/main/arkiv/friction.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/TheWeirdDee/muniment/releases/download/muniment-query-v0.1.1/muniment-query-0.1.1.tgz",
+      "status": 200,
+      "ok": true
+    }
+  ]
+}
