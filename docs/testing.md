@@ -42,6 +42,12 @@ Rejections marked "—" were stopped by the node during pre-flight estimation, s
 
 **Interrupted runs, disclosed:** two earlier attempts (same day) stalled after broadcasting their first batch, because the public endpoint's query budget was exhausted and receipt polling retried silently (friction #1 and #2). The first left no evidence file; the second was stopped and replaced by the run above. Their orphaned control entities are labelled `kind = "control"` and expire within 6–12 hours.
 
+## UI renewals from production
+
+| When (UTC) | Record | Transaction | Result | Note |
+|---|---|---|---|---|
+| 16 Oct 00:0x | r03 | `0x34ca4d74f3378cd4447f4e66b7a524ea67d0a228c1180152b96aec9f7e6631a8` | success on chain (receipt create + extension, from the renewer) | **UI defect found:** the dialog showed "Failed" because the read-back after confirmation hit the RPC rate limit. Fixed in `0527cc7`: post-confirmation read problems now show "Confirmed on chain; reading it back is delayed". |
+
 ## Latency: `npm run measure`
 
 See [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) for the measured runs and method.
