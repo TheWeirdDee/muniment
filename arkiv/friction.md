@@ -20,6 +20,7 @@ Environment for every entry unless stated: `@arkiv-network/sdk@0.8.1`, `viem@2.5
 | 12 | WebSocket events | Smooth | `watchEntityEvents` over `webSocket()` streamed events immediately |
 | 13 | CORS / file origin | Smooth | `Access-Control-Allow-Origin: *`, including `Origin: null`, so a disk-opened HTML reader works |
 | 14 | Expiry | Smooth | A 45-block control disappeared from `getEntity` and queries at its expiry block |
+| 15 | Concurrent absolute targets | Behaviour to document | Two wallets can both succeed to the same target block without adding coverage twice |
 
 ---
 
@@ -112,6 +113,12 @@ The preflight answers `Access-Control-Allow-Origin: *` for `Origin: null`, so `r
 ### 14. Expiry is real and observable (smooth)
 
 A control created with `ExpirationTime.fromBlocks(45)` was read live, and after the head passed its expiry block `getEntity` threw `NoEntityFoundError` and `$key` queries returned nothing (P8). There is no expiry event, so Muniment only says "expired" when a saved observation shows the expiry block has passed.
+
+### 15. Equal-target concurrent renewals (16 October follow-up)
+
+`node --env-file=.env --import tsx scripts/resilience.ts` submits the same absolute target from two funded test wallets against a separate synthetic control. Both succeeded in block 644704 (`0x943a3935aa6ee6319d122fe68ca3323cafc3c86f2a25adba27557995bb9321c6` and `0x3a1b9132e5cd0abf27357b8806ac45d483dcfb11c8fedcec0e03e93147ce8f0b`). Each used 25,240 gas and emitted one log. The resulting expiry was exactly 650101, from 646501: the target was reached once, not twice. An equal target is therefore distinct from the earlier-target rejection in P6. Evidence: `evidence/resilience-2026-10-16T08-26-01-199Z.json` and `evidence/final-chain.json`. The first run's exclusive-winner assumption failed and remains in the evidence.
+
+Clients must refresh before signing and describe coverage as an absolute target. A successful extension operation and event do not establish that this transaction added marginal storage time; another wallet may already have reached that target while the transaction was in flight. Verified renewal-wallet counts are transaction attribution, not additive coverage or adoption. Suggested documentation: explicitly state the equal-target semantics and fees for competing requests.
 
 ## The one thing we'd improve first
 
