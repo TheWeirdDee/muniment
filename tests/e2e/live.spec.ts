@@ -85,7 +85,7 @@ test("the separately hosted dashboard reads the same corpus", async ({ page }) =
 
 test("a rejected wallet signature sends nothing and says so", async ({ page }) => {
   test.skip(!process.env.RENEWER_KEY, "needs RENEWER_KEY")
-  await injectTestWallet(page, { key: process.env.RENEWER_KEY as `0x${string}`, reject: true })
+  const wallet = await injectTestWallet(page, { key: process.env.RENEWER_KEY as `0x${string}`, reject: true })
   await page.goto(`/records/${replyKey("r03")}`)
   await page.getByRole("button", { name: "Renew storage" }).click()
   const dialog = page.getByRole("dialog")
@@ -93,6 +93,10 @@ test("a rejected wallet signature sends nothing and says so", async ({ page }) =
   await dialog.getByRole("button", { name: /Connect a wallet/ }).click()
   await dialog.getByRole("button", { name: /^Sign / }).click()
   await expect(dialog.getByText(/You declined the request in your wallet. Nothing was sent./)).toBeVisible({ timeout: 30_000 })
+  // A parent refresh must not erase the result or silently reset the transaction controls.
+  await page.waitForTimeout(2000)
+  await expect(dialog.getByText(/You declined the request in your wallet. Nothing was sent./)).toBeVisible()
+  expect(wallet.sent).toEqual([])
 })
 
 test("a different wallet renews a record through the UI and the new expiry is read back", async ({ page }) => {
