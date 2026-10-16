@@ -348,6 +348,10 @@ export function decodeReply(e: RawEntity): DecodeResult<Reply> {
     if (responseDays !== null && (responseDays < 0 || responseDays > 3650)) {
       fail("response_days out of range")
     }
+    // Whole elapsed UTC days; missing measurements remain valid, contradictory measurements do not.
+    if (repliedMs !== null && responseDays !== null && responseDays !== Math.floor((repliedMs - filedMs) / 86_400_000)) {
+      fail("response_days disagrees with filing and reply dates (whole elapsed UTC days)")
+    }
     const exemptionAttr = attr(e, "exemption", "str")
     const exemption = exemptionAttr ? (exemptionAttr.value as string) : null
     if (exemption !== null && !isValidSection(exemption)) fail("exemption section is malformed")
