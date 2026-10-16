@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@arkiv-network/sdk": "0.8.1",
-    "muniment-query": "0.1.0",
+    "muniment-query": "0.1.1",
     "viem": "2.57.7"
   },
   "devDependencies": {
