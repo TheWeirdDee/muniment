@@ -1,6 +1,6 @@
 {
   "name": "muniment-query",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typed reader, schema validators and renewal verification for the Muniment archive on Arkiv (Tiramisu testnet).",
   "license": "MIT",
   "type": "module",
