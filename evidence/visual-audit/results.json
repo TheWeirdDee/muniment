@@ -1,0 +1,1644 @@
+{
+  "base": "https://muniment-archive.vercel.app",
+  "at": "2026-10-16T08:26:34.465Z",
+  "results": [
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 109,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 69,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 39,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 109,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 360,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 69,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 39,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1024,
+      "height": 720,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "height": 720,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/",
+      "overflow": 0,
+      "heading": "Public answers. Worth keeping.",
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/archive",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/preserve",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/collections",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/publish",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/developers",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/how-it-works",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/privacy",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "route": "/terms",
+      "overflow": 0,
+      "overflowing": []
+    },
+    {
+      "width": 1920,
+      "height": 720,
+      "reducedMotion": true,
+      "route": "/reader.html",
+      "overflow": 0,
+      "heading": "Muniment standalone reader",
+      "overflowing": []
+    }
+  ]
+}
