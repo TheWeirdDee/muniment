@@ -4,9 +4,28 @@ Updated 16 October 2026. The owner confirmed Claude Code, OpenAI Codex and ChatG
 
 ## Integration time
 
-Exact elapsed time is **unknown**. Git's README-only initial commit is dated 15 October at 11:34:33 UTC; the implementation commits were recorded after the seed and cannot measure integration duration. Local Claude Code metadata begins at 11:33:43 UTC, and a tool event describes inspecting SDK versions at 11:34:59 UTC. Neither timestamp establishes when integration actually began. An initial session can contain prior context, idle time or unrelated work.
+**Evidence-based estimate: about 10 hours 50 minutes elapsed; submission category: 2 to 24 hours.** Exact elapsed time from the unknowable first integration action remains unproven. The owner requested a log-based estimate rather than being asked to reconstruct technical work personally.
 
-The first seed transaction listed in `evidence/manifest.json` has a successful receipt at block `626671`, timestamp **15 October 2026, 22:25:08 UTC**. The manifest's `publishedAt` at 22:26:37 UTC is completion metadata, not the first transaction timestamp. This check does not prove the absence of an earlier entity or transaction. A duration or required time category will be entered only after a defensible start time or the owner's explicitly labelled estimate is available.
+All following times are 15 October 2026 UTC:
+
+| Event | Time | Evidence |
+|---|---|---|
+| Initial workspace inspection returns only the PRD | 11:34:00 | Claude tool-result log; no implementation files listed |
+| Tiramisu network documentation requested | 11:34:58.486 | WebFetch event; chosen observed start proxy |
+| Arkiv SDK versions investigated | 11:34:59.675 | Terminal tool event |
+| SDK documentation/install work invoked | 11:35:50.534 | Terminal tool event |
+| Seed dry-run invoked; contract validation passes | 12:04:30; result 12:04:54 | Terminal tool/result events; dry run creates no entities |
+| Real seed invoked | 22:24:57.881 | Terminal tool event |
+| First documented seed transaction succeeds | 22:25:08 | Tiramisu receipt and block timestamp |
+| Seed output confirms transaction and 80 total entities | 22:26:39 | Terminal tool-result log |
+
+Subtracting the observed documentation request from the first creation gives **10 hours 50 minutes 9.514 seconds**. The seconds are reproducible timestamp arithmetic, not a claim that the true integration start is known that precisely. Nearby SDK events differ by under a minute; the broad 2-to-24-hour category is supported by the available implementation timeline. Gaps between sessions are included; no active-work duration or cause of the gaps is inferred.
+
+Git's README-only initial commit is dated 11:34:33 UTC, consistent with this early session, but it is not used as an integration-start timestamp. Implementation commits were recorded after the seed. The 15 October Codex session belongs to a different project and contains no Muniment/Arkiv/Tiramisu mentions; it is excluded. The available Muniment Claude session begins with workspace inspection and PRD reading before network documentation and SDK setup.
+
+The first seed transaction listed in `evidence/manifest.json` has a successful receipt at block `626671`, timestamp **15 October 2026, 22:25:08 UTC**. Its hash matches the first group in the successful seed terminal output. The manifest's `publishedAt` at 22:26:37 UTC is completion metadata, not the first transaction timestamp. No earlier successful creation was identified in the inspected implementation log; this is not a chain-wide proof of absence. The earlier dry run only validated the corpus. The estimate is labelled as such in the submission draft.
+
+Selected event evidence and calculation: [integration-timeline.json](../evidence/integration-timeline.json). Reproduce using `node scripts/integration-timeline.mjs <local-Claude-project-session.jsonl>`; the script checks the logged seed transaction against the recorded chain receipt and publishes only selected metadata.
 
 Public transaction and deployed-version checks: [submission-chain-status.json](../evidence/submission-chain-status.json).
 
