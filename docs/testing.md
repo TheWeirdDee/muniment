@@ -87,6 +87,16 @@ The equivalence test and the verification tests use test doubles (a stub transpo
 
 Both projects run: desktop 1440×900 and phone 390×844. Results go to `evidence/e2e-results.json`. The latest production run is recorded in [`docs/submission.md`](submission.md#verification-status).
 
+## Production browser run (16 Oct 2026, against https://muniment-archive.vercel.app)
+
+| Suite | Result |
+|---|---|
+| `site.spec.ts`, desktop + phone (commit `f2455bb`) | 48 passed, 2 skipped (desktop-only controls on phone, by design), **2 failed on phone**: the archive filter test (filters are collapsed on phones; the test didn't open them) and axe `aria-prohibited-attr` on the hero stage (a label without a role). Both fixed in `f89cdae` / `13228ff` |
+| Re-run of those two tests on phone (commit `13228ff`) | 2 passed |
+| `live.spec.ts`, desktop (commit `13228ff`) | 7 passed: real landing record, archive count and range filters, sealed / disputed / corrected / unsealed states, the reader from disk with the main site blocked, the separately hosted dashboard |
+| Rejected-signature test | **blocked**: the public endpoint's hourly query budget for this IP was exhausted by the test runs, so the quote never loaded. The app showed the rate-limit notice with the wait time, which is the intended behaviour. The rejection path is covered by the unit-level wallet error mapping; it was not re-run in production |
+| Signed UI renewal | covered by the demo film: `0xe11c…48ce`, verified |
+
 ## Not tested
 
 - No independent usability session took place.
