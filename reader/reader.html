@@ -13,8 +13,8 @@
   endpoint shown in the Endpoint field. Record content is rendered as plain text, never as HTML.
 -->
 <style>
-:root{--bg:#111114;--bg2:#1b1b1e;--ink:#f0eadc;--ink2:#c9c2b0;--ink3:#a39c8a;--rule:rgba(240,234,220,.16);--v:#ffd95d;--tag:#ffd95d;--tagink:#111114;--bad:#ffb4a8;--ok:#c9d6a0;color-scheme:dark}
-@media (prefers-color-scheme:light){:root{--bg:#f0eadc;--bg2:#f8f5ee;--ink:#141416;--ink2:#3f3b33;--ink3:#5e584c;--rule:rgba(20,20,22,.16);--v:#3d4527;--tag:#576238;--tagink:#f0eadc;--bad:#9a2a1c;--ok:#3d4527;color-scheme:light}}
+:root{--bg:#111114;--bg2:#1b1b1e;--ink:#f0eadc;--ink2:#c9c2b0;--ink3:#a39c8a;--rule:rgba(240,234,220,.16);--v:#ffd95d;--tag:#ffd95d;--tagink:#111114;--bad:#ffd95d;--ok:#f0eadc;color-scheme:dark}
+@media (prefers-color-scheme:light){:root{--bg:#f0eadc;--bg2:#f8f5ee;--ink:#141416;--ink2:#3f3b33;--ink3:#5e584c;--rule:rgba(20,20,22,.16);--v:#3d4527;--tag:#576238;--tagink:#f0eadc;--bad:#141416;--ok:#3d4527;color-scheme:light}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 header,main,footer{max-width:1100px;margin:0 auto;padding:0 16px}
@@ -37,6 +37,7 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 #status{padding:8px 10px;border-left:4px solid var(--rule);background:var(--bg2);margin:10px 0}
 #status.ok{border-color:var(--ok)}#status.bad{border-color:var(--bad)}
+#status.bad::before{content:"Error: ";font-weight:700}#status.ok::before{content:"✓ ";font-weight:700}
 .item{border-bottom:1px solid var(--rule);padding:10px 0}
 .item button.link{background:none;border:0;padding:0;min-height:0;color:var(--v);text-decoration:underline;font-weight:600;text-align:left}
 .pill{display:inline-block;border:1px solid var(--rule);padding:0 6px;font-size:.75rem;margin-right:6px}
