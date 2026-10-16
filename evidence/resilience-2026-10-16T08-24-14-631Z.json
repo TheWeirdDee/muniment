@@ -1,0 +1,84 @@
+{
+  "name": "resilience",
+  "savedAt": "2026-10-16T08:24:34.439Z",
+  "environment": {
+    "node": "v24.13.1",
+    "platform": "win32",
+    "sdk": "@arkiv-network/sdk@0.8.1",
+    "viem": "2.57.7",
+    "rpc": "https://rpc.tiramisu.db-chain.testnet.arkiv.network",
+    "chainId": 7738577
+  },
+  "partial": false,
+  "summary": {
+    "pass": 1,
+    "fail": 1,
+    "unsupported": 0,
+    "blocked": 0
+  },
+  "items": [
+    {
+      "id": "R0",
+      "title": "Current balances and chain",
+      "expected": "Tiramisu only; funded test wallets",
+      "observed": "{\"chainId\":7738577,\"balances\":{\"PUBLISHER\":{\"address\":\"0x817574740F413816636FAE23064607084e2C0604\",\"wei\":\"9986613059975226120\",\"GLM\":\"9.98661305997522612\"},\"RENEWER\":{\"address\":\"0xe0e47735c1add1390E03766D7Bd06eC913485DE7\",\"wei\":\"9999162687998325376\",\"GLM\":\"9.999162687998325376\"},\"REVIEWER\":{\"address\":\"0xeC5C622d43217c5DA7C006be11909c0Fb6fFf5C1\",\"wei\":\"8999752991997505984\",\"GLM\":\"8.999752991997505984\"},\"STRANGER\":{\"address\":\"0x5F2b31286708083Aa5D097bD89d5b3F48DD6cBC9\",\"wei\":\"999839571999679144\",\"GLM\":\"0.999839571999679144\"}}}",
+      "outcome": "pass",
+      "data": {
+        "chainId": 7738577,
+        "balances": {
+          "PUBLISHER": {
+            "address": "0x817574740F413816636FAE23064607084e2C0604",
+            "wei": "9986613059975226120",
+            "GLM": "9.98661305997522612"
+          },
+          "RENEWER": {
+            "address": "0xe0e47735c1add1390E03766D7Bd06eC913485DE7",
+            "wei": "9999162687998325376",
+            "GLM": "9.999162687998325376"
+          },
+          "REVIEWER": {
+            "address": "0xeC5C622d43217c5DA7C006be11909c0Fb6fFf5C1",
+            "wei": "8999752991997505984",
+            "GLM": "8.999752991997505984"
+          },
+          "STRANGER": {
+            "address": "0x5F2b31286708083Aa5D097bD89d5b3F48DD6cBC9",
+            "wei": "999839571999679144",
+            "GLM": "0.999839571999679144"
+          }
+        }
+      },
+      "at": "2026-10-16T08:24:17.467Z"
+    },
+    {
+      "id": "R1",
+      "title": "Two wallets concurrently renew from the same expiry snapshot",
+      "expected": "one success, one ExpiryNotExtended; exact target read back, no double extension",
+      "observed": "{\"before\":\"646448\",\"target\":\"650048\",\"after\":\"650048\",\"outcomes\":[{\"role\":\"RENEWER\",\"status\":\"fulfilled\",\"txHash\":\"0xcfda35ca4b159536c0f258c2ca1601f7b5e43a3e86618377c3baea482da34426\"},{\"role\":\"STRANGER\",\"status\":\"fulfilled\",\"txHash\":\"0x30db5858ebdd5499f97a7fd6b9ef02eb5bcc713efe72c5637b05994d2472f41e\"}]}",
+      "outcome": "fail",
+      "txHashes": [
+        "0xffdf7f4d4675e79a78a6833bb8c9334458d20719737c712cb8ff569055fc0d6b",
+        "0xcfda35ca4b159536c0f258c2ca1601f7b5e43a3e86618377c3baea482da34426",
+        "0x30db5858ebdd5499f97a7fd6b9ef02eb5bcc713efe72c5637b05994d2472f41e"
+      ],
+      "entityKeys": [
+        "0x78d8502b5006afb52cdd8fc4539e9a5194bbaf5afbf23c751789d9f20b2cfd43"
+      ],
+      "data": {
+        "outcomes": [
+          {
+            "role": "RENEWER",
+            "status": "fulfilled",
+            "txHash": "0xcfda35ca4b159536c0f258c2ca1601f7b5e43a3e86618377c3baea482da34426"
+          },
+          {
+            "role": "STRANGER",
+            "status": "fulfilled",
+            "txHash": "0x30db5858ebdd5499f97a7fd6b9ef02eb5bcc713efe72c5637b05994d2472f41e"
+          }
+        ]
+      },
+      "at": "2026-10-16T08:24:34.435Z"
+    }
+  ]
+}
