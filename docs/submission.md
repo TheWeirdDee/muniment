@@ -61,4 +61,4 @@ Canonical rules checked: `Arkiv-Network/global-tour-stop-pre-devcon` README, RUL
 
 ## Verification status
 
-Recorded in [`docs/testing.md`](testing.md#production-browser-run-16-oct-2026-against-httpsmuniment-archivevercelapp): the production site and live-data suites pass. One test (rejected signature) was blocked by the public endpoint's per-IP query budget during the run.
+Recorded in [`docs/testing.md`](testing.md#correction-verification-16-october): 35 production desktop checks pass, including rejected signatures and outage recovery. Two phone live-data assertions hit the public endpoint's query budget; 24 phone checks passed. The real two-wallet concurrency campaign passes with the documented equal-target behaviour. The original failed runs remain in the evidence.
