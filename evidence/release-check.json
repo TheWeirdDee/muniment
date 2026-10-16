@@ -1,20 +1,20 @@
 {
-  "at": "2026-10-16T09:55:16.452Z",
-  "revision": "f1e06852491b18cc190967b6f81dd62b29ebf4a8",
+  "at": "2026-10-16T10:26:58.403Z",
+  "revision": "09b9edc41c6d05f35b8155a98ea76638c1e598d9",
   "versions": [
     {
       "base": "https://muniment-archive.vercel.app",
-      "commit": "f1e06852491b18cc190967b6f81dd62b29ebf4a8",
+      "commit": "09b9edc41c6d05f35b8155a98ea76638c1e598d9",
       "dirtyWorkingTree": null,
-      "builtAt": "2026-10-16T09:40:02.247Z",
+      "builtAt": "2026-10-16T10:26:18.440Z",
       "source": "vercel-git",
       "matches": true
     },
     {
       "base": "https://muniment-insights.vercel.app",
-      "commit": "f1e06852491b18cc190967b6f81dd62b29ebf4a8",
+      "commit": "09b9edc41c6d05f35b8155a98ea76638c1e598d9",
       "dirtyWorkingTree": null,
-      "builtAt": "2026-10-16T09:40:22.438Z",
+      "builtAt": "2026-10-16T10:26:40.885Z",
       "source": "vercel-git",
       "matches": true
     }
