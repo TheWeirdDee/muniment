@@ -53,6 +53,16 @@ test("unknown URLs return a real 404 with a way back", async ({ page }) => {
   await expect(page).toHaveURL(/\/archive$/)
 })
 
+test("the hosted reader initialises after the clean-URL redirect", async ({ page }) => {
+  const errors: string[] = []
+  page.on("pageerror", (e) => errors.push(e.message))
+  await page.goto("/reader.html")
+  await expect(page.locator("#ep")).toHaveValue(/^https:\/\//)
+  await expect(page.locator("#creators")).toHaveValue(/^0x[0-9a-fA-F]{40}$/)
+  await expect(page.getByRole("button", { name: "Read record", exact: true })).toBeEnabled()
+  expect(errors).toEqual([])
+})
+
 test("an invalid record key is explained, not crashed", async ({ page }) => {
   await page.goto("/records/not-a-key")
   await expect(page.getByRole("heading", { level: 1 })).toContainText("That is not a record key")
