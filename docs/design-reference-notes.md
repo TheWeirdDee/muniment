@@ -8,6 +8,7 @@ What was studied, what was taken, and what was deliberately not taken. Muniment'
 |---|---|---|
 | milliseconds.ai (primary) | Playwright, 1440×900 and 390×844, full scroll | Loaded on both; desktop and mobile captures taken 15 Oct 2026 |
 | m3.sineframe.com (secondary) | Playwright, same sizes | Loaded on both (the first mobile attempt timed out; retry succeeded) |
+| Both references, tablet follow-up | Playwright, 768×1024, hero and lower section | Captures in `evidence/reference-tablet/`; primary retains a text/card split at tablet width and uses one mobile navigation control |
 | Kage screenshots supplied by the user | Read as images | Used to confirm section order |
 | A palette card supplied by the user (Moss #576238, Mustard #FFD95D, Eggshell #F0EADC) | Read as an image | Adopted as the brand palette (see below) |
 
