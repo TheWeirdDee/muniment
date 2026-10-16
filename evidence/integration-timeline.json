@@ -1,0 +1,46 @@
+{
+  "sourceLog": "e840f568-a28b-41e0-bef5-ed4ca46c9ce6.jsonl",
+  "events": {
+    "networkDocs": {
+      "at": "2026-10-15T11:34:58.486Z",
+      "id": "toolu_012tDnMdzzviTFAgnmcUh1Vs",
+      "description": "https://docs.arkiv.network/networks/tiramisu/"
+    },
+    "sdkVersions": {
+      "at": "2026-10-15T11:34:59.675Z",
+      "id": "toolu_01JjtXPjaxa8E29nBmp2fcjN",
+      "description": "Inspect published Arkiv SDK versions"
+    },
+    "sdkInstall": {
+      "at": "2026-10-15T11:35:50.534Z",
+      "id": "toolu_01GoZirrcK9nA7XwjxHP9aQk",
+      "description": "Download Arkiv doc pages and install SDK"
+    },
+    "dryRun": {
+      "at": "2026-10-15T12:04:30.108Z",
+      "id": "toolu_01KceqRjpDgisHyobkrupvTg",
+      "description": "Dry-run seed contract validation"
+    },
+    "seed": {
+      "at": "2026-10-15T22:24:57.881Z",
+      "id": "toolu_01EukJE8fTSVrsFSZB7PUAqK",
+      "description": "Seed synthetic corpus on Tiramisu"
+    }
+  },
+  "seedOutputConfirmedAt": "2026-10-15T22:26:39.331Z",
+  "firstDocumentedCreation": {
+    "txHash": "0x19599a0c4e146aef8fbb7ddedad85203dfebc6dbb47d572aaa32f477dcc2de90",
+    "status": "success",
+    "block": "626671",
+    "blockTime": "2026-10-15T22:25:08.000Z",
+    "scope": "First seed transaction in manifest; not proof that no earlier creation occurred"
+  },
+  "calculation": {
+    "startProxy": "2026-10-15T11:34:58.486Z",
+    "end": "2026-10-15T22:25:08.000Z",
+    "elapsedMs": 39009514,
+    "roundedEstimate": "About 10 hours 50 minutes elapsed",
+    "submissionCategory": "2 to 24 hours"
+  },
+  "interpretation": "Evidence-based estimate from the earliest explicit Tiramisu documentation request in the available implementation session. This is wall-clock elapsed time, including gaps, not active coding time. Exact integration start and absence of all earlier creations cannot be proven. Nearby SDK inspection and installation events place the observed start within the same few minutes."
+}
