@@ -46,7 +46,8 @@ Rejections marked "—" were stopped by the node during pre-flight estimation, s
 
 | When (UTC) | Record | Transaction | Result | Note |
 |---|---|---|---|---|
-| 16 Oct 00:0x | r03 | `0x34ca4d74f3378cd4447f4e66b7a524ea67d0a228c1180152b96aec9f7e6631a8` | success on chain (receipt create + extension, from the renewer) | **UI defect found:** the dialog showed "Failed" because the read-back after confirmation hit the RPC rate limit. Fixed in `0527cc7`: post-confirmation read problems now show "Confirmed on chain; reading it back is delayed". |
+| 16 Oct 00:0x | r03 | `0x34ca4d74f3378cd4447f4e66b7a524ea67d0a228c1180152b96aec9f7e6631a8` | success on chain (receipt create + extension, from the renewer) | **UI defect found:** the dialog showed "Failed" because the read-back after confirmation hit the RPC rate limit. Fixed in `0527cc7`: post-confirmation read problems now show "Confirmed on chain; reading it back is delayed". Receipt later verified by `scripts/verify-tx.ts`: **verified**, renewer = renewer wallet. |
+| 16 Oct 01:5x | r03 | `0xe11c12e298cb2b7c95996fbe231c822e6a41fa2da863f242fa2928f1502e48ce` | dialog reached "Verified renewal"; `scripts/verify-tx.ts` independently: **verified**, extended r03 to block 8,407,095 | Recorded in the demo film |
 
 ## Latency: `npm run measure`
 
