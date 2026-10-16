@@ -47,7 +47,7 @@ Decoders reject anything that fails the contract: wrong types, missing fields, o
 
 Payload (`application/json`): `schema: "muniment.reply/1"`, `synthetic: true`, `title`, `question`, `answer` (null for `no-reply`), `authorityName`, `jurisdictionName`, `claimedSource { reference, url, documentDate, status }`, `attachment` (always null in this edition), `exemptions[]`, `correction { of, reason }` or null, `disclosure`.
 
-Flags: **read-only + permissionless extension**. Lifetime: 21–180 days at creation (`ExpirationTime.fromDays`), then extended by renewals.
+Flags: **read-only + permissionless extension**. Creation lifetime is a writer policy, not a decoder bound: the seeded corpus uses 21–180 days; the public Publish form offers 7, 30, 90 or 180 days (`ExpirationTime.fromDays`). Renewals extend an existing record. The seeded corpus retention policy beyond judging is separate from user-selected lifetimes.
 
 **Sealing.** For 39 of the 41 seeded replies (and their linked records) the publishing batch also transfers ownership to `0x000000000000000000000000000000000000dEaD`, a conventional burn address widely assumed to have no usable private key. Read-only alone does not stop the owner deleting an entity; sealing removes the publisher's delete and transfer rights while that assumption holds (tested: P3d, P3f in [docs/testing.md](../docs/testing.md)). Two replies (`r04`, `r18`) are deliberately left publisher-held.
 
@@ -180,3 +180,11 @@ The full list of seeded entity keys and transactions is in [`evidence/manifest.j
 ## What stays off Arkiv
 
 Wallet keys and access credentials, personal data, collections and private notes (browser storage only), saved searches, full-text indexes, and the synthetic source fixtures (in [`corpus/sources/`](../corpus/sources/)).
+
+## Snapshot and duration rules (query package 0.1.1)
+
+Continuation calls must preserve query, projection, page size and the first result's `blockNumber` as `atBlock`. Pass `{ cursor, atBlock }` to `searchReplies`; internal scans pin every continuation and reject a changed block. Restart both cursor and block after changing filters. An expired or unavailable snapshot is an error, not a complete empty scan.
+
+When both timestamps and `response_days` exist, duration must equal `floor((replied_ms - filed_ms) / 86400000)`: whole elapsed UTC days, with partial days rounded down. Missing reply timestamps or duration measurements remain supported; unanswered records carry neither. Contradictory values are decode issues and excluded from analytics.
+
+Linked appeals/exemption relations are independently authored claims. Their creator must be displayed; only eligible same-creator links travel with the reply's renewal. The standalone reader follows up to three 50-record pages per linked kind at the parent read block, labels a bounded result partial, and exports `linkedCoverage` with completeness, cursor, read block and pages.
