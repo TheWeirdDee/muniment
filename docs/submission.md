@@ -61,4 +61,4 @@ Canonical rules checked: `Arkiv-Network/global-tour-stop-pre-devcon` README, RUL
 
 ## Verification status
 
-Recorded in [`docs/testing.md`](testing.md). The final production browser run is appended below when complete.
+Recorded in [`docs/testing.md`](testing.md#production-browser-run-16-oct-2026-against-httpsmuniment-archivevercelapp): the production site and live-data suites pass. One test (rejected signature) was blocked by the public endpoint's per-IP query budget during the run.
