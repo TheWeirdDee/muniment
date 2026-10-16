@@ -46,18 +46,19 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
   const [busy, setBusy] = useState(false)
 
   const renewer = w.status === "connected" && w.onTiramisu ? w.address : null
+  const keyList = keys.join(",")
 
   const load = useCallback(async () => {
     setDisc({ state: "loading" })
     setQ({ state: "idle" })
     setBatches([])
     try {
-      const d = await discover(keys)
+      const d = await discover(keyList.split(",") as Hex[])
       setDisc({ state: "ready", d })
     } catch (e) {
       setDisc({ state: "error", msg: readErrorMessage(e) })
     }
-  }, [keys])
+  }, [keyList])
 
   useEffect(() => {
     if (open) load()
