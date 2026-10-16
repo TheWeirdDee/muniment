@@ -16,6 +16,7 @@ type BatchStatus =
   | { s: "visible"; tx: Hex; ms: number | null }
   | { s: "verified"; tx: Hex; renewer: Hex }
   | { s: "unverified"; tx: Hex; reason: string }
+  | { s: "readback-pending"; tx: Hex; reason: string }
   | { s: "failed"; error: string; tx?: Hex }
   | { s: "stale"; changed: string[] }
 
@@ -28,6 +29,7 @@ const STAGE_TEXT: Record<BatchStatus["s"], string> = {
   visible: "New expiry visible, checking the receipt",
   verified: "Verified renewal",
   unverified: "Extended, but the receipt could not be verified",
+  "readback-pending": "Confirmed on chain; reading it back is delayed",
   failed: "Failed",
   stale: "Quote out of date",
 }
@@ -101,7 +103,7 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
     const target = quoteNow.plan.targetBlock
     try {
       for (const [i, batch] of quoteNow.plan.batches.entries()) {
-        if (batches[i] && (batches[i].s === "verified" || batches[i].s === "unverified" || batches[i].s === "visible")) continue
+        if (batches[i] && ["verified", "unverified", "visible", "readback-pending", "confirmed"].includes(batches[i].s)) continue
         setBatch(i, { s: "checking" })
         const changed = await staleCheck(batch, quoteNow)
         if (changed.length > 0 || Date.now() - quoteNow.createdAtMs > 5 * 60_000) {
@@ -120,14 +122,21 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
           })
           const res = await signer.executeBatch(batchParams(batch, target))
           setBatch(i, { s: "confirmed", tx: res.txHash })
-          const ms = await waitForVisibility(batch[0].reply, target)
-          setBatch(i, { s: "visible", tx: res.txHash, ms })
-          const v = await verifyCreatedReceipt(res.createdEntities[0] as Hex)
-          if (v.state === "verified") {
-            setBatch(i, { s: "verified", tx: res.txHash, renewer: v.renewer })
-            announce(`Transaction ${i + 1} verified.`)
-          } else {
-            setBatch(i, { s: "unverified", tx: res.txHash, reason: v.reason })
+          // From here the transaction is confirmed. Read failures must never be reported as a failed renewal.
+          try {
+            const ms = await waitForVisibility(batch[0].reply, target)
+            setBatch(i, { s: "visible", tx: res.txHash, ms })
+            const v = await verifyCreatedReceipt(res.createdEntities[0] as Hex)
+            if (v.state === "verified") {
+              setBatch(i, { s: "verified", tx: res.txHash, renewer: v.renewer })
+              announce(`Transaction ${i + 1} verified.`)
+            } else if (v.state === "unknown") {
+              setBatch(i, { s: "readback-pending", tx: res.txHash, reason: v.reason })
+            } else {
+              setBatch(i, { s: "unverified", tx: res.txHash, reason: v.reason })
+            }
+          } catch (readErr) {
+            setBatch(i, { s: "readback-pending", tx: res.txHash, reason: readErrorMessage(readErr) })
           }
         } catch (err) {
           setBatch(i, { s: "failed", error: describeWalletError(err), tx: submitted })
@@ -142,7 +151,7 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
     }
   }
 
-  const doneCount = batches.filter((b) => b.s === "verified" || b.s === "unverified").length
+  const doneCount = batches.filter((b) => b.s === "verified" || b.s === "unverified" || b.s === "readback-pending").length
   const anyStarted = batches.some((b) => b.s !== "waiting")
   const finished = batches.length > 0 && doneCount === batches.length
   const insufficient = q.state === "ready" && balance !== null && balance < q.q.totalWei
@@ -289,7 +298,7 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
       {batches.length > 0 && anyStarted ? (
         <ol className="stack-sm" style={{ listStyle: "none", padding: 0, margin: 0 }} aria-label="Transaction progress">
           {batches.map((b, i) => (
-            <li key={i} className={`notice ${b.s === "verified" ? "notice-ok" : b.s === "failed" || b.s === "stale" ? "notice-danger" : b.s === "unverified" ? "notice-warn" : "notice-info"}`}>
+            <li key={i} className={`notice ${b.s === "verified" ? "notice-ok" : b.s === "failed" || b.s === "stale" ? "notice-danger" : b.s === "unverified" || b.s === "readback-pending" ? "notice-warn" : "notice-info"}`}>
               <strong>
                 Transaction {i + 1}: {STAGE_TEXT[b.s]}
               </strong>
@@ -302,6 +311,7 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
                 {b.s === "visible" && b.ms !== null ? ` · visible after ${(b.ms / 1000).toFixed(1)} s` : null}
                 {b.s === "visible" && b.ms === null ? " · not yet visible on this endpoint after 60 s; the chain may still show it" : null}
                 {b.s === "unverified" ? ` · ${b.reason}` : null}
+                {b.s === "readback-pending" ? ` · The renewal transaction succeeded. ${b.reason} Open the record later to see the new expiry and the verified receipt.` : null}
                 {b.s === "failed" ? ` ${b.error}${b.tx ? " The transaction was broadcast; check it in the explorer before retrying." : ""}` : null}
                 {b.s === "stale" ? ` Another renewal or change landed since the quote (${b.changed.length} record(s)). Refresh to re-plan; nothing was signed.` : null}
               </div>
@@ -311,8 +321,11 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
       ) : null}
       {finished ? (
         <Notice tone="ok" title="Done">
-          {plural(doneCount, "transaction")} confirmed. The new expiry was read back from Arkiv, not assumed. Earlier transactions stay valid
-          even if a later one fails.
+          {plural(doneCount, "transaction")} confirmed on chain.{" "}
+          {batches.every((b) => b.s === "verified" || b.s === "unverified")
+            ? "The new expiry was read back from Arkiv, not assumed."
+            : "Some read-backs are still pending; the record page will show the new expiry once the endpoint answers."}{" "}
+          Earlier transactions stay valid even if a later one fails.
         </Notice>
       ) : null}
     </Dialog>
