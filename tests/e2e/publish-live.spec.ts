@@ -5,6 +5,13 @@ import { SEAL_ADDRESS, politeHttp } from "muniment-query"
 import { Evidence, errorText } from "../../scripts/lib.js"
 import { injectTestWallet } from "./wallet"
 
+test("the record already published through production is readable with its true publisher status", async ({ page }) => {
+  await page.goto("/records/0xc7ccf28706bdfc660d65f39c697c3e37418bad566f2fb18b6abea4381f13bb33")
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Browser verification", { timeout: 45_000 })
+  await expect(page.getByText("Publisher not trusted by this site", { exact: true })).toBeVisible()
+  await expect(page.getByText(/Sealed: ownership was sent to 0x…dEaD/)).toBeVisible()
+})
+
 test("publish a sealed synthetic record from a team test wallet through production", async ({ page, isMobile }) => {
   test.skip(isMobile || !process.env.E2E_PUBLISH || !process.env.STRANGER_KEY, "set E2E_PUBLISH=1 and STRANGER_KEY for one real testnet publication")
   test.setTimeout(180_000)
