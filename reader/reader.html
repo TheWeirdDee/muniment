@@ -132,7 +132,6 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
     return fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method: method, params: params }), signal: ctl.signal })
       .catch(function (e) { throw new Error(e.name === "AbortError" ? "The endpoint did not answer within 20 seconds." : "Network error reaching the endpoint (offline, blocked, or CORS refused for this page's origin)."); })
       .then(function (res) {
-        clearTimeout(t);
         if (res.status === 429) throw new Error("The endpoint is rate limiting requests (HTTP 429). Wait and retry, or use another endpoint.");
         if (!res.ok) throw new Error("The endpoint answered HTTP " + res.status + ".");
         return res.json();
@@ -140,7 +139,7 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
       .then(function (body) {
         if (body.error) throw new Error("Arkiv error " + body.error.code + ": " + body.error.message);
         return body.result;
-      });
+      }).finally(function () { clearTimeout(t); });
   }
 
   function checkNetwork() {
@@ -217,15 +216,20 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
 
   function search(more) {
     var q;
-    try { q = more ? state.query : buildQuery(); } catch (e) { status(e.message, "bad"); return; }
-    if (!more) { state.cursor = null; state.results = []; $("detail").textContent = ""; }
+    try { q = buildQuery(); } catch (e) { status(e.message, "bad"); return; }
+    var limit = Number($("limit").value);
+    if (more && (q !== state.query || limit !== state.pageLimit || endpoint() !== state.queryEndpoint)) more = false;
+    if (!more) { state.cursor = null; state.lastBlock = null; state.pageLimit = limit; state.queryEndpoint = endpoint(); state.generation = (state.generation || 0) + 1; state.results = []; $("detail").textContent = ""; }
+    var generation = state.generation;
     state.query = q;
     $("qh").hidden = false; $("query").hidden = false; $("query").textContent = q;
-    var opts = { select: SELECT, limit: "0x" + Number($("limit").value).toString(16) };
-    if (more && state.cursor) opts.cursor = state.cursor;
+    var opts = { select: SELECT, limit: "0x" + state.pageLimit.toString(16) };
+    if (more && state.cursor) { opts.cursor = state.cursor; opts.atBlock = "0x" + state.lastBlock.toString(16); }
     status("Querying Arkiv…");
     $("more").disabled = true;
     rpc("arkiv_query", [q, opts]).then(function (r) {
+      if (generation !== state.generation) return;
+      if (more && parseInt(r.blockNumber, 16) !== state.lastBlock) throw new Error("Endpoint returned a different snapshot block.");
       var seen = {}; state.results.forEach(function (x) { seen[x.key] = 1; });
       state.pageItems = (r.data || []).filter(function (x) { if (seen[x.key]) return false; seen[x.key] = 1; return true; });
       state.results = state.results.concat(state.pageItems);
@@ -238,19 +242,30 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
     }).catch(function (e) { status(e.message, "bad"); $("more").disabled = !state.cursor; });
   }
 
+  async function linkedScan(query, block) {
+    var data = [], cursor = null, pages = 0, seen = {};
+    do {
+      var options = { select: SELECT, limit: "0x32", atBlock: block };
+      if (cursor) options.cursor = cursor;
+      var result = await rpc("arkiv_query", [query, options]);
+      if (result.blockNumber !== block) throw new Error("Linked scan changed snapshot block.");
+      (result.data || []).forEach(function (e) { if (!seen[e.key]) { seen[e.key] = true; data.push(e); } });
+      cursor = result.cursor || null; pages++;
+    } while (cursor && pages < 3);
+    return { data: data, cursor: cursor, blockNumber: block, complete: !cursor, pages: pages };
+  }
+
   function openRecord(key) {
     key = (key || "").trim().toLowerCase();
     if (!/^0x[0-9a-f]{64}$/.test(key)) { status("An entity key is 0x followed by 64 hexadecimal characters.", "bad"); return; }
     try { history.replaceState(null, "", "#key=" + key); } catch (e) {}
     status("Reading record " + key.slice(0, 10) + "…");
     var linkedQ = function (kind) { return "app = " + lit(APP) + " AND schema = i32(1) AND kind = " + lit(kind) + " AND reply = key(" + key + ")"; };
-    Promise.all([
-      rpc("arkiv_query", ["$key = key(" + key + ")", { select: SELECT, limit: "0x1" }]),
-      rpc("arkiv_query", [linkedQ("appeal"), { select: SELECT, limit: "0x32" }]),
-      rpc("arkiv_query", [linkedQ("review"), { select: SELECT, limit: "0x32" }]),
-      rpc("arkiv_query", [linkedQ("receipt"), { select: SELECT, limit: "0x32" }]),
-      rpc("arkiv_query", [linkedQ("exemption"), { select: SELECT, limit: "0x32" }])
-    ]).then(function (r) {
+    rpc("arkiv_query", ["$key = key(" + key + ")", { select: SELECT, limit: "0x1" }]).then(async function (parent) {
+      if (!(parent.data || []).length) return [parent, {data:[]}, {data:[]}, {data:[]}, {data:[]}];
+      var children = await Promise.all(["appeal", "review", "receipt", "exemption"].map(function (kind) { return linkedScan(linkedQ(kind), parent.blockNumber); }));
+      return [parent].concat(children);
+    }).then(function (r) {
       var box = $("detail"); box.textContent = "";
       var e = (r[0].data || [])[0];
       box.appendChild(el("h2", "Record"));
@@ -281,14 +296,14 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
       if (p.disclosure) box.appendChild(el("p", p.disclosure, "faint"));
       var linked = [["Appeals", r[1]], ["Reviews (statements by wallets)", r[2]], ["Renewal receipts (claims; this reader does not verify them)", r[3]], ["Exemption relations", r[4]]];
       linked.forEach(function (pair) {
-        box.appendChild(el("h3", pair[0] + ": " + (pair[1].data || []).length));
+        box.appendChild(el("h3", pair[0] + ": " + (pair[1].data || []).length + " loaded" + (pair[1].complete ? " (complete at this snapshot)" : " (PARTIAL; more records may exist)")));
         (pair[1].data || []).forEach(function (x) {
           var xa = attrs(x), xp = payloadJson(x) || {};
           box.appendChild(el("p", [xa.stage || xa.status || xa.section || ("target block " + num(xa.target_expiry)), "by " + x.creator, xp.grounds || xp.method || ""].filter(Boolean).join(" · "), "faint"));
         });
       });
       var btn = el("button", "Export this record as JSON"); btn.type = "button";
-      btn.addEventListener("click", function () { download("muniment-record-" + key.slice(2, 10) + ".json", { exportedAt: new Date().toISOString(), endpoint: $("ep").value, chainId: CHAIN_ID, readAtBlock: parseInt(r[0].blockNumber, 16), entity: e, payload: p, linked: { appeals: r[1].data, reviews: r[2].data, receipts: r[3].data, exemptions: r[4].data } }); });
+      btn.addEventListener("click", function () { download("muniment-record-" + key.slice(2, 10) + ".json", { exportedAt: new Date().toISOString(), endpoint: $("ep").value, chainId: CHAIN_ID, readAtBlock: parseInt(r[0].blockNumber, 16), entity: e, payload: p, linked: { appeals: r[1].data, reviews: r[2].data, receipts: r[3].data, exemptions: r[4].data }, linkedCoverage: { appeals: coverage(r[1]), reviews: coverage(r[2]), receipts: coverage(r[3]), exemptions: coverage(r[4]) } }); });
       box.appendChild(btn);
       box.appendChild(el("h3", "Raw entity"));
       box.appendChild(el("pre", JSON.stringify({ entity: e, decodedPayload: p }, null, 2)));
@@ -296,6 +311,8 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
       box.scrollIntoView();
     }).catch(function (err) { status(err.message, "bad"); });
   }
+
+  function coverage(r) { return { complete: r.complete === true, cursor: r.cursor || null, readAtBlock: r.blockNumber, pages: r.pages }; }
 
   function download(name, data) {
     var blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
