@@ -19,7 +19,7 @@
     color-scheme: dark;
     --surface: #1b1b1e;
     --page: #111114;
-    --ink: #f0efec;
+    --ink: #f0eadc;
     --ink-2: #c3c2b7;
     --ink-3: #a3a29a;
     --grid: #2c2c2a;
@@ -36,7 +36,7 @@
   color-scheme: dark;
   --surface: #1b1b1e;
   --page: #111114;
-  --ink: #f0efec;
+  --ink: #f0eadc;
   --ink-2: #c3c2b7;
   --ink-3: #a3a29a;
   --grid: #2c2c2a;
@@ -118,7 +118,7 @@ a {
 }
 .btn.primary {
   background: var(--accent);
-  color: #fff;
+  color: #f0eadc;
   border-color: var(--accent);
 }
 :root[data-theme="dark"] .btn.primary {
@@ -298,10 +298,11 @@ thead th {
   padding: 20px 0;
 }
 .error {
-  color: #b42318;
+  color: var(--ink);
 }
-:root[data-theme="dark"] .error {
-  color: #ff8a7a;
+.error::before {
+  content: "Error: ";
+  font-weight: 700;
 }
 .bar-hit {
   fill: transparent;
