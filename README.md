@@ -80,6 +80,10 @@ corpus/sources      synthetic source fixtures   docs/             architecture, 
 evidence/           manifest and machine-readable results
 ```
 
+## If you see "rate limiting this connection"
+
+The public Tiramisu endpoint gives each IP address a query budget per window (observed: 10,000 units, about an hour; see [friction #1](arkiv/friction.md)). When it runs out, Muniment says so and how long to wait, instead of showing an empty archive. Wait for the stated time, or set your own Arkiv endpoint under Settings. Nothing on chain is affected.
+
 ## Limitations
 
 - Synthetic data only. The publish page accepts templated synthetic content and nothing else.
