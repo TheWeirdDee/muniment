@@ -1,0 +1,37 @@
+{
+  "scope": "Project-matching local session metadata only; not exhaustive tool or model history",
+  "codex": [
+    {
+      "file": "rollout-2026-10-16T09-18-39-01a143ca-b084-7bd2-9a3c-098cd88463ea.jsonl",
+      "sessionStart": "2026-10-16T08:18:42.311Z",
+      "firstUserEvent": "2026-10-16T08:18:44.667Z",
+      "models": [
+        "gpt-6.1-sol"
+      ]
+    },
+    {
+      "file": "rollout-2026-10-16T14-28-22-01a144e6-3c86-7cc0-bb0c-7af3200ca345.jsonl",
+      "sessionStart": "2026-10-16T13:28:22.572Z",
+      "models": [
+        "codex-auto-review"
+      ]
+    },
+    {
+      "file": "rollout-2026-10-16T20-22-33-01a1462a-8209-7a00-bfd4-ff7183068084.jsonl",
+      "sessionStart": "2026-10-16T19:22:34.142Z",
+      "models": [
+        "codex-auto-review"
+      ]
+    }
+  ],
+  "claude": [
+    {
+      "file": "e840f568-a28b-41e0-bef5-ed4ca46c9ce6.jsonl",
+      "firstEvent": "2026-10-15T11:33:43.485Z",
+      "models": [
+        "claude-opus-5-5",
+        "<synthetic>"
+      ]
+    }
+  ]
+}
