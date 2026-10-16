@@ -19,7 +19,9 @@ export function useEntityEvents(keys: string[], onChange: (reason: string) => vo
     const watched = new Set(keyList.split(","))
     let unwatch: (() => void) | null = null
     let fallbackTimer: number | null = null
+    let connectingTimer: number | null = null
     let alive = true
+    setState("connecting")
     const startFallback = () => {
       if (fallbackTimer !== null) return
       setState("fallback")
@@ -29,6 +31,12 @@ export function useEntityEvents(keys: string[], onChange: (reason: string) => vo
       unwatch = wsClient().watchEntityEvents({
         onEvent: (e) => {
           if (!alive) return
+          if (connectingTimer !== null) window.clearTimeout(connectingTimer)
+          if (fallbackTimer !== null) {
+            window.clearInterval(fallbackTimer)
+            fallbackTimer = null
+            cb.current("WebSocket recovery")
+          }
           setState("live")
           const k = (e as { entityKey?: string }).entityKey?.toLowerCase()
           if (k && watched.has(k)) cb.current(`${e.type} event`)
@@ -36,14 +44,15 @@ export function useEntityEvents(keys: string[], onChange: (reason: string) => vo
         onError: () => alive && startFallback(),
       })
       // The stream is chain-wide, so any event proves the socket is up. Busy testnet: seconds.
-      window.setTimeout(() => alive && setState((s) => (s === "connecting" ? "fallback" : s)), 20_000)
     } catch {
       startFallback()
     }
+    connectingTimer = window.setTimeout(() => alive && startFallback(), 20_000)
     const reconcile = window.setInterval(() => cb.current("periodic reconciliation"), 60_000)
     return () => {
       alive = false
       unwatch?.()
+      window.clearTimeout(connectingTimer)
       if (fallbackTimer !== null) window.clearInterval(fallbackTimer)
       window.clearInterval(reconcile)
     }
