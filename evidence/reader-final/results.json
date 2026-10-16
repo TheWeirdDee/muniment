@@ -1,0 +1,131 @@
+{
+  "at": "2026-10-16T10:08:10.708Z",
+  "results": [
+    {
+      "theme": "dark",
+      "width": 320,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "dark",
+      "width": 360,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "dark",
+      "width": 390,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "dark",
+      "width": 430,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "dark",
+      "width": 1280,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "dark",
+      "width": 1920,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 360,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 390,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 430,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 1280,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    },
+    {
+      "theme": "light",
+      "width": 1920,
+      "height": 720,
+      "overflow": 0,
+      "status": 200
+    }
+  ]
+}
