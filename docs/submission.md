@@ -61,4 +61,4 @@ Canonical rules checked: `Arkiv-Network/global-tour-stop-pre-devcon` README, RUL
 
 ## Verification status
 
-Recorded in [`docs/testing.md`](testing.md#correction-verification-16-october): 35 production desktop checks pass, including rejected signatures and outage recovery. Two phone live-data assertions hit the public endpoint's query budget; 24 phone checks passed. The real two-wallet concurrency campaign passes with the documented equal-target behaviour. The original failed runs remain in the evidence.
+Recorded in [`docs/testing.md`](testing.md#correction-verification-16-october): 35 production desktop checks pass, including rejected signatures and outage recovery. The initial phone run passed 24 checks and hit the public endpoint's query budget on live reads. After honouring Retry-After, all 10 phone live checks passed (one optional signed renewal skipped), as did the missing-record rerun. Hosted reader initialisation and the additional production-published record's readback pass on desktop and phone. The real two-wallet concurrency campaign passes with documented equal-target behaviour. Original failed runs remain in the evidence.
