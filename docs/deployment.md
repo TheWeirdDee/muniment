@@ -30,7 +30,7 @@ CSP allows `connect-src https: wss:` because readers can choose their own Arkiv 
 4. The same for `apps/dashboard` → `.deploy/insights` → project `muniment-insights`.
 5. Verify: `curl https://muniment-archive.vercel.app/version.json` shows the released commit; then run the browser suite against production (`npx playwright test`).
 
-Git integration: the projects can be connected to the GitHub repository with root directories `apps/web` and `apps/dashboard`. The build commands in `apps/*/vercel.json` run from the repository root (`cd ../.. && npm ci && …`), because the apps depend on the workspace package.
+Git integration is active on both existing projects: the production `/version.json` responses report `source: vercel-git` and match the pushed source revision (see `evidence/release-check.json`). Root directories are `apps/web` and `apps/dashboard`. The build commands in `apps/*/vercel.json` run from the repository root (`cd ../.. && npm ci && …`), because the apps depend on the workspace package.
 
 ## Rollback
 
