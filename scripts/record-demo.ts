@@ -140,7 +140,7 @@ async function main() {
     await page.locator("#net").getByText(/Connected/).waitFor({ timeout: 60_000 })
     await page.locator("#key").fill(key("r01"))
     await page.getByRole("button", { name: "Read record" }).click()
-    await page.locator("#detail").getByText(/Synthetic test record/).waitFor({ timeout: 60_000 })
+    await page.locator("#detail .tag").waitFor({ timeout: 60_000 })
     notes.push(`requests to ${host} blocked: ${blocked}`)
   })
 
