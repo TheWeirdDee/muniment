@@ -8,7 +8,7 @@ Canonical rules checked: `Arkiv-Network/global-tour-stop-pre-devcon` README, RUL
 
 - **Project name:** Muniment
 - **Tagline:** Public answers. Worth keeping. A censorship-resistant archive of government replies on Arkiv.
-- **Links:** repository https://github.com/TheWeirdDee/muniment · live app https://muniment-archive.vercel.app · demo video: *(link added after upload, see [demo/](../demo/))*
+- **Links:** repository https://github.com/TheWeirdDee/muniment · live app https://muniment-archive.vercel.app · demo video (1:44): https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4
 - **The problem it solves\*:**
   > Replies to information requests often exist in one place: a government portal, or one person's inbox. In August 2023, The Wire and National Herald (citing The Hindu) reported that records of past applications disappeared from India's RTIOnline portal, with a maintenance notice saying archival data would "be available soon". Journalists and civic researchers who need to cite a reply months later depend on that single custodian. Muniment keeps replies as Arkiv entities that are searchable by authority, outcome, exemption and response time; that nobody can edit; that most of the time nobody can delete; that any wallet can renew; and that anyone can read with a standalone HTML file instead of our website. This edition uses synthetic records only.
 - **Challenges I ran into\*:**
