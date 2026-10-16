@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-10-16T19:34:37.451Z",
+  "firstDocumentedSeed": {
+    "txHash": "0x19599a0c4e146aef8fbb7ddedad85203dfebc6dbb47d572aaa32f477dcc2de90",
+    "status": "success",
+    "block": "626671",
+    "blockTime": "2026-10-15T22:25:08.000Z",
+    "scope": "First seed transaction in manifest; not proof that no earlier creation occurred"
+  },
+  "versions": [
+    {
+      "origin": "https://muniment-archive.vercel.app",
+      "status": 200,
+      "version": {
+        "commit": "7710acb84863a3d4eafe8a710b991e765b9bee6b",
+        "dirtyWorkingTree": null,
+        "builtAt": "2026-10-16T13:43:33.999Z",
+        "source": "vercel-git"
+      }
+    },
+    {
+      "origin": "https://muniment-insights.vercel.app",
+      "status": 200,
+      "version": {
+        "commit": "7710acb84863a3d4eafe8a710b991e765b9bee6b",
+        "dirtyWorkingTree": null,
+        "builtAt": "2026-10-16T13:42:43.513Z",
+        "source": "vercel-git"
+      }
+    }
+  ]
+}
