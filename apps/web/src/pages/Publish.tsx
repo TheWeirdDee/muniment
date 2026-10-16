@@ -44,6 +44,7 @@ type Stage =
   | { s: "signing" }
   | { s: "submitted"; tx: Hex }
   | { s: "confirmed"; tx: Hex; key: Hex }
+  | { s: "readback-pending"; tx: Hex; key: Hex }
   | { s: "visible"; tx: Hex; key: Hex }
   | { s: "failed"; msg: string; tx?: Hex }
 
@@ -152,7 +153,7 @@ export default function Publish() {
       })
       const newKey = res.createdEntities[0] as Hex
       setStage({ s: "confirmed", tx: res.txHash, key: newKey })
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 2; i++) {
         try {
           clearReadCache()
           await publicClient().getEntity(newKey)
@@ -163,6 +164,8 @@ export default function Publish() {
           await new Promise((r) => setTimeout(r, 1500))
         }
       }
+      setStage({ s: "readback-pending", tx: res.txHash, key: newKey })
+      announce("Publication confirmed on chain. Reading it back is delayed; do not publish it again.")
     } catch (e) {
       setStage({ s: "failed", msg: describeWalletError(e), tx })
       announce("Publishing failed.")
@@ -194,7 +197,7 @@ export default function Publish() {
           }}
           aria-describedby="publish-errors"
         >
-          <fieldset className="stack" disabled={busy || stage.s === "visible"} style={{ border: 0, padding: 0, margin: 0 }}>
+          <fieldset className="stack" disabled={busy || stage.s === "visible" || stage.s === "readback-pending"} style={{ border: 0, padding: 0, margin: 0 }}>
             <div className="two-col">
               <div className="field">
                 <label htmlFor="p-auth">Synthetic authority</label>
@@ -330,7 +333,12 @@ export default function Publish() {
               <ExternalLink href={explorerTx(stage.tx)}>{shortHex(stage.tx, 10, 8)}</ExternalLink> is waiting for a block.
             </Notice>
           ) : null}
-          {stage.s === "confirmed" ? <Notice tone="info" title="Confirmed in a block">Waiting for the record to be readable from this endpoint…</Notice> : null}
+          {stage.s === "confirmed" || stage.s === "readback-pending" ? (
+            <Notice tone={stage.s === "confirmed" ? "info" : "warn"} title="Confirmed in a block">
+              {stage.s === "confirmed" ? "Waiting for the record to be readable from this endpoint…" : "Reading it back is delayed. The transaction succeeded; do not publish it again."}{" "}
+              <Link to={`/records/${stage.key}`}>Open the record</Link> · <ExternalLink href={explorerTx(stage.tx)}>transaction</ExternalLink>
+            </Notice>
+          ) : null}
           {stage.s === "visible" ? (
             <Notice tone="ok" title="Published">
               Read back from Arkiv. <Link to={`/records/${stage.key}`}>Open the record</Link> ·{" "}
