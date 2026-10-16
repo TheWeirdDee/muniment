@@ -11,7 +11,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | Public MIT repo with setup | met | [`LICENSE`](../LICENSE), [`README.md`](../README.md#quick-start) |
 | `/arkiv/schema.md` | met | entity types, attributes, expiry per type, the queries the app runs |
 | On-chain evidence: creating wallets | met | [`docs/testing.md`](testing.md#wallets), [`evidence/manifest.json`](../evidence/manifest.json) |
-| `/arkiv/friction.md` | met | 14 entries with versions and repro scripts |
+| `/arkiv/friction.md` | met | 15 entries with versions and repro scripts |
 | Demo video ≤ 3 minutes | met | 1 min 44 s, recorded from production: https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4 (renewal tx `0xe11c…48ce`, verified) |
 | Every Devfolio question answered | drafted | [`docs/submission.md`](submission.md); a few personal answers are for the team |
 | A track chosen | to submit | Censorship Resistance and Open Source (no Indian national on the team) |
@@ -29,7 +29,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | An independent reader queries live records without Muniment's origin | met | e2e "standalone reader works from disk with the main site blocked" |
 | A separate dashboard consumes the public contract | met | https://muniment-insights.vercel.app, separate Vercel project and origin |
 | Claims match demonstrated behaviour | met | [`docs/copy-audit.md`](copy-audit.md); sealing wording states its assumption |
-| Evidence, deployment and instructions complete before submission | in progress | this file |
+| Evidence, deployment and instructions complete before submission | prepared with disclosed limits | this file; phone live reads encountered the public RPC budget; submission account actions and independent feedback remain with the team |
 
 ## Proof campaign (§14)
 
@@ -41,7 +41,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | 4. A forged receipt is excluded | met | P5 |
 | 5. Reader with the main origin blocked | met | e2e live suite |
 | 6. A short-lived control really expires | met | P8 |
-| 7. Concurrent renewal, stale quote, rejected signature, reconnect, rate limits | partial | stale-quote check and rejected signature implemented and tested (e2e); rate limits observed and handled ([friction #1](../arkiv/friction.md)); concurrent renewal by two wallets and long WebSocket reconnects were not run as a scripted test |
+| 7. Concurrent renewal, stale quote, rejected signature, reconnect, rate limits | met with limits | Real two-wallet concurrency evidence in `evidence/resilience-2026-10-16T08-26-01-199Z.json`; production rejection and 35-second outage/reconciliation tests pass. Pre-sign snapshot checks cannot eliminate in-flight races; equal-target transactions can both succeed. Phone live-data reruns hit the public query budget; see [testing](testing.md#correction-verification-16-october). Long-duration outages and independent RPC providers remain untested. |
 | 8. Dashboard reproduces from contract and package | met | e2e dashboard test; `apps/dashboard` uses only `muniment-query` |
 | 9. Synthetic-only publish boundary; accessible mobile flows | met | scrubber e2e; phone e2e project; axe checks |
 | Latency, ≥ 5 runs per interval | met | [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) (n = 5) |
