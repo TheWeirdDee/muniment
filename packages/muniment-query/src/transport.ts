@@ -24,6 +24,9 @@ export type PoliteTransportOptions = {
    * requests always share one network call. Query results carry the block they were read at.
    */
   cacheMs?: number
+  requestTimeoutMs?: number
+  totalTimeoutMs?: number
+  signal?: AbortSignal
 }
 
 const CACHEABLE = new Set(["arkiv_query", "arkiv_getEntity", "eth_getLogs", "eth_getTransactionReceipt"])
@@ -45,7 +48,22 @@ export class RpcHttpError extends Error {
   }
 }
 
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
+const sleep = (ms: number, signal: AbortSignal) => new Promise<void>((resolve, reject) => {
+  if (signal.aborted) { reject(signal.reason); return }
+  const abort = () => { clearTimeout(timer); reject(signal.reason) }
+  const timer = setTimeout(() => { signal.removeEventListener("abort", abort); resolve() }, ms)
+  signal.addEventListener("abort", abort, { once:true })
+})
+
+/** Also bounds providers that fail to honour fetch's AbortSignal, including a stalled body. */
+function cancellable<T>(value: Promise<T>, signal: AbortSignal): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const abort = () => reject(signal.reason)
+    if (signal.aborted) { abort(); return }
+    signal.addEventListener("abort", abort, { once: true })
+    value.then(resolve, reject).finally(() => signal.removeEventListener("abort", abort))
+  })
+}
 
 /** Seconds until the advertised budget resets, from a `RateLimit` header, when it is exhausted. */
 export function parseRateLimitReset(header: string | null): number | null {
@@ -68,34 +86,52 @@ export function politeHttp(url: string, opts: PoliteTransportOptions = {}) {
   const cache = new Map<string, { at: number; value: Promise<unknown> }>()
   caches.add(cache)
 
-  const acquire = async () => {
-    while (inFlight >= concurrency) await new Promise<void>((r) => queue.push(r))
-    inFlight++
-  }
+  const acquire = (signal: AbortSignal) => new Promise<void>((resolve, reject) => {
+    signal.throwIfAborted()
+    const abort = () => { const i = queue.indexOf(grant); if (i >= 0) queue.splice(i, 1); reject(signal.reason) }
+    const grant = () => { signal.removeEventListener("abort", abort); inFlight++; resolve() }
+    if (inFlight < concurrency) grant()
+    else { queue.push(grant); signal.addEventListener("abort", abort, { once: true }) }
+  })
   const release = () => {
     inFlight--
     queue.shift()?.()
   }
 
   async function send(method: string, params: unknown): Promise<unknown> {
+    const total = new AbortController()
+    const requestTimeout = opts.requestTimeoutMs ?? 20_000
+    const timer = setTimeout(() => total.abort(new DOMException("Arkiv total request deadline exceeded", "TimeoutError")), opts.totalTimeoutMs ?? Math.max(60_000, maxWaitMs + requestTimeout))
+    const signal = opts.signal ? AbortSignal.any([opts.signal, total.signal]) : total.signal
+    try {
       for (let attempt = 1; ; attempt++) {
+        signal.throwIfAborted()
         const wait = cooldownUntil - Date.now()
-        if (wait > 0) await sleep(wait)
-        await acquire()
+        if (wait > 0) await sleep(wait, signal)
+        await acquire(signal)
+        const attemptController = new AbortController()
+        const attemptTimer = setTimeout(() => attemptController.abort(new DOMException("Arkiv request timed out", "TimeoutError")), requestTimeout)
+        const attemptSignal = AbortSignal.any([signal, attemptController.signal])
         let res: Response
+        let body: { result?: unknown; error?: { code: number; message: string; data?: unknown } } | undefined
         try {
-          res = await fetch(url, {
+          res = await cancellable(fetch(url, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ jsonrpc: "2.0", id: ++id, method, params: params ?? [] }),
-          })
+            signal: attemptSignal,
+          }), attemptSignal)
+          if (res.ok) body = await cancellable(res.json(), attemptSignal)
         } catch (err) {
-          release()
+          if (signal.aborted) throw signal.reason
+          if (attemptSignal.aborted) throw new RpcHttpError(0, "Arkiv request timed out before its response body completed", method)
           if (attempt >= attempts) throw new RpcHttpError(0, `Network error reaching Arkiv: ${(err as Error).message}`, method)
-          await sleep(400 * 2 ** attempt)
+          await sleep(400 * 2 ** attempt, signal)
           continue
+        } finally {
+          clearTimeout(attemptTimer)
+          release()
         }
-        release()
         if (res.status === 429 || res.status >= 500) {
           const retryAfter = Number(res.headers.get("retry-after"))
           const reset = parseRateLimitReset(res.headers.get("ratelimit"))
@@ -115,15 +151,15 @@ export function politeHttp(url: string, opts: PoliteTransportOptions = {}) {
           continue
         }
         if (!res.ok) throw new RpcHttpError(res.status, `Arkiv answered HTTP ${res.status}`, method)
-        const body = (await res.json()) as { result?: unknown; error?: { code: number; message: string; data?: unknown } }
-        if (body.error) {
+        if (body?.error) {
           const e = new Error(body.error.message) as Error & { code: number; data?: unknown }
           e.code = body.error.code
           e.data = body.error.data
           throw e
         }
-        return body.result
+        return body?.result
       }
+    } finally { clearTimeout(timer) }
   }
 
   return custom({
@@ -146,5 +182,5 @@ export function politeHttp(url: string, opts: PoliteTransportOptions = {}) {
       )
       return value
     },
-  })
+  }, { retryCount: 0 })
 }
