@@ -2,13 +2,17 @@
 
 Typed reader, query builders, renewal planner and receipt verifier for the [Muniment](https://muniment-archive.vercel.app) archive on Arkiv's Tiramisu testnet. It implements the data contract in [`arkiv/schema.md`](../../arkiv/schema.md).
 
-**Status:** version 0.1.0. Not published to the npm registry. Install the release tarball attached to the GitHub release `muniment-query-v0.1.0`, or build it from this repository.
+**Status:** version 0.1.1. Not published to the npm registry. Install the release tarball attached to the GitHub release `muniment-query-v0.1.1`, or build it from this repository.
+
+Version 0.1.1 fixes delayed pagination: continuation calls require the original `{ cursor, atBlock: first.blockNumber }` with unchanged filters and limit. Internal scans pin all pages. Response duration is validated against whole elapsed UTC days when both timestamps are present; missing measurements remain valid.
+
+`politeHttp` accepts `requestTimeoutMs` (default 20 seconds), `totalTimeoutMs` (default at least 60 seconds, including queueing and backoff) and `signal`. The attempt deadline covers connection and JSON body completion. Supply the same caller signal to a scoped transport and reader operation to cancel network work as well as the reader's await. Rate-limit reset hints exceeding `maxWaitMs` remain distinct errors. No timeout produces empty records or a successful result.
 
 ## Install
 
 ```bash
 npm install @arkiv-network/sdk@0.8.1 viem@^2.37
-npm install https://github.com/TheWeirdDee/muniment/releases/download/muniment-query-v0.1.0/muniment-query-0.1.0.tgz
+npm install https://github.com/TheWeirdDee/muniment/releases/download/muniment-query-v0.1.1/muniment-query-0.1.1.tgz
 ```
 
 From source:
