@@ -1,13 +1,13 @@
-import { type Hex, type Linked, OUTCOME_LABELS, type Reply, SEAL_ADDRESS, deriveStatus } from "muniment-query"
+import { type ArchiveClient, BLOCKS_PER_DAY, type Hex, type Linked, OUTCOME_LABELS, type Reply, SEAL_ADDRESS, decodeReply, deriveStatus, expiringQuery, scan } from "muniment-query"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router"
 import { ExpiryText, StatusPill } from "../components/RecordBits"
 import { RenewDialog } from "../components/RenewDialog"
 import { Arrow, ExternalLink, Skeleton } from "../components/ui"
-import { readErrorMessage, reader } from "../lib/arkiv"
+import { publicClient, readErrorMessage, reader } from "../lib/arkiv"
 import { DASHBOARD_URL, TRUSTED_PUBLISHERS, TRUSTED_REVIEWERS } from "../lib/config"
 import { type HeadAnchor, blockToMs, formatDate, sameAddress, shortHex, walletLabel } from "../lib/format"
-import { useAsync, useHead, useReveal } from "../lib/hooks"
+import { fetchHead, useAsync, useHead, useReveal } from "../lib/hooks"
 import { usePageMeta } from "../lib/meta"
 import { AUTHORITIES, TOPICS } from "../lib/vocab"
 
@@ -121,8 +121,11 @@ function RecordPreview({ state, head }: { state: ReturnType<typeof useSample>; h
 
 function PreservePanel({ head }: { head: HeadAnchor | null }) {
   const data = useAsync(async (signal) => {
-    const s = await reader().scanReplies({ creators: TRUSTED_PUBLISHERS }, { maxPages: 2, signal })
-    return s.records.filter((r) => r.expiresAtBlock !== null).sort((a, b) => Number((a.expiresAtBlock ?? 0n) - (b.expiresAtBlock ?? 0n))).slice(0, 3)
+    // One small bounded query: replies expiring in the next 60 days, soonest three shown.
+    const head = await fetchHead()
+    const q = expiringQuery(head.block, head.block + BigInt(60 * BLOCKS_PER_DAY), TRUSTED_PUBLISHERS)
+    const res = await scan<Reply>(publicClient() as unknown as ArchiveClient, q, decodeReply, { maxPages: 1, pageSize: 25, signal })
+    return res.records.sort((a, b) => Number((a.expiresAtBlock ?? 0n) - (b.expiresAtBlock ?? 0n))).slice(0, 3)
   }, [])
   const [picked, setPicked] = useState<Set<string>>(new Set())
   const [open, setOpen] = useState(false)
@@ -134,14 +137,14 @@ function PreservePanel({ head }: { head: HeadAnchor | null }) {
   return (
     <div className="flat-panel">
       <div className="flat-panel-head">
-        <span className="eyebrow">Soonest to expire · read live</span>
+        <span className="eyebrow">Expiring in the next 60 days · read live</span>
         <Link to="/preserve" className="link-arrow plain">
           Full queue <Arrow />
         </Link>
       </div>
       {data.status === "loading" && !data.data ? <Skeleton lines={3} /> : null}
       {data.status === "error" ? <p className="muted">{readErrorMessage((data as { error: unknown }).error)}</p> : null}
-      {data.data && list.length === 0 ? <p className="muted">No records are live right now, so there is nothing to renew.</p> : null}
+      {data.data && list.length === 0 ? <p className="muted">No trusted records expire in the next 60 days.</p> : null}
       <ul className="pick-list">
         {list.map((r) => (
           <li key={r.key}>
