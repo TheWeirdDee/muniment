@@ -1,5 +1,5 @@
 import { TIRAMISU } from "muniment-query"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { checkEndpoint } from "../lib/arkiv"
 import { formatBlock } from "../lib/format"
 import { DEFAULT_SETTINGS, settings } from "../lib/settings"
@@ -12,16 +12,23 @@ export function NetworkSettings({ compact = false }: { compact?: boolean }) {
   const [ws, setWs] = useState(s.wsUrl)
   const [state, setState] = useState<{ kind: "idle" } | { kind: "checking" } | { kind: "ok"; block: bigint } | { kind: "error"; msg: string }>({ kind: "idle" })
   const custom = s.rpcUrl !== DEFAULT_SETTINGS.rpcUrl
+  const pending = useRef<AbortController | null>(null)
+  useEffect(() => () => pending.current?.abort(), [open])
 
   const save = async () => {
+    pending.current?.abort()
+    const controller = new AbortController()
+    pending.current = controller
     setState({ kind: "checking" })
     try {
       if (!rpc.startsWith("https://")) throw new Error("The HTTP endpoint must use https://")
       if (!ws.startsWith("wss://")) throw new Error("The WebSocket endpoint must use wss://")
-      const r = await checkEndpoint(rpc)
+      const r = await checkEndpoint(rpc, controller.signal)
+      controller.signal.throwIfAborted()
       settings.set((prev) => ({ ...prev, rpcUrl: rpc, wsUrl: ws }))
       setState({ kind: "ok", block: r.block })
     } catch (e) {
+      if (controller.signal.aborted) return
       setState({ kind: "error", msg: (e as Error).message })
     }
   }
