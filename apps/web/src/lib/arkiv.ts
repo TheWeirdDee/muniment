@@ -33,17 +33,19 @@ export function wsClient(): Pub {
   return cachedWs.client
 }
 
-export function reader() {
-  return createArchiveReader(publicClient() as unknown as ArchiveClient)
+export function reader(signal?: AbortSignal) {
+  const client = signal ? createPublicClient({ chain: tiramisu, transport: politeHttp(settings.get().rpcUrl, { signal, maxWaitMs: 20_000 }) }) : publicClient()
+  return createArchiveReader(client as unknown as ArchiveClient)
 }
 
 export class EndpointError extends Error {}
 
 /** Check an endpoint answers JSON-RPC and is the Tiramisu chain. */
-export async function checkEndpoint(url: string): Promise<{ chainId: number; block: bigint }> {
+export async function checkEndpoint(url: string, signal?: AbortSignal): Promise<{ chainId: number; block: bigint }> {
   let res: Response
   try {
     res = await fetch(url, {
+      signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(20_000)]) : AbortSignal.timeout(20_000),
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify([
