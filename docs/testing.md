@@ -102,3 +102,25 @@ Both projects run: desktop 1440×900 and phone 390×844. Results go to `evidence
 - No independent usability session took place.
 - A second, independent RPC provider was not tested; only the public Tiramisu endpoint was.
 - Real wallet extensions (MetaMask, Rabby) were not driven in automation. The injected test wallet exercises the same EIP-1193 and EIP-6963 paths.
+
+## Correction verification, 16 October
+
+The follow-up starts at `c4dabfe` and preserves the original evidence. `npm test` passed all 42 tests; workspace typechecking and both app builds passed. Production at `f1e0685` passed **35 desktop browser tests**, including rejected signatures and a 35-second browser network outage followed by a fresh record read; one optional signed-renewal test was skipped because the film already contains a verified real UI renewal.
+
+The rejected-signature rerun initially found two defects: parent refreshes reset the renewal dialog, and Arkiv/viem wrappers hid provider error 4001. Stable key dependencies and walking the error cause chain fixed them. Both local and production regression checks then passed, including the assertion that no transaction was sent.
+
+`node --env-file=.env --import tsx scripts/resilience.ts` checks chain 7738577 and balances before creating a separate synthetic control, then concurrently renews it from two wallets. The first run's **failed expectation** is preserved in `evidence/resilience-2026-10-16T08-24-14-631Z.json`: both transactions succeeded to the same absolute target. The corrected campaign passed in `evidence/resilience-2026-10-16T08-26-01-199Z.json`. Both receipts were independently confirmed successful in block 644704 (`evidence/final-chain.json`). This proves monotonic target coverage; it does not prove that every successful renewal adds marginal storage time. The app rereads snapshots before signing, but an in-flight race remains possible.
+
+`node scripts/visual-audit.mjs https://muniment-archive.vercel.app evidence/visual-final` captured 216 route/width/theme checks, including the separate dashboard, at widths 320, 360, 390, 430, 768, 1024, 1280, 1440 and 1920. Desktop height was 720 px; reduced motion was enabled for these layout checks. Six checks found the reader footer URL overflowing on narrow screens. The original failing report remains intact. The reader fix at `125c042` was then verified on production at all nine widths in both themes: **18 passed, zero page overflow** (`evidence/reader-final/results.json`). Long form-field values scroll inside their inputs, as expected.
+
+The normal-motion recording is `evidence/visual-final/motion/page@854557e84b2646fd97a338f3e62a296d.webm`. It records actual scrolling, section entrances and card hover. Screenshots alone are not evidence of smooth animation. Layout screenshots can include honest loading states; `home-1440-dark-motion-fold.png` separately captures a real loaded record with both hero actions visible at 1440×720.
+
+The phone run passed 24 checks, including route loads, mobile navigation, collections, filters, publishing boundaries and all six axe checks. Two live-data assertions were blocked by the endpoint's per-IP budget (the archive reported a 1772-second wait); the serial live suite then skipped its remaining checks. These are not recorded as passes. Production correctly showed a rate-limit error rather than empty data or an expired record. Desktop tests had already passed those same live paths.
+
+Public schema, friction report, evidence documentation, package documentation, MIT licence, package tarball, demo MP4 and captions all returned HTTP 200 in `evidence/release-check.json`. Both projects reported `source: vercel-git` and the pushed revision, establishing that their existing repository integration is active.
+
+### Production publication follow-up
+
+The stranger test wallet published an additional synthetic, user-published reply through the production page: transaction `0x3692206b22200de5597d1cade471150f462cc7cfa12167a9c0e8ba9c8fa9e295`, entity `0xc7ccf28706bdfc660d65f39c697c3e37418bad566f2fb18b6abea4381f13bb33`, block 647739. It is separate from the curated publisher's 41-record corpus. The browser showed confirmation but the query budget prevented readback; that browser test failed and is not counted as a pass. Standard Ethereum RPC independently confirmed success, flags 3 and ownership transfer to `0x…dEaD` in the same batch (`evidence/ui-publication-confirmed.json`). An initial log-only recovery read the creation event's initial owner; that incomplete interpretation is retained in `evidence/ui-publication-recovery.json`. The subsequent transfer event establishes sealing.
+
+The reproduced UI issue was a long locked confirmation state with neither record nor transaction link. The fix exposes both links immediately after confirmation, bounds readback attempts and explicitly says not to publish again if visibility is delayed. The optional `E2E_PUBLISH=1` test records transaction evidence before its independent read and reports unavailable readback as blocked, so reruns need not lose the hash. Never automatically rerun this test after a confirmed write.
