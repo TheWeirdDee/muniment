@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-16T10:20:13.466Z",
+  "key": "0xc7ccf28706bdfc660d65f39c697c3e37418bad566f2fb18b6abea4381f13bb33",
+  "txHash": "0x3692206b22200de5597d1cade471150f462cc7cfa12167a9c0e8ba9c8fa9e295",
+  "block": "647739",
+  "status": "success",
+  "creator": "0x5f2b31286708083aa5d097bd89d5b3f48dd6cbc9",
+  "creationEventOwner": "0x5f2b31286708083aa5d097bd89d5b3f48dd6cbc9",
+  "finalOwnerInBatch": "0x000000000000000000000000000000000000dead",
+  "expiry": "1943739",
+  "flags": 3,
+  "ownershipTransfers": 1,
+  "verified": true,
+  "browserReadback": "Original browser confirmed the transaction but query readback was rate limited. These are independently recovered receipt and same-batch sealing events, not a passing browser readback."
+}
