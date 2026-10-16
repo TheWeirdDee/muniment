@@ -38,36 +38,28 @@ export async function injectTestWallet(page: Page, opts: TestWalletOptions) {
         return client.request({ method: method as never, params: params as never })
     }
   })
-  await page.addInitScript(() => {
-    type Fn = (m: string, p: unknown[]) => Promise<unknown>
-    const call = (window as unknown as { __mmTestWallet: Fn }).__mmTestWallet
-    const listeners: Record<string, ((...a: unknown[]) => void)[]> = {}
+  // Passed as a string: transpilers (tsx/esbuild keepNames) inject helpers into serialised functions.
+  await page.addInitScript(`(() => {
+    const call = window.__mmTestWallet
+    const listeners = {}
     const provider = {
-      async request({ method, params }: { method: string; params?: unknown[] }) {
+      async request({ method, params }) {
         try {
-          return await call(method, params ?? [])
+          return await call(method, params || [])
         } catch (e) {
-          const err = e as { message?: string; code?: number }
-          const out = new Error(err.message ?? String(e)) as Error & { code?: number }
+          const out = new Error((e && e.message) || String(e))
           if (/rejected/i.test(out.message)) out.code = 4001
           throw out
         }
       },
-      on(ev: string, fn: (...a: unknown[]) => void) {
-        ;(listeners[ev] ??= []).push(fn)
-      },
-      removeListener(ev: string, fn: (...a: unknown[]) => void) {
-        listeners[ev] = (listeners[ev] ?? []).filter((f) => f !== fn)
-      },
+      on(ev, fn) { (listeners[ev] = listeners[ev] || []).push(fn) },
+      removeListener(ev, fn) { listeners[ev] = (listeners[ev] || []).filter((f) => f !== fn) },
     }
-    const announce = () =>
-      window.dispatchEvent(
-        new CustomEvent("eip6963:announceProvider", {
-          detail: Object.freeze({ info: { uuid: "playwright-test-wallet", name: "Playwright test wallet", icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'/>", rdns: "dev.muniment.testwallet" }, provider }),
-        }),
-      )
+    const announce = () => window.dispatchEvent(new CustomEvent("eip6963:announceProvider", {
+      detail: Object.freeze({ info: { uuid: "playwright-test-wallet", name: "Playwright test wallet", icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E", rdns: "dev.muniment.testwallet" }, provider }),
+    }))
     window.addEventListener("eip6963:requestProvider", announce)
     announce()
-  })
+  })()`)
   return { address: account.address, sent }
 }
