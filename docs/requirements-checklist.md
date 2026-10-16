@@ -11,7 +11,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | Public MIT repo with setup | met | [`LICENSE`](../LICENSE), [`README.md`](../README.md#quick-start) |
 | `/arkiv/schema.md` | met | entity types, attributes, expiry per type, the queries the app runs |
 | On-chain evidence: creating wallets | met | [`docs/testing.md`](testing.md#wallets), [`evidence/manifest.json`](../evidence/manifest.json) |
-| `/arkiv/friction.md` | met | 15 entries with versions and repro scripts |
+| `/arkiv/friction.md` | met | 16 entries with versions and repro scripts |
 | Demo video ≤ 3 minutes | met | 1 min 44 s, recorded from production: https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4 (renewal tx `0xe11c…48ce`, verified) |
 | Every Devfolio question answered | drafted | [`docs/submission.md`](submission.md); a few personal answers are for the team |
 | A track chosen | to submit | Censorship Resistance and Open Source (no Indian national on the team) |
