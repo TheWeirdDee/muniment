@@ -28,3 +28,5 @@ Findings from the inspected design/copy brief, with the change made and where it
 | Collections | Keep related replies together. |
 | Publish | Try publishing a synthetic reply. |
 | Insights | Explore response times in the demo archive. |
+
+Follow-up, 16 October: the separately hosted dashboard now uses the same introduction and says that its authorities and replies are fictional while its displayed summaries are calculated from live Arkiv records. All status accents in the web app, standalone reader and dashboard now use the supplied palette with explicit text labels; leftover peach/red status values were removed. Confirmed publication exposes record and transaction links while readback is delayed, without inviting another publication.
