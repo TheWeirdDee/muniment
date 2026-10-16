@@ -45,6 +45,7 @@ Canonical rules checked: `Arkiv-Network/global-tour-stop-pre-devcon` README, RUL
    > 4. Renew storage from any funded Tiramisu wallet (Record → Renew storage). The dialog shows the plan, the gas estimate and the target block, then submission, confirmation, the new expiry read back and receipt verification.
    > 5. Download reader.html, open it from disk and read the same record key with no Muniment site involved.
    > 6. Open https://muniment-insights.vercel.app, a separate app reading the same contract.
+   > If a page says the public endpoint is rate limiting your connection, that is Arkiv's per-IP query budget; wait the stated time or set another endpoint in Settings.
    > 7. Optional: clone the repo, add four testnet keys to `.env` and run `npm run proof`. It writes pass/fail evidence for flags, permissions, sealing, atomicity, forged receipts and expiry.
 9. **Pre-existing work you reused\*:**
    > Repository baseline `f2202e95ca2e68cbbbfaf4c96f260b97d6091540` (15 Oct 2026, an initial commit containing only a README). Everything else was built during the hackathon. We reused open-source libraries only (listed in THIRD_PARTY_NOTICES.md: Arkiv SDK, viem, React, React Router, Vite, Fontsource fonts, Playwright, Vitest). No starter template.
