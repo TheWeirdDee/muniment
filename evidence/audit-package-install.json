@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-16T14:31:07.079Z",
+  "version": "0.1.1",
+  "installedFrom": "muniment-query-0.1.1.tgz in a separate npm project",
+  "firstBlock": "655648",
+  "secondBlock": "655648",
+  "firstCount": 10,
+  "secondCount": 10,
+  "verified": true
+}
