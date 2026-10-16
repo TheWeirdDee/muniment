@@ -101,9 +101,10 @@ test("dark by default; the theme choice persists across reloads", async ({ page,
   expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe("rgb(240, 234, 220)")
 })
 
-test("archive filters live in the URL and unknown ones are reported", async ({ page }) => {
+test("archive filters live in the URL and unknown ones are reported", async ({ page, isMobile }) => {
   await page.goto("/archive?outcome=denied&bogus=1&rmax=abc")
   await expect(page.getByText(/Some link parameters were ignored/)).toBeVisible()
+  if (isMobile) await page.getByText(/^Filters/).click()
   await expect(page.getByLabel("Outcome")).toHaveValue("denied")
   await page.getByLabel("Outcome").selectOption("granted")
   await expect(page).toHaveURL(/outcome=granted/)
