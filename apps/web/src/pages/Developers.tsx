@@ -125,7 +125,7 @@ for (const receipt of linked.receipts) console.log(await verifyRenewalReceipt(cl
                   <td className="mono">reply</td>
                   <td>authority, jurisdiction, topic, outcome, language, ref (str); filed_ms, replied_ms (u64); response_days (i32); exemption (str); corrects (key); synthetic (bool)</td>
                   <td>read-only, permissionless extension; usually sealed</td>
-                  <td>21–180 days, then renewed</td>
+                  <td>Seed corpus: 21–180 days; Publish: 7, 30, 90 or 180 days; then renewed</td>
                 </tr>
                 <tr>
                   <td className="mono">appeal</td>
@@ -187,7 +187,7 @@ for (const receipt of linked.receipts) console.log(await verifyRenewalReceipt(cl
             published to the npm registry; install it from the repository's release tarball or the workspace.
           </p>
           <pre className="code-block">{`npm install @arkiv-network/sdk@0.8.1 viem
-npm install ${REPO_URL}/releases/download/muniment-query-v0.1.0/muniment-query-0.1.0.tgz`}</pre>
+npm install ${REPO_URL}/releases/download/muniment-query-v0.1.1/muniment-query-0.1.1.tgz`}</pre>
           <pre className="code-block">{pkg}</pre>
           <p>
             <ExternalLink href={`${REPO_BLOB}/packages/muniment-query/README.md`}>Package README</ExternalLink> ·{" "}
