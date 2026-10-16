@@ -141,6 +141,11 @@ export function Notice({ tone = "info", title, children }: { tone?: "info" | "wa
 /** Open dialogs, topmost last: only the topmost one reacts to Escape and traps focus. */
 const dialogStack: string[] = []
 
+/** Let enclosing surfaces defer keyboard dismissal to the active modal. */
+export function hasOpenDialog() {
+  return dialogStack.length > 0
+}
+
 export function Dialog({
   open,
   onClose,
