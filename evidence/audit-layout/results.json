@@ -1,0 +1,1734 @@
+{
+  "at": "2026-10-16T14:31:36.301Z",
+  "scope": "Local corrected source and disk reader, not deployment evidence",
+  "results": [
+    {
+      "route": "/",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 320,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 360,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 390,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 430,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 768,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 1024,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 1280,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 1440,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 1920,
+      "height": 720,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/archive",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/preserve",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/collections",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/publish",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/developers",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/how-it-works",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/privacy",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/terms",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "/records/0x9c1d6aad0542bf7a97cea001d0cf6b0d098ba4d46c0718f55bc7e05e6e63bebc",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "http://127.0.0.1:4320/",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 320,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 360,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 390,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 430,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 768,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 1024,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 1280,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 1440,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    },
+    {
+      "route": "file:///C:/Users/DELL/Desktop/muniment/reader/reader.html",
+      "width": 1920,
+      "height": 720,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": 0
+    }
+  ]
+}
