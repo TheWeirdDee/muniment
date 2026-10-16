@@ -43,9 +43,18 @@ const Ctx = createContext<WalletApi | null>(null)
 const REMEMBER = "muniment.wallet.v1"
 
 export function describeWalletError(err: unknown): string {
-  const e = err as { code?: number; shortMessage?: string; message?: string; cause?: { code?: number } }
-  const code = e?.code ?? e?.cause?.code
-  const text = `${e?.shortMessage ?? ""} ${e?.message ?? ""}`
+  // Arkiv and viem wrap provider errors several levels deep. Preserve the wallet's rejection code.
+  const codes: number[] = []
+  const messages: string[] = []
+  let current = err
+  for (let depth = 0; current && depth < 10; depth++) {
+    const e = current as { code?: number; shortMessage?: string; message?: string; cause?: unknown }
+    if (typeof e.code === "number") codes.push(e.code)
+    messages.push(e.shortMessage ?? "", e.message ?? "")
+    current = e.cause
+  }
+  const code = codes.includes(4001) ? 4001 : codes[0]
+  const text = messages.join(" ")
   if (code === 4001 || /user rejected|user denied|rejected the request/i.test(text)) return "You declined the request in your wallet. Nothing was sent."
   if (code === -32002) return "Your wallet already has a pending request. Open the wallet to continue."
   if (/insufficient funds/i.test(text)) return "This wallet does not hold enough test GLM to pay for the transaction."
