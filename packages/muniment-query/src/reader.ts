@@ -63,15 +63,27 @@ export type Page<T> = {
   blockNumber: bigint
 }
 
+function abortableRead<T>(pending: Promise<T>, signal?: AbortSignal): Promise<T> {
+  if (!signal) return pending
+  return new Promise((resolve, reject) => {
+    const abort = () => reject(signal.reason)
+    if (signal.aborted) { pending.catch(() => {}); abort(); return }
+    signal.addEventListener("abort", abort, { once:true })
+    pending.then(resolve, reject).finally(() => signal.removeEventListener("abort", abort))
+  })
+}
+
 async function page<T>(
   client: ArchiveClient,
   query: string,
   decode: (e: RawEntity) => DecodeResult<T>,
-  opts: { limit?: number; cursor?: string; signal?: AbortSignal } = {},
+  opts: { limit?: number; cursor?: string; atBlock?: bigint; signal?: AbortSignal } = {},
 ): Promise<Page<T>> {
   opts.signal?.throwIfAborted()
+  if (opts.cursor && opts.atBlock === undefined) throw new Error("A continuation cursor requires its original atBlock snapshot")
   const limit = Math.min(opts.limit ?? 50, MAX_PAGE_SIZE)
-  const res = await client.query(query, { select: FULL_SELECT, limit, cursor: opts.cursor })
+  const res = await abortableRead(client.query(query, { select: FULL_SELECT, limit, cursor: opts.cursor, atBlock: opts.atBlock }), opts.signal)
+  if (opts.atBlock !== undefined && res.blockNumber !== opts.atBlock) throw new Error("Endpoint returned a different snapshot block")
   opts.signal?.throwIfAborted()
   const records: T[] = []
   const issues: DecodeIssue[] = []
@@ -110,7 +122,7 @@ export async function scan<T extends { key: Hex }>(
   let pages = 0
   let blockNumber: bigint | null = null
   do {
-    const p = await page(client, query, decode, { limit: opts.pageSize ?? MAX_PAGE_SIZE, cursor, signal: opts.signal })
+    const p: Page<T> = await page(client, query, decode, { limit: opts.pageSize ?? MAX_PAGE_SIZE, cursor, atBlock: blockNumber ?? undefined, signal: opts.signal })
     pages++
     blockNumber ??= p.blockNumber
     for (const r of p.records) if (!byKey.has(r.key)) byKey.set(r.key, r)
@@ -142,7 +154,7 @@ export function createArchiveReader(client: ArchiveClient) {
   return {
     client,
 
-    searchReplies(filters: ReplyFilters, opts: { limit?: number; cursor?: string; signal?: AbortSignal } = {}) {
+    searchReplies(filters: ReplyFilters, opts: { limit?: number; cursor?: string; atBlock?: bigint; signal?: AbortSignal } = {}) {
       return page(client, replyQuery(filters), decodeReply, opts)
     },
 
