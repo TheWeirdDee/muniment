@@ -14,6 +14,7 @@ import {
   isEntityKey,
   verifyRenewalReceipt,
   clearReadCache,
+  safeUrl,
 } from "muniment-query"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { Link, useParams } from "react-router"
@@ -342,7 +343,7 @@ function RecordView({
           </section>
 
           <ReviewsSection linked={linked} linkedError={linkedError} />
-          <AppealsSection linked={linked} />
+          <AppealsSection linked={linked} parentCreator={reply.creator} />
         </div>
 
         <aside className="record-side stack" aria-label="Preservation">
@@ -427,7 +428,7 @@ function ReviewsSection({ linked, linkedError }: { linked: Linked | null; linked
                 {r.payload.evidenceRef ? (
                   <>
                     {" "}
-                    · <ExternalLink href={r.payload.evidenceRef.startsWith("https://") ? r.payload.evidenceRef : "#"}>evidence reference</ExternalLink>
+                    · {safeUrl(r.payload.evidenceRef) ? <ExternalLink href={safeUrl(r.payload.evidenceRef)!}>evidence reference</ExternalLink> : <span>Evidence reference: {r.payload.evidenceRef}</span>}
                   </>
                 ) : null}
               </p>
@@ -451,7 +452,7 @@ function ReviewsSection({ linked, linkedError }: { linked: Linked | null; linked
   )
 }
 
-function AppealsSection({ linked }: { linked: Linked | null }) {
+export function AppealsSection({ linked, parentCreator }: { linked: Linked | null; parentCreator: Hex | null }) {
   if (!linked) return null
   if (linked.appeals.length === 0 && linked.exemptions.length === 0) return null
   return (
@@ -461,14 +462,15 @@ function AppealsSection({ linked }: { linked: Linked | null }) {
           Appeals and exemption notes
         </h2>
         <span className="faint" style={{ fontSize: "0.85rem" }}>
-          Linked records renew together
+          Only eligible links from the reply's own publisher are included in its renewal
         </span>
       </div>
       <div className="panel-body stack">
-        {linked.appeals
+        {[...linked.appeals]
           .sort((a, b) => a.filedMs - b.filedMs)
           .map((a) => (
             <div key={a.key} className="review">
+              <p>Linked appeal published by <Address value={a.creator} /> · {parentCreator && sameAddress(a.creator, parentCreator) ? "Same publisher as this reply" : "Different or unknown publisher — an independently submitted claim, not the reply publisher's appeal; excluded from its renewal"}</p>
               <div className="cluster">
                 <span className="pill pill-info no-dot">{a.stage === "first-appeal" ? "First appeal" : "Second appeal"}</span>
                 <span className="pill no-dot">{a.outcome}</span>
@@ -482,10 +484,7 @@ function AppealsSection({ linked }: { linked: Linked | null }) {
             </div>
           ))}
         {linked.exemptions.length > 0 ? (
-          <p className="muted">
-            Exemption relation records: {linked.exemptions.map((x) => <span key={x.key} className="mono">§ {x.section} </span>)}{" "}
-            <span className="faint">(one per cited section, so every section is searchable)</span>
-          </p>
+          <div className="stack-sm">{linked.exemptions.map((x) => <p key={x.key}>Exemption relation § {x.section} · published by <Address value={x.creator} /> · {parentCreator && sameAddress(x.creator, parentCreator) ? "Same publisher as this reply" : "Different or unknown publisher — a proposed relation, not an authenticated property of this reply; excluded from its renewal"}</p>)}</div>
         ) : null}
         {!linked.complete ? <Notice tone="warn">Some linked lists exceeded a bounded read and may be incomplete.</Notice> : null}
       </div>
