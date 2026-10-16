@@ -56,7 +56,7 @@ Canonical rules checked: `Arkiv-Network/global-tour-stop-pre-devcon` README, RUL
 14. **The one thing Arkiv should improve first\*:** Document the public RPC's read budgets and populate `Arkiv-Cost` on responses. Censorship-resistant reading depends on the unauthenticated path, and being locked out of queries with no explanation is the failure real readers hit.
 15. **Open to a 20-minute feedback call?\*:** *(team to answer)*
 16. **Built 9–18 October; pre-existing and third-party work disclosed\*:** Yes (see 9).
-17. **Public MIT repo, all links accessible\*:** Yes, after the final push; verify in a logged-out browser.
+17. **Public MIT repo, all links accessible\*:** Yes. Public repository and release downloads were independently retrieved on 16 October 2026. Final corrected release/deployment checks are recorded in `docs/audit-remediation.md`; this draft is not proof of a submitted Devfolio form.
 18. Devcon attendance: optional, *(team to answer)*.
 
 ## Verification status
