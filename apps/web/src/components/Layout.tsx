@@ -6,7 +6,7 @@ import { shortHex } from "../lib/format"
 import { setTheme, useTheme, type ThemeChoice } from "../lib/theme"
 import { useWallet } from "../lib/wallet"
 import { NetworkSettings } from "./NetworkSettings"
-import { Arrow, Dialog, ExternalLink, Icon, LogoMark } from "./ui"
+import { Arrow, Dialog, ExternalLink, hasOpenDialog, Icon, LogoMark } from "./ui"
 import { WalletDialog } from "./WalletDialog"
 
 /** Primary destinations for a first-time reader. */
@@ -151,7 +151,10 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
   useEffect(() => {
     const prev = document.activeElement as HTMLElement | null
     ref.current?.querySelector<HTMLElement>("a, button")?.focus()
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose()
+    const onKey = (e: KeyboardEvent) => {
+      if (hasOpenDialog()) return
+      if (e.key === "Escape") onClose()
+    }
     document.addEventListener("keydown", onKey)
     document.body.style.overflow = "hidden"
     return () => {
