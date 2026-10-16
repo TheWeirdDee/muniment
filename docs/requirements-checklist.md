@@ -13,7 +13,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | On-chain evidence: creating wallets | met | [`docs/testing.md`](testing.md#wallets), [`evidence/manifest.json`](../evidence/manifest.json) |
 | `/arkiv/friction.md` | met | 16 entries with versions and repro scripts |
 | Demo video ≤ 3 minutes | met | 1 min 44 s, recorded from production: https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4 (renewal tx `0xe11c…48ce`, verified) |
-| Every Devfolio question answered | drafted | [`docs/submission.md`](submission.md); a few personal answers are for the team |
+| Every Devfolio question answered | partial | [`docs/submission.md`](submission.md): tools/models and feedback-call Yes recorded; integration-time estimate and authenticated form verification pending. Owner reports not yet submitted. |
 | A track chosen | to submit | Censorship Resistance and Open Source (no Indian national on the team) |
 | Built 9–18 Oct, pre-existing work disclosed | met | baseline `f2202e9` (README only); [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md) |
 | Evidence that survives expiry | met | transaction hashes in `evidence/`; demo records live until ≥ 5 Nov 2026 |
