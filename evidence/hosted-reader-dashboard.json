@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-16T10:27:03.680Z",
+  "reader": {
+    "url": "https://muniment-archive.vercel.app/reader",
+    "endpoint": "https://rpc.tiramisu.db-chain.testnet.arkiv.network",
+    "overflow": 0,
+    "errors": []
+  },
+  "dashboard": {
+    "heading": "Explore response times in the demo archive.",
+    "scope": "\n        Synthetic records on Arkiv Tiramisu testnet. The authorities and replies are fictional. Counts and response-time summaries below are calculated from live records read from Arkiv.\n        These charts show how the demo archive can be reused; they do not measure real government performance.\n      ",
+    "overflow": 0
+  }
+}
