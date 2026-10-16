@@ -63,7 +63,7 @@ Concurrent-renewal transactions: `0x943a3935aa6ee6319d122fe68ca3323cafc3c86f2a25
 
 ## Remaining manual actions and limits
 
-- The owner confirmed tools used, willingness for the feedback call (**Yes**) and **not yet submitted** on 16 October. The exact integration time remains unknown and an estimate has been requested. See [submission evidence](submission-evidence.md). No connected authenticated Devfolio session is available; submission requires explicit authorization. Optional attendance and other unresolved personal declarations remain for the team.
+- The owner confirmed tools used, willingness for the feedback call (**Yes**) and **not yet submitted** on 16 October. Further log/transaction investigation supports an evidence-based estimate of **about 10 hours 50 minutes elapsed (2 to 24 hours)**; the exact start remains unproven. See [submission evidence](submission-evidence.md). No connected authenticated Devfolio session is available; submission requires explicit authorization. Optional attendance and other unresolved personal declarations remain for the team.
 - An independent usability session has not happened. A separate participant is needed; no user feedback or adoption is invented.
 - Public-RPC throttling can block future reads; all previously blocked phone and publication readbacks passed after its reset. A quota error is not evidence of empty or expired records. No alternate provider or real MetaMask/Rabby extension was tested. The account actions above do not block the implemented app or published artifacts.
 
