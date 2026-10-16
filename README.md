@@ -12,7 +12,8 @@
 | Data contract | [`arkiv/schema.md`](arkiv/schema.md) |
 | Friction report | [`arkiv/friction.md`](arkiv/friction.md) |
 | Evidence | [`docs/testing.md`](docs/testing.md) · [`evidence/`](evidence/) |
-| Query package | [`packages/muniment-query`](packages/muniment-query) (GitHub release tarball; not on npm) |
+| Query package | [`packages/muniment-query`](packages/muniment-query) · [release tarball](https://github.com/TheWeirdDee/muniment/releases/tag/muniment-query-v0.1.0) (not on npm) |
+| Demo film (1:44) | [muniment-demo.mp4](https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4) · [captions](demo/muniment-demo.srt) |
 
 Built for the Arkiv Global Tour Stop (9–18 October 2026). Tracks: **Censorship Resistance** and **Open Source**.
 
