@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "muniment-query": "0.1.0"
+    "muniment-query": "0.1.1"
   }
 }
