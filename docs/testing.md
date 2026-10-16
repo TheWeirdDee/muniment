@@ -132,3 +132,9 @@ Reviewing the rendered reader exposed a separate failure: its inputs remained un
 The dashboard's scope now explicitly separates fictional source replies from summaries calculated from live chain reads. Its heading follows the requested introduction, status colours use the supplied palette, and final 320 px browser evidence is in the same report and `evidence/dashboard-final-320.png`.
 
 An additional 180-check audit explicitly removed page-level overflow clipping before measuring all main routes across nine widths and both themes: **zero failures** (`evidence/unclipped-layout.json`). The remaining global `body { overflow-x: hidden }` was then removed from the source. Responsive containment is therefore supported by content bounds, not by clipping the page.
+
+### After the query quota reset
+
+The endpoint's Retry-After was honoured. The already-published record was then read directly with the expected title, synthetic marker, stranger creator, sealed owner and flags (`evidence/ui-publication-readback.json`); no second publication was sent. The readback-only browser test passed on desktop and phone (`evidence/remaining-readbacks.json`).
+
+The phone live-data suite then passed **10 checks**, with only the optional signed-renewal test skipped (`evidence/phone-live-rerun.json`). This includes all previously blocked serial live paths plus two additional signing guards: switching from another network to Tiramisu, and stopping a quote older than five minutes before requesting a signature. Both assert that no transaction was sent. The age test advances browser wall time while retaining real chain responses; it is a UI guard test, not a claim of an elapsed on-chain interval. The phone missing-record rerun also passed (`evidence/missing-record-rerun.json`). The original quota failures remain preserved as earlier observations rather than being relabelled passes.
