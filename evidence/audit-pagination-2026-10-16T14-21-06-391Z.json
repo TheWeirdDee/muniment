@@ -1,0 +1,29 @@
+{
+  "name": "audit-pagination",
+  "savedAt": "2026-10-16T14:21:14.237Z",
+  "environment": {
+    "node": "v24.13.1",
+    "platform": "win32",
+    "sdk": "@arkiv-network/sdk@0.8.1",
+    "viem": "2.57.7",
+    "rpc": "https://rpc.tiramisu.db-chain.testnet.arkiv.network",
+    "chainId": 7738577
+  },
+  "partial": false,
+  "summary": {
+    "pass": 1,
+    "fail": 0,
+    "unsupported": 0,
+    "blocked": 0
+  },
+  "items": [
+    {
+      "id": "MUN-AUD-001",
+      "title": "Delayed page and bounded scan retain the first block",
+      "expected": "Second page at first block; complete unique corpus and identical scan blocks",
+      "observed": "{\"firstBlock\":\"655350\",\"secondBlock\":\"655350\",\"records\":41,\"unique\":41,\"issues\":[],\"blocks\":[\"655351\",\"655351\",\"655351\",\"655351\",\"655351\"],\"complete\":true}",
+      "outcome": "pass",
+      "at": "2026-10-16T14:21:14.233Z"
+    }
+  ]
+}
