@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-16T10:34:33.904Z",
+  "chainId": 7738577,
+  "key": "0xc7ccf28706bdfc660d65f39c697c3e37418bad566f2fb18b6abea4381f13bb33",
+  "createdAt": "647739",
+  "expiresAt": "1943739",
+  "creator": "0x5F2b31286708083Aa5D097bD89d5b3F48DD6cBC9",
+  "owner": "0x000000000000000000000000000000000000dEaD",
+  "flags": {
+    "readonly": true,
+    "permissionlessExtension": true,
+    "raw": 3
+  },
+  "title": "Road resurfacing — Browser verification (synthetic, user-published)",
+  "synthetic": true,
+  "verified": true,
+  "note": "Independent direct read of the existing production-published record after waiting out the public query quota. No new transaction."
+}
