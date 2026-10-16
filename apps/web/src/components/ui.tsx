@@ -160,6 +160,8 @@ export function Dialog({
   const id = useId()
   const ref = useRef<HTMLDivElement>(null)
   const restore = useRef<HTMLElement | null>(null)
+  const lifecycle = useRef({ onClose, dismissible })
+  lifecycle.current = { onClose, dismissible }
   useEffect(() => {
     if (!open) return
     dialogStack.push(id)
@@ -171,9 +173,9 @@ export function Dialog({
     document.body.style.overflow = "hidden"
     const onKey = (e: KeyboardEvent) => {
       if (dialogStack[dialogStack.length - 1] !== id) return
-      if (e.key === "Escape" && dismissible) {
+      if (e.key === "Escape" && lifecycle.current.dismissible) {
         e.stopPropagation()
-        onClose()
+        lifecycle.current.onClose()
       }
       if (e.key === "Tab" && el) {
         const items = [...el.querySelectorAll<HTMLElement>('button:not([disabled]), [href], input:not([disabled]), select, textarea, [tabindex]:not([tabindex="-1"])')]
@@ -197,7 +199,7 @@ export function Dialog({
       document.body.style.overflow = dialogStack.length ? "hidden" : prevOverflow
       restore.current?.focus?.()
     }
-  }, [open, onClose, dismissible])
+  }, [open, id])
   if (!open) return null
   return createPortal(
     <div
