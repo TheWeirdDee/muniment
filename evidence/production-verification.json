@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-16",
+  "sourceRevision": "f1e06852491b18cc190967b6f81dd62b29ebf4a8",
+  "method": "Observed Playwright CLI results against the real production origins; summary transcribed from the run output, not a generated Playwright JSON report.",
+  "desktop": { "passed": 35, "skipped": 1, "failed": 0, "duration": "3.2 minutes", "skipReason": "Optional signed renewal was already evidenced in the demo film." },
+  "phone": { "passed": 24, "skipped": 3, "didNotRun": 7, "failed": 2, "duration": "2.5 minutes", "failureReason": "Public Arkiv query quota; archive reported Retry-After approximately 1772 seconds. Missing-entity test correctly rendered a read error rather than absence." },
+  "localRegressions": { "rejectedSignature": "passed; no transaction sent and message remains visible", "networkRecovery": "passed after 35 seconds offline; a fresh record read observed" },
+  "layout": { "checks": 216, "failingReaderChecks": 6, "subsequentReaderRevision": "125c04263f267c5b81bbb28d9522c67cdf4ab262", "subsequentReaderChecks": 18, "subsequentReaderFailures": 0 },
+  "publication": { "transactionConfirmed": true, "browserReadback": "blocked by query quota", "testResult": "failed initial readback assertion", "receiptEvidence": "ui-publication-confirmed.json" },
+  "unit": { "passed": 42, "files": 6 },
+  "builds": { "typecheck": "passed", "web": "passed", "dashboard": "passed" }
+}
