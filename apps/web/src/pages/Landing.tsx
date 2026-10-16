@@ -41,7 +41,7 @@ function useSample() {
 function RecordPreview({ state, head }: { state: ReturnType<typeof useSample>; head: HeadAnchor | null }) {
   if (state.status === "loading" && !state.data) {
     return (
-      <div className="stage" aria-busy="true" aria-label="Loading a record from Arkiv">
+      <div className="stage" role="group" aria-busy="true" aria-label="Loading a record from Arkiv">
         <div className="stage-card record-card">
           <Skeleton lines={4} />
         </div>
@@ -77,7 +77,7 @@ function RecordPreview({ state, head }: { state: ReturnType<typeof useSample>; h
   const sealed = sameAddress(r.owner, SEAL_ADDRESS)
   const until = head && r.expiresAtBlock ? LONG_DATE.format(new Date(blockToMs(r.expiresAtBlock, head))) : null
   return (
-    <div className="stage" aria-label="A live record from the archive">
+    <div className="stage" role="group" aria-label="A live record from the archive">
       <div className="stage-back" aria-hidden="true" />
       <Link to={`/records/${r.key}`} className="stage-card record-card record-card-link">
         <div className="cluster" style={{ justifyContent: "space-between" }}>
