@@ -1,0 +1,31 @@
+1
+00:00:00,300 --> 00:00:12,306
+An illustrative scenario. A reporter needs a government reply after the portal that held it changed. Every record here is synthetic test data on Arkiv's testnet.
+
+2
+00:00:12,310 --> 00:00:27,609
+She searches refused replies. Each filter is an Arkiv query on typed attributes. The record shows the claimed authority separately from the wallet that uploaded it. Preserved is not the same as authenticated.
+
+3
+00:00:27,609 --> 00:00:35,800
+She saves related replies to a collection. That is a bookmark in her browser, not a transaction.
+
+4
+00:00:35,800 --> 00:00:54,119
+A different wallet renews storage. The dialog shows the plan and an estimated fee in test GLM, then each real stage: submitted, confirmed, the new expiry read back from Arkiv, and the receipt verified against the transaction.
+
+5
+00:00:54,119 --> 00:01:05,324
+Strangers can renew but never edit. Our proof run shows that wallet rejected on an owner-only control, and even the publisher unable to delete a sealed record.
+
+6
+00:01:05,324 --> 00:01:20,287
+Now block the Muniment website entirely. A single HTML file, opened from disk, reads the same record straight from Arkiv. It still needs an Arkiv endpoint. It is not offline.
+
+7
+00:01:20,288 --> 00:01:29,320
+A separately hosted dashboard charts response times from the same public contract, with denominators and missing values shown.
+
+8
+00:01:29,320 --> 00:01:43,503
+Arkiv provides typed queries, expiry, permissionless extension, immutable creators and atomic batches. Renewal is not permanence. Evidence and reproduction steps are in the repository.
