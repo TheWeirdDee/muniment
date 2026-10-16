@@ -99,6 +99,36 @@ test("a rejected wallet signature sends nothing and says so", async ({ page }) =
   expect(wallet.sent).toEqual([])
 })
 
+test("a wallet on another network must switch to Tiramisu before signing", async ({ page }) => {
+  test.skip(!process.env.RENEWER_KEY, "needs RENEWER_KEY")
+  const wallet = await injectTestWallet(page, { key: process.env.RENEWER_KEY as `0x${string}`, chainIdHex: "0x1", reject: true })
+  await page.goto(`/records/${replyKey("r03")}`)
+  await page.getByRole("button", { name: "Renew storage" }).click()
+  const dialog = page.getByRole("dialog")
+  await dialog.getByRole("button", { name: /Connect a wallet/ }).click()
+  await expect(dialog.getByRole("button", { name: "Switch to Tiramisu" })).toBeVisible()
+  await expect(dialog.getByRole("button", { name: /^Sign / })).toHaveCount(0)
+  await dialog.getByRole("button", { name: "Switch to Tiramisu" }).click()
+  await expect(dialog.getByRole("button", { name: /^Sign / })).toBeVisible()
+  expect(wallet.sent).toEqual([])
+})
+
+test("a quote older than five minutes stops before asking for a signature", async ({ page }) => {
+  test.skip(!process.env.RENEWER_KEY, "needs RENEWER_KEY")
+  const wallet = await injectTestWallet(page, { key: process.env.RENEWER_KEY as `0x${string}`, reject: true })
+  await page.goto(`/records/${replyKey("r03")}`)
+  await page.getByRole("button", { name: "Renew storage" }).click()
+  const dialog = page.getByRole("dialog")
+  await dialog.getByRole("button", { name: /Connect a wallet/ }).click()
+  const sign = dialog.getByRole("button", { name: /^Sign / })
+  await expect(sign).toBeEnabled({ timeout: 60_000 })
+  // Advance wall time only; keep real network responses and transaction state intact.
+  await page.clock.setSystemTime(Date.now() + 6 * 60_000)
+  await sign.click()
+  await expect(dialog.getByText(/Transaction 1: Quote out of date/)).toBeVisible({ timeout: 30_000 })
+  expect(wallet.sent).toEqual([])
+})
+
 test("a different wallet renews a record through the UI and the new expiry is read back", async ({ page }) => {
   test.skip(!process.env.RENEWER_KEY || !process.env.E2E_SIGN, "set E2E_SIGN=1 and RENEWER_KEY to sign a real renewal")
   const w = await injectTestWallet(page, { key: process.env.RENEWER_KEY as `0x${string}` })
