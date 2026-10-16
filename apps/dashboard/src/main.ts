@@ -67,8 +67,15 @@ const hideTip = () => {
 }
 
 // ---- data ----------------------------------------------------------------------------------
-type Data = { records: Reply[]; complete: boolean; block: bigint | null; headMs: number; query: string; creators: string[] }
+type Data = { records: Reply[]; complete: boolean; block: bigint | null; headMs: number; query: string; creators: string[]; issues: number }
 let last: Data | null = null
+let generation = 0
+let activeLoad: AbortController | null = null
+function clearData() {
+  last = null
+  hideTip()
+  for (const id of ["tiles", "chart-median", "chart-outcomes", "chart-dist", "table", "query", "legend"]) $(id).textContent = ""
+}
 
 function median(xs: number[]): number | null {
   if (xs.length === 0) return null
@@ -80,25 +87,34 @@ function median(xs: number[]): number | null {
 const fmt = (n: number | null, d = 0) => (n === null ? "—" : n.toLocaleString("en-GB", { maximumFractionDigits: d, minimumFractionDigits: 0 }))
 
 async function load() {
+  const current = ++generation
+  activeLoad?.abort()
+  const controller = new AbortController()
+  activeLoad = controller
   const endpoint = ($("endpoint") as HTMLInputElement).value.trim() || TIRAMISU.httpRpc
   const raw = ($("creators") as HTMLInputElement).value.trim()
-  const creators = raw ? raw.split(",").map((s) => s.trim()).filter((s) => /^0x[0-9a-fA-F]{40}$/.test(s)) : []
-  store.set("muniment.insights.endpoint", endpoint)
-  store.set("muniment.insights.creators", raw)
+  const creators = raw ? raw.split(",").map((s) => s.trim()) : []
+  clearData()
   $("coverage").textContent = "Loading records from Arkiv…"
   try {
+    if (creators.some((s) => !/^0x[0-9a-fA-F]{40}$/.test(s))) throw new Error("Every trusted publisher must be a complete wallet address. Leave the field explicitly blank only to read any wallet.")
     if (!endpoint.startsWith("https://")) throw new Error("Use an https:// endpoint.")
-    const client = createPublicClient({ chain: tiramisu, transport: politeHttp(endpoint, { concurrency: 2, maxWaitMs: 20_000 }) })
+    store.set("muniment.insights.endpoint", endpoint)
+    store.set("muniment.insights.creators", raw)
+    const client = createPublicClient({ chain: tiramisu, transport: politeHttp(endpoint, { concurrency: 2, maxWaitMs: 20_000, signal: controller.signal }) })
     const archive = createArchiveReader(client as unknown as ArchiveClient)
     const filters = { creators: creators.length ? creators : undefined }
-    const [scan, head] = await Promise.all([archive.scanReplies(filters, { maxPages: 10 }), archive.head()])
-    last = { records: scan.records, complete: scan.complete, block: scan.blockNumber, headMs: head.timeMs, query: replyQuery(filters), creators }
+    const [scan, head] = await Promise.all([archive.scanReplies(filters, { maxPages: 10, signal: controller.signal }), archive.head()])
+    if (current !== generation) return
+    last = { records: scan.records, complete: scan.complete, block: scan.blockNumber, headMs: head.timeMs, query: replyQuery(filters), creators, issues: scan.issues.length }
     render(last)
   } catch (err) {
+    if (current !== generation) return
+    clearData()
     $("coverage").innerHTML = ""
     const p = document.createElement("span")
     p.className = "error"
-    p.textContent = `Could not read from Arkiv: ${(err as Error).message.split("\n")[0].slice(0, 200)}. Nothing below is a cached or invented value.`
+    p.textContent = `Could not read from Arkiv: ${(err as Error).message.split("\n")[0].slice(0, 200)}. Previous figures have been cleared; no current results are available.`
     $("coverage").appendChild(p)
   }
 }
@@ -155,6 +171,7 @@ function render(d: Data) {
 
   $("coverage").textContent = `${recs.length} live synthetic replies from ${d.creators.length ? `${d.creators.length} trusted publisher wallet(s)` : "any wallet"}, read at block ${d.block?.toLocaleString("en-GB") ?? "?"} (${new Date(d.headMs).toISOString().slice(0, 16).replace("T", " ")} UTC). ${d.complete ? "Every matching page was read." : "The scan stopped at its page bound: figures are a PARTIAL sample."}`
   $("query").textContent = d.query
+  if (d.issues) $("coverage").append(document.createTextNode(` ${d.issues} malformed or unsupported records were excluded from these figures.`))
 
   // tiles
   const tiles = $("tiles")
