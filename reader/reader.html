@@ -28,7 +28,8 @@ fieldset{border:1px solid var(--rule);padding:12px;margin:12px 0}
 legend{padding:0 6px;font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
 label{display:grid;gap:3px;font-size:.82rem;color:var(--ink2)}
-input,select,button{font:inherit;color:var(--ink);background:var(--bg2);border:1px solid var(--rule);padding:8px 10px;min-height:42px;border-radius:0;width:100%}
+input,select,button{font:inherit;color:var(--ink);background:var(--bg2);border:1px solid var(--rule);padding:8px 10px;min-height:42px;border-radius:0;width:100%;min-width:0;max-width:100%}
+.grid>*,.row>*{min-width:0;max-width:100%}
 button{cursor:pointer;width:auto;font-weight:600}
 button.primary{background:var(--tag);color:var(--tagink);border-color:var(--tag)}
 button:disabled{opacity:.55;cursor:not-allowed}
