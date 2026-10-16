@@ -9,7 +9,7 @@ const browser = await chromium.launch()
 const widths = [320, 360, 390, 430, 768, 1024, 1280, 1440, 1920]
 const manifest = JSON.parse(readFileSync("evidence/manifest.json", "utf8"))
 const key = manifest.entries.find((e) => e.id === "r01" && e.kind === "reply").key
-const routes = ["/", "/archive", "/preserve", "/collections", "/publish", "/developers", "/how-it-works", "/privacy", "/terms", "/reader.html", `/records/${key}`, "https://muniment-insights.vercel.app/"]
+const routes = ["/", "/archive", "/preserve", "/collections", "/publish", "/developers", "/how-it-works", "/privacy", "/terms", "/reader.html", `/records/${key}`, process.env.DASHBOARD_URL || "https://muniment-insights.vercel.app/"]
 const results = []
 for (const theme of ["dark", "light"]) {
   for (const width of widths) {
