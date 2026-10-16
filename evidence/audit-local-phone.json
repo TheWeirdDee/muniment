@@ -1,0 +1,385 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\DELL\\Desktop\\muniment\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/audit.spec.ts",
+      "--project=phone",
+      "--workers=1",
+      "--reporter=list,json",
+      "--output=test-results/audit-phone"
+    ],
+    "configFile": "C:\\Users\\DELL\\Desktop\\muniment\\playwright.config.ts",
+    "rootDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results/audit-phone",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results/audit-phone",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-phone",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "userAgent": "Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.8078.4 Mobile Safari/537.36",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "screen": {
+            "width": 412,
+            "height": 915
+          },
+          "deviceScaleFactor": 2.625,
+          "isMobile": true,
+          "hasTouch": true,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "audit.spec.ts",
+      "file": "audit.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "MUN-AUD-010 sequential endpoint typing keeps focus and nested Escape restores it",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 33544,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Network settings', exact: true })\nExpected: focused\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: 'Network settings', exact: true }) with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Network settings', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Network settings', exact: true })\nExpected: focused\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: 'Network settings', exact: true }) with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Network settings', exact: true })\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit.spec.ts:20:82",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit.spec.ts",
+                      "column": 82,
+                      "line": 20
+                    },
+                    "snippet": "  18 |  await page.keyboard.press(\"Escape\")\n  19 |  await expect(dialog).toHaveCount(0)\n> 20 |  await expect(page.getByRole(\"button\", { name:\"Network settings\", exact:true })).toBeFocused()\n     |                                                                                  ^\n  21 |  await page.keyboard.press(\"Escape\")\n  22 | })\n  23 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit.spec.ts",
+                        "column": 82,
+                        "line": 20
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Network settings', exact: true })\nExpected: focused\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: 'Network settings', exact: true }) with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Network settings', exact: true })\u001b[22m\n\n\n  18 |  await page.keyboard.press(\"Escape\")\n  19 |  await expect(dialog).toHaveCount(0)\n> 20 |  await expect(page.getByRole(\"button\", { name:\"Network settings\", exact:true })).toBeFocused()\n     |                                                                                  ^\n  21 |  await page.keyboard.press(\"Escape\")\n  22 | })\n  23 |\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit.spec.ts:20:82"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T14:30:11.322Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-phone\\audit-MUN-AUD-010-sequenti-f0af8-d-nested-Escape-restores-it-phone\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-phone\\audit-MUN-AUD-010-sequenti-f0af8-d-nested-Escape-restores-it-phone\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-phone\\audit-MUN-AUD-010-sequenti-f0af8-d-nested-Escape-restores-it-phone\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit.spec.ts",
+                    "column": 82,
+                    "line": 20
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "45efdff6a4d2e1f7e786-218daca4f386bf0dc52c",
+          "file": "audit.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "MUN-AUD-001 archive Load more survives a real block change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11871,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T14:30:58.950Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "45efdff6a4d2e1f7e786-01f0db57a870e121d5f2",
+          "file": "audit.spec.ts",
+          "line": 24,
+          "column": 1
+        },
+        {
+          "title": "MUN-AUD-001 disk reader retains snapshot through delayed pages",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8815,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T14:31:11.050Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "45efdff6a4d2e1f7e786-215187060e1394376a49",
+          "file": "audit.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "MUN-AUD-003/004 invalid dashboard trust fails closed and failed reload clears all figures",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14195,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T14:31:19.916Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "45efdff6a4d2e1f7e786-5f91d7eb98c018f9eebe",
+          "file": "audit.spec.ts",
+          "line": 51,
+          "column": 1
+        },
+        {
+          "title": "MUN-AUD-004 an older in-flight dashboard load cannot replace a newer error",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7597,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T14:31:34.261Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "45efdff6a4d2e1f7e786-f3aa5c31d84b0c1e17a7",
+          "file": "audit.spec.ts",
+          "line": 76,
+          "column": 1
+        },
+        {
+          "title": "MUN-AUD-008 synthetic boundary fixture discloses linked scan bounds in UI and export",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T14:31:41.923Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "45efdff6a4d2e1f7e786-30da307d0d9ec6068542",
+          "file": "audit.spec.ts",
+          "line": 97,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T14:30:09.067Z",
+    "duration": 94722.59199999999,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
