@@ -6,6 +6,12 @@ import { PUBLISHER, REVIEWER, k, replyEntity, replyPayload, reviewEntity } from 
 const bad = (r: ReturnType<typeof decodeReply>) => (r.ok ? null : r.issue.reason)
 
 describe("decodeReply", () => {
+  it("rejects contradictory durations but allows missing measurements and zero elapsed days", () => {
+    expect(bad(decodeReply(replyEntity(1, { attrs: { response_days: { type: "i32", value: 1 } } })))).toMatch(/disagrees/)
+    expect(decodeReply(replyEntity(1, { attrs: { response_days: undefined } })).ok).toBe(true)
+    expect(decodeReply(replyEntity(1, { attrs: { replied_ms: undefined } })).ok).toBe(true)
+    expect(decodeReply(replyEntity(1, { attrs: { replied_ms: { type: "u64", value: BigInt(Date.UTC(2026, 1, 1)) + 86_399_999n }, response_days: { type: "i32", value: 0 } } })).ok).toBe(true)
+  })
   it("accepts a well-formed synthetic reply", () => {
     const r = decodeReply(replyEntity(1))
     expect(r.ok).toBe(true)
