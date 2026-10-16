@@ -1,0 +1,79 @@
+{
+  "at": "2026-10-16T09:55:16.452Z",
+  "revision": "f1e06852491b18cc190967b6f81dd62b29ebf4a8",
+  "versions": [
+    {
+      "base": "https://muniment-archive.vercel.app",
+      "commit": "f1e06852491b18cc190967b6f81dd62b29ebf4a8",
+      "dirtyWorkingTree": null,
+      "builtAt": "2026-10-16T09:40:02.247Z",
+      "source": "vercel-git",
+      "matches": true
+    },
+    {
+      "base": "https://muniment-insights.vercel.app",
+      "commit": "f1e06852491b18cc190967b6f81dd62b29ebf4a8",
+      "dirtyWorkingTree": null,
+      "builtAt": "2026-10-16T09:40:22.438Z",
+      "source": "vercel-git",
+      "matches": true
+    }
+  ],
+  "links": [
+    {
+      "url": "https://raw.githubusercontent.com/TheWeirdDee/muniment/main/README.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TheWeirdDee/muniment/main/LICENSE",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TheWeirdDee/muniment/main/arkiv/schema.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TheWeirdDee/muniment/main/arkiv/friction.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TheWeirdDee/muniment/main/SPONSOR_BEHAVIOUR.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TheWeirdDee/muniment/main/docs/testing.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TheWeirdDee/muniment/main/packages/muniment-query/README.md",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/TheWeirdDee/muniment/main/demo/muniment-demo.srt",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.srt",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://github.com/TheWeirdDee/muniment/releases/download/muniment-query-v0.1.0/muniment-query-0.1.0.tgz",
+      "status": 200,
+      "ok": true
+    }
+  ]
+}
