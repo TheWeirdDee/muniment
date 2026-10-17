@@ -1,6 +1,21 @@
 # Testing and evidence
 
-Every claim maps to the kind of evidence that can support it: chain transactions for permissions and atomicity, browser tests for user flows, unit tests for logic, screenshots for appearance only. Machine-readable results are in [`evidence/`](../evidence/). A failed run is never edited; a later passing run is recorded separately.
+Every claim maps to the kind of evidence that can support it: chain transactions for permissions and atomicity, browser tests for user flows, unit tests for logic, screenshots for appearance only. Machine-readable results are in [`evidence/`](../evidence/). Original failure outcomes, observations and traces are retained; later passing runs are recorded separately.
+
+## Signed browser campaign — 17 October 2026
+
+See [the transaction ledger and per-entity checks](transaction-campaign-2026-10-17.md) and [raw campaign evidence](../evidence/transactions-2026-10-17/campaign.json).
+
+| Evidence | Result and limit |
+|---|---|
+| Deployed-UI signing | Four successful real Tiramisu transactions through an isolated EIP-1193 test wallet: publication, single renewal and two two-reply renewals |
+| Separate on-chain checks | All five renewal receipts and five extension events reconciled against the reviewed keys/targets; current expiries, archive entries, disk reader and explorer Success pages checked |
+| Simulated wallet rejection | Passed with zero transactions sent |
+| Wrong-network readiness test | Simulated initial network; actual public RPC throttling blocked the readiness assertion after switching |
+| Stale-quote test | Skipped by the serial suite following that environmental failure |
+| Third-party wallet compatibility | Untested; the injected-provider campaign is not a MetaMask/Rabby or hardware-wallet certification |
+
+RPC verification used the same public provider through a separate implementation, not an independent second provider. Dated browser results below describe their own runs; they do not override the later throttling failure. The 41-reply trusted seed corpus excludes additional stranger-wallet publications by default.
 
 ## Wallets
 
@@ -55,8 +70,6 @@ See [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) for the measured runs and 
 
 ## Unit tests: `npm test`
 
-Latest real transaction results are recorded separately in [the 17 October signed campaign](transaction-campaign-2026-10-17.md). Four deployed-UI transactions passed complete chain reconciliation; the later simulated network-switch/stale-quote checks encountered public read quota and are not counted as passes.
-
 51 package tests across 8 files (Vitest), covering:
 
 - schema validation (no-reply rules, dates, types, unsafe URLs, correction consistency, size limits, versions, namespace);
@@ -64,10 +77,10 @@ Latest real transaction results are recorded separately in [the 17 October signe
 - renewal planning (never shorten, permissions, expired, atomic units, batch packing);
 - receipt verification (genuine, forged, borrowed transaction, wrong reply, overstated expiry, reverted transaction, sender mismatch, foreign logs);
 - collection export/import (notes excluded, malformed files, dedupe);
-- calldata equivalence with the SDK.
+- calldata equivalence with the SDK;
 - snapshot-pinned pagination and cancellable, bounded transport.
 
-Web reconciliation and component regression tests run separately with `node node_modules/vitest/vitest.mjs run tests/components`. They do not count toward the package-suite inventory above. Dated historical run counts below describe those earlier revisions.
+Web reconciliation and component regression tests run separately with `node node_modules/vitest/vitest.mjs run tests/components`: 18 tests across three files at the 17 October correction revision. They do not count toward the package-suite inventory above. Dated historical run counts below describe those earlier revisions.
 
 The equivalence test and the verification tests use test doubles (a stub transport, hand-built receipts). They prove logic, not live behaviour; the proof campaign covers that.
 
