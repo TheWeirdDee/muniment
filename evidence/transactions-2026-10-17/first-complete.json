@@ -1,0 +1,329 @@
+{
+  "startedAt": "2026-10-17T17:33:17.989Z",
+  "runtimeRevision": "f1e69505409dcaf383928d9a114c9b458d00a3d8",
+  "chainId": 7738577,
+  "signingMethod": "Deployed UI -> EIP-1193/EIP-6963 isolated test wallet -> explicit scoped automated approval -> locally signed real Tiramisu transaction",
+  "workflows": {
+    "publication": {
+      "action": "publication",
+      "wallet": "0x5F2b31286708083Aa5D097bD89d5b3F48DD6cBC9",
+      "signerRole": "STRANGER",
+      "armed": false,
+      "predictedKey": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+      "approval": {
+        "at": "2026-10-17T17:33:39.587Z",
+        "url": "https://muniment-archive.vercel.app/publish",
+        "method": "Scoped automated test-wallet approval after deployed UI Sign click",
+        "chainId": 7738577,
+        "to": "0x4400000000000000000000000000000000000044",
+        "gas": "181007",
+        "gasPrice": "1000000002",
+        "estimatedMaxFee": "181007000362014",
+        "operationCount": 2
+      },
+      "txHash": "0xdd15a633aa62d588392cb1e5e9585ae13ab8a0679a9d3523d0d02b506aff8418",
+      "submittedAt": "2026-10-17T17:33:42.854Z",
+      "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+      "uiConfirmed": true,
+      "block": "704329",
+      "receiptStatus": "success",
+      "explorer": "https://tiramisu.explorer.arkiv.network/tx/0xdd15a633aa62d588392cb1e5e9585ae13ab8a0679a9d3523d0d02b506aff8418",
+      "blockTime": "2026-10-17T17:33:44.000Z",
+      "independent": {
+        "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+        "creator": "0x5F2b31286708083Aa5D097bD89d5b3F48DD6cBC9",
+        "owner": "0x000000000000000000000000000000000000dEaD",
+        "createdAtBlock": "704329",
+        "initialExpiry": "1006729",
+        "flags": {
+          "readonly": true,
+          "permissionlessExtension": true,
+          "raw": 3
+        },
+        "title": "Road resurfacing — Signed campaign amber (synthetic, user-published)",
+        "status": "PASS"
+      },
+      "archive": {
+        "status": "PASS",
+        "url": "https://muniment-archive.vercel.app/archive",
+        "trustMode": "Explicit any-wallet setting; untrusted publisher labelled"
+      },
+      "reader": {
+        "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+        "status": "PASS",
+        "websiteBlocked": true,
+        "expiry": "2000356",
+        "text": "Record\nSynthetic test record\nRoad resurfacing — Signed campaign amber (synthetic, user-published)\nClaimed issuing authority\nRavipur Municipal Corporation (synthetic) (stated by the record, not verified)\nOn-chain creator (publisher)\n0x5f2b31286708083aa5d097bd89d5b3f48dd6cbc9\nCurrent owner\n0x000000000000000000000000000000000000dead (sealed to a burn address assumed to have no usable key)\nEntity key\n0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8\nCreated at block\n704,329\nExpires at block\n2,000,356\nFlags\nread-only: true, permissionless extension: true\nOutcome\ngranted\nFiled\n2026-06-01 UTC\nReplied\n2026-06-25 UTC\nResponse days\n24\nReference\nUSR/RTI/2026/75806\nQuestion\nPlease provide the sanctioned budget, the amount spent and the list of work orders for road resurfacing in the area for the financial year.\nReply\nThe requested figures and documents are enclosed (synthetic annexure). All amounts in this record are invented.\n\nSynthetic test record published from the Muniment publish page on the Arkiv Tiramisu testnet. Not a real government reply.\n\nAppeals: 0 loaded (complete at this snapshot)\nReviews (statements by wallets): 0 loaded (complete at this snapshot)\nRenewal receipts (claims; this reader does not verify them): 1 loaded (complete at this snapshot)\n\ntarget block 2000356 · by 0xe0e47735c1add1390e03766d7bd06ec913485de7\n\nExemption relations: 0 loaded (complete at this snapshot)\nExport this record as JSON\nRaw entity\n{\n  \"entity\": {\n    \"key\": \"0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8\",\n    \"owner\": \"0x000000000000000000000000000000000000dead\",\n    \"creator\": \"0x5f2b31286708083aa5d097bd89d5b3f48dd6cbc9\",\n    \"createdAt\": \"0xabf49\",\n    \"expiresAt\": \"0x1e85e4\",\n    \"creationFlags\": {\n      \"readonly\": true,\n      \"permissionlessExtension\": true,\n      \"raw\": 3\n    },\n    \"contentType\": \"application/json\",\n    \"payload\": \"0x7b22736368656d61223a226d756e696d656e742e7265706c792f31222c2273796e746865746963223a747275652c227469746c65223a22526f6164207265737572666163696e6720e28094205369676e65642063616d706169676e20616d626572202873796e7468657469632c20757365722d7075626c697368656429222c227175657374696f6e223a22506c656173652070726f76696465207468652073616e6374696f6e6564206275646765742c2074686520616d6f756e74207370656e7420616e6420746865206c697374206f6620776f726b206f726465727320666f7220726f6164207265737572666163696e6720696e20746865206172656120666f72207468652066696e616e6369616c20796561722e222c22616e73776572223a2254686520726571756573746564206669677572657320616e6420646f63756d656e74732061726520656e636c6f736564202873796e74686574696320616e6e6578757265292e20416c6c20616d6f756e747320696e2074686973207265636f72642061726520696e76656e7465642e222c22617574686f726974794e616d65223a2252617669707572204d756e69636970616c20436f72706f726174696f6e202873796e74686574696329222c226a7572697364696374696f6e4e616d65223a2253756e64617276616e202866696374696f6e616c20737461746529222c22636c61696d6564536f75726365223a7b227265666572656e6365223a225553522f5254492f323032362f3735383036222c2275726c223a6e756c6c2c22646f63756d656e7444617465223a22323032362d30362d3235222c22737461747573223a2273796e7468657469632d6e6f2d736f75726365227d2c226174746163686d656e74223a6e756c6c2c226578656d7074696f6e73223a5b5d2c22636f7272656374696f6e223a6e756c6c2c22646973636c6f73757265223a2253796e7468657469632074657374207265636f7264207075626c69736865642066726f6d20746865204d756e696d656e74207075626c6973682070616765206f6e207468652041726b697620546972616d69737520746573746e65742e204e6f742061207265616c20676f7665726e6d656e74207265706c792e227d\",\n    \"attributes\": [\n      {\n        \"name\": \"app\",\n        \"type\": \"str\",\n        \"value\": \"muniment-archive\"\n      },\n      {\n        \"name\": \"authority\",\n        \"type\": \"str\",\n        \"value\": \"ravipur-mc\"\n      },\n      {\n        \"name\": \"filed_ms\",\n        \"type\": \"u64\",\n        \"value\": \"0x19e807aec00\"\n      },\n      {\n        \"name\": \"jurisdiction\",\n        \"type\": \"str\",\n        \"value\": \"sundarvan\"\n      },\n      {\n        \"name\": \"kind\",\n        \"type\": \"str\",\n        \"value\": \"reply\"\n      },\n      {\n        \"name\": \"language\",\n        \"type\": \"str\",\n        \"value\": \"en\"\n      },\n      {\n        \"name\": \"outcome\",\n        \"type\": \"str\",\n        \"value\": \"granted\"\n      },\n      {\n        \"name\": \"ref\",\n        \"type\": \"str\",\n        \"value\": \"USR/RTI/2026/75806\"\n      },\n      {\n        \"name\": \"replied_ms\",\n        \"type\": \"u64\",\n        \"value\": \"0x19efc138c00\"\n      },\n      {\n        \"name\": \"response_days\",\n        \"type\": \"i32\",\n        \"value\": 24\n      },\n      {\n        \"name\": \"schema\",\n        \"type\": \"i32\",\n        \"value\": 1\n      },\n      {\n        \"name\": \"synthetic\",\n        \"type\": \"bool\",\n        \"value\": true\n      },\n      {\n        \"name\": \"topic\",\n        \"type\": \"str\",\n        \"value\": \"roads\"\n      }\n    ]\n  },\n  \"decodedPayload\": {\n    \"schema\": \"muniment.reply/1\",\n    \"synthetic\": true,\n    \"title\": \"Road resurfacing — Signed campaign amber (synthetic, user-published)\",\n    \"question\": \"Please provide the sanctioned budget, the amount spent and the list of work orders for road resurfacing in the area for the financial year.\",\n    \"answer\": \"The requested figures and documents are enclosed (synthetic annexure). All amounts in this record are invented.\",\n    \"authorityName\": \"Ravipur Municipal Corporation (synthetic)\",\n    \"jurisdictionName\": \"Sundarvan (fictional state)\",\n    \"claimedSource\": {\n      \"reference\": \"USR/RTI/2026/75806\",\n      \"url\": null,\n      \"documentDate\": \"2026-06-25\",\n      \"status\": \"synthetic-no-source\"\n    },\n    \"attachment\": null,\n    \"exemptions\": [],\n    \"correction\": null,\n    \"disclosure\": \"Synthetic test record published from the Muniment publish page on the Arkiv Tiramisu testnet. Not a real government reply.\"\n  }\n}",
+        "checkedAt": "2026-10-17T22:01:57.430Z"
+      },
+      "status": "PASS"
+    },
+    "single": {
+      "action": "single",
+      "wallet": "0xe0e47735c1add1390E03766D7Bd06eC913485DE7",
+      "signerRole": "RENEWER",
+      "review": {
+        "replies": [
+          "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8"
+        ],
+        "entities": [
+          {
+            "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "reply": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "kind": "reply",
+            "before": "1006729",
+            "target": "2000356"
+          }
+        ],
+        "target": "2000356"
+      },
+      "reviewCapturedAt": "2026-10-17T17:34:50.747Z",
+      "armed": false,
+      "approval": {
+        "at": "2026-10-17T17:35:26.678Z",
+        "url": "https://muniment-archive.vercel.app/records/0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+        "method": "Scoped automated test-wallet approval after deployed UI Sign click",
+        "chainId": 7738577,
+        "to": "0x4400000000000000000000000000000000000044",
+        "gas": "118481",
+        "gasPrice": "1000000002",
+        "estimatedMaxFee": "118481000236962",
+        "operationCount": 2
+      },
+      "txHash": "0xfe501a8a39ee5ee12467e40ddf4836882a43f44df779ad3b86e9adacec6c2ace",
+      "submittedAt": "2026-10-17T17:36:15.372Z",
+      "uiReconciliation": "Transaction 1: Verified renewal\n0xfe501a8a…ec6c2ace\n(opens in a new tab)\n0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8: verified — Receipt, transaction events and every planned entity expiry reconciled.\nReceipt: 0x2b3bb36d7f45a1d15073143a1589a2df6739c4ae2f62b872ae7f30adcdaabec7",
+      "uiVerifiedAt": "2026-10-17T17:36:25.572Z",
+      "block": "704405",
+      "receiptStatus": "success",
+      "explorer": "https://tiramisu.explorer.arkiv.network/tx/0xfe501a8a39ee5ee12467e40ddf4836882a43f44df779ad3b86e9adacec6c2ace",
+      "blockTime": "2026-10-17T17:36:16.000Z",
+      "independent": {
+        "receipts": [
+          {
+            "key": "0x2b3bb36d7f45a1d15073143a1589a2df6739c4ae2f62b872ae7f30adcdaabec7",
+            "reply": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "creator": "0xe0e47735c1add1390E03766D7Bd06eC913485DE7",
+            "createdAtBlock": "704405",
+            "target": "2000356",
+            "extendedCount": 1,
+            "status": "PASS"
+          }
+        ],
+        "entities": [
+          {
+            "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "reply": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "kind": "reply",
+            "before": "1006729",
+            "target": "2000356",
+            "after": "2000356",
+            "eventExpiry": "2000356",
+            "status": "PASS"
+          }
+        ],
+        "checkedAt": "2026-10-17T22:01:58.578Z",
+        "method": "Separate Node RPC receipt/event decoding and fresh entity reads; does not call app reconciliation"
+      },
+      "reader": {
+        "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+        "status": "PASS",
+        "websiteBlocked": true,
+        "expiry": "2000356",
+        "text": "Record\nSynthetic test record\nRoad resurfacing — Signed campaign amber (synthetic, user-published)\nClaimed issuing authority\nRavipur Municipal Corporation (synthetic) (stated by the record, not verified)\nOn-chain creator (publisher)\n0x5f2b31286708083aa5d097bd89d5b3f48dd6cbc9\nCurrent owner\n0x000000000000000000000000000000000000dead (sealed to a burn address assumed to have no usable key)\nEntity key\n0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8\nCreated at block\n704,329\nExpires at block\n2,000,356\nFlags\nread-only: true, permissionless extension: true\nOutcome\ngranted\nFiled\n2026-06-01 UTC\nReplied\n2026-06-25 UTC\nResponse days\n24\nReference\nUSR/RTI/2026/75806\nQuestion\nPlease provide the sanctioned budget, the amount spent and the list of work orders for road resurfacing in the area for the financial year.\nReply\nThe requested figures and documents are enclosed (synthetic annexure). All amounts in this record are invented.\n\nSynthetic test record published from the Muniment publish page on the Arkiv Tiramisu testnet. Not a real government reply.\n\nAppeals: 0 loaded (complete at this snapshot)\nReviews (statements by wallets): 0 loaded (complete at this snapshot)\nRenewal receipts (claims; this reader does not verify them): 1 loaded (complete at this snapshot)\n\ntarget block 2000356 · by 0xe0e47735c1add1390e03766d7bd06ec913485de7\n\nExemption relations: 0 loaded (complete at this snapshot)\nExport this record as JSON\nRaw entity\n{\n  \"entity\": {\n    \"key\": \"0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8\",\n    \"owner\": \"0x000000000000000000000000000000000000dead\",\n    \"creator\": \"0x5f2b31286708083aa5d097bd89d5b3f48dd6cbc9\",\n    \"createdAt\": \"0xabf49\",\n    \"expiresAt\": \"0x1e85e4\",\n    \"creationFlags\": {\n      \"readonly\": true,\n      \"permissionlessExtension\": true,\n      \"raw\": 3\n    },\n    \"contentType\": \"application/json\",\n    \"payload\": \"0x7b22736368656d61223a226d756e696d656e742e7265706c792f31222c2273796e746865746963223a747275652c227469746c65223a22526f6164207265737572666163696e6720e28094205369676e65642063616d706169676e20616d626572202873796e7468657469632c20757365722d7075626c697368656429222c227175657374696f6e223a22506c656173652070726f76696465207468652073616e6374696f6e6564206275646765742c2074686520616d6f756e74207370656e7420616e6420746865206c697374206f6620776f726b206f726465727320666f7220726f6164207265737572666163696e6720696e20746865206172656120666f72207468652066696e616e6369616c20796561722e222c22616e73776572223a2254686520726571756573746564206669677572657320616e6420646f63756d656e74732061726520656e636c6f736564202873796e74686574696320616e6e6578757265292e20416c6c20616d6f756e747320696e2074686973207265636f72642061726520696e76656e7465642e222c22617574686f726974794e616d65223a2252617669707572204d756e69636970616c20436f72706f726174696f6e202873796e74686574696329222c226a7572697364696374696f6e4e616d65223a2253756e64617276616e202866696374696f6e616c20737461746529222c22636c61696d6564536f75726365223a7b227265666572656e6365223a225553522f5254492f323032362f3735383036222c2275726c223a6e756c6c2c22646f63756d656e7444617465223a22323032362d30362d3235222c22737461747573223a2273796e7468657469632d6e6f2d736f75726365227d2c226174746163686d656e74223a6e756c6c2c226578656d7074696f6e73223a5b5d2c22636f7272656374696f6e223a6e756c6c2c22646973636c6f73757265223a2253796e7468657469632074657374207265636f7264207075626c69736865642066726f6d20746865204d756e696d656e74207075626c6973682070616765206f6e207468652041726b697620546972616d69737520746573746e65742e204e6f742061207265616c20676f7665726e6d656e74207265706c792e227d\",\n    \"attributes\": [\n      {\n        \"name\": \"app\",\n        \"type\": \"str\",\n        \"value\": \"muniment-archive\"\n      },\n      {\n        \"name\": \"authority\",\n        \"type\": \"str\",\n        \"value\": \"ravipur-mc\"\n      },\n      {\n        \"name\": \"filed_ms\",\n        \"type\": \"u64\",\n        \"value\": \"0x19e807aec00\"\n      },\n      {\n        \"name\": \"jurisdiction\",\n        \"type\": \"str\",\n        \"value\": \"sundarvan\"\n      },\n      {\n        \"name\": \"kind\",\n        \"type\": \"str\",\n        \"value\": \"reply\"\n      },\n      {\n        \"name\": \"language\",\n        \"type\": \"str\",\n        \"value\": \"en\"\n      },\n      {\n        \"name\": \"outcome\",\n        \"type\": \"str\",\n        \"value\": \"granted\"\n      },\n      {\n        \"name\": \"ref\",\n        \"type\": \"str\",\n        \"value\": \"USR/RTI/2026/75806\"\n      },\n      {\n        \"name\": \"replied_ms\",\n        \"type\": \"u64\",\n        \"value\": \"0x19efc138c00\"\n      },\n      {\n        \"name\": \"response_days\",\n        \"type\": \"i32\",\n        \"value\": 24\n      },\n      {\n        \"name\": \"schema\",\n        \"type\": \"i32\",\n        \"value\": 1\n      },\n      {\n        \"name\": \"synthetic\",\n        \"type\": \"bool\",\n        \"value\": true\n      },\n      {\n        \"name\": \"topic\",\n        \"type\": \"str\",\n        \"value\": \"roads\"\n      }\n    ]\n  },\n  \"decodedPayload\": {\n    \"schema\": \"muniment.reply/1\",\n    \"synthetic\": true,\n    \"title\": \"Road resurfacing — Signed campaign amber (synthetic, user-published)\",\n    \"question\": \"Please provide the sanctioned budget, the amount spent and the list of work orders for road resurfacing in the area for the financial year.\",\n    \"answer\": \"The requested figures and documents are enclosed (synthetic annexure). All amounts in this record are invented.\",\n    \"authorityName\": \"Ravipur Municipal Corporation (synthetic)\",\n    \"jurisdictionName\": \"Sundarvan (fictional state)\",\n    \"claimedSource\": {\n      \"reference\": \"USR/RTI/2026/75806\",\n      \"url\": null,\n      \"documentDate\": \"2026-06-25\",\n      \"status\": \"synthetic-no-source\"\n    },\n    \"attachment\": null,\n    \"exemptions\": [],\n    \"correction\": null,\n    \"disclosure\": \"Synthetic test record published from the Muniment publish page on the Arkiv Tiramisu testnet. Not a real government reply.\"\n  }\n}",
+        "checkedAt": "2026-10-17T22:02:00.729Z"
+      },
+      "archive": {
+        "status": "PASS",
+        "checkedAfterMulti": true,
+        "note": "Final archive expiry includes the later multi-reply renewal; the single-renewal target is independently recorded in its transaction and contemporaneous disk-reader result.",
+        "result": {
+          "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+          "expiry": "4600383",
+          "status": "PASS",
+          "title": "Expiry block 4,600,383, about 15 Jan 2027, 22:02 UTC"
+        }
+      },
+      "status": "PASS"
+    },
+    "multi": {
+      "action": "multi",
+      "wallet": "0xe0e47735c1add1390E03766D7Bd06eC913485DE7",
+      "signerRole": "RENEWER",
+      "secondReply": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+      "review": {
+        "replies": [
+          "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+          "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972"
+        ],
+        "entities": [
+          {
+            "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "reply": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "kind": "reply",
+            "before": "2000356",
+            "target": "4600383"
+          },
+          {
+            "key": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+            "reply": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+            "kind": "reply",
+            "before": "1533883",
+            "target": "4600383"
+          }
+        ],
+        "target": "4600383"
+      },
+      "reviewCapturedAt": "2026-10-17T22:02:18.175Z",
+      "armed": false,
+      "approvalRequestedAt": "2026-10-17T22:02:24.658Z",
+      "approval": {
+        "at": "2026-10-17T22:02:25.458Z",
+        "url": "https://muniment-archive.vercel.app/preserve",
+        "method": "Scoped automated test-wallet approval after deployed UI Sign click",
+        "chainId": 7738577,
+        "to": "0x4400000000000000000000000000000000000044",
+        "gas": "237895",
+        "gasPrice": "1000000002",
+        "estimatedMaxFee": "237895000475790",
+        "operationCount": 4
+      },
+      "txHash": "0x71af298abe614e5b338ba5c7d479ce66025d650716155f96e148fbed8fb3840f",
+      "submittedAt": "2026-10-17T22:02:27.079Z",
+      "uiReconciliation": "Transaction 1: Verified renewal\n0x71af298a…8fb3840f\n(opens in a new tab)\n0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8: verified — Receipt, transaction events and every planned entity expiry reconciled.\nReceipt: 0x93326256f00753cc219e5183bfaa5aedc730367dfebd5427d6e01057c45d5caf\n0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972: verified — Receipt, transaction events and every planned entity expiry reconciled.\nReceipt: 0x6ed825d83d8529b3d5aebccf0251ba60f037565a18a5ba2fad324afb8966c751",
+      "uiVerifiedAt": "2026-10-17T22:02:40.927Z",
+      "block": "712391",
+      "receiptStatus": "success",
+      "explorer": "https://tiramisu.explorer.arkiv.network/tx/0x71af298abe614e5b338ba5c7d479ce66025d650716155f96e148fbed8fb3840f",
+      "blockTime": "2026-10-17T22:02:28.000Z",
+      "independent": {
+        "receipts": [
+          {
+            "key": "0x93326256f00753cc219e5183bfaa5aedc730367dfebd5427d6e01057c45d5caf",
+            "reply": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "creator": "0xe0e47735c1add1390E03766D7Bd06eC913485DE7",
+            "createdAtBlock": "712391",
+            "target": "4600383",
+            "extendedCount": 1,
+            "status": "PASS"
+          },
+          {
+            "key": "0x6ed825d83d8529b3d5aebccf0251ba60f037565a18a5ba2fad324afb8966c751",
+            "reply": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+            "creator": "0xe0e47735c1add1390E03766D7Bd06eC913485DE7",
+            "createdAtBlock": "712391",
+            "target": "4600383",
+            "extendedCount": 1,
+            "status": "PASS"
+          }
+        ],
+        "entities": [
+          {
+            "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "reply": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "kind": "reply",
+            "before": "2000356",
+            "target": "4600383",
+            "after": "4600383",
+            "eventExpiry": "4600383",
+            "status": "PASS"
+          },
+          {
+            "key": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+            "reply": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+            "kind": "reply",
+            "before": "1533883",
+            "target": "4600383",
+            "after": "4600383",
+            "eventExpiry": "4600383",
+            "status": "PASS"
+          }
+        ],
+        "checkedAt": "2026-10-17T22:02:43.020Z",
+        "method": "Separate Node RPC receipt/event decoding and fresh entity reads; does not call app reconciliation"
+      },
+      "readers": [
+        {
+          "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+          "status": "PASS",
+          "websiteBlocked": true,
+          "expiry": "4600383",
+          "text": "Record\nSynthetic test record\nRoad resurfacing — Signed campaign amber (synthetic, user-published)\nClaimed issuing authority\nRavipur Municipal Corporation (synthetic) (stated by the record, not verified)\nOn-chain creator (publisher)\n0x5f2b31286708083aa5d097bd89d5b3f48dd6cbc9\nCurrent owner\n0x000000000000000000000000000000000000dead (sealed to a burn address assumed to have no usable key)\nEntity key\n0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8\nCreated at block\n704,329\nExpires at block\n4,600,383\nFlags\nread-only: true, permissionless extension: true\nOutcome\ngranted\nFiled\n2026-06-01 UTC\nReplied\n2026-06-25 UTC\nResponse days\n24\nReference\nUSR/RTI/2026/75806\nQuestion\nPlease provide the sanctioned budget, the amount spent and the list of work orders for road resurfacing in the area for the financial year.\nReply\nThe requested figures and documents are enclosed (synthetic annexure). All amounts in this record are invented.\n\nSynthetic test record published from the Muniment publish page on the Arkiv Tiramisu testnet. Not a real government reply.\n\nAppeals: 0 loaded (complete at this snapshot)\nReviews (statements by wallets): 0 loaded (complete at this snapshot)\nRenewal receipts (claims; this reader does not verify them): 2 loaded (complete at this snapshot)\n\ntarget block 4600383 · by 0xe0e47735c1add1390e03766d7bd06ec913485de7\n\ntarget block 2000356 · by 0xe0e47735c1add1390e03766d7bd06ec913485de7\n\nExemption relations: 0 loaded (complete at this snapshot)\nExport this record as JSON\nRaw entity\n{\n  \"entity\": {\n    \"key\": \"0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8\",\n    \"owner\": \"0x000000000000000000000000000000000000dead\",\n    \"creator\": \"0x5f2b31286708083aa5d097bd89d5b3f48dd6cbc9\",\n    \"createdAt\": \"0xabf49\",\n    \"expiresAt\": \"0x46323f\",\n    \"creationFlags\": {\n      \"readonly\": true,\n      \"permissionlessExtension\": true,\n      \"raw\": 3\n    },\n    \"contentType\": \"application/json\",\n    \"payload\": \"0x7b22736368656d61223a226d756e696d656e742e7265706c792f31222c2273796e746865746963223a747275652c227469746c65223a22526f6164207265737572666163696e6720e28094205369676e65642063616d706169676e20616d626572202873796e7468657469632c20757365722d7075626c697368656429222c227175657374696f6e223a22506c656173652070726f76696465207468652073616e6374696f6e6564206275646765742c2074686520616d6f756e74207370656e7420616e6420746865206c697374206f6620776f726b206f726465727320666f7220726f6164207265737572666163696e6720696e20746865206172656120666f72207468652066696e616e6369616c20796561722e222c22616e73776572223a2254686520726571756573746564206669677572657320616e6420646f63756d656e74732061726520656e636c6f736564202873796e74686574696320616e6e6578757265292e20416c6c20616d6f756e747320696e2074686973207265636f72642061726520696e76656e7465642e222c22617574686f726974794e616d65223a2252617669707572204d756e69636970616c20436f72706f726174696f6e202873796e74686574696329222c226a7572697364696374696f6e4e616d65223a2253756e64617276616e202866696374696f6e616c20737461746529222c22636c61696d6564536f75726365223a7b227265666572656e6365223a225553522f5254492f323032362f3735383036222c2275726c223a6e756c6c2c22646f63756d656e7444617465223a22323032362d30362d3235222c22737461747573223a2273796e7468657469632d6e6f2d736f75726365227d2c226174746163686d656e74223a6e756c6c2c226578656d7074696f6e73223a5b5d2c22636f7272656374696f6e223a6e756c6c2c22646973636c6f73757265223a2253796e7468657469632074657374207265636f7264207075626c69736865642066726f6d20746865204d756e696d656e74207075626c6973682070616765206f6e207468652041726b697620546972616d69737520746573746e65742e204e6f742061207265616c20676f7665726e6d656e74207265706c792e227d\",\n    \"attributes\": [\n      {\n        \"name\": \"app\",\n        \"type\": \"str\",\n        \"value\": \"muniment-archive\"\n      },\n      {\n        \"name\": \"authority\",\n        \"type\": \"str\",\n        \"value\": \"ravipur-mc\"\n      },\n      {\n        \"name\": \"filed_ms\",\n        \"type\": \"u64\",\n        \"value\": \"0x19e807aec00\"\n      },\n      {\n        \"name\": \"jurisdiction\",\n        \"type\": \"str\",\n        \"value\": \"sundarvan\"\n      },\n      {\n        \"name\": \"kind\",\n        \"type\": \"str\",\n        \"value\": \"reply\"\n      },\n      {\n        \"name\": \"language\",\n        \"type\": \"str\",\n        \"value\": \"en\"\n      },\n      {\n        \"name\": \"outcome\",\n        \"type\": \"str\",\n        \"value\": \"granted\"\n      },\n      {\n        \"name\": \"ref\",\n        \"type\": \"str\",\n        \"value\": \"USR/RTI/2026/75806\"\n      },\n      {\n        \"name\": \"replied_ms\",\n        \"type\": \"u64\",\n        \"value\": \"0x19efc138c00\"\n      },\n      {\n        \"name\": \"response_days\",\n        \"type\": \"i32\",\n        \"value\": 24\n      },\n      {\n        \"name\": \"schema\",\n        \"type\": \"i32\",\n        \"value\": 1\n      },\n      {\n        \"name\": \"synthetic\",\n        \"type\": \"bool\",\n        \"value\": true\n      },\n      {\n        \"name\": \"topic\",\n        \"type\": \"str\",\n        \"value\": \"roads\"\n      }\n    ]\n  },\n  \"decodedPayload\": {\n    \"schema\": \"muniment.reply/1\",\n    \"synthetic\": true,\n    \"title\": \"Road resurfacing — Signed campaign amber (synthetic, user-published)\",\n    \"question\": \"Please provide the sanctioned budget, the amount spent and the list of work orders for road resurfacing in the area for the financial year.\",\n    \"answer\": \"The requested figures and documents are enclosed (synthetic annexure). All amounts in this record are invented.\",\n    \"authorityName\": \"Ravipur Municipal Corporation (synthetic)\",\n    \"jurisdictionName\": \"Sundarvan (fictional state)\",\n    \"claimedSource\": {\n      \"reference\": \"USR/RTI/2026/75806\",\n      \"url\": null,\n      \"documentDate\": \"2026-06-25\",\n      \"status\": \"synthetic-no-source\"\n    },\n    \"attachment\": null,\n    \"exemptions\": [],\n    \"correction\": null,\n    \"disclosure\": \"Synthetic test record published from the Muniment publish page on the Arkiv Tiramisu testnet. Not a real government reply.\"\n  }\n}",
+          "checkedAt": "2026-10-17T22:02:45.974Z"
+        },
+        {
+          "key": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+          "status": "PASS",
+          "websiteBlocked": true,
+          "expiry": "4600383",
+          "text": "Record\nSynthetic test record\nStreet lighting, Ward 15, 2024-25 (synthetic)\nClaimed issuing authority\nPublic Works Department, Sundarvan (synthetic) (stated by the record, not verified)\nOn-chain creator (publisher)\n0x817574740f413816636fae23064607084e2c0604\nCurrent owner\n0x000000000000000000000000000000000000dead (sealed to a burn address assumed to have no usable key)\nEntity key\n0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972\nCreated at block\n626,683\nExpires at block\n4,600,383\nFlags\nread-only: true, permissionless extension: true\nOutcome\ngranted\nFiled\n2026-03-10 UTC\nReplied\n2026-03-25 UTC\nResponse days\n15\nReference\nSPWD/RTI/2026/R15\nQuestion\nPlease state the number of street lights installed and repaired in Ward 15 during 2024-25, the contractor responsible, and the total amount paid.\nReply\n218 new LED fittings were installed and 454 repaired in Ward 15 during 2024-25 under an annual maintenance contract. Total paid: 73.0 lakh (synthetic figures).\n\nSynthetic test record published for the Muniment hackathon demo on the Arkiv Tiramisu testnet. Not a real government reply.\n\nAppeals: 0 loaded (complete at this snapshot)\nReviews (statements by wallets): 0 loaded (complete at this snapshot)\nRenewal receipts (claims; this reader does not verify them): 1 loaded (complete at this snapshot)\n\ntarget block 4600383 · by 0xe0e47735c1add1390e03766d7bd06ec913485de7\n\nExemption relations: 0 loaded (complete at this snapshot)\nExport this record as JSON\nRaw entity\n{\n  \"entity\": {\n    \"key\": \"0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972\",\n    \"owner\": \"0x000000000000000000000000000000000000dead\",\n    \"creator\": \"0x817574740f413816636fae23064607084e2c0604\",\n    \"createdAt\": \"0x98ffb\",\n    \"expiresAt\": \"0x46323f\",\n    \"creationFlags\": {\n      \"readonly\": true,\n      \"permissionlessExtension\": true,\n      \"raw\": 3\n    },\n    \"contentType\": \"application/json\",\n    \"payload\": \"0x7b22736368656d61223a226d756e696d656e742e7265706c792f31222c2273796e746865746963223a747275652c227469746c65223a22537472656574206c69676874696e672c20576172642031352c20323032342d3235202873796e74686574696329222c227175657374696f6e223a22506c6561736520737461746520746865206e756d626572206f6620737472656574206c696768747320696e7374616c6c656420616e6420726570616972656420696e205761726420313520647572696e6720323032342d32352c2074686520636f6e74726163746f7220726573706f6e7369626c652c20616e642074686520746f74616c20616d6f756e7420706169642e222c22616e73776572223a22323138206e6577204c45442066697474696e6773207765726520696e7374616c6c656420616e642034353420726570616972656420696e205761726420313520647572696e6720323032342d323520756e64657220616e20616e6e75616c206d61696e74656e616e636520636f6e74726163742e20546f74616c20706169643a2037332e30206c616b68202873796e7468657469632066696775726573292e222c22617574686f726974794e616d65223a225075626c696320576f726b73204465706172746d656e742c2053756e64617276616e202873796e74686574696329222c226a7572697364696374696f6e4e616d65223a2253756e64617276616e202866696374696f6e616c20737461746529222c22636c61696d6564536f75726365223a7b227265666572656e6365223a22535057442f5254492f323032362f523135222c2275726c223a6e756c6c2c22646f63756d656e7444617465223a22323032362d30332d3235222c22737461747573223a2273796e7468657469632d6e6f2d736f75726365227d2c226174746163686d656e74223a6e756c6c2c226578656d7074696f6e73223a5b5d2c22636f7272656374696f6e223a6e756c6c2c22646973636c6f73757265223a2253796e7468657469632074657374207265636f7264207075626c697368656420666f7220746865204d756e696d656e74206861636b6174686f6e2064656d6f206f6e207468652041726b697620546972616d69737520746573746e65742e204e6f742061207265616c20676f7665726e6d656e74207265706c792e227d\",\n    \"attributes\": [\n      {\n        \"name\": \"app\",\n        \"type\": \"str\",\n        \"value\": \"muniment-archive\"\n      },\n      {\n        \"name\": \"authority\",\n        \"type\": \"str\",\n        \"value\": \"sundarvan-pwd\"\n      },\n      {\n        \"name\": \"filed_ms\",\n        \"type\": \"u64\",\n        \"value\": \"0x19cd50b1800\"\n      },\n      {\n        \"name\": \"jurisdiction\",\n        \"type\": \"str\",\n        \"value\": \"sundarvan\"\n      },\n      {\n        \"name\": \"kind\",\n        \"type\": \"str\",\n        \"value\": \"reply\"\n      },\n      {\n        \"name\": \"language\",\n        \"type\": \"str\",\n        \"value\": \"en\"\n      },\n      {\n        \"name\": \"outcome\",\n        \"type\": \"str\",\n        \"value\": \"granted\"\n      },\n      {\n        \"name\": \"ref\",\n        \"type\": \"str\",\n        \"value\": \"SPWD/RTI/2026/R15\"\n      },\n      {\n        \"name\": \"replied_ms\",\n        \"type\": \"u64\",\n        \"value\": \"0x19d224a7c00\"\n      },\n      {\n        \"name\": \"response_days\",\n        \"type\": \"i32\",\n        \"value\": 15\n      },\n      {\n        \"name\": \"schema\",\n        \"type\": \"i32\",\n        \"value\": 1\n      },\n      {\n        \"name\": \"synthetic\",\n        \"type\": \"bool\",\n        \"value\": true\n      },\n      {\n        \"name\": \"topic\",\n        \"type\": \"str\",\n        \"value\": \"streetlights\"\n      }\n    ]\n  },\n  \"decodedPayload\": {\n    \"schema\": \"muniment.reply/1\",\n    \"synthetic\": true,\n    \"title\": \"Street lighting, Ward 15, 2024-25 (synthetic)\",\n    \"question\": \"Please state the number of street lights installed and repaired in Ward 15 during 2024-25, the contractor responsible, and the total amount paid.\",\n    \"answer\": \"218 new LED fittings were installed and 454 repaired in Ward 15 during 2024-25 under an annual maintenance contract. Total paid: 73.0 lakh (synthetic figures).\",\n    \"authorityName\": \"Public Works Department, Sundarvan (synthetic)\",\n    \"jurisdictionName\": \"Sundarvan (fictional state)\",\n    \"claimedSource\": {\n      \"reference\": \"SPWD/RTI/2026/R15\",\n      \"url\": null,\n      \"documentDate\": \"2026-03-25\",\n      \"status\": \"synthetic-no-source\"\n    },\n    \"attachment\": null,\n    \"exemptions\": [],\n    \"correction\": null,\n    \"disclosure\": \"Synthetic test record published for the Muniment hackathon demo on the Arkiv Tiramisu testnet. Not a real government reply.\"\n  }\n}",
+          "checkedAt": "2026-10-17T22:02:48.362Z"
+        }
+      ],
+      "archive": {
+        "status": "PASS",
+        "results": [
+          {
+            "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+            "expiry": "4600383",
+            "status": "PASS",
+            "title": "Expiry block 4,600,383, about 15 Jan 2027, 22:02 UTC"
+          },
+          {
+            "key": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+            "expiry": "4600383",
+            "status": "PASS",
+            "title": "Expiry block 4,600,383, about 15 Jan 2027, 22:02 UTC"
+          }
+        ]
+      },
+      "status": "PASS"
+    }
+  },
+  "attempts": [
+    {
+      "at": "2026-10-17T17:39:58.708Z",
+      "status": "FAIL",
+      "reason": "expect(locator).toBeVisible() failed\n\nLocator: getByRole('dialog', { name: /Renew storage/ }).getByText('Verified renewal', { exact: true })\nExpected: visible\nTimeout: 90000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toBeVisible\" getByRole('dialog', { name: /Renew storage/ }).getByText('Verified renewal', { exact: true }) with timeout 90000ms\n  - waiting for getByRole('dialog', { name: /Renew storage/ }).getByText('Verified renewal', { exact: true })\n"
+    }
+  ],
+  "deployments": [
+    {
+      "origin": "https://muniment-archive.vercel.app",
+      "status": 200,
+      "commit": "f1e69505409dcaf383928d9a114c9b458d00a3d8",
+      "dirtyWorkingTree": null,
+      "builtAt": "2026-10-17T17:31:30.274Z",
+      "source": "vercel-git"
+    },
+    {
+      "origin": "https://muniment-insights.vercel.app",
+      "status": 200,
+      "commit": "f1e69505409dcaf383928d9a114c9b458d00a3d8",
+      "dirtyWorkingTree": null,
+      "builtAt": "2026-10-17T17:31:06.182Z",
+      "source": "vercel-git"
+    }
+  ],
+  "status": "PASS",
+  "completedAt": "2026-10-17T22:02:48.365Z",
+  "finalArchive": {
+    "status": "PASS",
+    "at": "2026-10-17T22:04:08.411Z",
+    "trustMode": "Explicit any-wallet opt-in; stranger record correctly labelled",
+    "results": [
+      {
+        "key": "0x52fdb9e23f730a9cff22632ddcc223d6a9f26ac29712e13b16f76c4e1d5ef1b8",
+        "expiry": "4600383",
+        "status": "PASS",
+        "title": "Expiry block 4,600,383, about 15 Jan 2027, 22:02 UTC"
+      },
+      {
+        "key": "0x644d5e2448b4d4e4baab746db634685ac6d7a0e99a0c6bb09d5558c6f0600972",
+        "expiry": "4600383",
+        "status": "PASS",
+        "title": "Expiry block 4,600,383, about 15 Jan 2027, 22:02 UTC"
+      }
+    ]
+  }
+}
