@@ -11,7 +11,7 @@
 | Standalone reader | https://muniment-archive.vercel.app/reader.html · source [`reader/reader.html`](reader/reader.html) |
 | Data contract | [`arkiv/schema.md`](arkiv/schema.md) |
 | Friction report | [`arkiv/friction.md`](arkiv/friction.md) |
-| Evidence | [`docs/testing.md`](docs/testing.md) · [`evidence/`](evidence/) |
+| Evidence | [Signed transaction campaign](docs/transaction-campaign-2026-10-17.md) · [testing and historical runs](docs/testing.md) · [`evidence/`](evidence/) |
 | Query package | [`packages/muniment-query`](packages/muniment-query) · [release tarball](https://github.com/TheWeirdDee/muniment/releases/tag/muniment-query-v0.1.1) (not on npm) |
 | Demo film (1:44) | [muniment-demo.mp4](https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4) · [captions](demo/muniment-demo.srt) |
 
@@ -22,7 +22,7 @@ Built for the Arkiv Global Tour Stop (9–18 October 2026). Tracks: **Censorship
 1. **Find a reply.** Filter by authority, jurisdiction, topic, outcome, exemption section, filing date or completed response time. Every filter is an Arkiv query on typed attributes, sent from your browser.
 2. **Inspect provenance.** Each record shows the claimed issuer separately from the on-chain publisher (`$creator`), the source status, reviews by wallets, corrections, appeals, flags, ownership and the creation transaction.
 3. **Save to a collection.** Browser-only collections with JSON export and import.
-4. **Renew storage.** Any wallet can move a record's expiry block later, together with its linked appeals and exemption notes, in one atomic transaction that also writes a receipt. Receipts count only when verified against the transaction.
+4. **Renew storage.** Any wallet can renew permissionless records, together with eligible linked appeals and exemption notes from the same publisher. Each atomic transaction creates one receipt per reply. A batch is verified only after every planned receipt, extension event and resulting expiry reconciles.
 5. **Read independently.** One self-contained HTML file queries the same records over raw JSON-RPC; a separately hosted dashboard reuses the public contract.
 
 ## How it uses Arkiv
@@ -70,6 +70,19 @@ Optional web build variables: `VITE_TRUSTED_PUBLISHERS`, `VITE_TRUSTED_REVIEWERS
 4. Open `reader.html` from disk, with the main site blocked if you like, and read the same key.
 
 Exact evidence (wallets, entity keys, transactions, pass/fail) is in [`docs/testing.md`](docs/testing.md).
+
+## Verification coverage
+
+The [17 October campaign](docs/transaction-campaign-2026-10-17.md) records four successful transactions initiated from the deployed UI: a new seven-day synthetic reply, a single-reply renewal and two two-reply renewals. An isolated EIP-1193 test wallet signed real Tiramisu transactions; this was not a browser-extension compatibility test.
+
+| Evidence | Coverage |
+|---|---|
+| Signed UI actions | Four successful transaction receipts and explorer Success pages |
+| On-chain reconciliation | Separate RPC checks matched all five renewal receipts and five extension events to the reviewed keys and targets; disk-reader and archive expiry checks passed |
+| Simulated wallet/error tests | Rejection passed with zero broadcasts; the later wrong-network readiness assertion was blocked by actual RPC throttling, and the serial stale-quote case was skipped |
+| Untested compatibility | Third-party wallet extensions, hardware wallets and a second independent RPC provider |
+
+The RPC checks use the same public provider through a separate verification implementation. Historical failures remain in the evidence; later successful reruns do not replace them. The trusted seed corpus contains 41 replies. Additional user-published records from the control wallet appear only when the archive's any-wallet option is enabled and remain labelled untrusted.
 
 ## Repository layout
 
