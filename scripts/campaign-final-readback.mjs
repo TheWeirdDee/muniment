@@ -2,11 +2,13 @@ import { chromium, expect } from "@playwright/test";
 import { createPublicClient } from "@arkiv-network/sdk";
 import { tiramisu } from "@arkiv-network/sdk/chains";
 import { TIRAMISU, politeHttp } from "muniment-query";
+import { createPublicClient as ethClient, formatEther } from "viem";
 import { readFileSync, writeFileSync } from "node:fs";
 const file = ".release/transaction-campaign.json", report = JSON.parse(readFileSync(file, "utf8"));
 if (report.status !== "PASS")
     throw Error("Finish and reconcile the signed campaign first");
 const db = createPublicClient({ chain: tiramisu, transport: politeHttp(TIRAMISU.httpRpc, { concurrency: 1, attempts: 4, maxWaitMs: 90000, totalTimeoutMs: 120000 }) });
+const rpc = ethClient({ chain: tiramisu, transport: politeHttp(TIRAMISU.httpRpc, { concurrency: 1, attempts: 4, maxWaitMs: 90000, totalTimeoutMs: 120000 }) });
 const save = () => writeFileSync(file, JSON.stringify(report, null, 2) + "\n");
 const browser = await chromium.launch();
 try {
@@ -45,15 +47,33 @@ try {
     report.workflows.single.archive = { status: "PASS", checkedAfterMulti: true, note: "Final archive expiry includes the later multi-reply renewal; the single-renewal target is independently recorded in its transaction and contemporaneous disk-reader result.", result: results.find(r => r.key === report.workflows.publication.key) };
     report.workflows.multi.archive = { status: "PASS", results };
     save();
-    for (const [name, stage] of Object.entries(report.workflows)) {
+    const stages = [...Object.entries(report.workflows), ...(report.priorMulti || []).map((stage, i) => [`multi-prior-${i + 1}`, stage])];
+    for (const [name, stage] of stages) {
         const response = await page.goto(stage.explorer, { waitUntil: "domcontentloaded", timeout: 60000 });
         await expect(page.getByText("Success", { exact: true }).first()).toBeVisible({ timeout: 60000 });
         const body = await page.locator("body").innerText();
         stage.explorerCheck = { status: "PASS", httpStatus: response?.status(), successDisplayed: body.includes("Success"), transactionHashPresent: body.toLowerCase().includes(stage.txHash.toLowerCase()), at: new Date().toISOString() };
+        if (!stage.explorerCheck.transactionHashPresent)
+            throw Error("Explorer did not show the expected transaction hash");
+        const receipt = await rpc.getTransactionReceipt({ hash: stage.txHash });
+        if (receipt.status !== "success")
+            throw Error("Fresh receipt no longer reports success");
+        stage.actualFee = { gasUsed: String(receipt.gasUsed), effectiveGasPrice: String(receipt.effectiveGasPrice), testGLM: formatEther(receipt.gasUsed * receipt.effectiveGasPrice) };
+        const transaction = await rpc.getTransaction({ hash: stage.txHash });
+        if (transaction.chainId !== 7738577 || transaction.value !== 0n)
+            throw Error("Unexpected transaction chain or native value");
+        stage.transactionNonce = transaction.nonce;
+        stage.nativeValue = String(transaction.value);
         await page.screenshot({ path: `.release/${name}-explorer.png`, fullPage: true });
         save();
         console.log(name + " explorer PASS " + stage.explorer);
     }
+    const renewals = [report.workflows.single, ...(report.priorMulti || []), report.workflows.multi];
+    for (let i = 1; i < renewals.length; i++) {
+        if (renewals[i].transactionNonce !== renewals[i - 1].transactionNonce + 1)
+            throw Error("Nonconsecutive renewer nonces; investigate unaccounted transactions");
+    }
+    report.renewerNoncesConsecutive = true;
     report.finalReadbackCompletedAt = new Date().toISOString();
     save();
     await context.close();
