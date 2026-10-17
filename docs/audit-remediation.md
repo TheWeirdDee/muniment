@@ -1,5 +1,7 @@
 # Independent audit remediation — 16 October 2026
 
+**17 October follow-up:** This dated report describes the earlier correction phase. Those corrections and the subsequent A01–A04/queue-retention fixes are now deployed. The [fresh signed campaign](transaction-campaign-2026-10-17.md) documents real publication, single renewal and two multi-reply renewals with complete receipts, extension events and readbacks. The late network-switch/stale-quote boundary checks are quota-blocked; independent Work review and Devfolio submission remain pending. Deployment-block statements below are historical.
+
 Audit baseline: `7710acb84863a3d4eafe8a710b991e765b9bee6b`. This report supersedes broad readiness claims in the earlier handoff. The original audit and failed test observations are not treated as passes. No hostile linked records were written to the public chain.
 
 | Finding | Correction | Verification |
