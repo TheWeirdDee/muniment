@@ -13,7 +13,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | On-chain evidence: creating wallets | met | [`docs/testing.md`](testing.md#wallets), [`evidence/manifest.json`](../evidence/manifest.json) |
 | `/arkiv/friction.md` | met | 16 entries with versions and repro scripts |
 | Demo video ≤ 3 minutes | met | 1 min 44 s, recorded from production: https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4 (renewal tx `0xe11c…48ce`, verified) |
-| Every Devfolio question answered | drafted | [`docs/submission.md`](submission.md): tools/models, feedback-call Yes and evidence-based integration estimate recorded; authenticated form verification pending. Owner reports not yet submitted. |
+| Every Devfolio question answered | drafted | [`docs/submission.md`](submission.md): required AI-use disclosure, feedback-call Yes and integration-time estimate recorded; authenticated form verification pending. The 16 October declaration reports not yet submitted. |
 | A track chosen | to submit | Censorship Resistance and Open Source (no Indian national on the team) |
 | Built 9–18 Oct, pre-existing work disclosed | met | baseline `f2202e9` (README only); [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md) |
 | Evidence that survives expiry | met | transaction hashes in `evidence/`; demo records live until ≥ 5 Nov 2026 |
@@ -23,13 +23,13 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | Criterion | Status | Evidence |
 |---|---|---|
 | A visitor finds a reply and understands source uncertainty without a wallet | met | archive and record pages; e2e "a sealed record shows provenance" |
-| Another wallet renews and the lifetime is independently verifiable | met | proof P2a, P3e; UI renewal in the demo film (tx in `demo/out/scenes.json`) |
+| Another wallet renews and the lifetime is independently verifiable | met | proof P2a, P3e; [17 October signed campaign](transaction-campaign-2026-10-17.md): single and two-reply renewals, five receipts and every extension reconciled |
 | Verified activity cannot be inflated by a forged receipt | met | proof P5; unit tests in `verify.test.ts` |
 | A researcher can preserve, export and understand partial completion | met | collections export/import e2e; per-batch progress in `RenewDialog` |
 | An independent reader queries live records without Muniment's origin | met | e2e "standalone reader works from disk with the main site blocked" |
 | A separate dashboard consumes the public contract | met | https://muniment-insights.vercel.app, separate Vercel project and origin |
 | Claims match demonstrated behaviour | met | [`docs/copy-audit.md`](copy-audit.md); sealing wording states its assumption |
-| Evidence, deployment and instructions complete before submission | prepared with disclosed limits | this file; phone live reads passed after waiting out the public RPC budget; submission account actions and independent feedback remain with the team |
+| Evidence, deployment and instructions complete before submission | prepared with disclosed limits | [Signed campaign](transaction-campaign-2026-10-17.md); later network-switch readiness was quota-blocked and the serial stale-quote case was skipped. Authenticated submission and independent usability feedback remain unverified. |
 
 ## Proof campaign (§14)
 
@@ -41,7 +41,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | 4. A forged receipt is excluded | met | P5 |
 | 5. Reader with the main origin blocked | met | e2e live suite |
 | 6. A short-lived control really expires | met | P8 |
-| 7. Concurrent renewal, stale quote, rejected signature, reconnect, rate limits | met with limits | Real two-wallet concurrency evidence in `evidence/resilience-2026-10-16T08-26-01-199Z.json`; production rejection and 35-second outage/reconciliation tests pass. Pre-sign snapshot checks cannot eliminate in-flight races; equal-target transactions can both succeed. Phone live-data reruns hit the public query budget; see [testing](testing.md#correction-verification-16-october). Long-duration outages and independent RPC providers remain untested. |
+| 7. Concurrent renewal, stale quote, rejected signature, reconnect, rate limits | met with limits | Real two-wallet concurrency evidence in `evidence/resilience-2026-10-16T08-26-01-199Z.json`; historical production rejection and 35-second outage/reconciliation tests passed. Pre-sign snapshot checks cannot eliminate in-flight races; equal-target transactions can both succeed. Phone live-data reruns hit the public query budget; see [testing](testing.md#correction-verification-16-october). The later [17 October run](transaction-campaign-2026-10-17.md) passed rejection but quota blocked network readiness and the serial stale-quote case was skipped. Long-duration outages and independent RPC providers remain untested. |
 | 8. Dashboard reproduces from contract and package | met | e2e dashboard test; `apps/dashboard` uses only `muniment-query` |
 | 9. Synthetic-only publish boundary; accessible mobile flows | met | scrubber e2e; phone e2e project; axe checks |
 | Latency, ≥ 5 runs per interval | met | [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) (n = 5) |
