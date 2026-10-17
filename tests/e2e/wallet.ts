@@ -9,7 +9,13 @@ import { http, createWalletClient, publicActions } from "viem"
 import { privateKeyToAccount } from "viem/accounts"
 import { tiramisu } from "@arkiv-network/sdk/chains"
 
-export type TestWalletOptions = { key: `0x${string}`; reject?: boolean; chainIdHex?: string }
+type TransactionRequest = { to: `0x${string}`; data: `0x${string}`; gas?: string; value?: string }
+export type TestWalletOptions = {
+  key: `0x${string}`; reject?: boolean; chainIdHex?: string
+  /** Explicit isolated-test approval gate over the actual browser request. */
+  approve?: (transaction: TransactionRequest) => boolean | Promise<boolean>
+  onSubmitted?: (hash: `0x${string}`) => void
+}
 
 export async function injectTestWallet(page: Page, opts: TestWalletOptions) {
   const account = privateKeyToAccount(opts.key)
@@ -29,9 +35,13 @@ export async function injectTestWallet(page: Page, opts: TestWalletOptions) {
         return null
       case "eth_sendTransaction": {
         if (opts.reject) throw Object.assign(new Error("User rejected the request."), { code: 4001 })
-        const tx = (params as { to: `0x${string}`; data: `0x${string}`; gas?: string }[])[0]
+        const tx = (params as TransactionRequest[])[0]
+        if (await client.getChainId() !== 7738577) throw new Error("Test wallet refuses a chain other than Tiramisu")
+        if (tx.value && BigInt(tx.value) !== 0n) throw new Error("Test wallet refuses native value transfers")
+        if (opts.approve && !await opts.approve(tx)) throw Object.assign(new Error("User rejected the request."), { code: 4001 })
         const hash = await client.sendTransaction({ to: tx.to, data: tx.data, gas: tx.gas ? BigInt(tx.gas) : undefined })
         sent.push(hash)
+        opts.onSubmitted?.(hash)
         return hash
       }
       default:
