@@ -55,6 +55,8 @@ See [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) for the measured runs and 
 
 ## Unit tests: `npm test`
 
+Latest real transaction results are recorded separately in [the 17 October signed campaign](transaction-campaign-2026-10-17.md). Four deployed-UI transactions passed complete chain reconciliation; the later simulated network-switch/stale-quote checks encountered public read quota and are not counted as passes.
+
 51 package tests across 8 files (Vitest), covering:
 
 - schema validation (no-reply rules, dates, types, unsafe URLs, correction consistency, size limits, versions, namespace);
