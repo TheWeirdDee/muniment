@@ -1,5 +1,7 @@
 # Muniment correction handoff — 16 October 2026
 
+**17 October renewal corrections:** [renewal-remediation.md](renewal-remediation.md) records A01–A04 implementation and coding-agent tests on a separate local branch. Deployment requires authorization; an independent fresh multi-reply transaction audit is still pending. The unavailable 13-commit branch from another environment was not discarded or represented as reviewed.
+
 **Latest independent audit:** See [audit-remediation.md](audit-remediation.md) for the subsequent corrections, verification and unresolved submission declarations. Package `0.1.1` is published. The corrected application source is local; pushing main and deploying it remain blocked by automatic approval review. The production results below describe the earlier revision, not these latest fixes.
 
 Work continued from main at `c4dabfe46f1757cd37da4cb7f79b5b08de794b46`, already containing the redesign, 41-reply curated corpus, proof campaign, package and narrated 1:44 demo. Existing user changes were retained, including the initial before/after screenshots. All subsequent commits use the configured author and exactly one explicit staged file. No shared history was rewritten.
