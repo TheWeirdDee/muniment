@@ -1,10 +1,10 @@
-# Muniment correction handoff — 16 October 2026
+# Release verification record — 16 October 2026
 
-**17 October signed campaign completed:** [fresh transaction evidence](transaction-campaign-2026-10-17.md) records one deployed-UI publication, one single-reply renewal and two two-reply renewals, with complete receipt/event/entity reconciliation, disk-reader readbacks and explorer Success pages. A01–A04 and queue-result retention are deployed. The separate late network-switch readiness/stale-quote checks hit public RPC quota and are reported BLOCKED; independent Work review and third-party wallet-extension testing remain separate. The unavailable 13-commit branch from another environment was not discarded or represented as reviewed.
+**Subsequent results, 17 October:** [The signed campaign](transaction-campaign-2026-10-17.md) records deployed-UI publication, single renewal and two two-reply renewals, with complete receipt/event/entity reconciliation, disk-reader readbacks and explorer Success pages. A01–A04 and queue-result retention were deployed. The later network-switch readiness check was quota-blocked; the serial stale-quote case was skipped. Third-party wallet compatibility remains untested. Branch provenance and validation scope are documented in [renewal remediation](renewal-remediation.md).
 
-**Latest independent audit:** See [audit-remediation.md](audit-remediation.md) for the subsequent corrections, verification and unresolved submission declarations. Package `0.1.1` is published. The corrected application source is local; pushing main and deploying it remain blocked by automatic approval review. The production results below describe the earlier revision, not these latest fixes.
+**Historical scope:** The results and commit ledger below describe the 16 October release phase. [Audit remediation](audit-remediation.md) records the later corrections. Query package `0.1.1` is published; the original `0.1.0` artifact is historical. Earlier local build or test results do not establish the behaviour of subsequent deployments.
 
-Work continued from main at `c4dabfe46f1757cd37da4cb7f79b5b08de794b46`, already containing the redesign, 41-reply curated corpus, proof campaign, package and narrated 1:44 demo. Existing user changes were retained, including the initial before/after screenshots. All subsequent commits use the configured author and exactly one explicit staged file. No shared history was rewritten.
+The 16 October correction phase started at `c4dabfe46f1757cd37da4cb7f79b5b08de794b46`, containing the redesign, 41-reply curated corpus, proof campaign, package and narrated 1:44 demo. Existing before/after screenshots were retained. The per-file commit ledger below identifies the source and evidence changes.
 
 ## Public deliverables
 
@@ -14,18 +14,18 @@ Work continued from main at `c4dabfe46f1757cd37da4cb7f79b5b08de794b46`, already 
 - Repository and reproduction instructions: https://github.com/TheWeirdDee/muniment
 - Schema: https://github.com/TheWeirdDee/muniment/blob/main/arkiv/schema.md
 - Friction and evidence: https://github.com/TheWeirdDee/muniment/blob/main/arkiv/friction.md · https://github.com/TheWeirdDee/muniment/blob/main/docs/testing.md
-- Package: https://github.com/TheWeirdDee/muniment/releases/download/muniment-query-v0.1.0/muniment-query-0.1.0.tgz
+- Package: https://github.com/TheWeirdDee/muniment/releases/download/muniment-query-v0.1.1/muniment-query-0.1.1.tgz (the original release used `0.1.0`).
 - Demo: https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.mp4
 - Captions: https://github.com/TheWeirdDee/muniment/releases/download/demo-2026-10-16/muniment-demo.srt
 - Submission answers: https://github.com/TheWeirdDee/muniment/blob/main/docs/submission.md
 
-The existing Vercel projects deploy from Git; no replacement projects or domains were created. Production revision evidence is in `evidence/release-check.json`; check both `/version.json` endpoints for the final pushed revision after this document's commit. A local build is not presented as deployment evidence.
+The existing Vercel projects deploy from Git. Historical production revision evidence is in `evidence/release-check.json`; each live `/version.json` endpoint identifies the currently served commit. A local build is not deployment evidence.
 
 ## Changes and evidence
 
 - Kept renewal results across parent refreshes; recovered wallet rejection code 4001 through nested SDK errors. Local and production rejection tests pass and assert zero transactions sent.
 - Started the advertised 30-second fallback polling after connection timeout; reconcile immediately on event-stream recovery. A real 35-second browser outage followed by fresh state passes locally and in production. Longer outages remain untested.
-- Fixed reader form constraints and long footer URL wrapping. All nine requested widths, including 320 px and 1920 px, pass in both themes. Fixed the hosted reader separately: Vercel clean URLs had bypassed its inline-script policy, leaving controls inactive despite successful disk-based tests. The regression test checks actual control initialisation.
+- Fixed reader form constraints and long footer URL wrapping. All nine tested widths, including 320 px and 1920 px, pass in both themes. Fixed the hosted reader separately: Vercel clean URLs had bypassed its inline-script policy, leaving controls inactive despite successful disk-based tests. The regression test checks actual control initialisation.
 - Removed peach/red and extra green status accents from web, reader and dashboard. Brand mapping: near-black `#111114` canvas, Moss `#576238` panels, Mustard `#FFD95D` actions, Eggshell `#F0EADC` text and paper. Status labels distinguish meaning; palette contrast measurements are in `docs/design-reference-notes.md`.
 - Updated the dashboard heading and scope: its source documents and authorities are fictional, while its displayed summaries are calculated from live Arkiv records.
 - Exposed confirmed publication and transaction links immediately; bounded readback and distinguished delayed visibility from failure. One real stranger-wallet publication is confirmed in `evidence/ui-publication-confirmed.json`; its initial browser readback was blocked by the RPC budget, so it is not counted as a passing readback test.
@@ -42,7 +42,7 @@ Motion uses 620 ms section entrances and a small hover/focus card lift, with bou
 
 The 216-check production layout audit found six narrow-reader failures; all 18 affected reader width/theme combinations then passed after the fix. A further 180 measurements with page-level clipping disabled passed, and the global overflow rule was removed from source. Reports and screenshots are in `evidence/visual-final` and `evidence/reader-final`. Captures include honest loading states and cannot establish successful data retrieval on their own.
 
-Run `npm ci`, `npm run build:query`, `npm test`, `npm run typecheck`, then both app builds as documented. `npx playwright test` targets production by default. Use `node --env-file=.env --import tsx scripts/resilience.ts` only for a new deliberate Tiramisu control campaign. The optional signed publish test creates a real public synthetic record; inspect existing evidence before rerunning after any broadcast. Keys remain in the existing ignored secure setup and are never requested in chat.
+Run `npm ci`, `npm run build:query`, `npm test`, `npm run typecheck`, then both app builds as documented. `npx playwright test` targets production by default. Use `node --env-file=.env --import tsx scripts/resilience.ts` only for a deliberate Tiramisu control campaign. The optional signed publish test creates a real public synthetic record; inspect existing evidence before rerunning after any broadcast. Keep testnet keys in ignored local configuration, never in documentation or published artifacts.
 
 The later direct publication read is in `evidence/ui-publication-readback.json`; phone and desktop browser readbacks are in `evidence/remaining-readbacks.json`. Signing guards for wrong-network switching and an aged quote also passed on the phone without sending transactions. The original publication was never resubmitted.
 
@@ -63,15 +63,15 @@ The 41 curated replies and their creation transactions remain in `evidence/manif
 
 Concurrent-renewal transactions: `0x943a3935aa6ee6319d122fe68ca3323cafc3c86f2a25adba27557995bb9321c6` and `0x3a1b9132e5cd0abf27357b8806ac45d483dcfb11c8fedcec0e03e93147ce8f0b`. Both succeeded, each using 25,240 gas; neither added coverage beyond the shared absolute target.
 
-## Remaining manual actions and limits
+## Submission status and verification limits
 
-- The owner confirmed tools used, willingness for the feedback call (**Yes**) and **not yet submitted** on 16 October. Further log/transaction investigation supports an evidence-based estimate of **about 10 hours 50 minutes elapsed (2 to 24 hours)**; the exact start remains unproven. See [submission evidence](submission-evidence.md). No connected authenticated Devfolio session is available; submission requires explicit authorization. Optional attendance and other unresolved personal declarations remain for the team.
+- Submission declarations dated 16 October record the tools used, feedback-call availability (**Yes**) and **not yet submitted**. Log/transaction evidence supports an estimate of **about 10 hours 50 minutes elapsed (2 to 24 hours)**; the exact start remains unproven. See [submission evidence](submission-evidence.md). No authenticated Devfolio submission receipt has been verified; optional attendance remains undeclared.
 - An independent usability session has not happened. A separate participant is needed; no user feedback or adoption is invented.
 - Public-RPC throttling can block future reads; all previously blocked phone and publication readbacks passed after its reset. A quota error is not evidence of empty or expired records. No alternate provider or real MetaMask/Rabby extension was tested. The account actions above do not block the implemented app or published artifacts.
 
 ## Per-file commits
 
-All 122 commits below were verified to contain exactly one file. This handoff document is added in its own following commit; obtain that SHA with `git log -1 -- docs/final-handoff.md`. No older shared-history coauthor trailer was found.
+Historical source ledger: all 122 commits below were verified to contain exactly one file. Commit hashes, paths and original messages are retained verbatim. The history of this release record is available with `git log -- docs/final-handoff.md`.
 
 | Commit | File | Message |
 |---|---|---|
