@@ -12,7 +12,6 @@ import {
   type Reply,
   SCHEMA_VERSION,
   SEAL_ADDRESS,
-  type VerificationState,
   batchToWire,
   decodeReceipt,
   encodeExecute,
@@ -21,10 +20,10 @@ import {
   planRenewal,
   receiptPayload,
   verifyRenewalReceipt,
-  FULL_SELECT,
   clearReadCache,
 } from "muniment-query"
 import { publicClient, reader } from "./arkiv"
+import { reconcileBatch } from "./renew-reconcile"
 
 export const COVERAGE_OPTIONS = [
   { days: 30, label: "30 days from now" },
@@ -144,30 +143,18 @@ export function batchParams(batch: RenewalUnit[], target: bigint) {
   }
 }
 
-/** Wait (bounded, with backoff) until this client's endpoint reports the new expiry. */
-export async function waitForVisibility(replyKey: Hex, target: bigint, timeoutMs = 60_000): Promise<number | null> {
-  const start = performance.now()
-  let delay = 400
-  while (performance.now() - start < timeoutMs) {
-    try {
-      clearReadCache()
-      const e = await publicClient().getEntity(replyKey)
-      if (e.expiresAt >= target) return Math.round(performance.now() - start)
-    } catch {
-      // keep polling until the deadline
-    }
-    await new Promise((r) => setTimeout(r, delay))
-    delay = Math.min(delay * 1.6, 4000)
-  }
-  return null
-}
-
-export async function verifyCreatedReceipt(receiptKey: Hex): Promise<VerificationState> {
+/** Reconcile each reply/receipt plus every reviewed extension; no transaction is sent here. */
+export async function reconcileConfirmedBatch(batch: RenewalUnit[], target: bigint, tx: Hex, renewer: Hex, created: Hex[]) {
   clearReadCache()
-  const res = await publicClient().query(`$key = key(${receiptKey})`, { select: FULL_SELECT, limit: 1 })
-  const raw = res.entities[0]
-  if (!raw) return { state: "unknown", reason: "receipt not yet visible on this endpoint" }
-  const d = decodeReceipt(fromSdkEntity(raw as never))
-  if (!d.ok) return { state: "unverified", reason: d.issue.reason, txHash: null }
-  return verifyRenewalReceipt(publicClient() as never, d.value)
+  const client = publicClient()
+  return reconcileBatch(batch, target, tx, renewer, created, {
+    receipt: async (key) => {
+      const raw = await client.getEntity(key)
+      const decoded = decodeReceipt(fromSdkEntity(raw as never))
+      if (!decoded.ok) throw new Error(decoded.issue.reason)
+      return decoded.value
+    },
+    verify: (receipt) => verifyRenewalReceipt(client as never, receipt),
+    expiry: async (key) => (await client.getEntity(key)).expiresAt,
+  })
 }
