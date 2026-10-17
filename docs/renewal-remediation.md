@@ -2,6 +2,8 @@
 
 Baseline: `ce957f62e299aafaae6781de265721b26db04dee`. This is the coding-agent implementation and validation record, not an independent end-to-end sign-off.
 
+**Signed campaign update:** The owner explicitly authorized integration, deployment and controlled real testnet transactions. Corrections were deployed at `f1e6950`; queue-result retention was added and deployed at `2a2df72`. [The fresh signed campaign](transaction-campaign-2026-10-17.md) passes publication, single renewal and two multi-reply renewals with complete per-entity/receipt readbacks and explorer checks. The late network-switch/stale-quote boundary run is quota-blocked, not passed. Independent Work review remains separate.
+
 ## Reported fixes from the other environment
 
 The reported branch `fix/complete-renewal-verification` is absent from this checkout and remote branch lookup. Its reported tip `88155b0` is not a local Git object. Those commits could not be reviewed or integrated here. No branch, commit or history was deleted or rewritten. This implementation is isolated on `fix/audit-17-renewal-reconciliation`; any recovered original branch/patch must be reviewed against the baseline and these changes before integration.
@@ -20,7 +22,7 @@ The reported branch `fix/complete-renewal-verification` is absent from this chec
 - Web regression suite: 18 tests/three files pass, including the existing provenance test, multi-reply reconciliation and itemized plan rendering. Cases cover reordered/delayed/duplicated/missing receipts; incorrect reply, target, wallet, transaction or count; missing/additional/duplicated/wrong-target extension events; a delayed non-first linked entity; read failure/recheck; null expiry and an empty batch.
 - Real read-only local browser review: desktop and phone pass (`tests/e2e/renew-review.spec.ts`; results in `evidence/renew-review-local-2026-10-17.json`). The quote includes multiple entities and the test checks every included key/current expiry/target and copy control, no horizontal overflow, Escape and focus restoration.
 - Workspace typecheck and both production builds passed. Local browser runs do not establish deployment state or signed transaction success. The local build embeds the baseline commit with a dirty-tree flag until the correction commits exist; it is not release-version proof.
-- No new blockchain transactions have been made for this correction. No new deployment has been made. Both production sites were independently checked at the baseline before coding; deployment and post-deployment results must be recorded separately.
+- The initial local correction phase made no new transactions or deployments. Subsequent expressly authorized deployment and real signed transactions are recorded separately in the fresh campaign report above; historical local results are not presented as signed proof.
 
 ## Independent verification after authorized deployment
 
