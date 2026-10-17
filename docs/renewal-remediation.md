@@ -1,12 +1,12 @@
 # Renewal audit corrections — 17 October 2026
 
-Baseline: `ce957f62e299aafaae6781de265721b26db04dee`. This is the coding-agent implementation and validation record, not an independent end-to-end sign-off.
+Baseline: `ce957f62e299aafaae6781de265721b26db04dee`. This report separates implementation changes, automated regression tests, signed browser observations and on-chain verification.
 
-**Signed campaign update:** The owner explicitly authorized integration, deployment and controlled real testnet transactions. Corrections were deployed at `f1e6950`; queue-result retention was added and deployed at `2a2df72`. [The fresh signed campaign](transaction-campaign-2026-10-17.md) passes publication, single renewal and two multi-reply renewals with complete per-entity/receipt readbacks and explorer checks. The late network-switch/stale-quote boundary run is quota-blocked, not passed. Independent Work review remains separate.
+**Signed campaign update:** Corrections were deployed at `f1e6950`; queue-result retention was added and deployed at `2a2df72`. [The fresh signed campaign](transaction-campaign-2026-10-17.md) passes publication, single renewal and two multi-reply renewals with complete per-entity/receipt readbacks and explorer checks. The later network-switch readiness check was quota-blocked and the serial stale-quote case was skipped. These results do not establish compatibility with third-party wallet extensions.
 
-## Reported fixes from the other environment
+## Source provenance
 
-The reported branch `fix/complete-renewal-verification` is absent from this checkout and remote branch lookup. Its reported tip `88155b0` is not a local Git object. Those commits could not be reviewed or integrated here. No branch, commit or history was deleted or rewritten. This implementation is isolated on `fix/audit-17-renewal-reconciliation`; any recovered original branch/patch must be reviewed against the baseline and these changes before integration.
+A reported 13-commit branch, `fix/complete-renewal-verification` at tip `88155b0`, was unavailable in the validation checkout and remote branch listing. Its uninspected changes are excluded from this report. The corrections documented here originated on `fix/audit-17-renewal-reconciliation` and were integrated at `f1e6950`; no history was rewritten.
 
 ## Changes
 
@@ -16,15 +16,15 @@ The reported branch `fix/complete-renewal-verification` is absent from this chec
 - **A03:** Homepage copy scopes renewal writes to the three-step browsing workflow and explicitly states that Publish requires a transaction too.
 - **A04:** The current package inventory says 51 tests/eight files; historical counts retain their dated context. Web reconciliation/component tests are inventoried separately.
 
-## Coding-agent validation
+## Automated validation
 
 - Package: 51 tests/eight files pass.
 - Web regression suite: 18 tests/three files pass, including the existing provenance test, multi-reply reconciliation and itemized plan rendering. Cases cover reordered/delayed/duplicated/missing receipts; incorrect reply, target, wallet, transaction or count; missing/additional/duplicated/wrong-target extension events; a delayed non-first linked entity; read failure/recheck; null expiry and an empty batch.
 - Real read-only local browser review: desktop and phone pass (`tests/e2e/renew-review.spec.ts`; results in `evidence/renew-review-local-2026-10-17.json`). The quote includes multiple entities and the test checks every included key/current expiry/target and copy control, no horizontal overflow, Escape and focus restoration.
 - Workspace typecheck and both production builds passed. Local browser runs do not establish deployment state or signed transaction success. The local build embeds the baseline commit with a dirty-tree flag until the correction commits exist; it is not release-version proof.
-- The initial local correction phase made no new transactions or deployments. Subsequent expressly authorized deployment and real signed transactions are recorded separately in the fresh campaign report above; historical local results are not presented as signed proof.
+- The initial local correction phase made no new transactions or deployments. Subsequent deployment and real signed transactions are recorded separately in the fresh campaign report above; historical local results are not presented as signed proof.
 
-## Independent verification after authorized deployment
+## Reproducing transaction verification
 
 1. Verify the archive and dashboard `/version.json` match the integrated correction commit. Confirm itemized plan details on desktop and phone.
 2. Publish a new clearly synthetic record with 7-day storage from an authorized publisher. Retain the transaction hash, entity key, creator, creation block/time, flags and actual initial expiry.
@@ -32,6 +32,6 @@ The reported branch `fix/complete-renewal-verification` is absent from this chec
 4. Capture the exact reviewed plan before signing: each transaction, reply, included entity key/kind/current expiry/target and expected receipt count. Retain the submitted transaction hash and actual created receipt keys.
 5. Independently decode the successful receipt and all creation/extension logs. Match every planned reply to exactly one receipt in that same transaction and renewing wallet. Match every planned entity to its exact target extension event. Read every entity's resulting expiry; distinguish any later extension from the audited transaction's target. Reject any missing, extra or mismatched result. Verify the app's per-reply and batch labels agree with these independent reads.
 6. Test lagging/unavailable verification reads without resubmitting the confirmed transaction. Confirm the UI remains pending and can recheck the existing result. Rejection and network-switching checks must send no transaction before authorization.
-7. Record public transaction links, entity links, before/after block values, every receipt result, deployed commit and final coverage. Keep the project **not fully end-to-end verified** until this independent campaign completes.
+7. Record public transaction links, entity links, before/after block values, every receipt result, deployed commit and final coverage. Mark a workflow verified only when every planned entity and receipt has reconciled; report pending reads and mismatches separately.
 
-If the independent Work browser lacks a wallet, the owner can approve the exact reviewed transactions in a configured browser and provide public hashes for reconciliation. Local keys are usable on this PC, but that does not establish wallet access in Work. No private key should be copied into chat or an audit report. Submission remains separate and requires explicit authorization.
+Auditors can verify the existing public transaction hashes without signing. A new signed campaign requires an authorized, funded Tiramisu test wallet; review the exact plan in that browser before approval. Keep keys in the local signer and out of reports. An injected EIP-1193 test-provider result does not certify a browser extension. Devfolio submission is a separate account operation.
