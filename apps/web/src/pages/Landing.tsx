@@ -353,7 +353,7 @@ export default function Landing() {
             <li>
               <span className="step-n">3</span>
               <h3>Renew storage</h3>
-              <p className="muted">Pay a small testnet fee to keep chosen records readable for longer. This is the only step that writes to Arkiv.</p>
+              <p className="muted">Pay a small testnet fee to keep chosen records readable for longer. Of these three steps, only renewing writes to Arkiv. Publishing a new synthetic record also requires a transaction.</p>
             </li>
           </ol>
           <QuickStart />
