@@ -55,7 +55,7 @@ See [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) for the measured runs and 
 
 ## Unit tests: `npm test`
 
-42 tests across 6 files (Vitest), covering:
+51 package tests across 8 files (Vitest), covering:
 
 - schema validation (no-reply rules, dates, types, unsafe URLs, correction consistency, size limits, versions, namespace);
 - query building (escaping, typed ranges, creator clauses, bounds);
@@ -63,6 +63,9 @@ See [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) for the measured runs and 
 - receipt verification (genuine, forged, borrowed transaction, wrong reply, overstated expiry, reverted transaction, sender mismatch, foreign logs);
 - collection export/import (notes excluded, malformed files, dedupe);
 - calldata equivalence with the SDK.
+- snapshot-pinned pagination and cancellable, bounded transport.
+
+Web reconciliation and component regression tests run separately with `node node_modules/vitest/vitest.mjs run tests/components`. They do not count toward the package-suite inventory above. Dated historical run counts below describe those earlier revisions.
 
 The equivalence test and the verification tests use test doubles (a stub transport, hand-built receipts). They prove logic, not live behaviour; the proof campaign covers that.
 
