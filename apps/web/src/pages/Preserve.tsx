@@ -21,6 +21,8 @@ export default function Preserve() {
   const { head } = useHead()
   const [selected, setSelected] = useState<Set<string>>(new Set())
   const [open, setOpen] = useState(false)
+  // Queue refresh removes renewed rows; the open dialog must retain its reviewed selection/results.
+  const [renewalKeys, setRenewalKeys] = useState<Hex[]>([])
 
   const data = useAsync(
     async (signal) => {
@@ -76,7 +78,7 @@ export default function Preserve() {
           </div>
           <div className="cluster">
             <span className="faint">{plural(keys.length, "selected record")}</span>
-            <button type="button" className="btn btn-primary" disabled={keys.length === 0} onClick={() => setOpen(true)}>
+            <button type="button" className="btn btn-primary" disabled={keys.length === 0} onClick={() => { setRenewalKeys([...keys]); setOpen(true) }}>
               Renew storage for selected
             </button>
           </div>
@@ -167,7 +169,7 @@ export default function Preserve() {
       <RenewDialog
         open={open}
         onClose={() => setOpen(false)}
-        keys={keys}
+        keys={renewalKeys}
         onDone={() => {
           data.reload()
         }}
