@@ -1,6 +1,6 @@
 # Muniment correction handoff — 16 October 2026
 
-**17 October renewal corrections:** [renewal-remediation.md](renewal-remediation.md) records A01–A04 implementation and coding-agent tests on a separate local branch. Deployment requires authorization; an independent fresh multi-reply transaction audit is still pending. The unavailable 13-commit branch from another environment was not discarded or represented as reviewed.
+**17 October signed campaign completed:** [fresh transaction evidence](transaction-campaign-2026-10-17.md) records one deployed-UI publication, one single-reply renewal and two two-reply renewals, with complete receipt/event/entity reconciliation, disk-reader readbacks and explorer Success pages. A01–A04 and queue-result retention are deployed. The separate late network-switch readiness/stale-quote checks hit public RPC quota and are reported BLOCKED; independent Work review and third-party wallet-extension testing remain separate. The unavailable 13-commit branch from another environment was not discarded or represented as reviewed.
 
 **Latest independent audit:** See [audit-remediation.md](audit-remediation.md) for the subsequent corrections, verification and unresolved submission declarations. Package `0.1.1` is published. The corrected application source is local; pushing main and deploying it remain blocked by automatic approval review. The production results below describe the earlier revision, not these latest fixes.
 
