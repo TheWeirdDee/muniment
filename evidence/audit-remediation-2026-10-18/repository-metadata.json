@@ -1,0 +1,11 @@
+{
+  "description": "Search, cite and renew public records on Arkiv, with permissionless preservation, an independent reader and live Insights. Synthetic Tiramisu testnet demonstration.",
+  "homepage": "https://muniment-archive.vercel.app",
+  "topics": [
+    "arkiv",
+    "censorship-resistance",
+    "open-source",
+    "public-records",
+    "typescript"
+  ]
+}
