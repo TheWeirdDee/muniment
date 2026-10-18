@@ -1,0 +1,2563 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\DELL\\Desktop\\muniment\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.audit.config.ts"
+    ],
+    "configFile": "C:\\Users\\DELL\\Desktop\\muniment\\playwright.audit.config.ts",
+    "rootDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "width-320",
+        "name": "width-320",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "audit-regressions.spec.ts"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "width-390",
+        "name": "width-390",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "audit-regressions.spec.ts"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "width-768",
+        "name": "width-768",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "audit-regressions.spec.ts"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "width-1024",
+        "name": "width-1024",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "audit-regressions.spec.ts"
+        ],
+        "timeout": 45000
+      },
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "width-1440",
+        "name": "width-1440",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "audit-regressions.spec.ts"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "width-320",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "audit-regressions.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 320,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-320"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "width-390",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "audit-regressions.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 390,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-390"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "width-768",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "audit-regressions.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 768,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-768"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "width-1024",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "audit-regressions.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 1024,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-1024"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "width-1440",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "audit-regressions.spec.ts",
+        "timeout": 45000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-1440"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".release/audit-regressions.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "audit-regressions.spec.ts",
+      "file": "audit-regressions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "wallet switch and forget detach every old listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3626,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:41.412Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-6409bd391bbb623c43ab",
+          "file": "audit-regressions.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "publication requires an exact quote and invalidates it on edits and account change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2848,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:45.219Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-ef12e64f711fdbb949ce",
+          "file": "audit-regressions.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "submitted publication reload recovers by receipt lookup without a signature",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4653,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:48.110Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-8256093ae130fb75e517",
+          "file": "audit-regressions.spec.ts",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "a synthetic broadcast hash followed by polling failure cannot be signed again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4704,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:52.813Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-d70577e268ce50b48e43",
+          "file": "audit-regressions.spec.ts",
+          "line": 125,
+          "column": 1
+        },
+        {
+          "title": "late record A cannot overwrite record B after client navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3159,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:57.552Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-6a3971107aaf1ec2b211",
+          "file": "audit-regressions.spec.ts",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "archive and standalone reader include the last millisecond of Filed to",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2729,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:00.750Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-fa313169bb8779f8c6a9",
+          "file": "audit-regressions.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "reader enforces chain identity after endpoint changes and disables exports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1280,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:03.506Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-dc2414e64e388111ee4f",
+          "file": "audit-regressions.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "collection membership refresh retains the two-record reviewed plan",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10264,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    3 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    16 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    3 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    16 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 193
+                    },
+                    "snippet": "  191 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  192 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 193 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  194 |   await page.evaluate(() => {\n  195 |     const key = \"muniment.collections.v1\", all = JSON.parse(localStorage.getItem(key)!)\n  196 |     all[0].items.pop()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 193
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    3 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    16 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  191 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  192 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 193 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  194 |   await page.evaluate(() => {\n  195 |     const key = \"muniment.collections.v1\", all = JSON.parse(localStorage.getItem(key)!)\n  196 |     all[0].items.pop()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:04.811Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-320\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-320\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-320\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 193
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-23b03952897358adaf0a",
+          "file": "audit-regressions.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "dashboard rejects wrong-chain endpoints and labels local validation correctly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1126,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:16.669Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-d2abfe03cb57df96a818",
+          "file": "audit-regressions.spec.ts",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "unknown multi-record renewal survives collection refresh and reload without rebroadcast",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10218,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    3 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    16 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    3 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    16 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 227
+                    },
+                    "snippet": "  225 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  226 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 227 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  228 |   await dialog.getByRole(\"button\", { name: \"Connect a wallet to sign\" }).click()\n  229 |   const sign = dialog.getByRole(\"button\", { name: \"Sign 1 transaction\", exact: true })\n  230 |   await expect(sign).toBeEnabled()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 227
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    3 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    16 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  225 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  226 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 227 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  228 |   await dialog.getByRole(\"button\", { name: \"Connect a wallet to sign\" }).click()\n  229 |   const sign = dialog.getByRole(\"button\", { name: \"Sign 1 transaction\", exact: true })\n  230 |   await expect(sign).toBeEnabled()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:17.957Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-320\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-320\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-320\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 227
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-ab2bd3990fc7fcbc4fcd",
+          "file": "audit-regressions.spec.ts",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "fixture routes have no serious accessibility violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-320",
+              "projectName": "width-320",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15716,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:29.537Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-7e1b9de2235bbfde42b4",
+          "file": "audit-regressions.spec.ts",
+          "line": 247,
+          "column": 1
+        },
+        {
+          "title": "wallet switch and forget detach every old listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3669,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:41.399Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-937ff32f20caad3aa70e",
+          "file": "audit-regressions.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "publication requires an exact quote and invalidates it on edits and account change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3087,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:45.289Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-af34aa2656c58ded0f7e",
+          "file": "audit-regressions.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "submitted publication reload recovers by receipt lookup without a signature",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4731,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:48.401Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-f3112884cf0714f48b2f",
+          "file": "audit-regressions.spec.ts",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "a synthetic broadcast hash followed by polling failure cannot be signed again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 4729,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:53.165Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-83d888030edf564417e1",
+          "file": "audit-regressions.spec.ts",
+          "line": 125,
+          "column": 1
+        },
+        {
+          "title": "late record A cannot overwrite record B after client navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3228,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:29:57.931Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-d0014ed5337d3f294bd2",
+          "file": "audit-regressions.spec.ts",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "archive and standalone reader include the last millisecond of Filed to",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2613,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:01.185Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-1679269b503277ca4a97",
+          "file": "audit-regressions.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "reader enforces chain identity after endpoint changes and disables exports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1038,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:03.820Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-404199b691354e037966",
+          "file": "audit-regressions.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "collection membership refresh retains the two-record reviewed plan",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 10540,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 193
+                    },
+                    "snippet": "  191 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  192 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 193 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  194 |   await page.evaluate(() => {\n  195 |     const key = \"muniment.collections.v1\", all = JSON.parse(localStorage.getItem(key)!)\n  196 |     all[0].items.pop()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 193
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  191 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  192 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 193 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  194 |   await page.evaluate(() => {\n  195 |     const key = \"muniment.collections.v1\", all = JSON.parse(localStorage.getItem(key)!)\n  196 |     all[0].items.pop()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:04.880Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-390\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-390\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 193
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-ba23ceaa4a1c71cb0e3b",
+          "file": "audit-regressions.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "dashboard rejects wrong-chain endpoints and labels local validation correctly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1216,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:16.867Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-7616cb4ab33ee5bb1d71",
+          "file": "audit-regressions.spec.ts",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "unknown multi-record renewal survives collection refresh and reload without rebroadcast",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 10252,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 227
+                    },
+                    "snippet": "  225 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  226 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 227 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  228 |   await dialog.getByRole(\"button\", { name: \"Connect a wallet to sign\" }).click()\n  229 |   const sign = dialog.getByRole(\"button\", { name: \"Sign 1 transaction\", exact: true })\n  230 |   await expect(sign).toBeEnabled()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 227
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  225 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  226 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 227 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  228 |   await dialog.getByRole(\"button\", { name: \"Connect a wallet to sign\" }).click()\n  229 |   const sign = dialog.getByRole(\"button\", { name: \"Sign 1 transaction\", exact: true })\n  230 |   await expect(sign).toBeEnabled()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:18.325Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-390\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-390\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 227
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-08710db36e406485daf6",
+          "file": "audit-regressions.spec.ts",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "fixture routes have no serious accessibility violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 16177,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:30.208Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-64d6aa381a94dd3250bb",
+          "file": "audit-regressions.spec.ts",
+          "line": 247,
+          "column": 1
+        },
+        {
+          "title": "wallet switch and forget detach every old listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3785,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:47.806Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-f80600850c660ed944df",
+          "file": "audit-regressions.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "publication requires an exact quote and invalidates it on edits and account change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:51.789Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-8f0cf146a2e3667e251b",
+          "file": "audit-regressions.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "submitted publication reload recovers by receipt lookup without a signature",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3777,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:54.761Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-b9fa9d5241530829c96f",
+          "file": "audit-regressions.spec.ts",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "a synthetic broadcast hash followed by polling failure cannot be signed again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3637,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:58.567Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-6bd57ac13cd94c958895",
+          "file": "audit-regressions.spec.ts",
+          "line": 125,
+          "column": 1
+        },
+        {
+          "title": "late record A cannot overwrite record B after client navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2883,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:02.229Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-e6b348b7cbd134328b9b",
+          "file": "audit-regressions.spec.ts",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "archive and standalone reader include the last millisecond of Filed to",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2421,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:05.136Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-2b985fe56381d7c5efdd",
+          "file": "audit-regressions.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "reader enforces chain identity after endpoint changes and disables exports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 961,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:07.582Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-6474bb7c227fe612c549",
+          "file": "audit-regressions.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "collection membership refresh retains the two-record reviewed plan",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9946,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 193
+                    },
+                    "snippet": "  191 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  192 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 193 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  194 |   await page.evaluate(() => {\n  195 |     const key = \"muniment.collections.v1\", all = JSON.parse(localStorage.getItem(key)!)\n  196 |     all[0].items.pop()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 193
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  191 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  192 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 193 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  194 |   await page.evaluate(() => {\n  195 |     const key = \"muniment.collections.v1\", all = JSON.parse(localStorage.getItem(key)!)\n  196 |     all[0].items.pop()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:08.561Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-768\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-768\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-768\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 193
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-bacfde9f638cb2233f94",
+          "file": "audit-regressions.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "dashboard rejects wrong-chain endpoints and labels local validation correctly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 864,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:19.936Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-9bf6033a8f2ee3e422c5",
+          "file": "audit-regressions.spec.ts",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "unknown multi-record renewal survives collection refresh and reload without rebroadcast",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9983,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    - locator resolved to 0 elements\u001b[22m\n\u001b[2m    - unexpected value \"0\"\u001b[22m\n\u001b[2m    - waiting for \"http://127.0.0.1:4319/collections\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"http://127.0.0.1:4319/collections\"\u001b[22m\n\u001b[2m    15 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    - locator resolved to 0 elements\u001b[22m\n\u001b[2m    - unexpected value \"0\"\u001b[22m\n\u001b[2m    - waiting for \"http://127.0.0.1:4319/collections\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"http://127.0.0.1:4319/collections\"\u001b[22m\n\u001b[2m    15 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 227
+                    },
+                    "snippet": "  225 |   await page.addInitScript(({ keys }) => {\n  226 |     if (!localStorage.getItem(\"muniment.collections.v1\")) localStorage.setItem(\"muniment.collections.v1\", JSON.stringify([{ id: \"pending-regression\", name: \"Synthetic pending collection\", createdAtMs: 1, items: keys.map(key => ({ key, addedAtMs: 1, observation: null })) }]))\n> 227 |   }, { keys: [k(1), k(2)] })\n      |                             ^\n  228 |   await page.goto(\"/collections\")\n  229 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  230 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 227
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    - locator resolved to 0 elements\u001b[22m\n\u001b[2m    - unexpected value \"0\"\u001b[22m\n\u001b[2m    - waiting for \"http://127.0.0.1:4319/collections\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"http://127.0.0.1:4319/collections\"\u001b[22m\n\u001b[2m    15 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  225 |   await page.addInitScript(({ keys }) => {\n  226 |     if (!localStorage.getItem(\"muniment.collections.v1\")) localStorage.setItem(\"muniment.collections.v1\", JSON.stringify([{ id: \"pending-regression\", name: \"Synthetic pending collection\", createdAtMs: 1, items: keys.map(key => ({ key, addedAtMs: 1, observation: null })) }]))\n> 227 |   }, { keys: [k(1), k(2)] })\n      |                             ^\n  228 |   await page.goto(\"/collections\")\n  229 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  230 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:20.948Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-768\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-768\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-768\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 227
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-9dc93a533b9573733998",
+          "file": "audit-regressions.spec.ts",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "fixture routes have no serious accessibility violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15073,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:32.065Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-3e5234a17683b7a2e28a",
+          "file": "audit-regressions.spec.ts",
+          "line": 247,
+          "column": 1
+        },
+        {
+          "title": "wallet switch and forget detach every old listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3602,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:48.578Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-3734d49a6fdf5c3a4160",
+          "file": "audit-regressions.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "publication requires an exact quote and invalidates it on edits and account change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2966,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:52.561Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-d4951dc31e711b41b24b",
+          "file": "audit-regressions.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "submitted publication reload recovers by receipt lookup without a signature",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3603,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:55.551Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-ad426f2a2edc16003ed3",
+          "file": "audit-regressions.spec.ts",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "a synthetic broadcast hash followed by polling failure cannot be signed again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:30:59.180Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-be4d0865f28a0c4f8cff",
+          "file": "audit-regressions.spec.ts",
+          "line": 125,
+          "column": 1
+        },
+        {
+          "title": "late record A cannot overwrite record B after client navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2634,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:03.147Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-b79b4afd4fbcfe130f1a",
+          "file": "audit-regressions.spec.ts",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "archive and standalone reader include the last millisecond of Filed to",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2523,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:05.803Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-d3df38f02d096c2f4dc8",
+          "file": "audit-regressions.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "reader enforces chain identity after endpoint changes and disables exports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:08.351Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-7d5f94358d0d3fcc4548",
+          "file": "audit-regressions.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "collection membership refresh retains the two-record reviewed plan",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 9987,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 193
+                    },
+                    "snippet": "  191 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  192 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 193 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  194 |   await page.evaluate(() => {\n  195 |     const key = \"muniment.collections.v1\", all = JSON.parse(localStorage.getItem(key)!)\n  196 |     all[0].items.pop()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 193
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  191 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  192 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n> 193 |   await expect(dialog.getByLabel(\"Included entities\", { exact: true }).locator(\"li\")).toHaveCount(3)\n      |                                                                                       ^\n  194 |   await page.evaluate(() => {\n  195 |     const key = \"muniment.collections.v1\", all = JSON.parse(localStorage.getItem(key)!)\n  196 |     all[0].items.pop()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:09.436Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-1024\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-1024\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-1024\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 193
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-0b2ab0d339092ce1417a",
+          "file": "audit-regressions.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "dashboard rejects wrong-chain endpoints and labels local validation correctly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1296,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:21.094Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-86506375f265377e8c0d",
+          "file": "audit-regressions.spec.ts",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "unknown multi-record renewal survives collection refresh and reload without rebroadcast",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 11322,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 227
+                    },
+                    "snippet": "  225 |   await page.addInitScript(({ keys }) => {\n  226 |     if (!localStorage.getItem(\"muniment.collections.v1\")) localStorage.setItem(\"muniment.collections.v1\", JSON.stringify([{ id: \"pending-regression\", name: \"Synthetic pending collection\", createdAtMs: 1, items: keys.map(key => ({ key, addedAtMs: 1, observation: null })) }]))\n> 227 |   }, { keys: [k(1), k(2)] })\n      |                             ^\n  228 |   await page.goto(\"/collections\")\n  229 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  230 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 227
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  225 |   await page.addInitScript(({ keys }) => {\n  226 |     if (!localStorage.getItem(\"muniment.collections.v1\")) localStorage.setItem(\"muniment.collections.v1\", JSON.stringify([{ id: \"pending-regression\", name: \"Synthetic pending collection\", createdAtMs: 1, items: keys.map(key => ({ key, addedAtMs: 1, observation: null })) }]))\n> 227 |   }, { keys: [k(1), k(2)] })\n      |                             ^\n  228 |   await page.goto(\"/collections\")\n  229 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  230 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:22.651Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-1024\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-1024\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-1024\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 227
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-df382fcbeed9cad332f6",
+          "file": "audit-regressions.spec.ts",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "fixture routes have no serious accessibility violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1024",
+              "projectName": "width-1024",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 16794,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:35.630Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-2733940f842968dd92e9",
+          "file": "audit-regressions.spec.ts",
+          "line": 247,
+          "column": 1
+        },
+        {
+          "title": "wallet switch and forget detach every old listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2703,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:49.363Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-f5afa0fc5e705059bd69",
+          "file": "audit-regressions.spec.ts",
+          "line": 80,
+          "column": 1
+        },
+        {
+          "title": "publication requires an exact quote and invalidates it on edits and account change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2500,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:52.244Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-9cdfd6881865ff37979f",
+          "file": "audit-regressions.spec.ts",
+          "line": 96,
+          "column": 1
+        },
+        {
+          "title": "submitted publication reload recovers by receipt lookup without a signature",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2551,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:54.765Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-98d0001c6273aedcd6d0",
+          "file": "audit-regressions.spec.ts",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "a synthetic broadcast hash followed by polling failure cannot be signed again",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3017,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:31:57.334Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-9c9595f316130d6f885a",
+          "file": "audit-regressions.spec.ts",
+          "line": 125,
+          "column": 1
+        },
+        {
+          "title": "late record A cannot overwrite record B after client navigation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:32:00.371Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-34d1cad06005ca996f67",
+          "file": "audit-regressions.spec.ts",
+          "line": 141,
+          "column": 1
+        },
+        {
+          "title": "archive and standalone reader include the last millisecond of Filed to",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2111,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:32:02.713Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-8b26357d42eb8a23b535",
+          "file": "audit-regressions.spec.ts",
+          "line": 156,
+          "column": 1
+        },
+        {
+          "title": "reader enforces chain identity after endpoint changes and disables exports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 788,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:32:04.844Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-307e4012ebbd2ca0f330",
+          "file": "audit-regressions.spec.ts",
+          "line": 172,
+          "column": 1
+        },
+        {
+          "title": "collection membership refresh retains the two-record reviewed plan",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9709,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 193
+                    },
+                    "snippet": "  191 | test(\"collection membership refresh retains the two-record reviewed plan\", async ({ page }) => {\n  192 |   await fixture(page)\n> 193 |   await page.addInitScript(({ keys }) => localStorage.setItem(\"muniment.collections.v1\", JSON.stringify([{ id: \"regression\", name: \"Synthetic audit collection\", createdAtMs: 1, items: keys.map(key => ({ key, addedAtMs: 1, observation: null })) }])), { keys: [k(1), k(2)] })\n      |                                                                                       ^\n  194 |   await page.goto(\"/collections\")\n  195 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  196 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 193
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  191 | test(\"collection membership refresh retains the two-record reviewed plan\", async ({ page }) => {\n  192 |   await fixture(page)\n> 193 |   await page.addInitScript(({ keys }) => localStorage.setItem(\"muniment.collections.v1\", JSON.stringify([{ id: \"regression\", name: \"Synthetic audit collection\", createdAtMs: 1, items: keys.map(key => ({ key, addedAtMs: 1, observation: null })) }])), { keys: [k(1), k(2)] })\n      |                                                                                       ^\n  194 |   await page.goto(\"/collections\")\n  195 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  196 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:193:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:32:05.651Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-1440\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-1440\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-collecti-83544-he-two-record-reviewed-plan-width-1440\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 193
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-4b08d369a8640f5df612",
+          "file": "audit-regressions.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "dashboard rejects wrong-chain endpoints and labels local validation correctly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 983,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:32:16.844Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-f40ccc2f0316e3479cd0",
+          "file": "audit-regressions.spec.ts",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "unknown multi-record renewal survives collection refresh and reload without rebroadcast",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 13,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 9504,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 87,
+                      "line": 227
+                    },
+                    "snippet": "  225 |   await page.addInitScript(({ keys }) => {\n  226 |     if (!localStorage.getItem(\"muniment.collections.v1\")) localStorage.setItem(\"muniment.collections.v1\", JSON.stringify([{ id: \"pending-regression\", name: \"Synthetic pending collection\", createdAtMs: 1, items: keys.map(key => ({ key, addedAtMs: 1, observation: null })) }]))\n> 227 |   }, { keys: [k(1), k(2)] })\n      |                             ^\n  228 |   await page.goto(\"/collections\")\n  229 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  230 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 87,
+                        "line": 227
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\nExpected: \u001b[32m3\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  8000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('dialog', { name: 'Renew storage for 2 records', exact: true }).getByLabel('Included entities', { exact: true }).locator('li')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    17 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n  225 |   await page.addInitScript(({ keys }) => {\n  226 |     if (!localStorage.getItem(\"muniment.collections.v1\")) localStorage.setItem(\"muniment.collections.v1\", JSON.stringify([{ id: \"pending-regression\", name: \"Synthetic pending collection\", createdAtMs: 1, items: keys.map(key => ({ key, addedAtMs: 1, observation: null })) }]))\n> 227 |   }, { keys: [k(1), k(2)] })\n      |                             ^\n  228 |   await page.goto(\"/collections\")\n  229 |   await page.getByRole(\"button\", { name: \"Renew storage for collection\", exact: true }).click()\n  230 |   const dialog = page.getByRole(\"dialog\", { name: \"Renew storage for 2 records\", exact: true })\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:227:87"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:32:18.020Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-1440\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-1440\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-unknown--c0cee--reload-without-rebroadcast-width-1440\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 87,
+                    "line": 227
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-2f79288156dc673b1d57",
+          "file": "audit-regressions.spec.ts",
+          "line": 219,
+          "column": 1
+        },
+        {
+          "title": "fixture routes have no serious accessibility violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 14,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10726,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:32:28.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-ee869c6ae4643037b5dc",
+          "file": "audit-regressions.spec.ts",
+          "line": 247,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-18T06:29:37.471Z",
+    "duration": 182480.905,
+    "expected": 45,
+    "skipped": 0,
+    "unexpected": 10,
+    "flaky": 0
+  }
+}
