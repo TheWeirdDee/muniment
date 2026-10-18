@@ -96,12 +96,17 @@ async function load() {
   const creators = raw ? raw.split(",").map((s) => s.trim()) : []
   clearData()
   $("coverage").textContent = "Loading records from Arkiv…"
+  let reading = false
   try {
     if (creators.some((s) => !/^0x[0-9a-fA-F]{40}$/.test(s))) throw new Error("Every trusted publisher must be a complete wallet address. Leave the field explicitly blank only to read any wallet.")
     if (!endpoint.startsWith("https://")) throw new Error("Use an https:// endpoint.")
     store.set("muniment.insights.endpoint", endpoint)
     store.set("muniment.insights.creators", raw)
     const client = createPublicClient({ chain: tiramisu, transport: politeHttp(endpoint, { concurrency: 2, maxWaitMs: 20_000, signal: controller.signal }) })
+    reading = true
+    const chainId = await client.getChainId()
+    if (current !== generation) return
+    if (chainId !== TIRAMISU.chainId) throw new Error(`This endpoint serves chain ${chainId}, not Tiramisu (${TIRAMISU.chainId}).`)
     const archive = createArchiveReader(client as unknown as ArchiveClient)
     const filters = { creators: creators.length ? creators : undefined }
     const [scan, head] = await Promise.all([archive.scanReplies(filters, { maxPages: 10, signal: controller.signal }), archive.head()])
@@ -114,7 +119,8 @@ async function load() {
     $("coverage").innerHTML = ""
     const p = document.createElement("span")
     p.className = "error"
-    p.textContent = `Could not read from Arkiv: ${(err as Error).message.split("\n")[0].slice(0, 200)}. Previous figures have been cleared; no current results are available.`
+    const message = (err as Error).message.split("\n")[0].slice(0, 200).replace(/[.]+$/, "")
+    p.textContent = `${reading ? "Could not read from Arkiv" : "Check the settings"}: ${message}. Previous figures have been cleared; no current results are available.`
     $("coverage").appendChild(p)
   }
 }
