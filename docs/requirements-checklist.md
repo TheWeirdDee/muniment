@@ -25,10 +25,10 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | A visitor finds a reply and understands source uncertainty without a wallet | met | archive and record pages; e2e "a sealed record shows provenance" |
 | Another wallet renews and the lifetime is independently verifiable | met | proof P2a, P3e; [17 October signed campaign](transaction-campaign-2026-10-17.md): single and two-reply renewals, five receipts and every extension reconciled |
 | Verified activity cannot be inflated by a forged receipt | met | proof P5; unit tests in `verify.test.ts` |
-| A researcher can preserve, export and understand partial completion | met | collections export/import e2e; per-batch progress in `RenewDialog` |
+| A researcher can preserve, export and understand partial completion | partial | Historical export/import evidence; 18 October controlled tests cover retained collection plans, pending transaction recovery and complete per-batch reconciliation. Real extension recovery and independent usability remain unverified. See [remediation](audit-remediation-2026-10-18.md). |
 | An independent reader queries live records without Muniment's origin | met | e2e "standalone reader works from disk with the main site blocked" |
 | A separate dashboard consumes the public contract | met | https://muniment-insights.vercel.app, separate Vercel project and origin |
-| Claims match demonstrated behaviour | met | [`docs/copy-audit.md`](copy-audit.md); sealing wording states its assumption |
+| Claims match demonstrated behaviour | scoped | [`docs/copy-audit.md`](copy-audit.md); sealing wording states its assumption |
 | Evidence, deployment and instructions complete before submission | prepared with disclosed limits | [Signed campaign](transaction-campaign-2026-10-17.md); later network-switch readiness was quota-blocked and the serial stale-quote case was skipped. Authenticated submission and independent usability feedback remain unverified. |
 
 ## Proof campaign (§14)
@@ -53,3 +53,7 @@ Status: **met**, **partial** or **not met**, each with the evidence. Updated wit
 | ID | Status | Evidence |
 |---|---|---|
 | VIS-01…06, CPY-01…06, INT-01…02 | met | [`docs/copy-audit.md`](copy-audit.md); before/after screens in `evidence/screens/` |
+
+## 18 October follow-up
+
+Source fixes and controlled regression coverage are recorded in [audit remediation](audit-remediation-2026-10-18.md). Historical met labels describe their cited checks, not exhaustive coverage of every wallet or recovery path. Authenticated submission, eligibility/roster declarations, a real third-party wallet matrix, screen-reader review, long-running performance and second-provider verification remain separate gates or limitations. No new signed campaign was needed for these state-logic fixes.
