@@ -1,7 +1,28 @@
 import { afterEach, expect, it, vi } from "vitest"
-import { politeHttp } from "../src/transport.js"
+import { politeHttp, clearReadCache } from "../src/transport.js"
 afterEach(() => vi.unstubAllGlobals())
 const transport = (opts = {}) => politeHttp("https://endpoint.invalid", { concurrency: 1, attempts: 1, requestTimeoutMs: 30, totalTimeoutMs: 100, ...opts })({})
+it("bounds retained reads and clears all live transport caches", async () => {
+  const fetch = vi.fn(async () => new Response(JSON.stringify({ result: "fixture" })))
+  vi.stubGlobal("fetch", fetch)
+  const t = transport({ cacheMs: 60000, requestTimeoutMs: 1000, totalTimeoutMs: 2000 })
+  for (let n = 0; n < 257; n++) await t.request({ method: "arkiv_query", params: [n] })
+  await t.request({ method: "arkiv_query", params: [0] })
+  expect(fetch).toHaveBeenCalledTimes(258)
+  await t.request({ method: "arkiv_query", params: [0] })
+  expect(fetch).toHaveBeenCalledTimes(258)
+  clearReadCache()
+  await t.request({ method: "arkiv_query", params: [0] })
+  expect(fetch).toHaveBeenCalledTimes(259)
+})
+it("handles a fetch rejecting during synchronous cancellation without an orphan rejection", async () => {
+  const ctl = new AbortController()
+  vi.stubGlobal("fetch", vi.fn(() => {
+    ctl.abort(new Error("navigation cancelled"))
+    return Promise.reject(new Error("fetch aborted"))
+  }))
+  await expect(transport({ signal: ctl.signal }).request({ method: "arkiv_query" })).rejects.toThrow("navigation cancelled")
+})
 it("bounds a hung fetch and releases the slot for a following request", async () => {
   const fetch = vi.fn().mockImplementationOnce(() => new Promise(() => {})).mockResolvedValue(new Response(JSON.stringify({ result: "recovered" })))
   vi.stubGlobal("fetch", fetch)
