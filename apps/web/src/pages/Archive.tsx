@@ -1,4 +1,4 @@
-import { type DecodeIssue, OUTCOMES, OUTCOME_LABELS, type Outcome, type Reply, type ReplyFilters, isValidSection, replyQuery } from "muniment-query"
+import { type DecodeIssue, OUTCOMES, OUTCOME_LABELS, type Outcome, type Reply, type ReplyFilters, isValidSection, replyQuery, inclusiveUtcRange } from "muniment-query"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Link, useSearchParams } from "react-router"
 import { ReplyRow } from "../components/RecordBits"
@@ -12,14 +12,14 @@ import { usePageMeta } from "../lib/meta"
 import { settings } from "../lib/settings"
 import { AUTHORITIES, JURISDICTIONS, SECTIONS, TOPICS } from "../lib/vocab"
 
-const DATE_RE = /^\d{4}-\d{2}-\d{2}$/
 const PAGE = 25
 
-type Parsed = { filters: ReplyFilters; section: string | null; text: string; sort: "chain" | "filed-desc" | "filed-asc" | "slowest"; ignored: string[] }
+type Parsed = { filters: ReplyFilters; section: string | null; text: string; sort: "chain" | "filed-desc" | "filed-asc" | "slowest"; ignored: string[]; dateError: string | null }
 
 function parse(sp: URLSearchParams): Parsed {
   const ignored: string[] = []
   const f: ReplyFilters = {}
+  let dateError: string | null = null
   const pick = (name: string, ok: (v: string) => boolean, assign: (v: string) => void) => {
     const v = sp.get(name)
     if (v === null || v === "") return
@@ -30,8 +30,11 @@ function parse(sp: URLSearchParams): Parsed {
   pick("jurisdiction", (v) => /^[a-z0-9-]{1,64}$/.test(v), (v) => (f.jurisdiction = v))
   pick("topic", (v) => /^[a-z0-9-]{1,64}$/.test(v), (v) => (f.topic = v))
   pick("outcome", (v) => (OUTCOMES as readonly string[]).includes(v), (v) => (f.outcome = v as Outcome))
-  pick("from", (v) => DATE_RE.test(v) && !Number.isNaN(Date.parse(v)), (v) => (f.filedFromMs = Date.parse(`${v}T00:00:00Z`)))
-  pick("to", (v) => DATE_RE.test(v) && !Number.isNaN(Date.parse(v)), (v) => (f.filedToMs = Date.parse(`${v}T00:00:00Z`)))
+  try {
+    const range = inclusiveUtcRange(sp.get("from") ?? "", sp.get("to") ?? "")
+    f.filedFromMs = range.from
+    f.filedToMs = range.through
+  } catch (err) { dateError = (err as Error).message }
   pick("rmin", (v) => /^\d{1,4}$/.test(v), (v) => (f.responseDaysMin = Number(v)))
   pick("rmax", (v) => /^\d{1,4}$/.test(v), (v) => (f.responseDaysMax = Number(v)))
   let section: string | null = null
@@ -41,7 +44,7 @@ function parse(sp: URLSearchParams): Parsed {
   if (sortRaw !== sort) ignored.push(`sort=${sortRaw.slice(0, 20)}`)
   const known = new Set(["authority", "jurisdiction", "topic", "outcome", "from", "to", "rmin", "rmax", "section", "q", "sort"])
   for (const k of sp.keys()) if (!known.has(k)) ignored.push(k)
-  return { filters: f, section, text: (sp.get("q") ?? "").slice(0, 100), sort, ignored }
+  return { filters: f, section, text: (sp.get("q") ?? "").slice(0, 100), sort, ignored, dateError }
 }
 
 function matchesLocal(r: Reply, f: ReplyFilters): boolean {
@@ -81,11 +84,12 @@ export default function Archive() {
     mq.addEventListener("change", onChange)
     return () => mq.removeEventListener("change", onChange)
   }, [])
-  const key = JSON.stringify(filters, (_k, v) => (typeof v === "bigint" ? v.toString() : v)) + (parsed.section ?? "")
+  const key = JSON.stringify(filters, (_k, v) => (typeof v === "bigint" ? v.toString() : v)) + (parsed.section ?? "") + (parsed.dateError ?? "")
 
   const load = useCallback(
     async (more: boolean) => {
       ctl.current?.abort()
+      if (parsed.dateError) { setRecords([]); setCursor(undefined); setError(parsed.dateError); setState("error"); return }
       const c = new AbortController()
       ctl.current = c
       setState(more ? "more" : "loading")
@@ -252,7 +256,7 @@ export default function Archive() {
               </select>
             </div>
             <fieldset className="field" style={{ border: 0, padding: 0, margin: 0 }}>
-              <legend className="label">Filed between (UTC)</legend>
+              <legend className="label">Filed from / through (UTC dates, inclusive)</legend>
               <div className="two-col">
                 <input aria-label="Filed from" className="input" type="date" value={v("from")} onChange={(e) => update("from", e.target.value)} />
                 <input aria-label="Filed to" className="input" type="date" value={v("to")} onChange={(e) => update("to", e.target.value)} />
