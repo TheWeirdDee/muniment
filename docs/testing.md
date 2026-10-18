@@ -70,7 +70,7 @@ See [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) for the measured runs and 
 
 ## Unit tests: `npm test`
 
-51 package tests across 8 files (Vitest), covering:
+62 package tests across 9 files (Vitest) at the 18 October remediation, covering:
 
 - schema validation (no-reply rules, dates, types, unsafe URLs, correction consistency, size limits, versions, namespace);
 - query building (escaping, typed ranges, creator clauses, bounds);
@@ -80,7 +80,7 @@ See [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) for the measured runs and 
 - calldata equivalence with the SDK;
 - snapshot-pinned pagination and cancellable, bounded transport.
 
-Web reconciliation and component regression tests run separately with `node node_modules/vitest/vitest.mjs run tests/components`: 18 tests across three files at the 17 October correction revision. They do not count toward the package-suite inventory above. Dated historical run counts below describe those earlier revisions.
+Web reconciliation and component regression tests run separately with `node node_modules/vitest/vitest.mjs run tests/components`: 23 tests across four files at the 18 October remediation (18 across three files at the historical 17 October correction revision). They do not count toward the package-suite inventory above. Dated historical run counts below describe those earlier revisions.
 
 The equivalence test and the verification tests use test doubles (a stub transport, hand-built receipts). They prove logic, not live behaviour; the proof campaign covers that.
 
@@ -156,3 +156,11 @@ An additional 180-check audit explicitly removed page-level overflow clipping be
 The endpoint's Retry-After was honoured. The already-published record was then read directly with the expected title, synthetic marker, stranger creator, sealed owner and flags (`evidence/ui-publication-readback.json`); no second publication was sent. The readback-only browser test passed on desktop and phone (`evidence/remaining-readbacks.json`).
 
 The phone live-data suite then passed **10 checks**, with only the optional signed-renewal test skipped (`evidence/phone-live-rerun.json`). This includes all previously blocked serial live paths plus two additional signing guards: switching from another network to Tiramisu, and stopping a quote older than five minutes before requesting a signature. Both assert that no transaction was sent. The age test advances browser wall time while retaining real chain responses; it is a UI guard test, not a claim of an elapsed on-chain interval. The phone missing-record rerun also passed (`evidence/missing-record-rerun.json`). The original quota failures remain preserved as earlier observations rather than being relabelled passes.
+
+## 18 October controlled audit regressions
+
+Run `npx playwright test --config playwright.audit.config.ts` after `npm run build:query` and `npx playwright install chromium`. It starts local web/dashboard servers and intercepts public HTTP RPC and WebSocket connections. Synthetic EIP-1193 providers have no keys and do not broadcast transactions. A fake returned hash exercises post-submission polling failure; it is not chain evidence.
+
+The suite covers listener cleanup, exact publication quote invalidation, missing-receipt/reload recovery, delayed record navigation, inclusive UTC dates, changed/wrong-chain endpoints, collection membership refresh, retained multi-record pending results, and route accessibility/overflow at 320, 390, 768, 1024 and 1440 CSS pixels. Axe serious/critical assertions are scoped checks, not accessibility certification or a screen-reader session.
+
+See the [remediation record](audit-remediation-2026-10-18.md) for final results and initial failed checks. The [CI workflow](../.github/workflows/checks.yml) runs only read-only checks; existing live signing suites remain separate and explicitly opt-in. These controlled tests do not supersede the historical quota-blocked, skipped or failed public-provider tests.
