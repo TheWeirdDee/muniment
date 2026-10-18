@@ -10,4 +10,5 @@ export * from "./collections.js"
 export * from "./status.js"
 export * from "./transport.js"
 
-export const PACKAGE_VERSION = "0.1.0"
+export const PACKAGE_VERSION = "0.1.1"
+export * from "./dates.js"
