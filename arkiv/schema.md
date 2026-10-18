@@ -188,3 +188,7 @@ Continuation calls must preserve query, projection, page size and the first resu
 When both timestamps and `response_days` exist, duration must equal `floor((replied_ms - filed_ms) / 86400000)`: whole elapsed UTC days, with partial days rounded down. Missing reply timestamps or duration measurements remain supported; unanswered records carry neither. Contradictory values are decode issues and excluded from analytics.
 
 Linked appeals/exemption relations are independently authored claims. Their creator must be displayed; only eligible same-creator links travel with the reply's renewal. The standalone reader follows up to three 50-record pages per linked kind at the parent read block, labels a bounded result partial, and exports `linkedCoverage` with completeness, cursor, read block and pages.
+
+## Calendar filter bounds
+
+The archive and standalone reader interpret `Filed from` / `Filed to` as inclusive UTC calendar dates. The lower bound is midnight on the first date; the upper bound is midnight on the next day minus one millisecond. For example, through `2026-10-18` means `filed_ms <= u64(1792367999999)`. Impossible dates and reversed ranges are rejected. Package callers supplying `filedFromMs` / `filedToMs` still supply exact inclusive millisecond bounds themselves; these UI rules do not change that query contract.
