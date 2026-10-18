@@ -70,6 +70,8 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const [wallets, setWallets] = useState<DiscoveredWallet[]>([])
   const [state, setState] = useState<Omit<WalletState, "wallets">>({ status: "disconnected", address: null, chainId: null, walletName: null, error: null })
   const active = useRef<DiscoveredWallet | null>(null)
+  const unbind = useRef<() => void>(() => {})
+  const connection = useRef(0)
   const discoveryDone = useRef(false)
 
   // EIP-6963 discovery
@@ -80,6 +82,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       if (!d?.info || !d.provider) return
       found.set(d.info.uuid, { id: d.info.rdns || d.info.uuid, name: d.info.name, icon: /^data:image\//.test(d.info.icon) ? d.info.icon : null, provider: d.provider })
       setWallets([...found.values()])
+      setState(s => s.status === "unavailable" ? { ...s, status: "disconnected" } : s)
     }
     window.addEventListener("eip6963:announceProvider", onAnnounce)
     window.dispatchEvent(new Event("eip6963:requestProvider"))
@@ -99,15 +102,13 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const bind = useCallback((w: DiscoveredWallet) => {
-    const prev = active.current
-    if (prev?.provider.removeListener) {
-      prev.provider.removeListener("accountsChanged", onAccounts as never)
-      prev.provider.removeListener("chainChanged", onChain as never)
-    }
+    unbind.current()
+    const generation = connection.current
     active.current = w
     w.provider.on?.("accountsChanged", onAccounts as never)
     w.provider.on?.("chainChanged", onChain as never)
     function onAccounts(accounts: string[]) {
+      if (active.current !== w || generation !== connection.current) return
       if (!accounts || accounts.length === 0) {
         setState({ status: "disconnected", address: null, chainId: null, walletName: null, error: "The wallet disconnected this site." })
         writeStorage(REMEMBER, null)
@@ -116,9 +117,17 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       }
     }
     function onChain(hex: string) {
+      if (active.current !== w || generation !== connection.current) return
       setState((s) => ({ ...s, chainId: Number.parseInt(hex, 16) }))
     }
+    unbind.current = () => {
+      w.provider.removeListener?.("accountsChanged", onAccounts as never)
+      w.provider.removeListener?.("chainChanged", onChain as never)
+      active.current = null
+    }
   }, [])
+
+  useEffect(() => () => { connection.current++; unbind.current() }, [])
 
   // Restore a remembered connection silently (eth_accounts never prompts).
   useEffect(() => {
@@ -126,21 +135,27 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     if (!remembered || wallets.length === 0 || active.current) return
     const w = wallets.find((x) => x.id === remembered) ?? (remembered === "injected" ? wallets[0] : undefined)
     if (!w) return
+    const attempt = connection.current
+    let cancelled = false
     ;(async () => {
       try {
         const accounts = (await w.provider.request({ method: "eth_accounts" })) as string[]
         if (!accounts?.length) return
         const chain = (await w.provider.request({ method: "eth_chainId" })) as string
+        if (cancelled || attempt !== connection.current || active.current) return
         bind(w)
         setState({ status: "connected", address: accounts[0] as Hex, chainId: Number.parseInt(chain, 16), walletName: w.name, error: null })
       } catch {
         // silent restore is best effort
       }
     })()
+    return () => { cancelled = true }
   }, [wallets, bind])
 
   const connect = useCallback(
     async (id?: string) => {
+      const attempt = ++connection.current
+      unbind.current()
       const w = (id ? wallets.find((x) => x.id === id) : wallets[0]) ?? null
       if (!w) {
         setState((s) => ({ ...s, status: "unavailable", error: "No browser wallet was found. Install an EVM wallet extension to sign; reading needs no wallet." }))
@@ -151,10 +166,12 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         const accounts = (await w.provider.request({ method: "eth_requestAccounts" })) as string[]
         if (!accounts?.length) throw new Error("The wallet returned no account.")
         const chain = (await w.provider.request({ method: "eth_chainId" })) as string
+        if (attempt !== connection.current) return
         bind(w)
         writeStorage(REMEMBER, w.id)
         setState({ status: "connected", address: accounts[0] as Hex, chainId: Number.parseInt(chain, 16), walletName: w.name, error: null })
       } catch (err) {
+        if (attempt !== connection.current) return
         setState({ status: "disconnected", address: null, chainId: null, walletName: null, error: describeWalletError(err) })
       }
     },
@@ -162,6 +179,8 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   )
 
   const forget = useCallback(() => {
+    connection.current++
+    unbind.current()
     writeStorage(REMEMBER, null)
     active.current = null
     setState({ status: wallets.length ? "disconnected" : "unavailable", address: null, chainId: null, walletName: null, error: null })
@@ -169,6 +188,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
   const switchNetwork = useCallback(async () => {
     const w = active.current
+    const generation = connection.current
     if (!w) throw new Error("Connect a wallet first.")
     try {
       await w.provider.request({ method: "wallet_switchEthereumChain", params: [{ chainId: TIRAMISU.chainIdHex }] })
@@ -189,15 +209,23 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       })
     }
     const chain = (await w.provider.request({ method: "eth_chainId" })) as string
+    if (active.current !== w || generation !== connection.current) return
     setState((s) => ({ ...s, chainId: Number.parseInt(chain, 16) }))
   }, [])
 
   const signer = useCallback(
     (onSubmitted?: (hash: Hex) => void) => {
       const w = active.current
+      const generation = connection.current
       if (!w || !state.address) throw new Error("Connect a wallet first.")
       const transport = custom({
         async request(args: { method: string; params?: unknown }) {
+          if (args.method === "eth_sendTransaction") {
+            if (active.current !== w || generation !== connection.current) throw new Error("Wallet connection changed. Review the transaction again.")
+            const accounts = await w.provider.request({ method: "eth_accounts" }) as string[]
+            const chain = await w.provider.request({ method: "eth_chainId" }) as string
+            if (active.current !== w || generation !== connection.current || accounts[0]?.toLowerCase() !== state.address?.toLowerCase() || Number.parseInt(chain, 16) !== TIRAMISU.chainId) throw new Error("Wallet account or network changed. Review the transaction again.")
+          }
           const result = await w.provider.request(args as never)
           if (args.method === "eth_sendTransaction" && typeof result === "string") onSubmitted?.(result as Hex)
           return result
