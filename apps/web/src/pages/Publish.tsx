@@ -1,16 +1,20 @@
-import { ExpirationTime, jsonToPayload } from "@arkiv-network/sdk"
+import { ExpirationTime, jsonToPayload, type ExecuteBatchParameters } from "@arkiv-network/sdk"
 import { i32, key, str, u64 } from "@arkiv-network/sdk/attr"
-import { APP, type Hex, OUTCOMES, OUTCOME_LABELS, type Outcome, SCHEMA_VERSION, SEAL_ADDRESS, TIRAMISU, clearReadCache, explorerTx } from "muniment-query"
-import { useMemo, useRef, useState } from "react"
+import { APP, type Hex, OUTCOMES, OUTCOME_LABELS, type Outcome, SCHEMA_VERSION, SEAL_ADDRESS, TIRAMISU, clearReadCache, explorerTx, formatGlm, utcDay, type CostEstimate } from "muniment-query"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Link } from "react-router"
 import { ExternalLink, Notice } from "../components/ui"
 import { useAnnounce } from "../lib/announce"
-import { publicClient } from "../lib/arkiv"
+import { publicClient, readErrorMessage } from "../lib/arkiv"
 import { shortHex } from "../lib/format"
 import { usePageMeta } from "../lib/meta"
 import { scrub } from "../lib/scrub"
 import { AUTHORITIES, SECTIONS, TOPICS } from "../lib/vocab"
 import { describeWalletError, useWallet } from "../lib/wallet"
+
+import { publicationQuote } from "../lib/publication-quote"
+import { submittedResult } from "../lib/transaction"
+import { readTransaction, saveTransaction } from "../lib/transaction-storage"
 
 const JUR: Record<string, { slug: string; name: string }> = {
   "ravipur-mc": { slug: "sundarvan", name: "Sundarvan (fictional state)" },
@@ -43,6 +47,7 @@ type Stage =
   | { s: "idle" }
   | { s: "signing" }
   | { s: "submitted"; tx: Hex }
+  | { s: "unknown"; tx: Hex; msg: string }
   | { s: "confirmed"; tx: Hex; key: Hex }
   | { s: "readback-pending"; tx: Hex; key: Hex }
   | { s: "visible"; tx: Hex; key: Hex }
@@ -62,14 +67,16 @@ export default function Publish() {
   const [lifetime, setLifetime] = useState(30)
   const [seal, setSeal] = useState(true)
   const [ack, setAck] = useState(false)
-  const [stage, setStage] = useState<Stage>({ s: "idle" })
+  const [stage, setStage] = useState<Stage>(() => readTransaction<Stage>("muniment.publish.pending") ?? { s: "idle" })
+  const [review, setReview] = useState<{ params: ExecuteBatchParameters; cost: CostEstimate; fingerprint: string; keys: Hex[]; at: number } | null>(null)
+  const [preparing, setPreparing] = useState(false)
   const running = useRef(false)
   const [refNo] = useState(() => String(Math.floor(10000 + Math.random() * 89999)))
 
   const hits = useMemo(() => scrub(suffix), [suffix])
   const needsSections = outcome === "denied" || outcome === "partial"
   const today = new Date().toISOString().slice(0, 10)
-  const filedOk = /^\d{4}-\d{2}-\d{2}$/.test(filed) && filed >= "2025-01-01" && filed <= today
+  const filedOk = utcDay(filed) !== null && filed >= "2025-01-01" && filed <= today
   const daysNum = Number(days)
   const daysOk = outcome === "no-reply" || (/^\d{1,3}$/.test(days) && daysNum <= 365)
   const sectionsOk = !needsSections || sections.length > 0
@@ -77,14 +84,14 @@ export default function Publish() {
     !filedOk && "Choose a filing date between 1 Jan 2025 and today.",
     !daysOk && "Response time must be a whole number of days from 0 to 365.",
     !sectionsOk && "A refused or partial reply must cite at least one exemption section.",
-    hits.length > 0 && `The title note looks like it contains a ${hits[0].kind}. Remove it: this page publishes synthetic data only.`,
+    hits.length > 0 && `The title note may contain personal information (${hits[0].kind}). Remove it before publishing synthetic data.`,
     suffix.length > 60 && "The title note is limited to 60 characters.",
   ].filter(Boolean) as string[]
 
   const auth = AUTHORITIES.find((a) => a.slug === authority)!
   const topicName = TOPICS.find((t) => t.slug === topic)!.name
   const filedMs = Date.parse(`${filed}T00:00:00Z`)
-  const repliedMs = outcome === "no-reply" || !daysOk ? null : filedMs + daysNum * 86_400_000
+  const repliedMs = outcome === "no-reply" || !daysOk || !filedOk ? null : filedMs + daysNum * 86_400_000
   const effSections = needsSections ? sections : []
   const title = `${topicName}${suffix.trim() ? ` — ${suffix.trim()}` : ""} (synthetic, user-published)`
   const ref = `USR/RTI/${filed.slice(0, 4)}/${refNo}`
@@ -104,12 +111,19 @@ export default function Publish() {
     disclosure: DISCLOSURE,
   }
 
-  const publish = async () => {
-    if (running.current || errors.length || !ack || !w.address) return
+  const fingerprint = JSON.stringify([authority, topic, outcome, filed, days, sections, suffix, lifetime, seal, w.address, w.chainId])
+  const currentFingerprint = useRef(fingerprint)
+  currentFingerprint.current = fingerprint
+  useEffect(() => { setReview(null) }, [fingerprint])
+  useEffect(() => {
+    if ("tx" in stage && stage.tx) saveTransaction("muniment.publish.pending", stage.s === "submitted" ? { ...stage, s: "unknown", msg: "Confirmation is not yet known." } : stage)
+  }, [stage])
+
+  const prepare = async () => {
+    if (running.current || !["idle", "failed"].includes(stage.s) || errors.length || !ack || !w.address || !w.onTiramisu) return
     running.current = true
-    setStage({ s: "signing" })
-    announce("Approve the transaction in your wallet.")
-    let tx: Hex | undefined
+    setPreparing(true)
+    const reviewedFingerprint = fingerprint
     try {
       const count = 1 + effSections.length
       const pred = await publicClient().predictEntityKeys({ owner: w.address, count })
@@ -142,15 +156,33 @@ export default function Publish() {
           salt: pred[i + 1].salt,
         })),
       ]
-      const signer = w.signer((h) => {
-        tx = h
-        setStage({ s: "submitted", tx: h })
-        announce("Submitted. Waiting for a block.")
+      const params = { creates, ownershipChanges: seal ? pred.map(p => ({ entityKey: p.key, newOwner: SEAL_ADDRESS })) : [] }
+      const cost = await publicationQuote(params, w.address)
+      if (reviewedFingerprint === currentFingerprint.current) setReview({ params, cost, fingerprint: reviewedFingerprint, keys: pred.map(p => p.key), at: Date.now() })
+    } catch (err) { setStage({ s: "failed", msg: describeWalletError(err) }) }
+    finally { running.current = false; setPreparing(false) }
+  }
+
+  const publish = async () => {
+    if (running.current || !["idle", "failed"].includes(stage.s) || !review || review.fingerprint !== fingerprint || !w.onTiramisu || !w.address || errors.length || !ack) return
+    if (Date.now() - review.at > 300000) { setReview(null); announce("Quote expired. Review a fresh estimate before signing."); return }
+    running.current = true
+    setStage({ s: "signing" })
+    let tx: Hex | undefined
+    try {
+      const currentKeys = await publicClient().predictEntityKeys({ owner: w.address, salts: review.params.creates!.map(c => c.salt as bigint) })
+      if (currentFingerprint.current !== review.fingerprint || currentKeys.some((p, i) => p.key !== review.keys[i])) {
+        setReview(null)
+        setStage({ s: "failed", msg: "The account, network or entity nonce changed. Review a fresh publication quote." })
+        return
+      }
+      const signer = w.signer(hash => {
+        tx = hash
+        const pending: Stage = { s: "unknown", tx: hash, msg: "Confirmation is not yet known." }
+        saveTransaction("muniment.publish.pending", pending)
+        setStage({ s: "submitted", tx: hash })
       })
-      const res = await signer.executeBatch({
-        creates,
-        ownershipChanges: seal ? pred.map((p) => ({ entityKey: p.key, newOwner: SEAL_ADDRESS })) : [],
-      })
+      const res = await signer.executeBatch(review.params)
       const newKey = res.createdEntities[0] as Hex
       setStage({ s: "confirmed", tx: res.txHash, key: newKey })
       for (let i = 0; i < 2; i++) {
@@ -167,14 +199,14 @@ export default function Publish() {
       setStage({ s: "readback-pending", tx: res.txHash, key: newKey })
       announce("Publication confirmed on chain. Reading it back is delayed; do not publish it again.")
     } catch (e) {
-      setStage({ s: "failed", msg: describeWalletError(e), tx })
-      announce("Publishing failed.")
+      setStage(tx ? { s: "unknown", msg: readErrorMessage(e), tx } : { s: "failed", msg: describeWalletError(e) })
+      announce(tx ? "Transaction submitted; confirmation is not yet known. Recheck without signing." : "Publishing failed.")
     } finally {
       running.current = false
     }
   }
 
-  const busy = stage.s === "signing" || stage.s === "submitted" || stage.s === "confirmed"
+  const busy = preparing || stage.s === "signing" || stage.s === "submitted" || stage.s === "confirmed"
 
   return (
     <>
@@ -193,11 +225,11 @@ export default function Publish() {
           className="stack"
           onSubmit={(e) => {
             e.preventDefault()
-            publish()
+            if (review) publish(); else prepare()
           }}
           aria-describedby="publish-errors"
         >
-          <fieldset className="stack" disabled={busy || stage.s === "visible" || stage.s === "readback-pending"} style={{ border: 0, padding: 0, margin: 0 }}>
+          <fieldset className="stack" disabled={busy || stage.s === "visible" || stage.s === "readback-pending" || stage.s === "unknown"} style={{ border: 0, padding: 0, margin: 0 }}>
             <div className="two-col">
               <div className="field">
                 <label htmlFor="p-auth">Synthetic authority</label>
@@ -321,12 +353,30 @@ export default function Publish() {
                 Switch to Tiramisu
               </button>
             ) : (
-              <button type="submit" className="btn btn-primary" disabled={errors.length > 0 || !ack}>
-                Sign and publish
+              <button type="submit" className="btn btn-primary" disabled={preparing || errors.length > 0 || !ack}>
+                {preparing ? "Estimating…" : review ? "Sign and publish" : "Review publication fee"}
               </button>
             )
           ) : null}
 
+          {review ? <Notice tone="info" title="Reviewed publication">
+            Estimated fee: ≈ {formatGlm(review.cost.totalWei, 8)} test GLM for {review.params.creates?.length} entities and {review.params.ownershipChanges?.length} ownership changes (20% gas margin).<br />
+            Signing wallet: <span className="hash">{w.address}</span>. The exact salted payload above is retained for signing. The wallet shows the final fee before approval; edits, account/network changes or five minutes invalidate this quote.
+          </Notice> : null}
+          {stage.s === "unknown" ? <Notice tone="warn" title="Transaction submitted; confirmation is not yet known">
+            {stage.msg} <ExternalLink href={explorerTx(stage.tx)}>Inspect the transaction</ExternalLink> before publishing again.
+            <button type="button" className="btn" onClick={async () => {
+              if (running.current) return
+              running.current = true
+              try {
+                const result = await submittedResult(stage.tx)
+                if (result?.state === "reverted") { setStage({ s: "failed", msg: "The submitted transaction reverted on chain." }); saveTransaction("muniment.publish.pending", null); setReview(null) }
+                else if (result?.state === "confirmed" && result.created[0]) setStage({ s: "readback-pending", tx: stage.tx, key: result.created[0] })
+                else setStage({ ...stage, msg: "No confirmed receipt is available yet." })
+              } catch (err) { setStage({ ...stage, msg: describeWalletError(err) }) }
+              finally { running.current = false }
+            }}>Recheck submitted transaction (no signature)</button>
+          </Notice> : null}
           {stage.s === "signing" ? <Notice tone="info">Waiting for your wallet. Nothing has been sent yet.</Notice> : null}
           {stage.s === "submitted" ? (
             <Notice tone="info" title="Submitted">
@@ -345,6 +395,9 @@ export default function Publish() {
               <ExternalLink href={explorerTx(stage.tx)}>transaction</ExternalLink>
             </Notice>
           ) : null}
+          {stage.s === "visible" || stage.s === "readback-pending" ? <button type="button" className="btn" onClick={() => {
+            saveTransaction("muniment.publish.pending", null); setStage({ s: "idle" }); setReview(null); setAck(false)
+          }}>Prepare a different synthetic record</button> : null}
           {stage.s === "failed" ? (
             <Notice tone="danger" title="Not published">
               {stage.msg}
