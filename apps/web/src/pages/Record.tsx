@@ -16,7 +16,7 @@ import {
   clearReadCache,
   safeUrl,
 } from "muniment-query"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { Link, useParams } from "react-router"
 import { ExpiryText, OutcomePill, ResponseText, SaveButton, StatusPill, isTrustedPublisher } from "../components/RecordBits"
 import { RenewDialog } from "../components/RenewDialog"
@@ -39,6 +39,7 @@ export default function Record() {
   const [linked, setLinked] = useState<Linked | null>(null)
   const [linkedError, setLinkedError] = useState<string | null>(null)
   const [refreshNote, setRefreshNote] = useState<string | null>(null)
+  const requestId = useRef(0)
   const { head } = useHead()
   const announce = useAnnounce()
   const reply = load.state === "done" && load.result.state === "found" ? load.result.record : null
@@ -50,6 +51,7 @@ export default function Record() {
 
   const fetchAll = useCallback(
     async (reason?: string) => {
+      const request = ++requestId.current
       if (!isEntityKey(key)) {
         setLoad({ state: "done", result: { state: "invalid-key" } })
         return
@@ -58,12 +60,16 @@ export default function Record() {
         if (reason) clearReadCache()
         const r = reader()
         const result = await r.getReply(key)
+        if (request !== requestId.current) return
         setLoad({ state: "done", result })
         if (result.state === "found") {
           try {
-            setLinked(await r.getLinked(result.record.key))
+            const nextLinked = await r.getLinked(result.record.key)
+            if (request !== requestId.current) return
+            setLinked(nextLinked)
             setLinkedError(null)
           } catch (e) {
+            if (request !== requestId.current) return
             setLinkedError(readErrorMessage(e))
           }
         }
@@ -72,6 +78,7 @@ export default function Record() {
           if (reason.includes("event")) announce("This record changed on Arkiv and was refreshed.")
         }
       } catch (e) {
+        if (request !== requestId.current) return
         setLoad((prev) => (prev.state === "done" ? prev : { state: "error", msg: readErrorMessage(e) }))
         if (reason) setRefreshNote(`A refresh failed: ${readErrorMessage(e)}`)
       }
@@ -82,7 +89,10 @@ export default function Record() {
   useEffect(() => {
     setLoad({ state: "loading" })
     setLinked(null)
+    setLinkedError(null)
+    setRefreshNote(null)
     fetchAll()
+    return () => { requestId.current++ }
   }, [fetchAll])
 
   const watchKeys = useMemo(() => (reply ? [reply.key, ...(linked?.appeals.map((a) => a.key) ?? [])] : []), [reply, linked])
