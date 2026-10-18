@@ -46,6 +46,21 @@ function capturingClient() {
 }
 
 describe("encodeExecute matches the SDK's calldata", () => {
+  it("quotes publication creates and ownership changes with exact SDK calldata", async () => {
+    const cap = capturingClient()
+    const flags = { readonly: true, permissionlessExtension: true }
+    const payload = jsonToPayload({ synthetic: true, title: "Quote regression" })
+    const newOwner = "0x000000000000000000000000000000000000dEaD"
+    await cap.client.executeBatch({
+      creates: [{ payload, contentType: "application/json", attributes: { app: str("muniment-archive"), synthetic: true }, salt: 10n, expires: ExpirationTime.fromDays(7), flags }],
+      ownershipChanges: [{ entityKey: REPLY, newOwner }],
+    }).catch(() => undefined)
+    expect(cap.data).not.toBeNull()
+    expect(encodeExecute({ creates: [{ payload, contentType: "application/json", salt: 10n, expiresAt: 0n, minLifetime: 302400n, flags,
+      attributes: [{ name: "app", type: "str", value: "muniment-archive" }, { name: "synthetic", type: "bool", value: true }] }],
+      ownershipChanges: [{ entityKey: REPLY, newOwner }],
+    })).toBe(cap.data)
+  })
   it("for a renewal batch: receipt create plus two absolute extensions", async () => {
     const target = 2_000_000n
     const cap = capturingClient()
