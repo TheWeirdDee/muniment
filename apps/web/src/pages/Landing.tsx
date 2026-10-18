@@ -306,6 +306,10 @@ const FAQ: [string, string][] = [
   ["Is this real government data?", "No. Every record in this demo is synthetic: invented authorities, figures and dates, clearly labelled. The storage, renewals and transactions are real, on the Arkiv Tiramisu testnet."],
   ["What does renewing storage do?", "It moves a record's expiry block later, so it stays readable for longer. Any wallet can do it for records that allow it, and it never changes the record's content."],
   [
+    "Do I need a wallet to use Muniment?",
+    "No. Browsing and searching the archive, reading records and their provenance, saving local collections and using the standalone reader all work without one. A wallet is only needed for an on-chain action: publishing a new record (from the Publish page) or renewing an expiring record (from its Renew storage button), where it signs the Arkiv transaction and pays the testnet fee.",
+  ],
+  [
     "Does a wallet prove a document is genuine?",
     "No. The chain shows which wallet uploaded a record and when. It cannot show that the named office issued it or that it is true. Reviews are statements by wallets, which you can weigh for yourself.",
   ],
