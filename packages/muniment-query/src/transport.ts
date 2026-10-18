@@ -33,9 +33,13 @@ const CACHEABLE = new Set(["arkiv_query", "arkiv_getEntity", "eth_getLogs", "eth
 
 /** Drop cached reads, e.g. after a write so the next read reflects it. */
 export function clearReadCache() {
-  for (const c of caches) c.clear()
+  for (const ref of caches) {
+    const cache = ref.deref()
+    if (cache) cache.clear()
+    else caches.delete(ref)
+  }
 }
-const caches = new Set<Map<string, { at: number; value: Promise<unknown> }>>()
+const caches = new Set<WeakRef<Map<string, { at: number; value: Promise<unknown> }>>>()
 
 export class RpcHttpError extends Error {
   constructor(
@@ -59,7 +63,7 @@ const sleep = (ms: number, signal: AbortSignal) => new Promise<void>((resolve, r
 function cancellable<T>(value: Promise<T>, signal: AbortSignal): Promise<T> {
   return new Promise((resolve, reject) => {
     const abort = () => reject(signal.reason)
-    if (signal.aborted) { abort(); return }
+    if (signal.aborted) { value.catch(() => {}); abort(); return }
     signal.addEventListener("abort", abort, { once: true })
     value.then(resolve, reject).finally(() => signal.removeEventListener("abort", abort))
   })
@@ -84,7 +88,8 @@ export function politeHttp(url: string, opts: PoliteTransportOptions = {}) {
   let id = 0
   const cacheMs = opts.cacheMs ?? 0
   const cache = new Map<string, { at: number; value: Promise<unknown> }>()
-  caches.add(cache)
+  for (const ref of caches) if (!ref.deref()) caches.delete(ref)
+  caches.add(new WeakRef(cache))
 
   const acquire = (signal: AbortSignal) => new Promise<void>((resolve, reject) => {
     signal.throwIfAborted()
@@ -172,13 +177,14 @@ export function politeHttp(url: string, opts: PoliteTransportOptions = {}) {
         return hit.value
       }
       const value = send(method, params)
+      if (cache.size >= 256) cache.delete(cache.keys().next().value!)
       cache.set(key, { at: Date.now(), value })
       value.then(
         (v) => {
           // Receipts that are not yet available must not be remembered.
-          if (cacheMs === 0 || v === null) cache.delete(key)
+          if ((cacheMs === 0 || v === null) && cache.get(key)?.value === value) cache.delete(key)
         },
-        () => cache.delete(key),
+        () => { if (cache.get(key)?.value === value) cache.delete(key) },
       )
       return value
     },
