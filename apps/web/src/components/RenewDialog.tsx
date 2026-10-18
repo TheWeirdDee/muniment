@@ -8,12 +8,15 @@ import type { BatchReconciliation } from "../lib/renew-reconcile"
 import { describeWalletError, useWallet } from "../lib/wallet"
 import { Dialog, ExternalLink, Notice } from "./ui"
 import { RenewalPlanReview } from "./RenewalPlanReview"
+import { submittedResult } from "../lib/transaction"
+import { readTransaction, saveTransaction } from "../lib/transaction-storage"
 
 type BatchStatus = (
   | { s: "waiting" }
   | { s: "checking" }
   | { s: "signing" }
   | { s: "submitted"; tx: Hex }
+  | { s: "unknown"; tx: Hex; reason: string }
   | { s: "confirmed"; tx: Hex }
   | { s: "verified"; tx: Hex; renewer: Hex }
   | { s: "unverified"; tx: Hex; reason: string }
@@ -27,6 +30,7 @@ const STAGE_TEXT: Record<BatchStatus["s"], string> = {
   checking: "Re-reading chain state",
   signing: "Waiting for your wallet to approve",
   submitted: "Submitted, waiting for a block",
+  unknown: "Transaction submitted; confirmation is not yet known",
   confirmed: "Confirmed in a block, waiting for this endpoint to show it",
   verified: "Verified renewal",
   unverified: "Confirmed; reconciliation failed",
@@ -35,31 +39,48 @@ const STAGE_TEXT: Record<BatchStatus["s"], string> = {
   stale: "Quote out of date",
 }
 
-export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; onClose: () => void; keys: Hex[]; onDone?: () => void }) {
+export function RenewDialog({ open, onClose, keys, onDone, recoveryId }: { open: boolean; onClose: () => void; keys: Hex[]; onDone?: () => void; recoveryId?: string }) {
   const w = useWallet()
   const announce = useAnnounce()
   const [days, setDays] = useState<number>(180)
   const [disc, setDisc] = useState<{ state: "idle" | "loading" } | { state: "ready"; d: Discovery } | { state: "error"; msg: string }>({ state: "idle" })
   const [q, setQ] = useState<{ state: "idle" | "loading" } | { state: "ready"; q: Quote } | { state: "error"; msg: string }>({ state: "idle" })
   const [batches, setBatches] = useState<BatchStatus[]>([])
+  const latestBatches = useRef<BatchStatus[]>([])
+  latestBatches.current = batches
   const [balance, setBalance] = useState<bigint | null>(null)
   const running = useRef(false)
+  const discoveryId = useRef(0)
   const [busy, setBusy] = useState(false)
 
   const renewer = w.status === "connected" && w.onTiramisu ? w.address : null
   const keyList = keys.join(",")
+  const recoveryKey = `muniment.renew.pending:${recoveryId ?? keyList}`
 
   const load = useCallback(async () => {
+    const request = ++discoveryId.current
+    const saved = readTransaction<{ quote: Quote; batches: BatchStatus[] }>(recoveryKey)
+    if (saved?.quote?.plan && saved.batches?.some(b => "tx" in b && b.tx)) {
+      setQ({ state: "ready", q: saved.quote })
+      setBatches(saved.batches.map(b => b.s === "submitted" ? { ...b, s: "unknown", reason: "Recheck the submitted transaction." } : b.s === "signing" || b.s === "checking" ? { s: "waiting" } : b))
+      return
+    }
     setDisc({ state: "loading" })
     setQ({ state: "idle" })
     setBatches([])
     try {
       const d = await discover(keyList.split(",") as Hex[])
+      if (request !== discoveryId.current) return
       setDisc({ state: "ready", d })
     } catch (e) {
+      if (request !== discoveryId.current) return
       setDisc({ state: "error", msg: readErrorMessage(e) })
     }
-  }, [keyList])
+  }, [keyList, recoveryKey])
+
+  useEffect(() => {
+    if (q.state === "ready" && batches.some(b => "tx" in b && b.tx)) saveTransaction(recoveryKey, { quote: q.q, batches })
+  }, [q, batches, recoveryKey])
 
   useEffect(() => {
     if (open) load()
@@ -68,6 +89,7 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
       setQ({ state: "idle" })
       setBatches([])
     }
+    return () => { discoveryId.current++ }
   }, [open, load])
 
   useEffect(() => {
@@ -95,7 +117,12 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
     w.balance().then(setBalance).catch(() => setBalance(null))
   }, [renewer, w.balance, q])
 
-  const setBatch = (i: number, s: BatchStatus) => setBatches((prev) => prev.map((b, j) => (j === i ? s : b)))
+  const setBatch = (i: number, s: BatchStatus) => {
+    const next = latestBatches.current.map((b, j) => j === i ? s : b)
+    latestBatches.current = next
+    setBatches(next)
+    if (q.state === "ready" && next.some(b => "tx" in b && b.tx)) saveTransaction(recoveryKey, { quote: q.q, batches: next })
+  }
 
   const reconcile = async (i: number, quoted: Quote, tx: Hex, wallet: Hex, created: Hex[]) => {
     const result = await reconcileConfirmedBatch(quoted.plan.batches[i], quoted.plan.targetBlock, tx, wallet, created)
@@ -106,14 +133,14 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
   }
 
   const run = async () => {
-    if (running.current || q.state !== "ready" || !renewer || renewer.toLowerCase() !== q.q.estimatedFrom.toLowerCase()) return
+    if (running.current || batches.some(b => b.s === "unknown" || b.s === "submitted") || q.state !== "ready" || !renewer || renewer.toLowerCase() !== q.q.estimatedFrom.toLowerCase()) return
     running.current = true
     setBusy(true)
     const quoteNow = q.q
     const target = quoteNow.plan.targetBlock
     try {
       for (const [i, batch] of quoteNow.plan.batches.entries()) {
-        if (batches[i] && ["verified", "unverified", "readback-pending", "confirmed"].includes(batches[i].s)) continue
+        if (batches[i] && "tx" in batches[i] && batches[i].tx) continue
         setBatch(i, { s: "checking" })
         const changed = await staleCheck(batch, quoteNow)
         if (changed.length > 0 || Date.now() - quoteNow.createdAtMs > 5 * 60_000) {
@@ -127,7 +154,8 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
         try {
           const signer = w.signer((hash) => {
             submitted = hash
-            setBatch(i, { s: "submitted", tx: hash })
+            const pending: BatchStatus = { s: "submitted", tx: hash, renewingWallet: renewer }
+            setBatch(i, pending)
             announce(`Transaction ${i + 1} submitted.`)
           })
           const res = await signer.executeBatch(batchParams(batch, target))
@@ -139,8 +167,8 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
             setBatch(i, { s: "readback-pending", tx: res.txHash, reason: readErrorMessage(readErr), created: res.createdEntities as Hex[], renewingWallet: renewer })
           }
         } catch (err) {
-          setBatch(i, { s: "failed", error: describeWalletError(err), tx: submitted })
-          announce(`Transaction ${i + 1} failed.`)
+          setBatch(i, submitted ? { s: "unknown", reason: readErrorMessage(err), tx: submitted, renewingWallet: renewer } : { s: "failed", error: describeWalletError(err) })
+          announce(submitted ? "Transaction submitted; confirmation is not yet known. Recheck without signing." : `Transaction ${i + 1} failed.`)
           break
         }
       }
@@ -155,6 +183,7 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
   const anyStarted = batches.some((b) => b.s !== "waiting")
   const finished = batches.length > 0 && doneCount === batches.length
   const insufficient = q.state === "ready" && balance !== null && balance < q.q.totalWei
+  const unresolved = batches.some(b => b.s === "unknown" || b.s === "submitted")
 
   return (
     <Dialog
@@ -167,8 +196,9 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
           <button type="button" className="btn" onClick={onClose} disabled={busy}>
             {finished ? "Close" : "Cancel"}
           </button>
+          {finished ? <button type="button" className="btn" disabled={busy} onClick={() => { saveTransaction(recoveryKey, null); load() }}>Review a new renewal plan</button> : null}
           {batches.some((b) => b.s === "stale" || b.s === "failed") ? (
-            <button type="button" className="btn" onClick={load} disabled={busy}>
+            <button type="button" className="btn" onClick={() => { saveTransaction(recoveryKey, null); load() }} disabled={busy || unresolved}>
               Refresh quote for remaining work
             </button>
           ) : null}
@@ -186,7 +216,7 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
                 type="button"
                 className="btn btn-primary"
                 onClick={run}
-                disabled={busy || q.state !== "ready" || q.q.estimatedFrom.toLowerCase() !== renewer?.toLowerCase() || q.q.plan.batches.length === 0 || insufficient || batches.some((b) => b.s === "stale")}
+                disabled={busy || unresolved || q.state !== "ready" || q.q.estimatedFrom.toLowerCase() !== renewer?.toLowerCase() || q.q.plan.batches.length === 0 || insufficient || batches.some((b) => b.s === "stale")}
               >
                 {busy ? "Working…" : anyStarted ? "Continue remaining transactions" : `Sign ${q.state === "ready" ? plural(q.q.plan.batches.length, "transaction") : ""}`}
               </button>
@@ -311,6 +341,7 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
                   </ExternalLink>
                 ) : null}
                 {b.s === "unverified" ? ` · ${b.reason}` : null}
+                {b.s === "unknown" ? ` ${b.reason} Recheck this transaction before requesting another signature.` : null}
                 {b.s === "readback-pending" ? ` · The renewal transaction succeeded. ${b.reason} Open the record later to see the new expiry and the verified receipt.` : null}
                 {b.s === "failed" ? ` ${b.error}${b.tx ? " The transaction was broadcast; check it in the explorer before retrying." : ""}` : null}
                 {b.s === "stale" ? ` Another renewal or change landed since the quote (${b.changed.length} record(s)). Refresh to re-plan; nothing was signed.` : null}
@@ -321,6 +352,18 @@ export function RenewDialog({ open, onClose, keys, onDone }: { open: boolean; on
                   {r.receipt ? <div>Receipt: <span className="hash">{r.receipt}</span></div> : null}
                 </li>)}
               </ul> : null}
+              {(b.s === "unknown" || b.s === "submitted" || b.s === "confirmed") && b.renewingWallet && q.state === "ready" ?
+                <button type="button" className="btn btn-sm" disabled={busy} onClick={async () => {
+                  if (running.current) return
+                  running.current = true; setBusy(true)
+                  try {
+                    const result = await submittedResult(b.tx)
+                    if (result?.state === "reverted") setBatch(i, { s: "failed", tx: b.tx, error: "The submitted transaction reverted on chain. Refresh the remaining plan." })
+                    else if (result?.state === "confirmed") await reconcile(i, q.q, b.tx, b.renewingWallet!, result.created)
+                    else setBatch(i, { ...b, s: "unknown", reason: "No confirmed receipt is available yet." })
+                  } catch (err) { setBatch(i, { ...b, s: "unknown", reason: readErrorMessage(err) }) }
+                  finally { running.current = false; setBusy(false); onDone?.() }
+                }}>Recheck submitted transaction (no signature)</button> : null}
               {(b.s === "readback-pending" || b.s === "unverified") && b.created && b.renewingWallet && q.state === "ready" ?
                 <button type="button" className="btn btn-sm" disabled={busy} onClick={async () => {
                   if (running.current) return
