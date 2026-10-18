@@ -1,0 +1,1101 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\DELL\\Desktop\\muniment\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.audit.config.ts"
+    ],
+    "configFile": "C:\\Users\\DELL\\Desktop\\muniment\\playwright.audit.config.ts",
+    "rootDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "width-390",
+        "name": "width-390",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "audit-regressions.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "width-768",
+        "name": "width-768",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "audit-regressions.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/DELL/Desktop/muniment/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "width-1440",
+        "name": "width-1440",
+        "testDir": "C:/Users/DELL/Desktop/muniment/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "audit-regressions.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "width-390",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "audit-regressions.spec.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 390,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-390"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "width-768",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "audit-regressions.spec.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 768,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-768"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\DELL\\Desktop\\muniment\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "name": "width-1440",
+        "testDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "snapshotDir": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e",
+        "testIgnore": [],
+        "testMatch": "audit-regressions.spec.ts",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4319",
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "width-1440"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": ".release/audit-regressions.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "audit-regressions.spec.ts",
+      "file": "audit-regressions.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "wallet switch and forget detach every old listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6540,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:03.337Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-937ff32f20caad3aa70e",
+          "file": "audit-regressions.spec.ts",
+          "line": 68,
+          "column": 1
+        },
+        {
+          "title": "publication requires an exact quote and invalidates it on edits and account change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3065,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:10.964Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-af34aa2656c58ded0f7e",
+          "file": "audit-regressions.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "submitted publication reload recovers by receipt lookup without a signature",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 10522,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('No confirmed receipt is available yet.')\nExpected: visible\nTimeout: 8000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('No confirmed receipt is available yet.') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByText('No confirmed receipt is available yet.')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('No confirmed receipt is available yet.')\nExpected: visible\nTimeout: 8000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('No confirmed receipt is available yet.') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByText('No confirmed receipt is available yet.')\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:105:92",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 92,
+                      "line": 105
+                    },
+                    "snippet": "  103 |   const recheck = page.getByRole(\"button\", { name: \"Recheck submitted transaction (no signature)\" })\n  104 |   await recheck.click()\n> 105 |   await expect(page.getByText(\"No confirmed receipt is available yet.\", { exact: false })).toBeVisible()\n      |                                                                                            ^\n  106 |   await page.reload(); await expect(recheck).toBeVisible()\n  107 |   f.confirm(); await recheck.click()\n  108 |   await expect(page.getByText(\"Confirmed in a block\", { exact: true })).toBeVisible()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 92,
+                        "line": 105
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('No confirmed receipt is available yet.')\nExpected: visible\nTimeout: 8000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('No confirmed receipt is available yet.') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByText('No confirmed receipt is available yet.')\u001b[22m\n\n\n  103 |   const recheck = page.getByRole(\"button\", { name: \"Recheck submitted transaction (no signature)\" })\n  104 |   await recheck.click()\n> 105 |   await expect(page.getByText(\"No confirmed receipt is available yet.\", { exact: false })).toBeVisible()\n      |                                                                                            ^\n  106 |   await page.reload(); await expect(recheck).toBeVisible()\n  107 |   f.confirm(); await recheck.click()\n  108 |   await expect(page.getByText(\"Confirmed in a block\", { exact: true })).toBeVisible()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:105:92"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:14.064Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-submitte-223d5--lookup-without-a-signature-width-390\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-submitte-223d5--lookup-without-a-signature-width-390\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-submitte-223d5--lookup-without-a-signature-width-390\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 92,
+                    "line": 105
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-f3112884cf0714f48b2f",
+          "file": "audit-regressions.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "archive and standalone reader include the last millisecond of Filed to",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3622,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:26.857Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-1679269b503277ca4a97",
+          "file": "audit-regressions.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "reader enforces chain identity after endpoint changes and disables exports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:30.688Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-404199b691354e037966",
+          "file": "audit-regressions.spec.ts",
+          "line": 129,
+          "column": 1
+        },
+        {
+          "title": "collection membership refresh retains the two-record reviewed plan",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2706,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:31.988Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-ba23ceaa4a1c71cb0e3b",
+          "file": "audit-regressions.spec.ts",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "dashboard rejects wrong-chain endpoints and labels local validation correctly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1248,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:34.719Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-7616cb4ab33ee5bb1d71",
+          "file": "audit-regressions.spec.ts",
+          "line": 164,
+          "column": 1
+        },
+        {
+          "title": "fixture routes have no serious accessibility violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-390",
+              "projectName": "width-390",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19988,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:35.995Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-64d6aa381a94dd3250bb",
+          "file": "audit-regressions.spec.ts",
+          "line": 176,
+          "column": 1
+        },
+        {
+          "title": "wallet switch and forget detach every old listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 6557,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:03.325Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-f80600850c660ed944df",
+          "file": "audit-regressions.spec.ts",
+          "line": 68,
+          "column": 1
+        },
+        {
+          "title": "publication requires an exact quote and invalidates it on edits and account change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3030,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:10.977Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-8f0cf146a2e3667e251b",
+          "file": "audit-regressions.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "submitted publication reload recovers by receipt lookup without a signature",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 10626,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('No confirmed receipt is available yet.')\nExpected: visible\nTimeout: 8000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('No confirmed receipt is available yet.') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByText('No confirmed receipt is available yet.')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('No confirmed receipt is available yet.')\nExpected: visible\nTimeout: 8000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('No confirmed receipt is available yet.') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByText('No confirmed receipt is available yet.')\u001b[22m\n\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:105:92",
+                    "location": {
+                      "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                      "column": 92,
+                      "line": 105
+                    },
+                    "snippet": "  103 |   const recheck = page.getByRole(\"button\", { name: \"Recheck submitted transaction (no signature)\" })\n  104 |   await recheck.click()\n> 105 |   await expect(page.getByText(\"No confirmed receipt is available yet.\", { exact: false })).toBeVisible()\n      |                                                                                            ^\n  106 |   await page.reload(); await expect(recheck).toBeVisible()\n  107 |   f.confirm(); await recheck.click()\n  108 |   await expect(page.getByText(\"Confirmed in a block\", { exact: true })).toBeVisible()"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                        "column": 92,
+                        "line": 105
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('No confirmed receipt is available yet.')\nExpected: visible\nTimeout: 8000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('No confirmed receipt is available yet.') with timeout 8000ms\u001b[22m\n\u001b[2m  - waiting for getByText('No confirmed receipt is available yet.')\u001b[22m\n\n\n  103 |   const recheck = page.getByRole(\"button\", { name: \"Recheck submitted transaction (no signature)\" })\n  104 |   await recheck.click()\n> 105 |   await expect(page.getByText(\"No confirmed receipt is available yet.\", { exact: false })).toBeVisible()\n      |                                                                                            ^\n  106 |   await page.reload(); await expect(recheck).toBeVisible()\n  107 |   f.confirm(); await recheck.click()\n  108 |   await expect(page.getByText(\"Confirmed in a block\", { exact: true })).toBeVisible()\n    at C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts:105:92"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:14.047Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-submitte-223d5--lookup-without-a-signature-width-768\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-submitte-223d5--lookup-without-a-signature-width-768\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\DELL\\Desktop\\muniment\\test-results\\audit-regressions-submitte-223d5--lookup-without-a-signature-width-768\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\DELL\\Desktop\\muniment\\tests\\e2e\\audit-regressions.spec.ts",
+                    "column": 92,
+                    "line": 105
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-b9fa9d5241530829c96f",
+          "file": "audit-regressions.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "archive and standalone reader include the last millisecond of Filed to",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 3271,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:26.858Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-2b985fe56381d7c5efdd",
+          "file": "audit-regressions.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "reader enforces chain identity after endpoint changes and disables exports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1575,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:30.351Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-6474bb7c227fe612c549",
+          "file": "audit-regressions.spec.ts",
+          "line": 129,
+          "column": 1
+        },
+        {
+          "title": "collection membership refresh retains the two-record reviewed plan",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 2811,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:31.982Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-bacfde9f638cb2233f94",
+          "file": "audit-regressions.spec.ts",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "dashboard rejects wrong-chain endpoints and labels local validation correctly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1211,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:34.816Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-9bf6033a8f2ee3e422c5",
+          "file": "audit-regressions.spec.ts",
+          "line": 164,
+          "column": 1
+        },
+        {
+          "title": "fixture routes have no serious accessibility violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-768",
+              "projectName": "width-768",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 19976,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:36.052Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-3e5234a17683b7a2e28a",
+          "file": "audit-regressions.spec.ts",
+          "line": 176,
+          "column": 1
+        },
+        {
+          "title": "wallet switch and forget detach every old listener",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2518,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:24:57.595Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-f5afa0fc5e705059bd69",
+          "file": "audit-regressions.spec.ts",
+          "line": 68,
+          "column": 1
+        },
+        {
+          "title": "publication requires an exact quote and invalidates it on edits and account change",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2557,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:25:00.304Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-9cdfd6881865ff37979f",
+          "file": "audit-regressions.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "submitted publication reload recovers by receipt lookup without a signature",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2978,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:25:02.887Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-98d0001c6273aedcd6d0",
+          "file": "audit-regressions.spec.ts",
+          "line": 99,
+          "column": 1
+        },
+        {
+          "title": "archive and standalone reader include the last millisecond of Filed to",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2372,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:25:05.897Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-8b26357d42eb8a23b535",
+          "file": "audit-regressions.spec.ts",
+          "line": 113,
+          "column": 1
+        },
+        {
+          "title": "reader enforces chain identity after endpoint changes and disables exports",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 842,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:25:08.298Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-307e4012ebbd2ca0f330",
+          "file": "audit-regressions.spec.ts",
+          "line": 129,
+          "column": 1
+        },
+        {
+          "title": "collection membership refresh retains the two-record reviewed plan",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1708,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:25:09.159Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-4b08d369a8640f5df612",
+          "file": "audit-regressions.spec.ts",
+          "line": 144,
+          "column": 1
+        },
+        {
+          "title": "dashboard rejects wrong-chain endpoints and labels local validation correctly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 941,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:25:10.887Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-f40ccc2f0316e3479cd0",
+          "file": "audit-regressions.spec.ts",
+          "line": 164,
+          "column": 1
+        },
+        {
+          "title": "fixture routes have no serious accessibility violations or horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "width-1440",
+              "projectName": "width-1440",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13136,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-18T06:25:11.855Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fcd4a11782f3aa674d53-ee869c6ae4643037b5dc",
+          "file": "audit-regressions.spec.ts",
+          "line": 176,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-18T06:23:56.047Z",
+    "duration": 89536.001,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}
