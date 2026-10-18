@@ -1,7 +1,7 @@
 /**
  * A minimal encoder for Arkiv `execute` calldata, written from the documented wire format
  * (docs.arkiv.network/json-rpc/mutating-entities). Muniment uses it only to *estimate* gas for a
- * renewal quote before the wallet signs; the write itself goes through the official SDK. A unit test
+ * renewal or publication quote before the wallet signs; the write itself goes through the official SDK. A unit test
  * checks that this encoder and the SDK produce identical calldata.
  */
 import { encodeAbiParameters, encodeFunctionData, parseAbiParameters, stringToBytes, toHex, type Hex } from "viem"
@@ -97,10 +97,11 @@ export function encodeExtend(e: WireExtend): Hex {
 }
 
 /** Calldata for one atomic batch, in the SDK's order: creates, then extensions. */
-export function encodeExecute(ops: { creates?: WireCreate[]; extensions?: WireExtend[] }): Hex {
+export function encodeExecute(ops: { creates?: WireCreate[]; extensions?: WireExtend[]; ownershipChanges?: { entityKey: Hex; newOwner: Hex }[] }): Hex {
   const list = [
     ...(ops.creates ?? []).map((c) => ({ operation: 1, operationData: encodeCreate(c) })),
     ...(ops.extensions ?? []).map((e) => ({ operation: 3, operationData: encodeExtend(e) })),
+    ...(ops.ownershipChanges ?? []).map((o) => ({ operation: 4, operationData: encodeAbiParameters(parseAbiParameters("(bytes32 entityKey, address newOwner)"), [o]) })),
   ]
   if (list.length === 0) throw new Error("empty batch")
   return encodeFunctionData({ abi: EXECUTE_ABI, functionName: "execute", args: [list] })
