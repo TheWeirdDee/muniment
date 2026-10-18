@@ -134,14 +134,17 @@ function CollectionView({ c, onDeleted }: { c: Collection; onDeleted: () => void
   const { head } = useHead()
   const [live, setLive] = useState<LiveState>({ state: "loading" })
   const [renewOpen, setRenewOpen] = useState(false)
+  const [renewKeys, setRenewKeys] = useState<Hex[]>([])
   const [exportOpen, setExportOpen] = useState(false)
   const [includeNotes, setIncludeNotes] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [rename, setRename] = useState(c.name)
   const keys = c.items.map((i) => i.key)
   const keyStr = keys.join()
+  const loadId = useRef(0)
 
   const reload = () => {
+    const request = ++loadId.current
     if (keys.length === 0) {
       setLive({ state: "ready", found: new Map(), block: null })
       return
@@ -149,11 +152,11 @@ function CollectionView({ c, onDeleted }: { c: Collection; onDeleted: () => void
     setLive({ state: "loading" })
     reader()
       .getReplies(keys)
-      .then((r) => setLive({ state: "ready", found: new Map(r.records.map((x) => [x.key, x])), block: null }))
-      .catch((e) => setLive({ state: "error", msg: readErrorMessage(e) }))
+      .then((r) => { if (request === loadId.current) setLive({ state: "ready", found: new Map(r.records.map((x) => [x.key, x])), block: null }) })
+      .catch((e) => { if (request === loadId.current) setLive({ state: "error", msg: readErrorMessage(e) }) })
   }
   // biome-ignore lint/correctness/useExhaustiveDependencies: reload when membership changes
-  useEffect(reload, [keyStr])
+  useEffect(() => { reload(); return () => { loadId.current++ } }, [keyStr])
 
   const found = live.state === "ready" ? live.found : new Map<string, Reply>()
   const missing = live.state === "ready" ? c.items.filter((i) => !found.has(i.key)) : []
@@ -202,7 +205,7 @@ function CollectionView({ c, onDeleted }: { c: Collection; onDeleted: () => void
           <button type="button" className="btn btn-sm btn-danger" onClick={() => setConfirmDelete(true)}>
             Delete collection
           </button>
-          <button type="button" className="btn btn-primary" onClick={() => setRenewOpen(true)} disabled={found.size === 0}>
+          <button type="button" className="btn btn-primary" onClick={() => { setRenewKeys([...found.keys()] as Hex[]); setRenewOpen(true) }} disabled={found.size === 0}>
             Renew storage for collection
           </button>
         </div>
@@ -322,7 +325,7 @@ function CollectionView({ c, onDeleted }: { c: Collection; onDeleted: () => void
           exported a copy.
         </p>
       </Dialog>
-      <RenewDialog open={renewOpen} onClose={() => setRenewOpen(false)} keys={[...found.keys()] as Hex[]} onDone={reload} />
+      <RenewDialog open={renewOpen} onClose={() => setRenewOpen(false)} keys={renewKeys} onDone={reload} recoveryId={`collection:${c.id}`} />
     </div>
   )
 }
