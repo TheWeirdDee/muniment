@@ -72,7 +72,7 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
         <label>Outcome<select id="outcome"><option value="">Any</option><option value="granted">Information supplied</option><option value="partial">Partly supplied</option><option value="denied">Refused</option><option value="transferred">Transferred</option><option value="no-reply">No reply recorded</option></select></label>
         <label>Exemption section (primary)<input id="exemption" placeholder="e.g. 8(1)(j)"></label>
         <label>Filed from (UTC)<input id="from" type="date"></label>
-        <label>Filed to (UTC)<input id="to" type="date"></label>
+        <label>Filed to (UTC, inclusive)<input id="to" type="date"></label>
         <label>Response days, min<input id="rmin" inputmode="numeric"></label>
         <label>Response days, max<input id="rmax" inputmode="numeric"></label>
         <label>Page size<select id="limit"><option>10</option><option selected>25</option><option>50</option><option>100</option><option>200</option></select></label>
@@ -125,8 +125,14 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
   }
 
   var rpcId = 0;
-  function rpc(method, params) {
-    var url = endpoint();
+  function rpc(method, params, boundEndpoint) {
+    var url = boundEndpoint || endpoint();
+    if (method === "arkiv_query") return rpc("eth_chainId", [], url).then(function (id) {
+      if (parseInt(id, 16) !== CHAIN_ID) throw new Error("This endpoint is not Tiramisu (" + CHAIN_ID + "). No records were read.");
+      return request();
+    });
+    return request();
+    function request() {
     var ctl = new AbortController();
     var t = setTimeout(function () { ctl.abort(); }, 20000);
     return fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method: method, params: params }), signal: ctl.signal })
@@ -138,8 +144,10 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
       })
       .then(function (body) {
         if (body.error) throw new Error("Arkiv error " + body.error.code + ": " + body.error.message);
+        if (url !== endpoint()) throw new Error("Endpoint changed during the request. Search again.");
         return body.result;
       }).finally(function () { clearTimeout(t); });
+    }
   }
 
   function checkNetwork() {
@@ -166,7 +174,11 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
     var parts = list.map(function (a) { return "$creator = addr(" + a + ")"; });
     return parts.length === 1 ? parts[0] : "(" + parts.join(" OR ") + ")";
   }
-  function dateMs(v) { return Date.parse(v + "T00:00:00Z"); }
+  function dateMs(v) {
+    var ms = Date.parse(v + "T00:00:00Z");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(v) || !Number.isFinite(ms) || ms < 0 || new Date(ms).toISOString().slice(0, 10) !== v) throw new Error("Choose valid UTC calendar dates.");
+    return ms;
+  }
 
   function buildQuery() {
     var c = ["app = " + lit(APP), "schema = i32(1)", "kind = str('reply')", "synthetic = true"];
@@ -174,7 +186,8 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
     var o = $("outcome").value; if (o) c.push("outcome = " + lit(o));
     var x = $("exemption").value.trim(); if (x) { if (!/^[0-9]{1,2}(\([0-9a-z]{1,4}\)){0,3}$/.test(x)) throw new Error("Section format: e.g. 8(1)(j)."); c.push("exemption = " + lit(x)); }
     var f = $("from").value; if (f) c.push("filed_ms >= u64(" + dateMs(f) + ")");
-    var t = $("to").value; if (t) c.push("filed_ms <= u64(" + dateMs(t) + ")");
+    var t = $("to").value; if (t) c.push("filed_ms <= u64(" + (dateMs(t) + 86400000 - 1) + ")");
+    if (f && t && dateMs(f) > dateMs(t)) throw new Error("Filed from must not be later than Filed through.");
     var mn = $("rmin").value.trim(); if (mn) { if (!/^\d{1,4}$/.test(mn)) throw new Error("Minimum days must be a whole number."); c.push("response_days >= i32(" + mn + ")"); }
     var mx = $("rmax").value.trim(); if (mx) { if (!/^\d{1,4}$/.test(mx)) throw new Error("Maximum days must be a whole number."); c.push("response_days <= i32(" + mx + ")"); }
     var cc = creatorsClause(); if (cc) c.push(cc);
@@ -255,7 +268,10 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
     return { data: data, cursor: cursor, blockNumber: block, complete: !cursor, pages: pages };
   }
 
+  var detailGeneration = 0;
   function openRecord(key) {
+    var generation = ++detailGeneration;
+    var recordEndpoint = endpoint();
     key = (key || "").trim().toLowerCase();
     if (!/^0x[0-9a-f]{64}$/.test(key)) { status("An entity key is 0x followed by 64 hexadecimal characters.", "bad"); return; }
     try { history.replaceState(null, "", "#key=" + key); } catch (e) {}
@@ -266,6 +282,7 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
       var children = await Promise.all(["appeal", "review", "receipt", "exemption"].map(function (kind) { return linkedScan(linkedQ(kind), parent.blockNumber); }));
       return [parent].concat(children);
     }).then(function (r) {
+      if (generation !== detailGeneration) return;
       var box = $("detail"); box.textContent = "";
       var e = (r[0].data || [])[0];
       box.appendChild(el("h2", "Record"));
@@ -303,13 +320,13 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
         });
       });
       var btn = el("button", "Export this record as JSON"); btn.type = "button";
-      btn.addEventListener("click", function () { download("muniment-record-" + key.slice(2, 10) + ".json", { exportedAt: new Date().toISOString(), endpoint: $("ep").value, chainId: CHAIN_ID, readAtBlock: parseInt(r[0].blockNumber, 16), entity: e, payload: p, linked: { appeals: r[1].data, reviews: r[2].data, receipts: r[3].data, exemptions: r[4].data }, linkedCoverage: { appeals: coverage(r[1]), reviews: coverage(r[2]), receipts: coverage(r[3]), exemptions: coverage(r[4]) } }); });
+      btn.addEventListener("click", function () { download("muniment-record-" + key.slice(2, 10) + ".json", { exportedAt: new Date().toISOString(), endpoint: recordEndpoint, chainId: CHAIN_ID, readAtBlock: parseInt(r[0].blockNumber, 16), entity: e, payload: p, linked: { appeals: r[1].data, reviews: r[2].data, receipts: r[3].data, exemptions: r[4].data }, linkedCoverage: { appeals: coverage(r[1]), reviews: coverage(r[2]), receipts: coverage(r[3]), exemptions: coverage(r[4]) } }); });
       box.appendChild(btn);
       box.appendChild(el("h3", "Raw entity"));
       box.appendChild(el("pre", JSON.stringify({ entity: e, decodedPayload: p }, null, 2)));
       status("Record read at block " + parseInt(r[0].blockNumber, 16).toLocaleString("en-GB") + ".", "ok");
       box.scrollIntoView();
-    }).catch(function (err) { status(err.message, "bad"); });
+    }).catch(function (err) { if (generation === detailGeneration) status(err.message, "bad"); });
   }
 
   function coverage(r) { return { complete: r.complete === true, cursor: r.cursor || null, readAtBlock: r.blockNumber, pages: r.pages }; }
@@ -321,12 +338,18 @@ footer{border-top:1px solid var(--rule);margin-top:32px;padding-top:12px;padding
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
   }
 
+  $("ep").addEventListener("input", function () {
+    state.generation = (state.generation || 0) + 1; detailGeneration++;
+    state.results = []; state.cursor = null; $("detail").textContent = ""; $("results").textContent = "";
+    $("export").disabled = true; $("more").disabled = true;
+    $("net").textContent = "Endpoint changed; network must be checked again.";
+  });
   $("check").addEventListener("click", checkNetwork);
   $("search").addEventListener("submit", function (ev) { ev.preventDefault(); search(false); });
   $("more").addEventListener("click", function () { search(true); });
   $("open").addEventListener("click", function () { openRecord($("key").value); });
   $("export").addEventListener("click", function () {
-    download("muniment-results.json", { exportedAt: new Date().toISOString(), endpoint: $("ep").value, chainId: CHAIN_ID, query: state.query, readAtBlock: state.lastBlock, complete: !state.cursor, entities: state.results.map(function (e) { return { entity: e, payload: payloadJson(e) }; }) });
+    download("muniment-results.json", { exportedAt: new Date().toISOString(), endpoint: state.queryEndpoint, chainId: CHAIN_ID, query: state.query, readAtBlock: state.lastBlock, complete: !state.cursor, entities: state.results.map(function (e) { return { entity: e, payload: payloadJson(e) }; }) });
   });
   var m = /#key=(0x[0-9a-fA-F]{64})/.exec(location.hash);
   checkNetwork().then(function () { if (m) { $("key").value = m[1]; openRecord(m[1]); } });
