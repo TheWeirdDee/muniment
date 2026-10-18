@@ -44,11 +44,23 @@ Built for the **Arkiv Global Tour Stop, 9–18 October 2026**. Tracks: **Censors
 
 ## The problem
 
+In August 2023, The Wire and National Herald, citing The Hindu, reported that records of past applications had disappeared from India's RTIOnline portal. The portal showed a maintenance notice saying archival data would be available soon, and the department running it did not respond to The Hindu's questions. [The Wire](https://m.thewire.in/article/government/rti-portal-rtionline-years-of-information-disappears), [National Herald](https://www.nationalheraldindia.com/amp/story/national/rti-years-of-data-go-missing-from-the-union-governments-information-portal).
+
+This reporting describes loss of access at that time, not proof of permanent deletion. Muniment is an independent preservation demonstration; it has not recovered or imported those applications and does not replace the official RTI portal.
+
 A reply to an information request can disappear when a portal changes, a publisher removes a page or a researcher loses their only copy. A saved document also needs context: who uploaded it, what it claims to be, and whether someone has disputed or corrected it.
 
 Muniment makes the record searchable and renewable independently of its original publisher. It separates the claimed issuing authority from the wallet that actually published the entity. Keeping a record available preserves evidence of what was submitted; it does not establish that the document is true.
 
 The intended users are journalists, civic researchers and people assembling citation bundles. This edition demonstrates the mechanism with synthetic records rather than publishing real personal information.
+
+RTI applicants can use the same approach to keep and cite replies separately from the original portal. Find a record through public attributes, inspect its publisher and provenance, save related replies in a local collection, and fund storage renewal when needed. A standalone reader retrieves the same entities without a Muniment server. These reads still need an accessible Arkiv endpoint; storage is renewable, not automatically permanent.
+
+### Public RPC availability
+
+The public Tiramisu endpoint can throttle requests. An advertised cooldown is retained across clients and, when browser storage is available, reloads and same-origin tabs. Calls respect that cooldown instead of repeatedly probing the endpoint. Identical reads already share in-flight requests and the main browser client caches successful reads briefly. The homepage requests one preview record, defers renewal candidates until requested, and refreshes its block estimate less frequently. When live data is unavailable it shows a product explanation and navigation, with the real RPC error available in a disclosure; it never substitutes invented live records.
+
+Avoid repeated refreshes during a cooldown. Settings accepts another authorized Tiramisu endpoint, but no independent second provider has been verified. A 429 response alone does not establish whether the limit is per browser, account, public IP or shared network, and these changes cannot increase the upstream quota or guarantee immediate access.
 
 ## Why Arkiv
 
@@ -256,7 +268,7 @@ npm run build -w muniment-web
 npm run build -w muniment-insights
 ```
 
-Historical audit result: **51 package tests and 18 component/reconciliation tests passed** at that revision. The 18 October remediation adds controlled regressions; the current package/component inventory is **62 tests in nine files and 23 tests in four files**. See the [remediation record](docs/audit-remediation-2026-10-18.md) for current validation and retained initial failures.
+Historical audit result: **51 package tests and 18 component/reconciliation tests passed** at that revision. The current package/component inventory is **67 tests in nine files and 23 tests in four files**, including RPC cooldown regressions. See the [remediation record](docs/audit-remediation-2026-10-18.md) for dated validation and retained initial failures.
 
 The new offline matrix passed **55 checks across five widths**; this is controlled browser coverage, not third-party wallet certification. The repository also contains Playwright suites for routes, accessibility and live flows. See [testing](docs/testing.md) before running them: several optional cases can sign transactions or use operator keys. Historical reports must not be presented as fresh browser results. The audited revision had no GitHub Actions workflow; [read-only CI](.github/workflows/checks.yml) now runs tests, builds and the [offline browser regression suite](playwright.audit.config.ts). Run it with `npx playwright test --config playwright.audit.config.ts`; it uses synthetic providers and intercepted RPC, without private keys or public writes.
 

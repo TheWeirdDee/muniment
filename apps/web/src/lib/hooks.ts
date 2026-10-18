@@ -26,8 +26,9 @@ export function useHead(intervalMs = 20_000) {
   const [error, setError] = useState<unknown>(null)
   useEffect(() => {
     let alive = true
-    const tick = () =>
-      fetchHead()
+    const tick = () => {
+      if (document.visibilityState === "hidden") return
+      return fetchHead()
         .then((h) => {
           if (alive) {
             setHead(h)
@@ -35,11 +36,14 @@ export function useHead(intervalMs = 20_000) {
           }
         })
         .catch((e) => alive && setError(e))
+    }
     tick()
+    document.addEventListener("visibilitychange", tick)
     const t = window.setInterval(tick, intervalMs)
     return () => {
       alive = false
       window.clearInterval(t)
+      document.removeEventListener("visibilitychange", tick)
     }
   }, [intervalMs])
   return { head, error }

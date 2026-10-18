@@ -70,7 +70,7 @@ See [`SPONSOR_BEHAVIOUR.md`](../SPONSOR_BEHAVIOUR.md) for the measured runs and 
 
 ## Unit tests: `npm test`
 
-62 package tests across 9 files (Vitest) at the 18 October remediation, covering:
+62 package tests across 9 files (Vitest) passed at the initial 18 October remediation. The subsequent RPC resilience follow-up passes **67 tests across 9 files**, adding shared long-cooldown, persisted cooldown expiry, queued-request suppression, missing-header backoff and HTTP-date retry-hint checks. Coverage includes:
 
 - schema validation (no-reply rules, dates, types, unsafe URLs, correction consistency, size limits, versions, namespace);
 - query building (escaping, typed ranges, creator clauses, bounds);

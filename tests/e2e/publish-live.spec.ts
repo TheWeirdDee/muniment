@@ -21,6 +21,7 @@ test("publish a sealed synthetic record from a team test wallet through producti
   await page.getByLabel(/Title note/).fill("Browser verification")
   await page.getByLabel(/I understand this publishes a synthetic test record publicly/).check()
   await page.getByRole("button", { name: "Connect a wallet to publish" }).click()
+  await page.getByRole("button", { name: "Review publication fee", exact: true }).click()
   await page.getByRole("button", { name: "Sign and publish" }).click()
   await expect(page.getByRole("link", { name: "Open the record", exact: true })).toBeVisible({ timeout: 120_000 })
   const link = page.getByRole("link", { name: "Open the record", exact: true })

@@ -83,7 +83,7 @@ export function readErrorMessage(err: unknown): string {
   const text = chainText(err)
   if (/429|rate limit|too many/i.test(text)) {
     const s = /about (\d+) s/.exec(text)?.[1]
-    return `The public Arkiv endpoint is rate limiting this connection${s ? ` for about ${s} seconds` : ""}. Nothing failed on chain; try again shortly, or use your own endpoint in Settings.`
+    return `The public Arkiv endpoint is rate limiting requests${s ? `; this browser will wait about ${s} seconds` : ""}. Wait for the cooldown before retrying, or configure an authorized endpoint in Settings. A throttled read does not establish that a transaction failed.`
   }
   if (/fetch|network|timeout|timed out|Failed to fetch/i.test(text)) return "Arkiv could not be reached from this browser. Check your connection or the endpoint in Settings."
   const first = (err as { shortMessage?: string; message?: string })?.shortMessage ?? (err as Error)?.message ?? String(err)

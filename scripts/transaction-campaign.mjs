@@ -4,13 +4,18 @@ import { tiramisu } from "@arkiv-network/sdk/chains";
 import { createPublicClient, decodeAbiParameters, decodeEventLog, decodeFunctionData, hexToString, parseAbi, parseAbiParameters } from "viem";
 import { ARKIV_ADDRESS, SEAL_ADDRESS, TIRAMISU, decodeReceipt, decodeReply, fromSdkEntity, politeHttp } from "muniment-query";
 import { injectTestWallet } from "../tests/e2e/wallet.ts";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { resolve } from "node:path";
 const base = "https://muniment-archive.vercel.app";
-const revision = process.env.MUNIMENT_EXPECTED_COMMIT || "f1e69505409dcaf383928d9a114c9b458d00a3d8";
-const file = ".release/transaction-campaign.json";
+const revision = process.env.MUNIMENT_EXPECTED_COMMIT;
+if (!revision || !/^[a-f0-9]{40}$/.test(revision)) throw Error("Set MUNIMENT_EXPECTED_COMMIT to the full deployed revision before running a signed campaign");
+const output = process.env.MUNIMENT_CAMPAIGN_DIR;
+if (!output) throw Error("Set MUNIMENT_CAMPAIGN_DIR to an explicit campaign directory; existing evidence is not selected implicitly");
+mkdirSync(output, { recursive: true });
+const file = `${output}/transaction-campaign.json`;
 const report = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : { startedAt: new Date().toISOString(), runtimeRevision: revision, chainId: 7738577, signingMethod: "Deployed UI -> EIP-1193/EIP-6963 isolated test wallet -> explicit scoped automated approval -> locally signed real Tiramisu transaction", workflows: { publication: {}, single: {}, multi: {} }, attempts: [] };
+if (report.runtimeRevision !== revision && process.env.E2E_RETENTION_REPEAT !== "1") throw Error("The chosen report belongs to another revision; use a new campaign directory");
 if (process.env.E2E_RETENTION_REPEAT === "1" && !report.workflows.multi.retentionRepeat) {
     insist(report.workflows.multi.status === "PASS", "Complete the initial campaign before a retention repeat");
     for (const stage of Object.values(report.workflows))
@@ -137,7 +142,7 @@ async function capturePlan(page, stage) {
         insist(actual.expiresAt === BigInt(entity.before), "Expiry moved before signing; re-quote required");
     }
     stage.reviewCapturedAt = new Date().toISOString();
-    await page.screenshot({ path: `.release/${stage.action}-review.png`, fullPage: true });
+    await page.screenshot({ path: `${output}/${stage.action}-review.png`, fullPage: true });
     save();
     return dialog;
 }
@@ -156,7 +161,7 @@ async function waitForUI(page, stage) {
     }
     await expect(dialog.getByText("Verified renewal", { exact: true })).toBeVisible({ timeout: 90000 });
     stage.uiReconciliation = await dialog.locator('[aria-label="Transaction progress"]').innerText();
-    await page.screenshot({ path: `.release/${stage.action}-verified.png`, fullPage: true });
+    await page.screenshot({ path: `${output}/${stage.action}-verified.png`, fullPage: true });
     stage.uiVerifiedAt = new Date().toISOString();
     save();
 }
@@ -201,7 +206,7 @@ async function readerCheck(key, tag) {
     const text = await page.locator("#detail").innerText();
     const actual = await retry(() => db.getEntity(key));
     insist(text.includes(actual.expiresAt.toLocaleString("en-GB")) || text.includes(String(actual.expiresAt)), "Reader does not show current RPC expiry");
-    await page.screenshot({ path: `.release/${tag}-disk-reader.png`, fullPage: true });
+    await page.screenshot({ path: `${output}/${tag}-disk-reader.png`, fullPage: true });
     await context.close();
     return { key, status: "PASS", websiteBlocked: true, expiry: String(actual.expiresAt), text, checkedAt: new Date().toISOString() };
 }
@@ -222,6 +227,8 @@ async function main() {
             await page.getByLabel("Initial lifetime", { exact: true }).selectOption("7");
             await page.getByLabel(/I understand this publishes a synthetic test record publicly/).check();
             await page.getByRole("button", { name: "Connect a wallet to publish", exact: true }).click();
+            await page.getByRole("button", { name: "Review publication fee", exact: true }).click();
+            await expect(page.getByRole("button", { name: "Sign and publish", exact: true })).toBeEnabled();
             pub.armed = true;
             save();
             await page.getByRole("button", { name: "Sign and publish", exact: true }).click();
@@ -230,7 +237,7 @@ async function main() {
             pub.uiConfirmed = true;
             insist(wallet.sent.length === 1, "Expected one publication request");
             save();
-            await page.screenshot({ path: ".release/publication-confirmed.png", fullPage: true });
+            await page.screenshot({ path: `${output}/publication-confirmed.png`, fullPage: true });
             await context.close();
         }
         const pr = await receipt(pub), pcreated = decodedLogs(pr).filter(e => e.eventName === "EntityCreated");
@@ -258,7 +265,7 @@ async function main() {
         }
         await expect(readPage.locator(`.reply-row a[href="/records/${pub.key}"]`).first()).toBeVisible({ timeout: 90000 });
         pub.archive = { status: "PASS", url: base + "/archive", trustMode: "Explicit any-wallet setting; untrusted publisher labelled" };
-        await readPage.screenshot({ path: ".release/publication-archive.png", fullPage: true });
+        await readPage.screenshot({ path: `${output}/publication-archive.png`, fullPage: true });
         await readContext.close();
         pub.reader = await readerCheck(pub.key, "publication");
         pub.status = "PASS";
@@ -321,7 +328,7 @@ async function main() {
             await expect(dialog.getByLabel("Included entities", { exact: true }).locator("li")).toHaveCount(multi.review.entities.length);
             multi.queueRefreshRetained = true;
             multi.queueRowsRemoved = true;
-            await page.screenshot({ path: ".release/multi-queue-refresh-retained.png", fullPage: true });
+            await page.screenshot({ path: `${output}/multi-queue-refresh-retained.png`, fullPage: true });
             save();
         }
         await context.close();
@@ -340,7 +347,7 @@ async function main() {
 }
 main().catch(async (error) => { report.attempts.push({ at: new Date().toISOString(), status: "FAIL", reason: error instanceof Error ? error.message : String(error) }); report.status = "FAIL"; save(); console.error(error instanceof Error ? error.message : String(error)); if (browser) {
     for (const [i, page] of browser.contexts().flatMap(c => c.pages()).entries()) {
-        await page.screenshot({ path: `.release/campaign-failure-${i}.png`, fullPage: true }).catch(() => { });
-        writeFileSync(`.release/campaign-failure-${i}.txt`, await page.locator("body").innerText().catch(() => "Unavailable"));
+        await page.screenshot({ path: `${output}/campaign-failure-${i}.png`, fullPage: true }).catch(() => { });
+        writeFileSync(`${output}/campaign-failure-${i}.txt`, await page.locator("body").innerText().catch(() => "Unavailable"));
     }
 } process.exitCode = 1; }).finally(async () => { await browser?.close(); });

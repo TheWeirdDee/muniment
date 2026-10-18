@@ -31,6 +31,24 @@ export type PoliteTransportOptions = {
 
 const CACHEABLE = new Set(["arkiv_query", "arkiv_getEntity", "eth_getLogs", "eth_getTransactionReceipt"])
 
+// Share advertised cooldowns between clients; browser storage also covers reloads and tabs.
+const endpointCooldowns = new Map<string, number>()
+function cooldown(url: string): number {
+  let until = endpointCooldowns.get(url) ?? 0
+  try {
+    if (typeof localStorage !== "undefined") {
+      const saved = Number(localStorage.getItem(`muniment:rpc-cooldown:${url}`))
+      if (Number.isFinite(saved) && saved <= Date.now() + 86_400_000) until = Math.max(until, saved)
+    }
+  } catch { /* Storage is optional, including private browsing. */ }
+  return until
+}
+function rememberCooldown(url: string, until: number) {
+  if (endpointCooldowns.size >= 64) endpointCooldowns.delete(endpointCooldowns.keys().next().value!)
+  endpointCooldowns.set(url, Math.max(cooldown(url), until))
+  try { if (typeof localStorage !== "undefined") localStorage.setItem(`muniment:rpc-cooldown:${url}`, String(endpointCooldowns.get(url))) } catch { /* optional */ }
+}
+
 /** Drop cached reads, e.g. after a write so the next read reflects it. */
 export function clearReadCache() {
   for (const ref of caches) {
@@ -111,9 +129,17 @@ export function politeHttp(url: string, opts: PoliteTransportOptions = {}) {
     try {
       for (let attempt = 1; ; attempt++) {
         signal.throwIfAborted()
-        const wait = cooldownUntil - Date.now()
+        const wait = Math.max(cooldownUntil, cooldown(url)) - Date.now()
+        if (wait > maxWaitMs) throw new RpcHttpError(429, `Arkiv request cooldown (HTTP 429); retry in about ${Math.ceil(wait / 1000)} s`, method)
         if (wait > 0) await sleep(wait, signal)
         await acquire(signal)
+        const queuedWait = cooldown(url) - Date.now()
+        if (queuedWait > 0) {
+          release()
+          if (queuedWait > maxWaitMs) throw new RpcHttpError(429, `Arkiv request cooldown (HTTP 429); retry in about ${Math.ceil(queuedWait / 1000)} s`, method)
+          await sleep(queuedWait, signal)
+          continue
+        }
         const attemptController = new AbortController()
         const attemptTimer = setTimeout(() => attemptController.abort(new DOMException("Arkiv request timed out", "TimeoutError")), requestTimeout)
         const attemptSignal = AbortSignal.any([signal, attemptController.signal])
@@ -138,10 +164,13 @@ export function politeHttp(url: string, opts: PoliteTransportOptions = {}) {
           release()
         }
         if (res.status === 429 || res.status >= 500) {
-          const retryAfter = Number(res.headers.get("retry-after"))
+          const retryHeader = res.headers.get("retry-after")
+          const retryAfter = Number(retryHeader)
+          const retryDate = retryHeader ? Date.parse(retryHeader) : Number.NaN
           const reset = parseRateLimitReset(res.headers.get("ratelimit"))
-          const hinted = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : reset !== null ? reset * 1000 : null
-          const delay = hinted ?? 500 * 2 ** attempt + Math.random() * 300
+          const hinted = Number.isFinite(retryAfter) && retryAfter > 0 ? retryAfter * 1000 : retryDate > Date.now() ? retryDate - Date.now() : reset !== null ? reset * 1000 : null
+          const delay = hinted ?? (res.status === 429 ? 30_000 : 500 * 2 ** attempt + Math.random() * 300)
+          if (res.status === 429) rememberCooldown(url, Date.now() + delay)
           if (attempt >= attempts || delay > maxWaitMs) {
             throw new RpcHttpError(
               res.status,

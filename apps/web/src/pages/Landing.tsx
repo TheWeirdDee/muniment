@@ -1,11 +1,11 @@
-import { type ArchiveClient, BLOCKS_PER_DAY, type Hex, type Linked, OUTCOME_LABELS, type Reply, SEAL_ADDRESS, decodeReply, deriveStatus, expiringQuery, scan } from "muniment-query"
+import { type ArchiveClient, BLOCKS_PER_DAY, type Hex, type Linked, OUTCOME_LABELS, type Reply, SEAL_ADDRESS, decodeReply, expiringQuery, scan } from "muniment-query"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router"
 import { ExpiryText, StatusPill } from "../components/RecordBits"
 import { RenewDialog } from "../components/RenewDialog"
 import { Arrow, ExternalLink, Skeleton } from "../components/ui"
 import { publicClient, readErrorMessage, reader } from "../lib/arkiv"
-import { DASHBOARD_URL, TRUSTED_PUBLISHERS, TRUSTED_REVIEWERS } from "../lib/config"
+import { DASHBOARD_URL, TRUSTED_PUBLISHERS } from "../lib/config"
 import { type HeadAnchor, blockToMs, formatDate, sameAddress, shortHex, walletLabel } from "../lib/format"
 import { fetchHead, useAsync, useHead, useReveal } from "../lib/hooks"
 import { usePageMeta } from "../lib/meta"
@@ -29,11 +29,11 @@ function sourceStatus(r: Reply) {
 function useSample() {
   return useAsync(async (signal) => {
     const r = reader()
-    const page = await r.searchReplies({ creators: TRUSTED_PUBLISHERS, outcome: "partial" }, { limit: 10, signal })
+    const page = await r.searchReplies({ creators: TRUSTED_PUBLISHERS, outcome: "partial" }, { limit: 1, signal })
     const reply = page.records.find((x) => x.payload.claimedSource.status === "url-claimed") ?? page.records[0] ?? null
     if (!reply) return { reply: null, linked: null as Linked | null, status: null }
-    const linked = await r.getLinked(reply.key, signal)
-    return { reply, linked, status: deriveStatus(reply, linked, TRUSTED_REVIEWERS).status }
+    // Linked reviews load on the detail page, not for a decorative homepage preview.
+    return { reply, linked: null as Linked | null, status: null }
   }, [])
 }
 
@@ -52,12 +52,17 @@ function RecordPreview({ state, head }: { state: ReturnType<typeof useSample>; h
     return (
       <div className="stage">
         <div className="stage-card record-card">
-          <span className="eyebrow">Live preview unavailable</span>
-          <p className="record-card-title">Arkiv could not be reached from this browser just now.</p>
-          <p className="muted">{readErrorMessage((state as { error: unknown }).error)}</p>
+          <span className="eyebrow">What you can do with Muniment</span>
+          <p className="record-card-title">Find a reply. Check its source. Help keep it available.</p>
+          <p className="muted">Search public records, inspect the publisher and expiry, and save a collection in your browser. A different wallet can fund continued storage.</p>
           <Link to="/archive" className="link-arrow">
-            Try the archive <Arrow />
+            Explore the archive <Arrow />
           </Link>
+          <details style={{ marginTop: "var(--space-4)" }}>
+            <summary>Live data is temporarily unavailable</summary>
+            <p className="muted">{readErrorMessage((state as { error: unknown }).error)}</p>
+            <Link to="/settings">Endpoint settings</Link>
+          </details>
         </div>
       </div>
     )
@@ -120,13 +125,15 @@ function RecordPreview({ state, head }: { state: ReturnType<typeof useSample>; h
 }
 
 function PreservePanel({ head }: { head: HeadAnchor | null }) {
+  const [enabled, setEnabled] = useState(false)
   const data = useAsync(async (signal) => {
+    if (!enabled) return [] as Reply[]
     // One small bounded query: replies expiring in the next 60 days, soonest three shown.
     const head = await fetchHead()
     const q = expiringQuery(head.block, head.block + BigInt(60 * BLOCKS_PER_DAY), TRUSTED_PUBLISHERS)
     const res = await scan<Reply>(publicClient() as unknown as ArchiveClient, q, decodeReply, { maxPages: 1, pageSize: 25, signal })
     return res.records.sort((a, b) => Number((a.expiresAtBlock ?? 0n) - (b.expiresAtBlock ?? 0n))).slice(0, 3)
-  }, [])
+  }, [enabled])
   const [picked, setPicked] = useState<Set<string>>(new Set())
   const [open, setOpen] = useState(false)
   useEffect(() => {
@@ -137,14 +144,15 @@ function PreservePanel({ head }: { head: HeadAnchor | null }) {
   return (
     <div className="flat-panel">
       <div className="flat-panel-head">
-        <span className="eyebrow">Expiring in the next 60 days · read live</span>
+        <span className="eyebrow">Expiring in the next 60 days</span>
         <Link to="/preserve" className="link-arrow plain">
           Full queue <Arrow />
         </Link>
       </div>
       {data.status === "loading" && !data.data ? <Skeleton lines={3} /> : null}
       {data.status === "error" ? <p className="muted">{readErrorMessage((data as { error: unknown }).error)}</p> : null}
-      {data.data && list.length === 0 ? <p className="muted">No trusted records expire in the next 60 days.</p> : null}
+      {!enabled ? <button type="button" className="btn" onClick={() => setEnabled(true)}>Load live renewal candidates</button> : null}
+      {enabled && data.status === "ready" && list.length === 0 ? <p className="muted">No trusted records expire in the next 60 days.</p> : null}
       <ul className="pick-list">
         {list.map((r) => (
           <li key={r.key}>
@@ -226,7 +234,7 @@ function ProvenancePanel({ sample }: { sample: ReturnType<typeof useSample> }) {
           <dt>Reviews</dt>
           <dd>
             {reviews.length === 0
-              ? "None published"
+              ? "Open the record to load reviews"
               : reviews.map((v) => (
                   <span key={v.key} style={{ display: "block" }}>
                     {v.status === "disputed" ? "Disputed" : "Source compared"} by <span className="mono">{shortHex(v.creator)}</span>
@@ -307,7 +315,7 @@ const FAQ: [string, string][] = [
 
 export default function Landing() {
   usePageMeta("Muniment", "Find government replies, save related records and help keep them available, even when the original website changes. Synthetic records on the Arkiv testnet.", { path: "/" })
-  const { head } = useHead()
+  const { head } = useHead(120_000)
   const sample = useSample()
   return (
     <div className="landing">
@@ -330,6 +338,31 @@ export default function Landing() {
             <p className="hero-note">Synthetic records on Arkiv testnet. No wallet needed to browse.</p>
           </div>
           <RecordPreview state={sample} head={head} />
+        </div>
+      </section>
+
+      <section className="section-block band" aria-labelledby="problem-heading">
+        <div className="wrap split">
+          <div className="stack">
+            <span className="eyebrow">The problem</span>
+            <h2 id="problem-heading" className="display section-title">A public answer should outlast a portal.</h2>
+            <p className="measure">In August 2023, The Wire and National Herald, citing The Hindu, reported that records of past applications had disappeared from India's RTIOnline portal. The portal showed a maintenance notice saying archival data would be available soon, and the department running it did not respond to The Hindu's questions.</p>
+            <div className="cluster">
+              <ExternalLink href="https://m.thewire.in/article/government/rti-portal-rtionline-years-of-information-disappears">The Wire</ExternalLink>
+              <ExternalLink href="https://www.nationalheraldindia.com/amp/story/national/rti-years-of-data-go-missing-from-the-union-governments-information-portal">National Herald</ExternalLink>
+            </div>
+            <p className="muted measure">This reporting describes an access failure at that time; it does not establish permanent deletion. Muniment is an independent preservation demonstration, not a replacement for the official RTI portal.</p>
+          </div>
+          <div className="stack">
+            <span className="eyebrow">Who it is for</span>
+            <h3>For people who need to cite the answer later.</h3>
+            <p className="measure">Journalists tracking a story, RTI applicants keeping their replies, and civic researchers comparing public decisions need records they can find, check and share again.</p>
+            <h3>Why preserve it separately?</h3>
+            <p className="muted measure">A portal outage or a lost account should not be the only way to reach an important answer. Muniment stores queryable records on Arkiv, separates the claimed authority from the publishing wallet, and lets other wallets renew storage.</p>
+            <h3>How it helps</h3>
+            <p className="muted measure">Find a reply, inspect its provenance, save a local collection and renew the records you rely on. The standalone reader can retrieve them without this website. Storage still expires, and live reads still require a reachable Arkiv endpoint.</p>
+            <p className="faint">This edition contains synthetic records and real testnet transactions. It has not imported the missing RTIOnline applications.</p>
+          </div>
         </div>
       </section>
 

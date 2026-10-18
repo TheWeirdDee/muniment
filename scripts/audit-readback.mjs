@@ -1,5 +1,5 @@
 /** Read-only campaign recheck, independent of the application's reconciliation code.
- * node scripts/audit-readback.mjs <new-output.json>
+ * node scripts/audit-readback.mjs <new-output.json> [campaign.json]
  * No environment file, wallet, signer, send method or automatic quota retry.
  */
 import assert from "node:assert/strict"
@@ -8,7 +8,8 @@ import { decodeEventLog } from "viem"
 import { ENTITY_EVENTS_ABI } from "@arkiv-network/sdk"
 const output = process.argv[2]
 if (!output || existsSync(output)) throw new Error("Supply a new output path; historical evidence is never overwritten")
-const campaign = JSON.parse(readFileSync("evidence/transactions-2026-10-17/campaign.json", "utf8"))
+const campaignPath = process.argv[3] ?? "evidence/transactions-2026-10-17/campaign.json"
+const campaign = JSON.parse(readFileSync(campaignPath, "utf8"))
 const endpoint = "https://rpc.tiramisu.db-chain.testnet.arkiv.network"
 const registry = "0x4400000000000000000000000000000000000044"
 const lower = value => String(value).toLowerCase()
@@ -24,10 +25,11 @@ async function rpc(method, params = []) {
 try {
   report.chainId = Number(BigInt(await rpc("eth_chainId")))
   assert.equal(report.chainId, 7738577)
-  const workflows = [campaign.workflows.publication, campaign.workflows.single, ...campaign.priorMulti, campaign.workflows.multi]
+  const workflows = [campaign.workflows.publication, campaign.workflows.single, ...(campaign.priorMulti ?? []), campaign.workflows.multi]
   const expectedReceipts = []
   const expiryTargets = new Map()
   for (const w of workflows) {
+    assert.equal(w.status, "PASS", "Campaign workflow is incomplete")
     const raw = await rpc("eth_getTransactionReceipt", [w.txHash])
     report.transactions.push({ hash: w.txHash, raw })
     assert.equal(raw.status, "0x1")
@@ -49,13 +51,18 @@ try {
       expiryTargets.set(lower(item.key), target > (expiryTargets.get(lower(item.key)) ?? 0n) ? target : expiryTargets.get(lower(item.key)))
     }
     const receipts = w.independent?.receipts ?? []
+    if (w.action !== "publication") {
+      assert.equal(receipts.length, w.review.replies.length, "Every reviewed reply must have a receipt")
+      assert.equal(new Set(receipts.map(r => lower(r.reply))).size, receipts.length)
+      for (const r of receipts) assert.equal(r.extendedCount, items.filter(item => lower(item.reply) === lower(r.reply)).length)
+    }
     assert.equal(created.length, w.action === "publication" ? 1 : receipts.length)
     for (const receipt of receipts) {
       assert.equal(created.filter(e => lower(e.args.entityKey) === lower(receipt.key) && lower(e.args.owner) === lower(w.wallet) && e.args.expiresAt === BigInt(receipt.target)).length, 1)
       expectedReceipts.push({ ...receipt, tx: w.txHash, block: w.block })
     }
   }
-  assert.equal(expectedReceipts.length, 5)
+  assert.equal(expectedReceipts.length, workflows.reduce((n, w) => n + (w.review?.replies.length ?? 0), 0))
   const keys = [...new Set([...expiryTargets.keys(), ...expectedReceipts.map(r => lower(r.key))])]
   const select = { key: true, creator: true, owner: true, createdAt: true, expiresAt: true, creationFlags: true, payload: true, attributes: true }
   report.entities = await rpc("arkiv_query", [keys.map(key => `$key = key(${key})`).join(" OR "), { select, limit: "0x14" }])
